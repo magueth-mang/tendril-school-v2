@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:#F4F1EA;-webkit-font-smoothing:antialiased}
+  ::selection{background:#0A0A0A;color:#FFD200}
+  @keyframes tcTick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .v4-link{text-decoration:none;transition:color .15s ease}
+  .v4-link:hover{color:#0A0A0A !important}
+  .ct-row{transition:background .2s ease}
+  .ct-row:hover{background:#FFD200}
+  .ct-field:focus{border-color:#0A0A0A;box-shadow:4px 4px 0 #0A0A0A;transform:translate(-2px,-2px)}
+  .ct-field{transition:box-shadow .15s ease,transform .15s ease}
+  details.ct-faq summary{list-style:none;cursor:pointer;outline:none}
+  details.ct-faq summary::-webkit-details-marker{display:none}
+  details.ct-faq:not([open]) summary:hover{background:rgba(255,210,0,.32)}
+  details.ct-faq .ct-ans{overflow:hidden}
+  details.ct-faq[open]{background:#FFD200}
+
+  /* --- responsive --- */
+  @media (max-width:1024px){
+    [style*="repeat(5,1fr)"]{grid-template-columns:repeat(3,1fr)!important}
+    [style*="repeat(4,1fr)"]{grid-template-columns:repeat(2,1fr)!important}
+  }
+  @media (max-width:768px){
+    [style*="grid-template-columns"]{grid-template-columns:1fr!important}
+    [style*="repeat(5,1fr)"],[style*="repeat(4,1fr)"],[style*="repeat(3,1fr)"]{grid-template-columns:repeat(2,1fr)!important}
+    nav{flex-wrap:wrap!important;padding:10px 16px!important;gap:8px 0!important}
+    nav>div:last-child{gap:14px!important;flex-wrap:wrap!important;justify-content:flex-start!important}
+    [style*="padding:140px 28px 0"]{padding-top:150px!important}
+    [style*="padding:128px 28px 0"]{padding-top:150px!important}
+    [style*="padding:56px 48px"]{padding:40px 22px!important}
+    [style*="padding:64px 48px"]{padding:44px 22px!important}
+  }
+  @media (max-width:520px){
+    [style*="repeat(5,1fr)"],[style*="repeat(4,1fr)"],[style*="repeat(3,1fr)"]{grid-template-columns:1fr!important}
+    [style*="padding:140px 28px 0"]{padding-top:160px!important}
+    [style*="padding:128px 28px 0"]{padding-top:160px!important}
+  }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</helmet>
+
+<div ref="{{ rootRef }}" style="background:#F4F1EA;color:#0A0A0A;font-family:'Archivo',sans-serif;overflow-x:hidden;position:relative">
+
+  <!-- TICKER -->
+  <div style="position:fixed;top:0;left:0;right:0;z-index:60;background:#0A0A0A;color:#FFD200;overflow:hidden;border-bottom:2px solid #0A0A0A">
+    <div style="display:flex;width:max-content;animation:tcTick 24s linear infinite;padding:8px 0">
+      <div style="display:flex;gap:40px;padding-right:40px;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.04em;white-space:nowrap">
+        <span>PARLONS DE VOTRE PROJET</span><span>★</span><span>RÉPONSE SOUS 48H</span><span>★</span><span>PORTES OUVERTES — 12 JUIL. 2026</span><span>★</span><span>CONTACT&#64;TENDRIL&#46;COM</span><span>★</span><span>PARLONS DE VOTRE PROJET</span><span>★</span><span>RÉPONSE SOUS 48H</span><span>★</span><span>PORTES OUVERTES — 12 JUIL. 2026</span><span>★</span><span>CONTACT&#64;TENDRIL&#46;COM</span><span>★</span>
+      </div>
+      <div style="display:flex;gap:40px;padding-right:40px;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.04em;white-space:nowrap" aria-hidden="true">
+        <span>PARLONS DE VOTRE PROJET</span><span>★</span><span>RÉPONSE SOUS 48H</span><span>★</span><span>PORTES OUVERTES — 12 JUIL. 2026</span><span>★</span><span>CONTACT&#64;TENDRIL&#46;COM</span><span>★</span><span>PARLONS DE VOTRE PROJET</span><span>★</span><span>RÉPONSE SOUS 48H</span><span>★</span><span>PORTES OUVERTES — 12 JUIL. 2026</span><span>★</span><span>CONTACT&#64;TENDRIL&#46;COM</span><span>★</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav style="position:fixed;top:35px;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:14px 28px;background:#F4F1EA;border-bottom:2px solid #0A0A0A">
+    <a href="Tendril%20School%20Landing%20Page.dc.html" style="display:flex;align-items:center;gap:10px;text-decoration:none">
+      <span style="width:34px;height:34px;background:#0A0A0A;display:flex;align-items:center;justify-content:center"><img src="assets/81ee13a7-fab5-4063-8297-c32e129eec02.png" alt="Tendril School" style="height:18px;width:auto;display:block"></span>
+      <span style="font-weight:900;letter-spacing:-.02em;font-size:18px;color:#0A0A0A;text-transform:uppercase">Tendril School</span>
+    </a>
+    <div style="display:flex;align-items:center;gap:26px">
+      <a class="v4-link" href="Tendril%20School%20Programmes.dc.html" style="color:rgba(10,10,10,.6);font-family:'Space Mono',monospace;font-size:13px;font-weight:700;text-transform:uppercase">Programmes</a>
+      <a class="v4-link" href="Tendril%20School%20Ecole.dc.html" style="color:rgba(10,10,10,.6);font-family:'Space Mono',monospace;font-size:13px;font-weight:700;text-transform:uppercase">L'École</a>
+      <a class="v4-link" href="Tendril%20School%20Contact.dc.html" style="color:#0A0A0A;font-family:'Space Mono',monospace;font-size:13px;font-weight:700;text-transform:uppercase;border-bottom:2px solid #0A0A0A;padding-bottom:2px">Contact</a>
+      <a href="Tendril%20School%20Candidature.dc.html" style="background:#FFD200;color:#0A0A0A;border:2px solid #0A0A0A;font-family:'Space Mono',monospace;font-weight:700;font-size:12px;text-transform:uppercase;padding:9px 18px;text-decoration:none;transition:box-shadow .2s ease,transform .2s ease" style-hover="transform:translate(-2px,-2px);box-shadow:4px 4px 0 #0A0A0A">Candidater →</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header style="position:relative;padding:140px 28px 0">
+    <div style="max-width:1320px;margin:0 auto;width:100%">
+      <div data-hero="" style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;border-bottom:2px solid #0A0A0A;padding-bottom:18px;margin-bottom:28px;flex-wrap:wrap">
+        <span style="font-family:'Space Mono',monospace;font-size:13px;font-weight:700">(00) — CONTACT</span>
+        <span style="font-family:'Space Mono',monospace;font-size:13px;font-weight:700;color:rgba(10,10,10,.55)">PARIS · RÉPONSE SOUS 48H</span>
+      </div>
+      <h1 data-hero="" style="font-weight:900;font-size:clamp(48px,9.5vw,150px);line-height:.86;letter-spacing:-.045em;text-transform:uppercase;margin:0 0 30px">Écrivez-<br>nous.</h1>
+      <p data-hero="" style="font-size:19px;line-height:1.5;font-weight:500;margin:0;max-width:640px;border-top:2px solid #0A0A0A;padding-top:24px;margin-bottom:48px">Une question sur les bootcamps, le financement, une candidature ou un partenariat studio ? On lit tout, on répond vite.</p>
+    </div>
+  </header>
+
+  <!-- FORM + INFO -->
+  <section style="border-top:2px solid #0A0A0A;border-bottom:2px solid #0A0A0A">
+    <div style="max-width:1320px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr">
+      <!-- form -->
+      <div data-reveal="" style="padding:56px 48px;border-right:2px solid #0A0A0A">
+        <span style="font-family:'Space Mono',monospace;font-size:13px;font-weight:700;display:block;margin-bottom:26px">(01) — FORMULAIRE</span>
+        <form onsubmit="return false" style="display:flex;flex-direction:column;gap:14px">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+            <input class="ct-field" type="text" placeholder="Prénom" style="background:#F4F1EA;border:2px solid #0A0A0A;color:#0A0A0A;font-family:'Archivo',sans-serif;font-size:15px;font-weight:600;padding:15px 18px;outline:none;width:100%">
+            <input class="ct-field" type="text" placeholder="Nom" style="background:#F4F1EA;border:2px solid #0A0A0A;color:#0A0A0A;font-family:'Archivo',sans-serif;font-size:15px;font-weight:600;padding:15px 18px;outline:none;width:100%">
+          </div>
+          <input class="ct-field" type="email" placeholder="Email" style="background:#F4F1EA;border:2px solid #0A0A0A;color:#0A0A0A;font-family:'Archivo',sans-serif;font-size:15px;font-weight:600;padding:15px 18px;outline:none">
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <span style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:rgba(10,10,10,.55)">SUJET</span>
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <sc-for list="{{ subjects }}" as="s" hint-placeholder-count="4">
+                <button type="button" onclick="{{ pickSubject }}" data-subj="{{ s }}" style="background:{{ subjectBg }};border:2px solid #0A0A0A;color:#0A0A0A;cursor:pointer;font-family:'Space Mono',monospace;font-weight:700;font-size:12px;text-transform:uppercase;padding:9px 16px;transition:background .15s ease">{{ s }}</button>
+              </sc-for>
+            </div>
+          </div>
+          <textarea class="ct-field" placeholder="Votre message" rows="5" style="background:#F4F1EA;border:2px solid #0A0A0A;color:#0A0A0A;font-family:'Archivo',sans-serif;font-size:15px;font-weight:600;padding:15px 18px;outline:none;resize:none"></textarea>
+          <button type="submit" style="background:#0A0A0A;color:#FFD200;border:2px solid #0A0A0A;cursor:pointer;font-family:'Space Mono',monospace;font-weight:700;font-size:14px;text-transform:uppercase;padding:16px;transition:box-shadow .2s ease,transform .2s ease" style-hover="transform:translate(-3px,-3px);box-shadow:6px 6px 0 #FFD200">→ Envoyer le message</button>
+        </form>
+      </div>
+      <!-- info -->
+      <div data-reveal="" style="display:flex;flex-direction:column">
+        <div style="padding:56px 48px 40px">
+          <span style="font-family:'Space Mono',monospace;font-size:13px;font-weight:700;display:block;margin-bottom:26px">(02) — COORDONNÉES</span>
+          <div style="display:flex;flex-direction:column">
+            <a class="ct-row" href="mailto:contact&#64;tendril&#46;com" style="text-decoration:none;color:#0A0A0A;border-top:2px solid #0A0A0A;padding:22px 0;display:flex;justify-content:space-between;align-items:baseline;gap:16px">
+              <span style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:rgba(10,10,10,.55)">EMAIL</span>
+              <span style="font-weight:800;font-size:clamp(18px,2vw,24px);letter-spacing:-.01em">contact&#64;tendril&#46;com</span>
+            </a>
+            <a class="ct-row" href="tel:+33100000000" style="text-decoration:none;color:#0A0A0A;border-top:2px solid #0A0A0A;padding:22px 0;display:flex;justify-content:space-between;align-items:baseline;gap:16px">
+              <span style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:rgba(10,10,10,.55)">TÉLÉPHONE</span>
+              <span style="font-weight:800;font-size:clamp(18px,2vw,24px);letter-spacing:-.01em">+33 1 00 00 00 00</span>
+            </a>
+            <div style="border-top:2px solid #0A0A0A;border-bottom:2px solid #0A0A0A;padding:22px 0;display:flex;justify-content:space-between;align-items:baseline;gap:16px">
+              <span style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:rgba(10,10,10,.55)">ADRESSE</span>
+              <span style="font-weight:800;font-size:clamp(18px,2vw,24px);letter-spacing:-.01em;text-align:right">12 rue du Faubourg<br>75003 Paris</span>
+            </div>
+          </div>
+          <div style="margin-top:30px;display:flex;gap:10px;flex-wrap:wrap">
+            <a class="v4-link" href="#" style="color:rgba(10,10,10,.6);font-family:'Space Mono',monospace;font-size:13px;font-weight:700;border:2px solid #0A0A0A;padding:9px 16px">INSTAGRAM</a>
+            <a class="v4-link" href="#" style="color:rgba(10,10,10,.6);font-family:'Space Mono',monospace;font-size:13px;font-weight:700;border:2px solid #0A0A0A;padding:9px 16px">BEHANCE</a>
+            <a class="v4-link" href="#" style="color:rgba(10,10,10,.6);font-family:'Space Mono',monospace;font-size:13px;font-weight:700;border:2px solid #0A0A0A;padding:9px 16px">LINKEDIN</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIRECT LINES -->
+  <section style="border-bottom:2px solid #0A0A0A">
+    <div data-stagger="" style="max-width:1320px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr)">
+      <div style="padding:40px 28px;border-right:2px solid #0A0A0A">
+        <span style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:rgba(10,10,10,.55)">ADMISSIONS</span>
+        <h3 style="font-weight:800;font-size:24px;letter-spacing:-.02em;margin:14px 0 8px">Candidater à un bootcamp</h3>
+        <p style="font-size:15px;line-height:1.5;color:rgba(10,10,10,.7);margin:0 0 16px;font-weight:500">Dossier, entretien, portfolio pour le niveau Avancé.</p>
+        <a class="v4-link" href="Tendril%20School%20Candidature.dc.html" style="font-family:'Space Mono',monospace;font-size:13px;font-weight:700;color:#0A0A0A;border-bottom:2px solid #0A0A0A;padding-bottom:2px">contact&#64;tendril&#46;com →</a>
+      </div>
+      <div style="padding:40px 28px;border-right:2px solid #0A0A0A">
+        <span style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:rgba(10,10,10,.55)">PARTENARIATS</span>
+        <h3 style="font-weight:800;font-size:24px;letter-spacing:-.02em;margin:14px 0 8px">Studios &amp; maisons</h3>
+        <p style="font-size:15px;line-height:1.5;color:rgba(10,10,10,.7);margin:0 0 16px;font-weight:500">Recruter nos diplômés, proposer un brief, intervenir.</p>
+        <a class="v4-link" href="#" style="font-family:'Space Mono',monospace;font-size:13px;font-weight:700;color:#0A0A0A;border-bottom:2px solid #0A0A0A;padding-bottom:2px">contact&#64;tendril&#46;com →</a>
+      </div>
+      <div style="padding:40px 28px">
+        <span style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:rgba(10,10,10,.55)">PRESSE</span>
+        <h3 style="font-weight:800;font-size:24px;letter-spacing:-.02em;margin:14px 0 8px">Médias &amp; podcast</h3>
+        <p style="font-size:15px;line-height:1.5;color:rgba(10,10,10,.7);margin:0 0 16px;font-weight:500">Interviews, intervention au micro, demandes presse.</p>
+        <a class="v4-link" href="#" style="font-family:'Space Mono',monospace;font-size:13px;font-weight:700;color:#0A0A0A;border-bottom:2px solid #0A0A0A;padding-bottom:2px">contact&#64;tendril&#46;com →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section style="border-bottom:2px solid #0A0A0A">
+    <div style="max-width:1320px;margin:0 auto;padding:60px 28px 0">
+      <div data-reveal="" style="margin-bottom:36px">
+        <span style="font-family:'Space Mono',monospace;font-size:13px;font-weight:700;display:block;margin-bottom:14px">(03) — QUESTIONS FRÉQUENTES</span>
+        <h2 style="font-weight:900;font-size:clamp(34px,5vw,68px);line-height:.94;letter-spacing:-.03em;text-transform:uppercase;margin:0">Avant d'écrire.</h2>
+      </div>
+    </div>
+    <div data-reveal="">
+      <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="3">
+        <details class="ct-faq" style="border-top:2px solid #0A0A0A">
+          <summary style="transition:background .2s ease"><div style="max-width:1320px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:24px 28px;font-weight:800;font-size:clamp(18px,2.2vw,26px);letter-spacing:-.01em">{{ f.q }}<span class="ct-sign" style="flex:none;font-family:'Space Mono',monospace;font-size:24px;font-weight:700;transition:transform .3s ease">+</span></div></summary>
+          <div class="ct-ans" style="font-size:16px;line-height:1.7;color:#0A0A0A;font-weight:500"><div style="max-width:1320px;margin:0 auto;padding:0 28px 26px"><div style="max-width:760px">{{ f.a }}</div></div></div>
+        </details>
+      </sc-for>
+      <div style="border-top:2px solid #0A0A0A"></div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="background:#0A0A0A;color:#F4F1EA;padding:56px 28px 36px">
+    <div style="max-width:1320px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap">
+      <div>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+          <span style="width:34px;height:34px;background:#FFD200;display:flex;align-items:center;justify-content:center"><img src="assets/81ee13a7-fab5-4063-8297-c32e129eec02.png" alt="" style="height:18px;width:auto"></span>
+          <span style="font-weight:900;letter-spacing:-.02em;font-size:17px;text-transform:uppercase">Tendril School</span>
+        </div>
+        <p style="font-family:'Space Mono',monospace;font-size:12px;color:rgba(244,241,234,.55);margin:0;max-width:300px;line-height:1.7">L'ÉCOLE DE MODÉLISATION 3D DÉDIÉE À LA BEAUTÉ ET AU LUXE. PARIS.</p>
+      </div>
+      <div style="display:flex;gap:56px;flex-wrap:wrap">
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <span style="font-family:'Space Mono',monospace;font-size:11px;color:#FFD200;margin-bottom:4px;font-weight:700">ÉCOLE</span>
+          <a class="v4-link" href="Tendril%20School%20Programmes.dc.html" style="color:rgba(244,241,234,.7);font-size:14px;font-weight:600">Programmes</a>
+          <a class="v4-link" href="Tendril%20School%20Ecole.dc.html" style="color:rgba(244,241,234,.7);font-size:14px;font-weight:600">L'École</a>
+          <a class="v4-link" href="Tendril%20School%20Contact.dc.html" style="color:rgba(244,241,234,.7);font-size:14px;font-weight:600">Contact</a>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <span style="font-family:'Space Mono',monospace;font-size:11px;color:#FFD200;margin-bottom:4px;font-weight:700">SUIVRE</span>
+          <a class="v4-link" href="#" style="color:rgba(244,241,234,.7);font-size:14px;font-weight:600">Instagram</a>
+          <a class="v4-link" href="#" style="color:rgba(244,241,234,.7);font-size:14px;font-weight:600">Behance</a>
+          <a class="v4-link" href="#" style="color:rgba(244,241,234,.7);font-size:14px;font-weight:600">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+    <div style="max-width:1320px;margin:44px auto 0;padding-top:22px;border-top:1px solid rgba(244,241,234,.16);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-family:'Space Mono',monospace;font-size:11px;color:rgba(244,241,234,.4)">
+      <span>© 2026 TENDRIL SCHOOL. TOUS DROITS RÉSERVÉS.</span>
+      <span style="display:flex;gap:18px;flex-wrap:wrap"><a class="v4-link" href="Tendril%20School%20Legal.dc.html#mentions" style="color:rgba(244,241,234,.4)">MENTIONS LÉGALES</a><a class="v4-link" href="Tendril%20School%20Legal.dc.html#cgu" style="color:rgba(244,241,234,.4)">CGU</a><a class="v4-link" href="Tendril%20School%20Legal.dc.html#confidentialite" style="color:rgba(244,241,234,.4)">CONFIDENTIALITÉ</a></span>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  rootRef = React.createRef();
+  state = { subject: 'Admissions' };
+  componentDidMount() { this._init(); }
+  componentWillUnmount() { clearTimeout(this._t); if (window.ScrollTrigger) window.ScrollTrigger.getAll().forEach(t => t.kill()); }
+  _init() {
+    const g = window.gsap, ST = window.ScrollTrigger;
+    if (!g || !ST) { this._t = setTimeout(() => this._init(), 60); return; }
+    g.registerPlugin(ST);
+    const root = this.rootRef.current;
+    if (!root) return;
+    const q = (s) => Array.from(root.querySelectorAll(s));
+    g.from(q('[data-hero]'), { opacity: 0, y: 30, duration: 0.8, ease: 'power3.out', stagger: 0.08, delay: 0.1 });
+    q('[data-reveal]').forEach((el) => {
+      g.from(el, { opacity: 0, y: 40, duration: 0.8, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 88%' } });
+    });
+    q('[data-stagger]').forEach((grp) => {
+      g.from(Array.from(grp.children), { opacity: 0, y: 28, duration: 0.6, ease: 'power3.out', stagger: 0.06, scrollTrigger: { trigger: grp, start: 'top 86%' } });
+    });
+    this._initFaq(g);
+  }
+  _initFaq(g) {
+    const root = this.rootRef.current;
+    if (!root) return;
+    root.querySelectorAll('details.ct-faq').forEach((d) => {
+      const summary = d.querySelector('summary');
+      const ans = d.querySelector('.ct-ans');
+      const inner = ans.firstElementChild;
+      const sign = d.querySelector('.ct-sign');
+      g.set(ans, { height: 0, opacity: 0 });
+      summary.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (d._anim) return;
+        d._anim = true;
+        sign.style.transform = d.open ? 'rotate(0deg)' : 'rotate(45deg)';
+        if (d.open) {
+          g.to(inner, { y: -6, opacity: 0, duration: 0.25, ease: 'power2.in' });
+          g.to(ans, { height: 0, opacity: 0, duration: 0.42, ease: 'power3.inOut', onComplete: () => { d.open = false; d._anim = false; } });
+        } else {
+          d.open = true;
+          g.set(ans, { height: 'auto', opacity: 1 });
+          const h = ans.offsetHeight;
+          g.fromTo(ans, { height: 0, opacity: 0 }, { height: h, opacity: 1, duration: 0.5, ease: 'power3.out', onComplete: () => { g.set(ans, { height: 'auto' }); d._anim = false; } });
+          g.fromTo(inner, { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.55, ease: 'power3.out', delay: 0.06 });
+        }
+      });
+    });
+  }
+  renderVals() {
+    return {
+      rootRef: this.rootRef,
+      subjects: ['Admissions', 'Financement', 'Partenariat', 'Autre'],
+      subjectBg: '#F4F1EA',
+      pickSubject: (e) => {
+        const v = e.currentTarget.getAttribute('data-subj');
+        const root = this.rootRef.current;
+        root.querySelectorAll('[data-subj]').forEach((b) => { b.style.background = b.getAttribute('data-subj') === v ? '#FFD200' : '#F4F1EA'; });
+        this.setState({ subject: v });
+      },
+      faqs: [
+        { q: 'Sous combien de temps obtient-on une réponse ?', a: 'On répond à tous les messages sous 48h ouvrées. Pour une candidature, comptez environ une semaine entre le dépôt du dossier et la proposition d\u2019entretien.' },
+        { q: 'Puis-je visiter le campus avant de candidater ?', a: 'Oui. Des portes ouvertes sont organisées avant chaque rentrée — la prochaine a lieu le 12 juillet 2026. Écrivez-nous pour réserver votre créneau.' },
+        { q: 'Comment se déroule l\u2019entretien d\u2019admission ?', a: 'Un échange d\u2019environ 30 minutes sur votre parcours et votre motivation. Pour le bootcamp Avancé, il s\u2019accompagne d\u2019une revue de portfolio.' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

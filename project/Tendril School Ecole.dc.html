@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:#F4F1EA;-webkit-font-smoothing:antialiased}
+  ::selection{background:#0A0A0A;color:#FFD200}
+  @keyframes tcTick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @keyframes tcBar{0%,100%{transform:scaleY(.35)}50%{transform:scaleY(1)}}
+  .v4-link{text-decoration:none;transition:color .15s ease}
+  .v4-link:hover{color:#0A0A0A !important}
+  .ep-row{transition:background .2s ease}
+  .ep-row:hover{background:#FFD200}
+  .ep-row:hover .ep-play{transform:scale(1.08)}
+  .ep-play{transition:transform .25s ease,box-shadow .25s ease}
+  .feat-card{transition:transform .25s ease,box-shadow .25s ease}
+  .feat-card:hover{transform:translate(-3px,-3px);box-shadow:8px 8px 0 #FFD200}
+  .feat-card:hover .feat-play{transform:scale(1.08)}
+  .feat-play{transition:transform .25s ease}
+  .plat-btn{transition:box-shadow .2s ease,transform .2s ease}
+  .plat-btn:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 #0A0A0A}
+
+  /* --- responsive --- */
+  @media (max-width:1024px){
+    [style*="repeat(5,1fr)"]{grid-template-columns:repeat(3,1fr)!important}
+    [style*="repeat(4,1fr)"]{grid-template-columns:repeat(2,1fr)!important}
+  }
+  @media (max-width:768px){
+    [style*="grid-template-columns"]{grid-template-columns:1fr!important}
+    [style*="repeat(5,1fr)"],[style*="repeat(4,1fr)"],[style*="repeat(3,1fr)"]{grid-template-columns:repeat(2,1fr)!important}
+    nav{flex-wrap:wrap!important;padding:10px 16px!important;gap:8px 0!important}
+    nav>div:last-child{gap:14px!important;flex-wrap:wrap!important;justify-content:flex-start!important}
+    [style*="padding:140px 28px 0"]{padding-top:150px!important}
+    [style*="padding:128px 28px 0"]{padding-top:150px!important}
+    [style*="padding:56px 48px"]{padding:40px 22px!important}
+    [style*="padding:64px 48px"]{padding:44px 22px!important}
+  }
+  @media (max-width:520px){
+    [style*="repeat(5,1fr)"],[style*="repeat(4,1fr)"],[style*="repeat(3,1fr)"]{grid-template-columns:1fr!important}
+    [style*="padding:140px 28px 0"]{padding-top:160px!important}
+    [style*="padding:128px 28px 0"]{padding-top:160px!important}
+  }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="image-slot.js"></script>
+</helmet>
+
+<div ref="{{ rootRef }}" style="background:#F4F1EA;color:#0A0A0A;font-family:'Archivo',sans-serif;overflow-x:hidden;position:relative">
+
+  <!-- TICKER -->
+  <div style="position:fixed;top:0;left:0;right:0;z-index:60;background:#0A0A0A;color:#FFD200;overflow:hidden;border-bottom:2px solid #0A0A0A">
+    <div style="display:flex;width:max-content;animation:tcTick 24s linear infinite;padding:8px 0">
+      <div style="display:flex;gap:40px;padding-right:40px;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.04em;white-space:nowrap">
+        <span>L'ÉCOLE DU CGI LUXE</span><span>★</span><span>PARIS · EST. 2021</span><span>★</span><span>BOOTCAMP 3D · BEAUTÉ &amp; LUXE</span><span>★</span><span>30 PLACES / PROMO</span><span>★</span><span>L'ÉCOLE DU CGI LUXE</span><span>★</span><span>PARIS · EST. 2021</span><span>★</span><span>BOOTCAMP 3D · BEAUTÉ &amp; LUXE</span><span>★</span><span>30 PLACES / PROMO</span><span>★</span>
+      </div>
+      <div style="display:flex;gap:40px;padding-right:40px;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.04em;white-space:nowrap" aria-hidden="true">
+        <span>L'ÉCOLE DU CGI LUXE</span><span>★</span><span>PARIS · EST. 2021</span><span>★</span><span>BOOTCAMP 3D · BEAUTÉ &amp; LUXE</span><span>★</span><span>30 PLACES / PROMO</span><span>★</span><span>L'ÉCOLE DU CGI LUXE</span><span>★</span><span>PARIS · EST. 2021</span><span>★</span><span>BOOTCAMP 3D · BEAUTÉ &amp; LUXE</span><span>★</span><span>30 PLACES / PROMO</span><span>★</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav style="position:fixed;top:35px;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:14px 28px;background:#F4F1EA;border-bottom:2px solid #0A0A0A">
+    <a href="Tendril%20School%20Landing%20Page.dc.html" style="display:flex;align-items:center;gap:10px;text-decoration:none">
+      <span style="width:34px;height:34px;background:#0A0A0A;display:flex;align-items:center;justify-content:center"><img src="assets/81ee13a7-fab5-4063-8297-c32e129eec02.png" alt="Tendril School" style="height:18px;width:auto;display:block"></span>
+      <span style="font-weight:900;letter-spacing:-.02em;font-size:18px;color:#0A0A0A;text-transform:uppercase">Tendril School</span>
+    </a>
+    <div style="display:flex;align-items:center;gap:26px">
+      <a class="v4-link" href="Tendril%20School%20Programmes.dc.html" style="color:rgba(10,10,10,.6);font-family:'Space Mono',monospace;font-size:13px;font-weight:700;text-transform:uppercase">Programmes</a>
+      <a class="v4-link" href="Tendril%20School%20Ecole.dc.html" style="color:#0A0A0A;font-family:'Space Mono',monospace;font-size:13px;font-weight:700;text-transform:uppercase;border-bottom:2px solid #0A0A0A;padding-bottom:2px">L'École</a>
+      <a class="v4-link" href="Tendril%20School%20Contact.dc.html" style="color:rgba(10,10,10,.6);font-family:'Space Mono',monospace;font-size:13px;font-weight:700;text-transform:uppercase">Contact</a>
+      <a href="Tendril%20School%20Candidature.dc.html" style="background:#FFD200;color:#0A0A0A;border:2px solid #0A0A0A;font-family:'Space Mono',monospace;font-weight:700;font-size:12px;text-transform:uppercase;padding:9px 18px;text-decoration:none;transition:box-shadow .2s ease,transform .2s ease" style-hover="transform:translate(-2px,-2px);box-shadow:4px 4px 0 #0A0A0A">Candidater →</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header style="position:relative;padding:140px 28px 0">
+    <div style="max-width:1320px;margin:0 auto;width:100%">
+      <div data-hero="" style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;border-bottom:2px solid #0A0A0A;padding-bottom:18px;margin-bottom:28px;flex-wrap:wrap">
+        <span style="font-family:'Space Mono',monospace;font-size:13px;font-weight:700">(00) — L'ÉCOLE</span>
+        <span style="font-family:'Space Mono',monospace;font-size:13px;font-weight:700;color:rgba(10,10,10,.55)">PARIS · EST. 2021</span>
+      </div>
+      <h1 data-hero="" style="font-weight:900;font-size:clamp(48px,10vw,150px);line-height:.86;letter-spacing:-.045em;text-transform:uppercase;margin:0 0 30px">Former<br>l'œil du <span style="background:#FFD200;padding:0 .08em">luxe.</span></h1>
+      <div data-hero="" style="display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:end;border-top:2px solid #0A0A0A;padding-top:24px;margin-bottom:44px">
+        <p style="font-size:19px;line-height:1.5;font-weight:500;margin:0;max-width:640px">Tendril School est l'école de modélisation 3D dédiée à la beauté et au luxe. On y forme des artistes capables de fabriquer l'image des plus grandes maisons — du flacon de parfum au packshot de campagne.</p>
+        <div style="display:flex;flex-direction:column;gap:12px;align-items:flex-start">
+          <a href="Tendril%20School%20Programmes.dc.html" style="background:#0A0A0A;color:#FFD200;font-family:'Space Mono',monospace;font-weight:700;font-size:15px;text-transform:uppercase;padding:16px 28px;text-decoration:none;width:100%;text-align:center;transition:box-shadow .2s ease,transform .2s ease" style-hover="transform:translate(-3px,-3px);box-shadow:6px 6px 0 #FFD200">→ Découvrir les programmes</a>
+          <a class="v4-link" href="Tendril%20School%20Contact.dc.html" style="font-family:'Space Mono',monospace;font-weight:700;font-size:14px;text-transform:uppercase;color:rgba(10,10,10,.6);border-bottom:2px solid #0A0A0A;padding-bottom:2px">Nous écrire</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- INTRO / À PROPOS -->
+  <section style="border-top:2px solid #0A0A0A;border-bottom:2px solid #0A0A0A;padding:64px 28px">
+    <div style="max-width:1320px;margin:0 auto;display:grid;grid-template-columns:1fr 1.2fr;gap:48px;align-items:start">
+      <div data-reveal="">
+        <span style="font-family:'Space Mono',monospace;font-size:13px;font-weight:700;display:block;margin-bottom:14px">(01) — QUI SOMMES-NOUS</span>
+        <h2 style="font-weight:900;font-size:clamp(28px,3.8vw,52px);line-height:.98;letter-spacing:-.03em;text-transform:uppercase;margin:0">Une école née dans l'atelier.</h2>
+      </div>
+      <div data-reveal="">
+        <p style="font-size:18px;line-height:1.6;font-weight:500;margin:0 0 18px">Fondée à Paris en 2021 par des artistes en exercice, Tendril School est née d'un constat simple : le CGI de luxe ne s'apprend pas dans un manuel, mais en regardant la lumière tomber sur un flacon, encore et encore, jusqu'à ce que ce soit juste.</p>
+        <p style="font-size:16px;line-height:1.6;font-weight:500;color:rgba(10,10,10,.7);margin:0 0 26px">Nos bootcamps sont courts, intenses et exigeants. On y travaille comme en studio : un brief, les mains dans la matière, une critique collective chaque soir. Pas de cours magistral — du métier, transmis par celles et ceux qui le pratiquent pour les plus grandes maisons.</p>
+        <div style="display:flex;gap:0;border:2px solid #0A0A0A;width:max-content;max-width:100%;flex-wrap:wrap">
+          <div style="padding:14px 22px;border-right:2px solid #0A0A0A"><div style="font-family:'Space Mono',monospace;font-size:11px;color:rgba(10,10,10,.55);font-weight:700">DEPUIS</div><div style="font-weight:800;font-size:18px">2021</div></div>
+          <div style="padding:14px 22px;border-right:2px solid #0A0A0A"><div style="font-family:'Space Mono',monospace;font-size:11px;color:rgba(10,10,10,.55);font-weight:700">EN POSTE À 6 MOIS</div><div style="font-weight:800;font-size:18px">94 %</div></div>
+          <div style="padding:14px 22px"><div style="font-family:'Space Mono',monospace;font-size:11px;color:rgba(10,10,10,.55);font-weight:700">STUDIOS PARTENAIRES</div><div style="font-weight:800;font-size:18px">04</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED EPISODE -->
+  <section style="background:#0A0A0A;color:#F4F1EA;border-top:2px solid #0A0A0A;border-bottom:2px solid #0A0A0A;padding:60px 28px">
+    <div style="max-width:1320px;margin:0 auto">
+      <span data-reveal="" style="font-family:'Space Mono',monospace;font-size:13px;font-weight:700;color:#FFD200;display:block;margin-bottom:26px">★ DERNIER ÉPISODE</span>
+      <div data-reveal="" class="feat-card" style="display:grid;grid-template-columns:380px 1fr;gap:0;border:2px solid #FFD200;background:#000">
+        <div style="position:relative;border-right:2px solid #FFD200;aspect-ratio:1/1">
+          <div style="width:100%;height:100%;display:block;background:#000"></div>
+          <div aria-hidden="true" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;background:rgba(10,10,10,.18)">
+            <span class="feat-play" style="width:84px;height:84px;background:#FFD200;border:2px solid #0A0A0A;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:6px 6px 0 rgba(10,10,10,.6)"><svg width="26" height="30" viewBox="0 0 26 30" fill="none"><path d="M2 2 L24 15 L2 28 Z" fill="#0A0A0A"></path></svg></span>
+          </div>
+        </div>
+        <div style="padding:40px;display:flex;flex-direction:column">
+          <div style="display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:#FFD200;margin-bottom:20px;flex-wrap:wrap;gap:10px"><span>ÉP. 12 · 19 JUIN 2026</span><span>58 MIN</span></div>
+          <h2 style="font-weight:900;font-size:clamp(28px,3.4vw,46px);line-height:1.02;letter-spacing:-.02em;margin:0 0 18px">« Le reflet parfait n'existe pas — il se construit »</h2>
+          <p style="font-size:16px;line-height:1.6;font-weight:500;color:rgba(244,241,234,.72);margin:0 0 28px;max-width:620px">Élise Marchand, lead 3D artist passée par les plus grandes maisons de beauté, raconte comment elle pense la lumière d'un flacon, le grief des shaders parfaits et ce qui sépare un bon render d'une image de campagne.</p>
+          <div style="margin-top:auto;display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+            <a href="#" class="plat-btn" style="background:#FFD200;color:#0A0A0A;border:2px solid #FFD200;font-family:'Space Mono',monospace;font-weight:700;font-size:13px;text-transform:uppercase;padding:13px 24px;text-decoration:none">▶ Écouter maintenant</a>
+            <span style="font-family:'Space Mono',monospace;font-size:12px;color:rgba(244,241,234,.5)">AVEC ÉLISE MARCHAND</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EPISODES LIST -->
+  <section id="episodes" style="border-bottom:2px solid #0A0A0A">
+    <div style="max-width:1320px;margin:0 auto;padding:60px 28px 0">
+      <div data-reveal="" style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:40px;flex-wrap:wrap">
+        <div>
+          <span style="font-family:'Space Mono',monospace;font-size:13px;font-weight:700;display:block;margin-bottom:14px">(02) — TOUS LES ÉPISODES</span>
+          <h2 style="font-weight:900;font-size:clamp(34px,5vw,68px);line-height:.94;letter-spacing:-.03em;text-transform:uppercase;margin:0">La série.</h2>
+        </div>
+        <span style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:rgba(10,10,10,.55)">SAISON 01 · 12 ÉPISODES</span>
+      </div>
+    </div>
+    <div data-stagger="">
+      <sc-for list="{{ episodes }}" as="ep" hint-placeholder-count="6">
+        <div class="ep-row" style="border-top:2px solid #0A0A0A">
+          <div style="max-width:1320px;margin:0 auto;padding:22px 28px;display:grid;grid-template-columns:64px 70px 1.7fr 1fr 90px;gap:26px;align-items:center">
+            <span style="font-family:'Space Mono',monospace;font-weight:700;font-size:18px">{{ ep.num }}</span>
+            <div class="ep-play" style="width:50px;height:50px;background:#0A0A0A;border:2px solid #0A0A0A;border-radius:50%;display:flex;align-items:center;justify-content:center"><svg width="15" height="17" viewBox="0 0 15 17" fill="none"><path d="M2 2 L13 8.5 L2 15 Z" fill="#FFD200"></path></svg></div>
+            <div>
+              <h3 style="font-weight:800;font-size:clamp(18px,2.1vw,26px);letter-spacing:-.02em;margin:0 0 4px;line-height:1.1">{{ ep.title }}</h3>
+              <p style="font-size:14px;line-height:1.4;color:rgba(10,10,10,.6);margin:0;font-weight:500">{{ ep.desc }}</p>
+            </div>
+            <span style="font-family:'Space Mono',monospace;font-size:13px;font-weight:700">{{ ep.guest }}</span>
+            <span style="font-family:'Space Mono',monospace;font-size:13px;font-weight:700;text-align:right;color:rgba(10,10,10,.6)">{{ ep.dur }}</span>
+          </div>
+        </div>
+      </sc-for>
+      <div style="border-top:2px solid #0A0A0A;border-bottom:2px solid #0A0A0A">
+        <div style="max-width:1320px;margin:0 auto;padding:26px 28px;text-align:center">
+          <span style="font-family:'Space Mono',monospace;font-size:13px;font-weight:700;color:rgba(10,10,10,.55)">// SAISON 02 EN PRÉPARATION — RESTEZ À L'ÉCOUTE</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT / HOSTS -->
+  <section style="border-bottom:2px solid #0A0A0A;padding:64px 28px">
+    <div style="max-width:1320px;margin:0 auto;display:grid;grid-template-columns:1fr 1.05fr;gap:48px;align-items:start">
+      <div data-reveal="">
+        <span style="font-family:'Space Mono',monospace;font-size:13px;font-weight:700;display:block;margin-bottom:14px">(03) — DERRIÈRE LE MICRO</span>
+        <h2 style="font-weight:900;font-size:clamp(30px,4.4vw,58px);line-height:.96;letter-spacing:-.03em;text-transform:uppercase;margin:0 0 22px">Animé par l'équipe pédagogique.</h2>
+        <p style="font-size:17px;line-height:1.6;font-weight:500;margin:0 0 18px">Pas d'interview promo : des conversations de praticiens. Les mentors de Tendril reçoivent celles et ceux qui font réellement l'image du luxe aujourd'hui.</p>
+        <p style="font-size:16px;line-height:1.6;font-weight:500;color:rgba(10,10,10,.7);margin:0">Un format pensé pour les étudiants comme pour les curieux : on y parle technique, direction artistique, parcours et réalité du marché.</p>
+      </div>
+      <div data-reveal="" style="border:2px solid #0A0A0A;background:#000;position:relative">
+        <div style="display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:#FFD200;background:#0A0A0A;padding:9px 16px"><span>STUDIO — 12 RUE DU FAUBOURG</span><span>ON AIR</span></div>
+        <div style="position:relative;aspect-ratio:16/10">
+          <div style="width:100%;height:100%;display:block;background:#000"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUBSCRIBE BAND -->
+  <section style="background:#FFD200;border-bottom:2px solid #0A0A0A;padding:64px 28px">
+    <div data-reveal="" style="max-width:1320px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:40px;flex-wrap:wrap">
+      <div>
+        <span style="font-family:'Space Mono',monospace;font-size:13px;font-weight:700;display:block;margin-bottom:16px">(04) — S'ABONNER</span>
+        <h2 style="font-weight:900;font-size:clamp(30px,4.6vw,62px);line-height:.92;letter-spacing:-.03em;text-transform:uppercase;margin:0;max-width:680px">Ne ratez aucun épisode.</h2>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;min-width:280px">
+        <a href="#" class="plat-btn" style="background:#0A0A0A;color:#FFD200;border:2px solid #0A0A0A;font-family:'Space Mono',monospace;font-weight:700;font-size:14px;text-transform:uppercase;padding:15px 24px;text-decoration:none;text-align:center">▶ Spotify</a>
+        <a href="#" class="plat-btn" style="background:#F4F1EA;color:#0A0A0A;border:2px solid #0A0A0A;font-family:'Space Mono',monospace;font-weight:700;font-size:14px;text-transform:uppercase;padding:15px 24px;text-decoration:none;text-align:center">▶ Apple Podcasts</a>
+        <a href="#" class="plat-btn" style="background:#F4F1EA;color:#0A0A0A;border:2px solid #0A0A0A;font-family:'Space Mono',monospace;font-weight:700;font-size:14px;text-transform:uppercase;padding:15px 24px;text-decoration:none;text-align:center">▶ YouTube</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="background:#0A0A0A;color:#F4F1EA;padding:56px 28px 36px">
+    <div style="max-width:1320px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap">
+      <div>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+          <span style="width:34px;height:34px;background:#FFD200;display:flex;align-items:center;justify-content:center"><img src="assets/81ee13a7-fab5-4063-8297-c32e129eec02.png" alt="" style="height:18px;width:auto"></span>
+          <span style="font-weight:900;letter-spacing:-.02em;font-size:17px;text-transform:uppercase">Tendril School</span>
+        </div>
+        <p style="font-family:'Space Mono',monospace;font-size:12px;color:rgba(244,241,234,.55);margin:0;max-width:300px;line-height:1.7">L'ÉCOLE DE MODÉLISATION 3D DÉDIÉE À LA BEAUTÉ ET AU LUXE. PARIS.</p>
+      </div>
+      <div style="display:flex;gap:56px;flex-wrap:wrap">
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <span style="font-family:'Space Mono',monospace;font-size:11px;color:#FFD200;margin-bottom:4px;font-weight:700">ÉCOLE</span>
+          <a class="v4-link" href="Tendril%20School%20Programmes.dc.html" style="color:rgba(244,241,234,.7);font-size:14px;font-weight:600">Programmes</a>
+          <a class="v4-link" href="Tendril%20School%20Ecole.dc.html" style="color:rgba(244,241,234,.7);font-size:14px;font-weight:600">L'École</a>
+          <a class="v4-link" href="Tendril%20School%20Contact.dc.html" style="color:rgba(244,241,234,.7);font-size:14px;font-weight:600">Contact</a>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <span style="font-family:'Space Mono',monospace;font-size:11px;color:#FFD200;margin-bottom:4px;font-weight:700">SUIVRE</span>
+          <a class="v4-link" href="#" style="color:rgba(244,241,234,.7);font-size:14px;font-weight:600">Instagram</a>
+          <a class="v4-link" href="#" style="color:rgba(244,241,234,.7);font-size:14px;font-weight:600">Behance</a>
+          <a class="v4-link" href="#" style="color:rgba(244,241,234,.7);font-size:14px;font-weight:600">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+    <div style="max-width:1320px;margin:44px auto 0;padding-top:22px;border-top:1px solid rgba(244,241,234,.16);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-family:'Space Mono',monospace;font-size:11px;color:rgba(244,241,234,.4)">
+      <span>© 2026 TENDRIL SCHOOL. TOUS DROITS RÉSERVÉS.</span>
+      <span style="display:flex;gap:18px;flex-wrap:wrap"><a class="v4-link" href="Tendril%20School%20Legal.dc.html#mentions" style="color:rgba(244,241,234,.4)">MENTIONS LÉGALES</a><a class="v4-link" href="Tendril%20School%20Legal.dc.html#cgu" style="color:rgba(244,241,234,.4)">CGU</a><a class="v4-link" href="Tendril%20School%20Legal.dc.html#confidentialite" style="color:rgba(244,241,234,.4)">CONFIDENTIALITÉ</a></span>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  rootRef = React.createRef();
+  componentDidMount() { this._init(); }
+  componentWillUnmount() { clearTimeout(this._t); if (window.ScrollTrigger) window.ScrollTrigger.getAll().forEach(t => t.kill()); }
+  _init() {
+    const g = window.gsap, ST = window.ScrollTrigger;
+    if (!g || !ST) { this._t = setTimeout(() => this._init(), 60); return; }
+    g.registerPlugin(ST);
+    const root = this.rootRef.current;
+    if (!root) return;
+    const q = (s) => Array.from(root.querySelectorAll(s));
+    g.from(q('[data-hero]'), { opacity: 0, y: 30, duration: 0.8, ease: 'power3.out', stagger: 0.08, delay: 0.1 });
+    q('[data-reveal]').forEach((el) => {
+      g.from(el, { opacity: 0, y: 40, duration: 0.8, ease: 'power3.out', clearProps: 'transform', scrollTrigger: { trigger: el, start: 'top 88%' } });
+    });
+    q('[data-stagger]').forEach((grp) => {
+      g.from(Array.from(grp.children), { opacity: 0, y: 28, duration: 0.6, ease: 'power3.out', stagger: 0.05, scrollTrigger: { trigger: grp, start: 'top 86%' } });
+    });
+  }
+  renderVals() {
+    return {
+      rootRef: this.rootRef,
+      episodes: [
+        { num: '11', title: 'Le grain de l\u2019\u00e9tiquette', desc: 'Texturing, dorure \u00e0 chaud et gaufrage : le d\u00e9tail qui trahit le luxe.', guest: 'KARIM BENALI', dur: '52 MIN' },
+        { num: '10', title: 'Penser comme une maison', desc: 'Lire les codes d\u2019une marque avant de toucher \u00e0 la 3D.', guest: 'SOFIA CONTI', dur: '47 MIN' },
+        { num: '09', title: 'La lumi\u00e8re du flacon', desc: 'Construire un \u00e9clairage studio qui sublime le verre et le m\u00e9tal.', guest: 'THOMAS R\u00c9AU', dur: '61 MIN' },
+        { num: '08', title: 'Du brief au packshot', desc: 'Le parcours d\u2019une image, de la commande client au rendu final.', guest: 'INVIT\u00c9E STUDIO', dur: '44 MIN' },
+        { num: '07', title: 'Liquides & cosm\u00e9tiques', desc: 'Simuler s\u00e9rums, huiles et textures : la physique au service du d\u00e9sir.', guest: '\u00c9LISE MARCHAND', dur: '55 MIN' },
+        { num: '06', title: 'Se faire signer par un studio', desc: 'Reel, book, candidature : ce qui d\u00e9croche un premier poste.', guest: 'TABLE RONDE', dur: '49 MIN' },
+        { num: '05', title: 'Blender vs Modo', desc: 'Choisir ses outils sans se perdre dans la guerre des logiciels.', guest: 'KARIM BENALI', dur: '53 MIN' },
+        { num: '04', title: 'La critique qui fait grandir', desc: 'Pourquoi la critique collective accélère plus que n\u2019importe quel tuto.', guest: 'SOFIA CONTI', dur: '41 MIN' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

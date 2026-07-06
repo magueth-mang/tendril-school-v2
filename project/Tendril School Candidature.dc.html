@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:#F4F1EA;-webkit-font-smoothing:antialiased}
+  ::selection{background:#0A0A0A;color:#FFD200}
+  @keyframes tcTick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .v4-link{text-decoration:none;transition:color .15s ease}
+  .v4-link:hover{color:#0A0A0A !important}
+  .fld{transition:box-shadow .15s ease,transform .15s ease}
+  .fld:focus{border-color:#0A0A0A;box-shadow:4px 4px 0 #FFD200;transform:translate(-2px,-2px);outline:none}
+  select.fld{appearance:none;-webkit-appearance:none;-moz-appearance:none;cursor:pointer;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14'><path d='M2 4l5 5 5-5' stroke='%230A0A0A' stroke-width='2.2' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");background-repeat:no-repeat;background-position:right 15px center;padding-right:42px !important}
+  select.fld[data-filled]{background-color:#FFD200 !important;border-color:#0A0A0A;font-weight:800}
+  select.fld[data-filled]:focus{box-shadow:4px 4px 0 #0A0A0A}
+  select.fld option{background:#F4F1EA;color:#0A0A0A;font-weight:600}
+  .opt-card{transition:background .15s ease,box-shadow .15s ease,transform .15s ease}
+  .opt-card:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 #0A0A0A}
+  .opt-card:has(input:checked){background:#FFD200 !important}
+  .opt-card:has(input:checked) .opt-dot{background:#0A0A0A !important}
+  .chip{transition:background .12s ease,color .12s ease}
+  .chip:has(input:checked){background:#0A0A0A !important;color:#FFD200 !important}
+  .nav-btn{transition:box-shadow .2s ease,transform .2s ease}
+  .nav-btn:hover{transform:translate(-3px,-3px);box-shadow:6px 6px 0 #0A0A0A}
+  .nav-btn.dark:hover{box-shadow:6px 6px 0 #FFD200}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+</helmet>
+
+<div ref="{{ rootRef }}" style="background:#F4F1EA;color:#0A0A0A;font-family:'Archivo',sans-serif;min-height:100vh;overflow-x:hidden;position:relative">
+
+  <!-- TICKER -->
+  <div style="position:fixed;top:0;left:0;right:0;z-index:60;background:#0A0A0A;color:#FFD200;overflow:hidden;border-bottom:2px solid #0A0A0A">
+    <div style="display:flex;width:max-content;animation:tcTick 24s linear infinite;padding:8px 0">
+      <div style="display:flex;gap:40px;padding-right:40px;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.04em;white-space:nowrap">
+        <span>CANDIDATURE — SESSION SEPTEMBRE 2026</span><span>★</span><span>30 PLACES</span><span>★</span><span>SÉLECTION SUR ENTRETIEN</span><span>★</span><span>RÉPONSE SOUS 7 JOURS</span><span>★</span><span>CANDIDATURE — SESSION SEPTEMBRE 2026</span><span>★</span><span>30 PLACES</span><span>★</span><span>SÉLECTION SUR ENTRETIEN</span><span>★</span><span>RÉPONSE SOUS 7 JOURS</span><span>★</span>
+      </div>
+      <div style="display:flex;gap:40px;padding-right:40px;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.04em;white-space:nowrap" aria-hidden="true">
+        <span>CANDIDATURE — SESSION SEPTEMBRE 2026</span><span>★</span><span>30 PLACES</span><span>★</span><span>SÉLECTION SUR ENTRETIEN</span><span>★</span><span>RÉPONSE SOUS 7 JOURS</span><span>★</span><span>CANDIDATURE — SESSION SEPTEMBRE 2026</span><span>★</span><span>30 PLACES</span><span>★</span><span>SÉLECTION SUR ENTRETIEN</span><span>★</span><span>RÉPONSE SOUS 7 JOURS</span><span>★</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav style="position:fixed;top:35px;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:14px 28px;background:#F4F1EA;border-bottom:2px solid #0A0A0A">
+    <a href="Tendril%20School%20Landing%20Page.dc.html" style="display:flex;align-items:center;gap:10px;text-decoration:none">
+      <span style="width:34px;height:34px;background:#0A0A0A;display:flex;align-items:center;justify-content:center"><img src="assets/81ee13a7-fab5-4063-8297-c32e129eec02.png" alt="Tendril School" style="height:18px;width:auto;display:block"></span>
+      <span style="font-weight:900;letter-spacing:-.02em;font-size:18px;color:#0A0A0A;text-transform:uppercase">Tendril School</span>
+    </a>
+    <div style="display:flex;align-items:center;gap:26px">
+      <a class="v4-link" href="Tendril%20School%20Programmes.dc.html" style="color:rgba(10,10,10,.6);font-family:'Space Mono',monospace;font-size:13px;font-weight:700;text-transform:uppercase">Programmes</a>
+      <a class="v4-link" href="Tendril%20School%20Ecole.dc.html" style="color:rgba(10,10,10,.6);font-family:'Space Mono',monospace;font-size:13px;font-weight:700;text-transform:uppercase">L'École</a>
+      <a class="v4-link" href="Tendril%20School%20Contact.dc.html" style="color:rgba(10,10,10,.6);font-family:'Space Mono',monospace;font-size:13px;font-weight:700;text-transform:uppercase">Contact</a>
+      <a href="Tendril%20School%20Candidature.dc.html" style="background:#0A0A0A;color:#FFD200;border:2px solid #0A0A0A;font-family:'Space Mono',monospace;font-weight:700;font-size:12px;text-transform:uppercase;padding:9px 18px;text-decoration:none">Candidater →</a>
+    </div>
+  </nav>
+
+  <!-- FORM SHELL -->
+  <main style="padding:150px 28px 80px;max-width:980px;margin:0 auto;width:100%">
+
+    <!-- HEAD -->
+    <div data-head="" style="margin-bottom:30px">
+      <span style="font-family:'Space Mono',monospace;font-size:13px;font-weight:700;display:block;margin-bottom:14px">DOSSIER DE CANDIDATURE</span>
+      <h1 style="font-weight:900;font-size:clamp(38px,7vw,84px);line-height:.88;letter-spacing:-.04em;text-transform:uppercase;margin:0">Rejoignez<br>la promo.</h1>
+    </div>
+
+    <!-- PROGRESS -->
+    <sc-if value="{{ formOpen }}" hint-placeholder-val="{{ true }}">
+    <div style="border:2px solid #0A0A0A;background:#F4F1EA">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 22px;border-bottom:2px solid #0A0A0A;flex-wrap:wrap">
+        <div style="font-family:'Space Mono',monospace;font-size:13px;font-weight:700;text-transform:uppercase">{{ stepLabel }}</div>
+        <div style="font-family:'Space Mono',monospace;font-size:13px;font-weight:700;color:rgba(10,10,10,.55)">ÉTAPE {{ stepNum }} / 6</div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(6,1fr);border-bottom:3px solid #0A0A0A">
+        <sc-for list="{{ segments }}" as="seg" hint-placeholder-count="6">
+          <div style="height:8px;background:{{ seg.bg }};border-right:2px solid #0A0A0A"></div>
+        </sc-for>
+      </div>
+
+      <form ref="{{ formRef }}" onsubmit="{{ onSubmit }}" style="padding:34px 30px 0">
+
+        <!-- STEP 1 — PROGRAMME -->
+        <div data-step="1" style="display:{{ s1 }}">
+          <h2 style="font-weight:800;font-size:26px;letter-spacing:-.02em;margin:0 0 6px">Quel bootcamp visez-vous ?</h2>
+          <p style="font-size:15px;color:rgba(10,10,10,.65);margin:0 0 26px;font-weight:500">Choisissez le niveau qui correspond à votre profil. En cas de doute, sélectionnez Novice — l'entretien affinera l'orientation.</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:26px">
+            <label class="opt-card" style="display:block;border:2px solid #0A0A0A;background:#F4F1EA;padding:22px;cursor:pointer;position:relative">
+              <input type="radio" name="programme" value="Bootcamp Novice" required="" style="position:absolute;opacity:0;width:0;height:0">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px">
+                <span style="font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:rgba(10,10,10,.55)">NIVEAU 01 · DÉBUTANT</span>
+                <span class="opt-dot" style="width:18px;height:18px;border:2px solid #0A0A0A;border-radius:50%;flex:none"></span>
+              </div>
+              <div style="font-weight:800;font-size:22px;letter-spacing:-.02em;margin-bottom:6px">Bootcamp Novice</div>
+              <div style="font-family:'Space Mono',monospace;font-size:12px;color:rgba(10,10,10,.6);font-weight:700">12 SEMAINES · AUCUN PRÉREQUIS · 7 900 €</div>
+            </label>
+            <label class="opt-card" style="display:block;border:2px solid #0A0A0A;background:#F4F1EA;padding:22px;cursor:pointer;position:relative">
+              <input type="radio" name="programme" value="Bootcamp Avancé" required="" style="position:absolute;opacity:0;width:0;height:0">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px">
+                <span style="font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:rgba(10,10,10,.55)">NIVEAU 02 · CONFIRMÉ</span>
+                <span class="opt-dot" style="width:18px;height:18px;border:2px solid #0A0A0A;border-radius:50%;flex:none"></span>
+              </div>
+              <div style="font-weight:800;font-size:22px;letter-spacing:-.02em;margin-bottom:6px">Bootcamp Avancé</div>
+              <div style="font-family:'Space Mono',monospace;font-size:12px;color:rgba(10,10,10,.6);font-weight:700">10 SEMAINES · SUR PORTFOLIO · 9 900 €</div>
+            </label>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
+            <div>
+              <label style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:rgba(10,10,10,.6);text-transform:uppercase;display:block;margin-bottom:8px">Session souhaitée *</label>
+              <select class="fld" name="session" required="" style="background:#F4F1EA;border:2px solid #0A0A0A;color:#0A0A0A;font-family:'Archivo',sans-serif;font-size:15px;font-weight:600;padding:14px 16px;outline:none;width:100%">
+                <option value="">Sélectionnez…</option>
+                <option>Septembre 2026</option>
+                <option>Janvier 2027</option>
+                <option>Septembre 2027</option>
+              </select>
+            </div>
+            <div>
+              <label style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:rgba(10,10,10,.6);text-transform:uppercase;display:block;margin-bottom:8px">Format</label>
+              <div style="border:2px solid #0A0A0A;background:rgba(10,10,10,.04);padding:14px 16px;font-weight:600;font-size:15px">Présentiel — Paris 3ᵉ</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 2 — IDENTITÉ -->
+        <div data-step="2" style="display:{{ s2 }}">
+          <h2 style="font-weight:800;font-size:26px;letter-spacing:-.02em;margin:0 0 6px">Votre identité</h2>
+          <p style="font-size:15px;color:rgba(10,10,10,.65);margin:0 0 26px;font-weight:500">Pour vous recontacter et préparer votre entretien.</p>
+          <div style="display:flex;flex-direction:column;gap:18px">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
+              <div><label style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:rgba(10,10,10,.6);text-transform:uppercase;display:block;margin-bottom:8px">Prénom *</label><input class="fld" name="prenom" required="" type="text" style="background:#F4F1EA;border:2px solid #0A0A0A;color:#0A0A0A;font-family:'Archivo',sans-serif;font-size:15px;font-weight:600;padding:14px 16px;outline:none;width:100%"></div>
+              <div><label style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:rgba(10,10,10,.6);text-transform:uppercase;display:block;margin-bottom:8px">Nom *</label><input class="fld" name="nom" required="" type="text" style="background:#F4F1EA;border:2px solid #0A0A0A;color:#0A0A0A;font-family:'Archivo',sans-serif;font-size:15px;font-weight:600;padding:14px 16px;outline:none;width:100%"></div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
+              <div><label style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:rgba(10,10,10,.6);text-transform:uppercase;display:block;margin-bottom:8px">Email *</label><input class="fld" name="email" required="" type="email" style="background:#F4F1EA;border:2px solid #0A0A0A;color:#0A0A0A;font-family:'Archivo',sans-serif;font-size:15px;font-weight:600;padding:14px 16px;outline:none;width:100%"></div>
+              <div><label style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:rgba(10,10,10,.6);text-transform:uppercase;display:block;margin-bottom:8px">Téléphone *</label><input class="fld" name="telephone" required="" type="tel" style="background:#F4F1EA;border:2px solid #0A0A0A;color:#0A0A0A;font-family:'Archivo',sans-serif;font-size:15px;font-weight:600;padding:14px 16px;outline:none;width:100%"></div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px">
+              <div><label style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:rgba(10,10,10,.6);text-transform:uppercase;display:block;margin-bottom:8px">Date de naissance *</label><input class="fld" name="naissance" required="" type="date" style="background:#F4F1EA;border:2px solid #0A0A0A;color:#0A0A0A;font-family:'Archivo',sans-serif;font-size:15px;font-weight:600;padding:13px 16px;outline:none;width:100%"></div>
+              <div><label style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:rgba(10,10,10,.6);text-transform:uppercase;display:block;margin-bottom:8px">Nationalité</label><input class="fld" name="nationalite" type="text" style="background:#F4F1EA;border:2px solid #0A0A0A;color:#0A0A0A;font-family:'Archivo',sans-serif;font-size:15px;font-weight:600;padding:14px 16px;outline:none;width:100%"></div>
+              <div><label style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:rgba(10,10,10,.6);text-transform:uppercase;display:block;margin-bottom:8px">Ville de résidence *</label><input class="fld" name="ville" required="" type="text" style="background:#F4F1EA;border:2px solid #0A0A0A;color:#0A0A0A;font-family:'Archivo',sans-serif;font-size:15px;font-weight:600;padding:14px 16px;outline:none;width:100%"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 3 — PARCOURS -->
+        <div data-step="3" style="display:{{ s3 }}">
+          <h2 style="font-weight:800;font-size:26px;letter-spacing:-.02em;margin:0 0 6px">Votre parcours</h2>
+          <p style="font-size:15px;color:rgba(10,10,10,.65);margin:0 0 26px;font-weight:500">D'où vous venez et où vous en êtes avec la 3D.</p>
+          <div style="display:flex;flex-direction:column;gap:18px">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
+              <div><label style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:rgba(10,10,10,.6);text-transform:uppercase;display:block;margin-bottom:8px">Situation actuelle *</label>
+                <select class="fld" name="situation" required="" style="background:#F4F1EA;border:2px solid #0A0A0A;color:#0A0A0A;font-family:'Archivo',sans-serif;font-size:15px;font-weight:600;padding:14px 16px;outline:none;width:100%">
+                  <option value="">Sélectionnez…</option><option>Étudiant·e</option><option>En poste</option><option>En reconversion</option><option>Freelance</option><option>En recherche d'emploi</option>
+                </select></div>
+              <div><label style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:rgba(10,10,10,.6);text-transform:uppercase;display:block;margin-bottom:8px">Dernier diplôme</label>
+                <select class="fld" name="diplome" style="background:#F4F1EA;border:2px solid #0A0A0A;color:#0A0A0A;font-family:'Archivo',sans-serif;font-size:15px;font-weight:600;padding:14px 16px;outline:none;width:100%">
+                  <option value="">Sélectionnez…</option><option>Sans diplôme</option><option>Baccalauréat</option><option>Bac +2 / BTS / DUT</option><option>Licence / Bachelor</option><option>Master / École</option><option>Autre</option>
+                </select></div>
+            </div>
+            <div><label style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:rgba(10,10,10,.6);text-transform:uppercase;display:block;margin-bottom:8px">Domaine d'études ou métier actuel</label><input class="fld" name="domaine" type="text" placeholder="Ex : design produit, photographie, infographie…" style="background:#F4F1EA;border:2px solid #0A0A0A;color:#0A0A0A;font-family:'Archivo',sans-serif;font-size:15px;font-weight:600;padding:14px 16px;outline:none;width:100%"></div>
+            <div>
+              <label style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:rgba(10,10,10,.6);text-transform:uppercase;display:block;margin-bottom:10px">Votre niveau en 3D *</label>
+              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px">
+                <label class="opt-card" style="display:flex;align-items:center;gap:10px;border:2px solid #0A0A0A;background:#F4F1EA;padding:14px 16px;cursor:pointer;position:relative"><input type="radio" name="niveau" value="Débutant" required="" style="position:absolute;opacity:0;width:0;height:0"><span class="opt-dot" style="width:16px;height:16px;border:2px solid #0A0A0A;border-radius:50%;flex:none"></span><span style="font-weight:700;font-size:15px">Débutant</span></label>
+                <label class="opt-card" style="display:flex;align-items:center;gap:10px;border:2px solid #0A0A0A;background:#F4F1EA;padding:14px 16px;cursor:pointer;position:relative"><input type="radio" name="niveau" value="Intermédiaire" style="position:absolute;opacity:0;width:0;height:0"><span class="opt-dot" style="width:16px;height:16px;border:2px solid #0A0A0A;border-radius:50%;flex:none"></span><span style="font-weight:700;font-size:15px">Intermédiaire</span></label>
+                <label class="opt-card" style="display:flex;align-items:center;gap:10px;border:2px solid #0A0A0A;background:#F4F1EA;padding:14px 16px;cursor:pointer;position:relative"><input type="radio" name="niveau" value="Avancé" style="position:absolute;opacity:0;width:0;height:0"><span class="opt-dot" style="width:16px;height:16px;border:2px solid #0A0A0A;border-radius:50%;flex:none"></span><span style="font-weight:700;font-size:15px">Avancé</span></label>
+              </div>
+            </div>
+            <div>
+              <label style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:rgba(10,10,10,.6);text-transform:uppercase;display:block;margin-bottom:10px">Logiciels déjà pratiqués</label>
+              <div style="display:flex;flex-wrap:wrap;gap:10px">
+                <label class="chip" style="border:2px solid #0A0A0A;background:#F4F1EA;padding:9px 15px;cursor:pointer;font-family:'Space Mono',monospace;font-size:13px;font-weight:700;position:relative"><input type="checkbox" name="logiciels" value="Blender" style="position:absolute;opacity:0;width:0;height:0">Blender</label>
+                <label class="chip" style="border:2px solid #0A0A0A;background:#F4F1EA;padding:9px 15px;cursor:pointer;font-family:'Space Mono',monospace;font-size:13px;font-weight:700;position:relative"><input type="checkbox" name="logiciels" value="Maya" style="position:absolute;opacity:0;width:0;height:0">Maya</label>
+                <label class="chip" style="border:2px solid #0A0A0A;background:#F4F1EA;padding:9px 15px;cursor:pointer;font-family:'Space Mono',monospace;font-size:13px;font-weight:700;position:relative"><input type="checkbox" name="logiciels" value="3ds Max" style="position:absolute;opacity:0;width:0;height:0">3ds Max</label>
+                <label class="chip" style="border:2px solid #0A0A0A;background:#F4F1EA;padding:9px 15px;cursor:pointer;font-family:'Space Mono',monospace;font-size:13px;font-weight:700;position:relative"><input type="checkbox" name="logiciels" value="Cinema 4D" style="position:absolute;opacity:0;width:0;height:0">Cinema 4D</label>
+                <label class="chip" style="border:2px solid #0A0A0A;background:#F4F1EA;padding:9px 15px;cursor:pointer;font-family:'Space Mono',monospace;font-size:13px;font-weight:700;position:relative"><input type="checkbox" name="logiciels" value="Modo" style="position:absolute;opacity:0;width:0;height:0">Modo</label>
+                <label class="chip" style="border:2px solid #0A0A0A;background:#F4F1EA;padding:9px 15px;cursor:pointer;font-family:'Space Mono',monospace;font-size:13px;font-weight:700;position:relative"><input type="checkbox" name="logiciels" value="ZBrush" style="position:absolute;opacity:0;width:0;height:0">ZBrush</label>
+                <label class="chip" style="border:2px solid #0A0A0A;background:#F4F1EA;padding:9px 15px;cursor:pointer;font-family:'Space Mono',monospace;font-size:13px;font-weight:700;position:relative"><input type="checkbox" name="logiciels" value="Substance" style="position:absolute;opacity:0;width:0;height:0">Substance</label>
+                <label class="chip" style="border:2px solid #0A0A0A;background:#F4F1EA;padding:9px 15px;cursor:pointer;font-family:'Space Mono',monospace;font-size:13px;font-weight:700;position:relative"><input type="checkbox" name="logiciels" value="Houdini" style="position:absolute;opacity:0;width:0;height:0">Houdini</label>
+                <label class="chip" style="border:2px solid #0A0A0A;background:#F4F1EA;padding:9px 15px;cursor:pointer;font-family:'Space Mono',monospace;font-size:13px;font-weight:700;position:relative"><input type="checkbox" name="logiciels" value="Aucun" style="position:absolute;opacity:0;width:0;height:0">Aucun</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 4 — PORTFOLIO & MOTIVATION -->
+        <div data-step="4" style="display:{{ s4 }}">
+          <h2 style="font-weight:800;font-size:26px;letter-spacing:-.02em;margin:0 0 6px">Portfolio &amp; motivation</h2>
+          <p style="font-size:15px;color:rgba(10,10,10,.65);margin:0 0 26px;font-weight:500">Le portfolio est requis pour le niveau Avancé, optionnel mais bienvenu pour le niveau Novice.</p>
+          <div style="display:flex;flex-direction:column;gap:18px">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
+              <div><label style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:rgba(10,10,10,.6);text-transform:uppercase;display:block;margin-bottom:8px">Lien portfolio</label><input class="fld" name="portfolio" type="url" placeholder="https://" style="background:#F4F1EA;border:2px solid #0A0A0A;color:#0A0A0A;font-family:'Archivo',sans-serif;font-size:15px;font-weight:600;padding:14px 16px;outline:none;width:100%"></div>
+              <div><label style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:rgba(10,10,10,.6);text-transform:uppercase;display:block;margin-bottom:8px">LinkedIn / site perso</label><input class="fld" name="lien2" type="url" placeholder="https://" style="background:#F4F1EA;border:2px solid #0A0A0A;color:#0A0A0A;font-family:'Archivo',sans-serif;font-size:15px;font-weight:600;padding:14px 16px;outline:none;width:100%"></div>
+            </div>
+            <div><label style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:rgba(10,10,10,.6);text-transform:uppercase;display:block;margin-bottom:8px">Pourquoi le luxe et la 3D ? *</label><textarea class="fld" name="motivation" required="" rows="4" placeholder="Parlez-nous de ce qui vous attire dans la fabrication de l'image du luxe…" style="background:#F4F1EA;border:2px solid #0A0A0A;color:#0A0A0A;font-family:'Archivo',sans-serif;font-size:15px;font-weight:600;padding:14px 16px;outline:none;width:100%;resize:vertical"></textarea></div>
+            <div><label style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:rgba(10,10,10,.6);text-transform:uppercase;display:block;margin-bottom:8px">Votre objectif professionnel</label><textarea class="fld" name="objectif" rows="3" placeholder="Où vous voyez-vous à la sortie du bootcamp ?" style="background:#F4F1EA;border:2px solid #0A0A0A;color:#0A0A0A;font-family:'Archivo',sans-serif;font-size:15px;font-weight:600;padding:14px 16px;outline:none;width:100%;resize:vertical"></textarea></div>
+          </div>
+        </div>
+
+        <!-- STEP 5 — FINANCEMENT -->
+        <div data-step="5" style="display:{{ s5 }}">
+          <h2 style="font-weight:800;font-size:26px;letter-spacing:-.02em;margin:0 0 6px">Financement &amp; infos pratiques</h2>
+          <p style="font-size:15px;color:rgba(10,10,10,.65);margin:0 0 26px;font-weight:500">Dernière étape avant le récapitulatif.</p>
+          <div style="display:flex;flex-direction:column;gap:18px">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
+              <div><label style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:rgba(10,10,10,.6);text-transform:uppercase;display:block;margin-bottom:8px">Mode de financement envisagé *</label>
+                <select class="fld" name="financement" required="" style="background:#F4F1EA;border:2px solid #0A0A0A;color:#0A0A0A;font-family:'Archivo',sans-serif;font-size:15px;font-weight:600;padding:14px 16px;outline:none;width:100%">
+                  <option value="">Sélectionnez…</option><option>Fonds personnels</option><option>CPF</option><option>France Travail</option><option>Entreprise / OPCO</option><option>Bourse au mérite</option><option>À définir</option>
+                </select></div>
+              <div><label style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:rgba(10,10,10,.6);text-transform:uppercase;display:block;margin-bottom:8px">Comment nous avez-vous connus ?</label>
+                <select class="fld" name="source" style="background:#F4F1EA;border:2px solid #0A0A0A;color:#0A0A0A;font-family:'Archivo',sans-serif;font-size:15px;font-weight:600;padding:14px 16px;outline:none;width:100%">
+                  <option value="">Sélectionnez…</option><option>Instagram</option><option>Behance</option><option>LinkedIn</option><option>Le podcast</option><option>Bouche-à-oreille</option><option>Recherche web</option><option>Autre</option>
+                </select></div>
+            </div>
+            <div>
+              <label style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:rgba(10,10,10,.6);text-transform:uppercase;display:block;margin-bottom:10px">Êtes-vous disponible à plein temps à la date de rentrée ? *</label>
+              <div style="display:flex;gap:12px">
+                <label class="opt-card" style="display:flex;align-items:center;gap:10px;border:2px solid #0A0A0A;background:#F4F1EA;padding:13px 22px;cursor:pointer;position:relative"><input type="radio" name="dispo" value="Oui" required="" style="position:absolute;opacity:0;width:0;height:0"><span class="opt-dot" style="width:16px;height:16px;border:2px solid #0A0A0A;border-radius:50%;flex:none"></span><span style="font-weight:700;font-size:15px">Oui</span></label>
+                <label class="opt-card" style="display:flex;align-items:center;gap:10px;border:2px solid #0A0A0A;background:#F4F1EA;padding:13px 22px;cursor:pointer;position:relative"><input type="radio" name="dispo" value="Non / à confirmer" style="position:absolute;opacity:0;width:0;height:0"><span class="opt-dot" style="width:16px;height:16px;border:2px solid #0A0A0A;border-radius:50%;flex:none"></span><span style="font-weight:700;font-size:15px">Non / à confirmer</span></label>
+              </div>
+            </div>
+            <label style="display:flex;align-items:flex-start;gap:12px;border:2px solid #0A0A0A;background:rgba(10,10,10,.04);padding:16px 18px;cursor:pointer">
+              <input type="checkbox" name="rgpd" required="" style="width:20px;height:20px;flex:none;accent-color:#0A0A0A;margin-top:1px">
+              <span style="font-size:14px;line-height:1.5;font-weight:500">J'accepte que Tendril School traite mes données dans le cadre de ma candidature et me recontacte. *</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- STEP 6 — RÉCAPITULATIF -->
+        <div data-step="6" style="display:{{ s6 }}">
+          <h2 style="font-weight:800;font-size:26px;letter-spacing:-.02em;margin:0 0 6px">Récapitulatif</h2>
+          <p style="font-size:15px;color:rgba(10,10,10,.65);margin:0 0 26px;font-weight:500">Vérifiez vos informations avant d'envoyer. Vous pouvez revenir en arrière pour corriger.</p>
+          <div style="border:2px solid #0A0A0A">
+            <sc-for list="{{ summary }}" as="row" hint-placeholder-count="8">
+              <div style="display:grid;grid-template-columns:240px 1fr;gap:20px;padding:14px 18px;border-bottom:1px solid rgba(10,10,10,.14)">
+                <span style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:rgba(10,10,10,.55);text-transform:uppercase">{{ row.label }}</span>
+                <span style="font-weight:600;font-size:15px">{{ row.value }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+
+        <!-- FOOTER NAV -->
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;margin:30px -30px 0;padding:22px 30px;border-top:2px solid #0A0A0A;flex-wrap:wrap">
+          <button type="button" onclick="{{ onBack }}" style="background:transparent;border:2px solid #0A0A0A;color:#0A0A0A;cursor:pointer;font-family:'Space Mono',monospace;font-weight:700;font-size:13px;text-transform:uppercase;padding:14px 24px;visibility:{{ backVis }}" class="nav-btn">← Précédent</button>
+          <div style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:rgba(10,10,10,.45)">{{ stepHint }}</div>
+          <sc-if value="{{ isLast }}" hint-placeholder-val="{{ false }}">
+            <button type="submit" class="nav-btn dark" style="background:#0A0A0A;color:#FFD200;border:2px solid #0A0A0A;cursor:pointer;font-family:'Space Mono',monospace;font-weight:700;font-size:13px;text-transform:uppercase;padding:14px 28px">✓ Envoyer ma candidature</button>
+          </sc-if>
+          <sc-if value="{{ notLast }}" hint-placeholder-val="{{ true }}">
+            <button type="button" onclick="{{ onNext }}" class="nav-btn dark" style="background:#0A0A0A;color:#FFD200;border:2px solid #0A0A0A;cursor:pointer;font-family:'Space Mono',monospace;font-weight:700;font-size:13px;text-transform:uppercase;padding:14px 28px">Continuer →</button>
+          </sc-if>
+        </div>
+
+      </form>
+    </div>
+    </sc-if>
+
+    <!-- SUCCESS -->
+    <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+      <div style="border:2px solid #0A0A0A;background:#FFD200;padding:60px 40px;text-align:center">
+        <div style="font-family:'Space Mono',monospace;font-size:13px;font-weight:700;margin-bottom:20px">CANDIDATURE ENVOYÉE</div>
+        <h2 style="font-weight:900;font-size:clamp(32px,5vw,60px);line-height:.94;letter-spacing:-.03em;text-transform:uppercase;margin:0 0 18px">Merci, {{ firstName }}.</h2>
+        <p style="font-size:18px;line-height:1.5;font-weight:500;margin:0 auto 30px;max-width:540px">Nous avons bien reçu votre dossier pour le <strong>{{ chosenProgramme }}</strong>. Notre équipe revient vers vous sous 7 jours pour la suite — généralement un entretien.</p>
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+          <a href="Tendril%20School%20Programmes.dc.html" class="nav-btn dark" style="background:#0A0A0A;color:#FFD200;border:2px solid #0A0A0A;font-family:'Space Mono',monospace;font-weight:700;font-size:13px;text-transform:uppercase;padding:14px 26px;text-decoration:none">Revoir les programmes</a>
+          <a href="Tendril%20School%20Landing%20Page.dc.html" class="nav-btn" style="background:#F4F1EA;color:#0A0A0A;border:2px solid #0A0A0A;font-family:'Space Mono',monospace;font-weight:700;font-size:13px;text-transform:uppercase;padding:14px 26px;text-decoration:none">Retour à l'accueil</a>
+        </div>
+      </div>
+    </sc-if>
+
+    <!-- REASSURANCE -->
+    <sc-if value="{{ formOpen }}" hint-placeholder-val="{{ true }}">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:2px solid #0A0A0A;border-top:none;margin-top:0">
+      <div style="padding:22px;border-right:2px solid #0A0A0A"><div style="font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:rgba(10,10,10,.55);margin-bottom:6px">DÉLAI DE RÉPONSE</div><div style="font-weight:800;font-size:18px">Sous 7 jours</div></div>
+      <div style="padding:22px;border-right:2px solid #0A0A0A"><div style="font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:rgba(10,10,10,.55);margin-bottom:6px">SÉLECTION</div><div style="font-weight:800;font-size:18px">Sur entretien</div></div>
+      <div style="padding:22px"><div style="font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:rgba(10,10,10,.55);margin-bottom:6px">UNE QUESTION ?</div><a href="Tendril%20School%20Contact.dc.html" class="v4-link" style="font-weight:800;font-size:18px;color:#0A0A0A;border-bottom:2px solid #0A0A0A">Nous écrire →</a></div>
+    </div>
+    </sc-if>
+
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  rootRef = React.createRef();
+  formRef = React.createRef();
+  state = { step: 1, submitted: false, summary: [], firstName: '', chosenProgramme: 'bootcamp' };
+  TOTAL = 6;
+  LABELS = ['Le programme', 'Votre identité', 'Votre parcours', 'Portfolio & motivation', 'Financement', 'Récapitulatif'];
+
+  componentDidMount() { this._tick(); }
+  componentWillUnmount() { clearTimeout(this._t); }
+  _tick() {
+    const g = window.gsap;
+    if (!g) { this._t = setTimeout(() => this._tick(), 60); return; }
+    const root = this.rootRef.current;
+    if (root) g.from(root.querySelectorAll('[data-head]'), { opacity: 0, y: 24, duration: 0.7, ease: 'power3.out' });
+    if (root && !root._selBound) {
+      root._selBound = true;
+      const mark = (sel) => { if (sel && sel.tagName === 'SELECT') { if (sel.value) sel.setAttribute('data-filled', ''); else sel.removeAttribute('data-filled'); } };
+      root.addEventListener('change', (e) => mark(e.target));
+      root.querySelectorAll('select').forEach(mark);
+    }
+  }
+
+  _currentEl() {
+    const form = this.formRef.current;
+    return form ? form.querySelector('[data-step="' + this.state.step + '"]') : null;
+  }
+  _validStep() {
+    const el = this._currentEl();
+    if (!el) return true;
+    const fields = Array.from(el.querySelectorAll('input, select, textarea'));
+    for (const f of fields) {
+      if (!f.checkValidity()) { f.reportValidity(); return false; }
+    }
+    return true;
+  }
+  _animIn() {
+    const g = window.gsap;
+    const el = this._currentEl();
+    if (g && el) g.fromTo(el, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.4, ease: 'power3.out' });
+    const main = this.rootRef.current;
+    if (main) window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  onNext = () => {
+    if (!this._validStep()) return;
+    const nextStep = Math.min(this.state.step + 1, this.TOTAL);
+    if (nextStep === this.TOTAL) this._buildSummary();
+    this.setState({ step: nextStep }, () => this._animIn());
+  };
+  onBack = () => {
+    this.setState({ step: Math.max(this.state.step - 1, 1) }, () => this._animIn());
+  };
+  onSubmit = (e) => {
+    e.preventDefault();
+    if (!this._validStep()) return;
+    const data = this._collect();
+    this.setState({ submitted: true, firstName: data.prenom || '', chosenProgramme: data.programme || 'bootcamp' });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  _collect() {
+    const form = this.formRef.current;
+    const out = {};
+    if (!form) return out;
+    const fd = new FormData(form);
+    for (const [k, v] of fd.entries()) {
+      if (out[k]) out[k] = out[k] + ', ' + v; else out[k] = v;
+    }
+    return out;
+  }
+  _buildSummary() {
+    const d = this._collect();
+    const dash = '—';
+    const rows = [
+      ['Programme', d.programme], ['Session', d.session],
+      ['Nom', [d.prenom, d.nom].filter(Boolean).join(' ')], ['Email', d.email],
+      ['Téléphone', d.telephone], ['Date de naissance', d.naissance],
+      ['Ville', d.ville], ['Situation', d.situation],
+      ['Niveau 3D', d.niveau], ['Logiciels', d.logiciels],
+      ['Portfolio', d.portfolio], ['Financement', d.financement], ['Disponible', d.dispo]
+    ];
+    this.setState({ summary: rows.map(r => ({ label: r[0], value: (r[1] && String(r[1]).trim()) ? r[1] : dash })) });
+  }
+
+  renderVals() {
+    const s = this.state.step;
+    const disp = (n) => (s === n ? 'block' : 'none');
+    const segs = [];
+    for (let i = 1; i <= this.TOTAL; i++) segs.push({ bg: i <= s ? '#FFD200' : '#F4F1EA' });
+    return {
+      rootRef: this.rootRef,
+      formRef: this.formRef,
+      formOpen: !this.state.submitted,
+      submitted: this.state.submitted,
+      firstName: this.state.firstName,
+      chosenProgramme: this.state.chosenProgramme,
+      stepNum: s,
+      stepLabel: this.LABELS[s - 1],
+      segments: segs,
+      s1: disp(1), s2: disp(2), s3: disp(3), s4: disp(4), s5: disp(5), s6: disp(6),
+      summary: this.state.summary,
+      isLast: s === this.TOTAL,
+      notLast: s !== this.TOTAL,
+      backVis: s === 1 ? 'hidden' : 'visible',
+      stepHint: s === this.TOTAL ? 'Prêt à envoyer' : 'Étape ' + s + ' sur ' + this.TOTAL,
+      onNext: this.onNext, onBack: this.onBack, onSubmit: this.onSubmit
+    };
+  }
+}
+</script>
+</body>
+</html>

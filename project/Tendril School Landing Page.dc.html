@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:#F4F1EA;-webkit-font-smoothing:antialiased}
+  ::selection{background:#0A0A0A;color:#FFD200}
+  @keyframes tcTick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .v4-link{text-decoration:none;transition:color .15s ease}
+  .v4-link:hover{color:#0A0A0A !important}
+  .v4-row{transition:background .2s ease}
+  .v4-row:hover{background:#FFD200}
+  .v4-vid{transition:transform .25s ease, box-shadow .25s ease}
+  .v4-vid:hover{transform:translate(-3px,-3px);box-shadow:8px 8px 0 #FFD200}
+  .v4-vid:hover .v4-play{transform:scale(1.08)}
+  .v4-play{transition:transform .25s ease}
+  details.v4-faq{transition:background .3s ease}
+  details.v4-faq summary{list-style:none;cursor:pointer;outline:none}
+  details.v4-faq summary::-webkit-details-marker{display:none}
+  details.v4-faq:not([open]) summary:hover{background:rgba(255,210,0,.32)}
+  details.v4-faq .v4-ans{overflow:hidden}
+  details.v4-faq[open]{background:#FFD200}
+
+  /* --- responsive --- */
+  @media (max-width:1024px){
+    [style*="repeat(5,1fr)"]{grid-template-columns:repeat(3,1fr)!important}
+    [style*="repeat(4,1fr)"]{grid-template-columns:repeat(2,1fr)!important}
+  }
+  @media (max-width:768px){
+    [style*="grid-template-columns"]{grid-template-columns:1fr!important}
+    [style*="repeat(5,1fr)"],[style*="repeat(4,1fr)"],[style*="repeat(3,1fr)"]{grid-template-columns:repeat(2,1fr)!important}
+    nav{flex-wrap:wrap!important;padding:10px 16px!important;gap:8px 0!important}
+    nav>div:last-child{gap:14px!important;flex-wrap:wrap!important;justify-content:flex-start!important}
+    [style*="padding:140px 28px 0"]{padding-top:150px!important}
+    [style*="padding:128px 28px 0"]{padding-top:150px!important}
+    [style*="padding:56px 48px"]{padding:40px 22px!important}
+    [style*="padding:64px 48px"]{padding:44px 22px!important}
+  }
+  @media (max-width:520px){
+    [style*="repeat(5,1fr)"],[style*="repeat(4,1fr)"],[style*="repeat(3,1fr)"]{grid-template-columns:1fr!important}
+    [style*="padding:140px 28px 0"]{padding-top:160px!important}
+    [style*="padding:128px 28px 0"]{padding-top:160px!important}
+  }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="image-slot.js"></script>
+</helmet>
+
+<div ref="{{ rootRef }}" style="background:#F4F1EA;color:#0A0A0A;font-family:'Archivo',sans-serif;overflow-x:hidden;position:relative">
+
+  <!-- TICKER -->
+  <div style="position:fixed;top:0;left:0;right:0;z-index:60;background:#0A0A0A;color:#FFD200;overflow:hidden;border-bottom:2px solid #0A0A0A">
+    <div style="display:flex;width:max-content;animation:tcTick 24s linear infinite;padding:8px 0">
+      <div style="display:flex;gap:40px;padding-right:40px;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.04em;white-space:nowrap">
+        <span>CANDIDATURES OUVERTES</span><span>★</span><span>SESSION — SEPTEMBRE 2026</span><span>★</span><span>30 PLACES</span><span>★</span><span>BOOTCAMP 3D · BEAUTÉ &amp; LUXE</span><span>★</span><span>CANDIDATURES OUVERTES</span><span>★</span><span>SESSION — SEPTEMBRE 2026</span><span>★</span><span>30 PLACES</span><span>★</span><span>BOOTCAMP 3D · BEAUTÉ &amp; LUXE</span><span>★</span>
+      </div>
+      <div style="display:flex;gap:40px;padding-right:40px;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.04em;white-space:nowrap" aria-hidden="true">
+        <span>CANDIDATURES OUVERTES</span><span>★</span><span>SESSION — SEPTEMBRE 2026</span><span>★</span><span>30 PLACES</span><span>★</span><span>BOOTCAMP 3D · BEAUTÉ &amp; LUXE</span><span>★</span><span>CANDIDATURES OUVERTES</span><span>★</span><span>SESSION — SEPTEMBRE 2026</span><span>★</span><span>30 PLACES</span><span>★</span><span>BOOTCAMP 3D · BEAUTÉ &amp; LUXE</span><span>★</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav data-nav="" style="position:fixed;top:35px;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:14px 28px;background:#F4F1EA;border-bottom:2px solid #0A0A0A;transition:padding .3s ease">
+    <a href="#top" style="display:flex;align-items:center;gap:10px;text-decoration:none">
+      <span style="width:34px;height:34px;background:#0A0A0A;display:flex;align-items:center;justify-content:center"><img src="assets/81ee13a7-fab5-4063-8297-c32e129eec02.png" alt="Tendril School" style="height:18px;width:auto;display:block"></span>
+      <span style="font-weight:900;letter-spacing:-.02em;font-size:18px;color:#0A0A0A;text-transform:uppercase">Tendril School</span>
+    </a>
+    <div style="display:flex;align-items:center;gap:26px">
+      <a class="v4-link" href="Tendril%20School%20Programmes.dc.html" style="color:rgba(10,10,10,.6);font-family:'Space Mono',monospace;font-size:13px;font-weight:700;text-transform:uppercase">Programmes</a>
+      <a class="v4-link" href="Tendril%20School%20Ecole.dc.html" style="color:rgba(10,10,10,.6);font-family:'Space Mono',monospace;font-size:13px;font-weight:700;text-transform:uppercase">L'École</a>
+      <a class="v4-link" href="Tendril%20School%20Contact.dc.html" style="color:rgba(10,10,10,.6);font-family:'Space Mono',monospace;font-size:13px;font-weight:700;text-transform:uppercase">Contact</a>
+      <a href="Tendril%20School%20Candidature.dc.html" style="background:#FFD200;color:#0A0A0A;border:2px solid #0A0A0A;font-family:'Space Mono',monospace;font-weight:700;font-size:12px;text-transform:uppercase;padding:9px 18px;text-decoration:none;transition:box-shadow .2s ease,transform .2s ease" style-hover="transform:translate(-2px,-2px);box-shadow:4px 4px 0 #0A0A0A">Candidater →</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header id="top" style="position:relative;padding:140px 28px 0">
+    <div style="max-width:1320px;margin:0 auto;width:100%">
+      <div data-hero="" style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;border-bottom:2px solid #0A0A0A;padding-bottom:18px;margin-bottom:28px;flex-wrap:wrap">
+        <span style="font-family:'Space Mono',monospace;font-size:13px;font-weight:700">(01) — L'ÉCOLE</span>
+        <span style="font-family:'Space Mono',monospace;font-size:13px;font-weight:700;color:rgba(10,10,10,.55)">PARIS · EST. 2021</span>
+      </div>
+      <h1 data-hero="" style="font-weight:900;font-size:clamp(34px,6.4vw,96px);line-height:.98;letter-spacing:-.03em;text-transform:uppercase;margin:0 0 30px">La 1<sup style="font-size:.55em">ère</sup> école 3D spécialisée pour le <span style="background:#FFD200;padding:0 .08em">luxe,</span> Mode &amp; Hardware.</h1>
+      <div data-hero="" style="display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:end;border-top:2px solid #0A0A0A;padding-top:24px;margin-bottom:40px">
+        <p style="font-size:19px;line-height:1.5;font-weight:500;margin:0;max-width:620px">Des formations intensives de 4 mois, pensées par des professionnels du secteur pour répondre aux besoins réels des marques de luxe, cosmétique et mode.</p>
+        <div style="display:flex;flex-direction:column;gap:12px;align-items:flex-start">
+          <a href="Tendril%20School%20Candidature.dc.html" style="background:#0A0A0A;color:#FFD200;font-family:'Space Mono',monospace;font-weight:700;font-size:15px;text-transform:uppercase;padding:16px 28px;text-decoration:none;width:100%;text-align:center;transition:box-shadow .2s ease,transform .2s ease" style-hover="transform:translate(-3px,-3px);box-shadow:6px 6px 0 #FFD200">→ Candidater pour septembre</a>
+          <a class="v4-link" href="#programme" style="font-family:'Space Mono',monospace;font-weight:700;font-size:14px;text-transform:uppercase;color:rgba(10,10,10,.6);border-bottom:2px solid #0A0A0A;padding-bottom:2px">Lire le programme</a>
+        </div>
+      </div>
+    </div>
+    <div data-hero="" style="position:relative;border-top:2px solid #0A0A0A;border-bottom:2px solid #0A0A0A">
+      <div style="display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;max-width:1320px;margin:0 auto;padding:8px 28px;border-bottom:1px solid rgba(10,10,10,.15)">
+        <span>FIG. 01 — RENDER ÉTUDIANT, PROMO 2025</span><span>1920×1080</span>
+      </div>
+      <div style="width:100%;height:560px;display:block;background:#000"></div>
+    </div>
+  </header>
+
+  <!-- MANIFESTO BAND -->
+  <section style="background:#FFD200;border-bottom:2px solid #0A0A0A;padding:70px 28px">
+    <div data-reveal="" style="max-width:1320px;margin:0 auto">
+      <span style="font-family:'Space Mono',monospace;font-size:13px;font-weight:700;display:block;margin-bottom:24px">(02) — MANIFESTE</span>
+      <p style="font-weight:800;font-size:clamp(26px,3.8vw,52px);line-height:1.1;letter-spacing:-.02em;margin:0;max-width:1100px">Aujourd'hui, <span style="background:#0A0A0A;color:#FFD200;padding:0 .08em">plus de 85%</span> des contenus visuels produits par les marques utilisent la 3D&nbsp;: <span style="color:rgba(10,10,10,.5)">campagnes, produits, social media, e-commerce et expériences immersives.</span></p>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section style="border-bottom:2px solid #0A0A0A">
+    <div data-stagger="" style="max-width:1320px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)">
+      <div style="padding:34px 28px;border-right:2px solid #0A0A0A">
+        <div style="font-weight:900;font-size:56px;line-height:1;letter-spacing:-.03em">94%</div>
+        <div style="font-family:'Space Mono',monospace;font-size:12px;color:rgba(10,10,10,.6);margin-top:12px;line-height:1.5;font-weight:400">EN POSTE À 6 MOIS</div>
+      </div>
+      <div style="padding:34px 28px;border-right:2px solid #0A0A0A">
+        <div style="font-weight:900;font-size:56px;line-height:1;letter-spacing:-.03em">30</div>
+        <div style="font-family:'Space Mono',monospace;font-size:12px;color:rgba(10,10,10,.6);margin-top:12px;line-height:1.5;font-weight:400">PLACES / PROMO</div>
+      </div>
+      <div style="padding:34px 28px;border-right:2px solid #0A0A0A">
+        <div style="font-weight:900;font-size:56px;line-height:1;letter-spacing:-.03em">12</div>
+        <div style="font-family:'Space Mono',monospace;font-size:12px;color:rgba(10,10,10,.6);margin-top:12px;line-height:1.5;font-weight:400">SEMAINES D'IMMERSION</div>
+      </div>
+      <div style="padding:34px 28px">
+        <div style="font-weight:900;font-size:56px;line-height:1;letter-spacing:-.03em">04</div>
+        <div style="font-family:'Space Mono',monospace;font-size:12px;color:rgba(10,10,10,.6);margin-top:12px;line-height:1.5;font-weight:400">STUDIOS PARTENAIRES</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOWREEL (video) -->
+  <section id="showreel" style="background:#0A0A0A;color:#F4F1EA;border-bottom:2px solid #0A0A0A;padding:64px 28px">
+    <div style="max-width:1320px;margin:0 auto">
+      <div data-reveal="" style="margin-bottom:34px">
+        <span style="font-family:'Space Mono',monospace;font-size:13px;font-weight:700;color:#FFD200;display:block;margin-bottom:14px">(03) — VOTRE FUTUR PORTFOLIO</span>
+        <h2 style="font-weight:900;font-size:clamp(28px,3.6vw,48px);line-height:1.15;letter-spacing:-.02em;text-transform:uppercase;margin:0;max-width:100%">VOUS RÉALISEREZ PLUSIEURS PROJETS PUBLICITAIRES COMPLETS, DES VISUELS PACKSHOT LUXE ET UNE PUBLICITÉ PRODUIT DE NIVEAU AGENCE.</h2>
+      </div>
+
+      <!-- main reel -->
+      <div data-reveal="" class="v4-vid" style="position:relative;border:2px solid #FFD200;background:#000">
+        <div style="display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:#FFD200;padding:9px 16px;border-bottom:1px solid rgba(255,210,0,.28)">
+          <span>FIG. 02 — REEL PROMO 2025</span><span>01:48 · 4K</span>
+        </div>
+        <div style="position:relative;aspect-ratio:16/9">
+          <div style="width:100%;height:100%;display:block;background:#000"></div>
+          <div aria-hidden="true" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;background:rgba(10,10,10,.18)">
+            <span class="v4-play" style="width:92px;height:92px;background:#FFD200;border:2px solid #0A0A0A;display:flex;align-items:center;justify-content:center;box-shadow:6px 6px 0 rgba(10,10,10,.6)"><svg width="28" height="32" viewBox="0 0 28 32" fill="none"><path d="M2 2 L26 16 L2 30 Z" fill="#0A0A0A"></path></svg></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 short clips -->
+      <div data-stagger="" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px">
+        <div class="v4-vid" style="border:2px solid #FFD200;background:#000">
+          <div style="display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:#FFD200;padding:7px 12px;border-bottom:1px solid rgba(255,210,0,.28)"><span>FLACON · TURNTABLE</span><span>00:12</span></div>
+          <div style="position:relative;aspect-ratio:4/5">
+            <div style="width:100%;height:100%;display:block;background:#000"></div>
+            <div aria-hidden="true" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none"><span class="v4-play" style="width:58px;height:58px;background:#FFD200;border:2px solid #0A0A0A;display:flex;align-items:center;justify-content:center"><svg width="18" height="20" viewBox="0 0 18 20" fill="none"><path d="M2 2 L16 10 L2 18 Z" fill="#0A0A0A"></path></svg></span></div>
+          </div>
+        </div>
+        <div class="v4-vid" style="border:2px solid #FFD200;background:#000">
+          <div style="display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:#FFD200;padding:7px 12px;border-bottom:1px solid rgba(255,210,0,.28)"><span>TEXTURE LIQUIDE</span><span>00:08</span></div>
+          <div style="position:relative;aspect-ratio:4/5">
+            <div style="width:100%;height:100%;display:block;background:#000"></div>
+            <div aria-hidden="true" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none"><span class="v4-play" style="width:58px;height:58px;background:#FFD200;border:2px solid #0A0A0A;display:flex;align-items:center;justify-content:center"><svg width="18" height="20" viewBox="0 0 18 20" fill="none"><path d="M2 2 L16 10 L2 18 Z" fill="#0A0A0A"></path></svg></span></div>
+          </div>
+        </div>
+        <div class="v4-vid" style="border:2px solid #FFD200;background:#000">
+          <div style="display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:#FFD200;padding:7px 12px;border-bottom:1px solid rgba(255,210,0,.28)"><span>CAMPAGNE · SÉRUM</span><span>00:15</span></div>
+          <div style="position:relative;aspect-ratio:4/5">
+            <div style="width:100%;height:100%;display:block;background:#000"></div>
+            <div aria-hidden="true" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none"><span class="v4-play" style="width:58px;height:58px;background:#FFD200;border:2px solid #0A0A0A;display:flex;align-items:center;justify-content:center"><svg width="18" height="20" viewBox="0 0 18 20" fill="none"><path d="M2 2 L16 10 L2 18 Z" fill="#0A0A0A"></path></svg></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAMME (index) -->
+  <section id="programme" style="border-bottom:2px solid #0A0A0A">
+    <div style="max-width:1320px;margin:0 auto;padding:60px 28px 0">
+      <div data-reveal="" style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:32px;flex-wrap:wrap">
+        <div>
+          <span style="font-family:'Space Mono',monospace;font-size:13px;font-weight:700;display:block;margin-bottom:14px">(04) — LE PROGRAMME</span>
+          <h2 style="font-weight:900;font-size:clamp(34px,5vw,68px);line-height:.94;letter-spacing:-.03em;text-transform:uppercase;margin:0">Les modules.</h2>
+        </div>
+        <a class="v4-link" href="Tendril%20School%20Programmes.dc.html" style="font-family:'Space Mono',monospace;font-weight:700;font-size:13px;text-transform:uppercase;color:rgba(10,10,10,.6);border-bottom:2px solid #0A0A0A;padding-bottom:2px;white-space:nowrap">Voir les programmes détaillés →</a>
+      </div>
+      <div data-reveal="" style="display:inline-flex;border:2px solid #0A0A0A;margin-bottom:6px">
+        <button type="button" onclick="{{ selectNovice }}" style="cursor:pointer;border:none;font-family:'Space Mono',monospace;font-weight:700;font-size:13px;text-transform:uppercase;padding:12px 24px;background:{{ noviceBg }};color:#0A0A0A;border-right:2px solid #0A0A0A">Bootcamp Novice</button>
+        <button type="button" onclick="{{ selectAvance }}" style="cursor:pointer;border:none;font-family:'Space Mono',monospace;font-weight:700;font-size:13px;text-transform:uppercase;padding:12px 24px;background:{{ avanceBg }};color:#0A0A0A">Bootcamp Avancé</button>
+      </div>
+    </div>
+
+    <sc-if value="{{ isNovice }}" hint-placeholder-val="{{ true }}">
+    <div data-stagger="">
+      <sc-for list="{{ noviceModules }}" as="mod" hint-placeholder-count="7">
+        <div class="v4-row" style="border-top:2px solid #0A0A0A">
+          <div style="max-width:1320px;margin:0 auto;padding:22px 28px;display:grid;grid-template-columns:80px 1.1fr 1.9fr;gap:30px;align-items:baseline">
+            <span style="font-family:'Space Mono',monospace;font-weight:700;font-size:18px">{{ mod.num }}</span>
+            <h3 style="font-weight:800;font-size:clamp(19px,2.2vw,27px);letter-spacing:-.02em;margin:0">{{ mod.title }}</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:8px">
+              <sc-for list="{{ mod.tags }}" as="tag" hint-placeholder-count="5">
+                <span style="font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:rgba(10,10,10,.65);border:1px solid rgba(10,10,10,.25);padding:5px 10px">{{ tag }}</span>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+      <div style="border-top:2px solid #0A0A0A;border-bottom:2px solid #0A0A0A;height:0"></div>
+    </div>
+    </sc-if>
+
+    <sc-if value="{{ isAvance }}" hint-placeholder-val="{{ false }}">
+    <div data-stagger="">
+      <sc-for list="{{ avanceModules }}" as="mod" hint-placeholder-count="7">
+        <div class="v4-row" style="border-top:2px solid #0A0A0A">
+          <div style="max-width:1320px;margin:0 auto;padding:22px 28px;display:grid;grid-template-columns:80px 1.1fr 1.9fr;gap:30px;align-items:baseline">
+            <span style="font-family:'Space Mono',monospace;font-weight:700;font-size:18px">{{ mod.num }}</span>
+            <h3 style="font-weight:800;font-size:clamp(19px,2.2vw,27px);letter-spacing:-.02em;margin:0">{{ mod.title }}</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:8px">
+              <sc-for list="{{ mod.tags }}" as="tag" hint-placeholder-count="5">
+                <span style="font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:rgba(10,10,10,.65);border:1px solid rgba(10,10,10,.25);padding:5px 10px">{{ tag }}</span>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+      <div style="border-top:2px solid #0A0A0A;border-bottom:2px solid #0A0A0A;height:0"></div>
+    </div>
+    </sc-if>
+  </section>
+
+  <!-- LA METHODE (text + video) -->
+  <section id="methode" style="border-bottom:2px solid #0A0A0A;padding:64px 28px">
+    <div style="max-width:1320px;margin:0 auto">
+      <div data-reveal="" style="margin-bottom:40px">
+        <span style="font-family:'Space Mono',monospace;font-size:13px;font-weight:700;display:block;margin-bottom:14px">(05) — LA MÉTHODE</span>
+        <h2 style="font-weight:900;font-size:clamp(34px,5vw,68px);line-height:.94;letter-spacing:-.03em;text-transform:uppercase;margin:0;max-width:900px">Notre vision en quelques mots...</h2>
+      </div>
+      <div data-reveal="" style="display:grid;grid-template-columns:1fr 1.05fr;gap:48px;align-items:start">
+        <div style="height:100%">
+          <p style="font-size:clamp(26px,3.4vw,48px);line-height:1.18;font-weight:800;letter-spacing:-.02em;margin:0">« Lorsque qu'une agence, un studio ou une marque recrute un artiste 3D, la première chose qu'elle regarde n'est pas votre école. <span style="background:#FFD200;padding:0 .08em">C'est votre portfolio.</span> »</p>
+        </div>
+        <div class="v4-vid" style="border:2px solid #0A0A0A;background:#000">
+          <div style="display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:#FFD200;background:#0A0A0A;padding:9px 16px"><span>FIG. 03 — JOURNÉE TYPE</span><span>02:30</span></div>
+          <div style="position:relative;aspect-ratio:16/11">
+            <div style="width:100%;height:100%;display:block;background:#000"></div>
+            <div aria-hidden="true" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;background:rgba(10,10,10,.15)"><span class="v4-play" style="width:84px;height:84px;background:#FFD200;border:2px solid #0A0A0A;display:flex;align-items:center;justify-content:center;box-shadow:6px 6px 0 rgba(10,10,10,.5)"><svg width="26" height="30" viewBox="0 0 26 30" fill="none"><path d="M2 2 L24 15 L2 28 Z" fill="#0A0A0A"></path></svg></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIE -->
+  <section id="galerie" style="border-bottom:2px solid #0A0A0A;padding:60px 28px">
+    <div style="max-width:1320px;margin:0 auto">
+      <div data-reveal="" style="margin-bottom:40px">
+        <span style="font-family:'Space Mono',monospace;font-size:13px;font-weight:700;display:block;margin-bottom:14px">(06) — POURQUOI TENDRIL</span>
+        <h2 style="font-weight:900;font-size:clamp(34px,5vw,68px);line-height:.94;letter-spacing:-.03em;text-transform:uppercase;margin:0;max-width:800px">Une autre approche que l'école classique.</h2>
+      </div>
+      <div data-stagger="" style="display:grid;grid-template-columns:1fr 1fr;gap:0;border:2px solid #0A0A0A">
+        <!-- TENDRIL -->
+        <div style="background:#0A0A0A;color:#F4F1EA;border-right:2px solid #0A0A0A">
+          <div style="padding:26px 32px;border-bottom:2px solid #FFD200">
+            <span style="font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:#FFD200">★ NOTRE FORMATION</span>
+            <div style="font-weight:900;font-size:30px;letter-spacing:-.025em;text-transform:uppercase;margin-top:6px">Tendril School</div>
+          </div>
+          <ul style="list-style:none;padding:0;margin:0">
+            <li style="padding:20px 32px;border-bottom:1px solid rgba(255,210,0,.2)"><div style="font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:rgba(244,241,234,.5);margin-bottom:6px">DURÉE DU CURSUS</div><div style="font-weight:800;font-size:20px;color:#FFD200">4 mois</div></li>
+            <li style="padding:20px 32px;border-bottom:1px solid rgba(255,210,0,.2)"><div style="font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:rgba(244,241,234,.5);margin-bottom:6px">SPÉCIALISATION</div><div style="font-weight:800;font-size:20px;color:#FFD200">Publicité &amp; luxe uniquement</div></li>
+            <li style="padding:20px 32px;border-bottom:1px solid rgba(255,210,0,.2)"><div style="font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:rgba(244,241,234,.5);margin-bottom:6px">FORMATEURS</div><div style="font-weight:800;font-size:20px;color:#FFD200">Artistes en activité en studio</div></li>
+            <li style="padding:20px 32px;border-bottom:1px solid rgba(255,210,0,.2)"><div style="font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:rgba(244,241,234,.5);margin-bottom:6px">PROJETS RÉALISÉS</div><div style="font-weight:800;font-size:20px;color:#FFD200">Briefs clients réels</div></li>
+            <li style="padding:20px 32px;border-bottom:1px solid rgba(255,210,0,.2)"><div style="font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:rgba(244,241,234,.5);margin-bottom:6px">SORTIE</div><div style="font-weight:800;font-size:20px;color:#FFD200">Portfolio orienté agence</div></li>
+            <li style="padding:20px 32px"><div style="font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:rgba(244,241,234,.5);margin-bottom:6px">COÛT DE LA FORMATION</div><div style="font-weight:800;font-size:20px;color:#FFD200">Dès 7 900 €</div></li>
+          </ul>
+        </div>
+        <!-- ECOLE CLASSIQUE -->
+        <div style="background:#F4F1EA;color:#0A0A0A">
+          <div style="padding:26px 32px;border-bottom:2px solid #0A0A0A">
+            <span style="font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:rgba(10,10,10,.5)">AILLEURS</span>
+            <div style="font-weight:900;font-size:30px;letter-spacing:-.025em;text-transform:uppercase;margin-top:6px;color:rgba(10,10,10,.75)">École 3D classique</div>
+          </div>
+          <ul style="list-style:none;padding:0;margin:0">
+            <li style="padding:20px 32px;border-bottom:1px solid rgba(10,10,10,.14)"><div style="font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:rgba(10,10,10,.45);margin-bottom:6px">DURÉE DU CURSUS</div><div style="font-weight:700;font-size:20px;color:rgba(10,10,10,.6)">2 à 3 ans</div></li>
+            <li style="padding:20px 32px;border-bottom:1px solid rgba(10,10,10,.14)"><div style="font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:rgba(10,10,10,.45);margin-bottom:6px">SPÉCIALISATION</div><div style="font-weight:700;font-size:20px;color:rgba(10,10,10,.6)">Généraliste (jeu vidéo, VFX, luxe…)</div></li>
+            <li style="padding:20px 32px;border-bottom:1px solid rgba(10,10,10,.14)"><div style="font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:rgba(10,10,10,.45);margin-bottom:6px">FORMATEURS</div><div style="font-weight:700;font-size:20px;color:rgba(10,10,10,.6)">Enseignants académiques</div></li>
+            <li style="padding:20px 32px;border-bottom:1px solid rgba(10,10,10,.14)"><div style="font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:rgba(10,10,10,.45);margin-bottom:6px">PROJETS RÉALISÉS</div><div style="font-weight:700;font-size:20px;color:rgba(10,10,10,.6)">Exercices académiques</div></li>
+            <li style="padding:20px 32px;border-bottom:1px solid rgba(10,10,10,.14)"><div style="font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:rgba(10,10,10,.45);margin-bottom:6px">SORTIE</div><div style="font-weight:700;font-size:20px;color:rgba(10,10,10,.6)">Portfolio généraliste</div></li>
+            <li style="padding:20px 32px"><div style="font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:rgba(10,10,10,.45);margin-bottom:6px">COÛT DE LA FORMATION</div><div style="font-weight:700;font-size:20px;color:rgba(10,10,10,.6)">Souvent 15 000 €+</div></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEMOIGNAGE -->
+  <section style="background:#0A0A0A;color:#F4F1EA;border-bottom:2px solid #0A0A0A;padding:80px 28px">
+    <div data-reveal="" style="max-width:1320px;margin:0 auto">
+      <span style="font-family:'Space Mono',monospace;font-size:13px;font-weight:700;color:#FFD200;display:block;margin-bottom:30px">(07) — TÉMOIGNAGE</span>
+      <p style="font-weight:800;font-size:clamp(26px,3.6vw,50px);line-height:1.12;letter-spacing:-.02em;margin:0 0 30px;max-width:1100px">« Notre objectif est de proposer une formation intensive, spécialisée et directement inspirée des méthodes utilisées dans les studios qui produisent aujourd'hui <span style="color:#FFD200">les campagnes des plus grandes marques de luxe.</span> »</p>
+      <div style="font-family:'Space Mono',monospace;font-size:13px;font-weight:700">NICOLAS ANGUELOV — FONDATEUR DE MANG PRODUCTION &amp; TENDRIL SCHOOL</div>
+    </div>
+  </section>
+
+  <!-- TARIFS -->
+  <section id="tarifs" style="border-bottom:2px solid #0A0A0A">
+    <div style="max-width:1320px;margin:0 auto;padding:60px 28px 0">
+      <div data-reveal="" style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:40px;flex-wrap:wrap">
+        <div>
+          <span style="font-family:'Space Mono',monospace;font-size:13px;font-weight:700;display:block;margin-bottom:14px">(08) — LES BOOTCAMPS</span>
+          <h2 style="font-weight:900;font-size:clamp(34px,5vw,68px);line-height:.94;letter-spacing:-.03em;text-transform:uppercase;margin:0">Deux bootcamps.</h2>
+        </div>
+        <a class="v4-link" href="Tendril%20School%20Programmes.dc.html" style="font-family:'Space Mono',monospace;font-weight:700;font-size:13px;text-transform:uppercase;color:rgba(10,10,10,.6);border-bottom:2px solid #0A0A0A;padding-bottom:2px;white-space:nowrap">Voir les programmes →</a>
+      </div>
+    </div>
+    <div data-stagger="" style="max-width:1320px;margin:0 auto;display:grid;grid-template-columns:repeat(2,1fr);border-top:2px solid #0A0A0A;border-left:2px solid #0A0A0A">
+      <div style="border-right:2px solid #0A0A0A;border-bottom:2px solid #0A0A0A;padding:40px 32px;display:flex;flex-direction:column">
+        <span style="font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:rgba(10,10,10,.5);margin-bottom:14px">NIVEAU 01 · DÉBUTANT</span>
+        <h3 style="font-weight:800;font-size:28px;letter-spacing:-.02em;margin:0 0 4px">Bootcamp Novice</h3>
+        <p style="font-family:'Space Mono',monospace;font-size:12px;color:rgba(10,10,10,.6);margin:0 0 24px">12 SEM · AUCUN PRÉREQUIS · SEPT. 2026</p>
+        <div style="font-weight:900;font-size:48px;letter-spacing:-.03em;margin-bottom:8px">7 900&nbsp;€</div>
+        <div style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:rgba(10,10,10,.55);margin-bottom:22px">DÉBUTANTS ET RECONVERSIONS</div>
+        <ul style="list-style:none;padding:0;margin:0 0 26px;display:flex;flex-direction:column;gap:10px;flex:1">
+          <li style="font-size:14px;font-weight:600;border-top:1px solid rgba(10,10,10,.14);padding-top:10px">Fondamentaux de la 3D</li>
+          <li style="font-size:14px;font-weight:600;border-top:1px solid rgba(10,10,10,.14);padding-top:10px">Modélisation</li>
+          <li style="font-size:14px;font-weight:600;border-top:1px solid rgba(10,10,10,.14);padding-top:10px">Animation - Simulation 3D</li>
+          <li style="font-size:14px;font-weight:600;border-top:1px solid rgba(10,10,10,.14);padding-top:10px">Lighting</li>
+          <li style="font-size:14px;font-weight:600;border-top:1px solid rgba(10,10,10,.14);padding-top:10px">Publicité produit</li>
+          <li style="font-size:14px;font-weight:600;border-top:1px solid rgba(10,10,10,.14);padding-top:10px">Premier portfolio</li>
+        </ul>
+        <a href="Bootcamp%20Novice.dc.html" style="background:#F4F1EA;border:2px solid #0A0A0A;color:#0A0A0A;text-align:center;font-family:'Space Mono',monospace;font-weight:700;font-size:13px;text-transform:uppercase;padding:14px;text-decoration:none;transition:box-shadow .2s ease,transform .2s ease" style-hover="transform:translate(-2px,-2px);box-shadow:4px 4px 0 #0A0A0A">Voir le programme →</a>
+      </div>
+      <div style="border-right:2px solid #0A0A0A;border-bottom:2px solid #0A0A0A;padding:40px 32px;display:flex;flex-direction:column;background:#FFD200;position:relative">
+        <span style="position:absolute;top:16px;right:16px;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;border:2px solid #0A0A0A;padding:3px 8px">★ POPULAIRE</span>
+        <span style="font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:rgba(10,10,10,.55);margin-bottom:14px">NIVEAU 02 · CONFIRMÉ</span>
+        <h3 style="font-weight:800;font-size:28px;letter-spacing:-.02em;margin:0 0 4px">Bootcamp Avancé</h3>
+        <p style="font-family:'Space Mono',monospace;font-size:12px;color:rgba(10,10,10,.65);margin:0 0 24px">10 SEM · SUR PORTFOLIO · SEPT. 2026</p>
+        <div style="font-weight:900;font-size:48px;letter-spacing:-.03em;margin-bottom:8px">9 900&nbsp;€</div>
+        <div style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:rgba(10,10,10,.6);margin-bottom:22px">PRODUCTION FILM 3D</div>
+        <ul style="list-style:none;padding:0;margin:0 0 26px;display:flex;flex-direction:column;gap:10px;flex:1">
+          <li style="font-size:14px;font-weight:600;border-top:1px solid rgba(10,10,10,.25);padding-top:10px">Modélisation 3D avancée</li>
+          <li style="font-size:14px;font-weight:600;border-top:1px solid rgba(10,10,10,.25);padding-top:10px">Texturing &amp; Lighting avancée</li>
+          <li style="font-size:14px;font-weight:600;border-top:1px solid rgba(10,10,10,.25);padding-top:10px">Animation &amp; Simulation 3D (fluides, morphing, particules…)</li>
+          <li style="font-size:14px;font-weight:600;border-top:1px solid rgba(10,10,10,.25);padding-top:10px">Compositing, rendering</li>
+          <li style="font-size:14px;font-weight:600;border-top:1px solid rgba(10,10,10,.25);padding-top:10px">Direction artistique avancée</li>
+          <li style="font-size:14px;font-weight:600;border-top:1px solid rgba(10,10,10,.25);padding-top:10px">Portfolio niveau agence</li>
+        </ul>
+        <a href="Bootcamp%20Avance.dc.html" style="background:#0A0A0A;color:#FFD200;text-align:center;font-family:'Space Mono',monospace;font-weight:700;font-size:13px;text-transform:uppercase;padding:14px;text-decoration:none;transition:box-shadow .2s ease,transform .2s ease" style-hover="transform:translate(-2px,-2px);box-shadow:4px 4px 0 #0A0A0A">Voir le programme →</a>
+      </div>
+    </div>
+    <p data-reveal="" style="max-width:1320px;margin:0 auto;font-family:'Space Mono',monospace;font-size:12px;color:rgba(10,10,10,.6);padding:20px 28px 40px">// FINANCEMENT CPF &amp; ÉCHELONNEMENT POSSIBLES · BOURSES AU MÉRITE SUR PORTFOLIO</p>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" style="border-bottom:2px solid #0A0A0A">
+    <div style="max-width:1320px;margin:0 auto;padding:60px 28px 0">
+      <div data-reveal="" style="margin-bottom:36px">
+        <span style="font-family:'Space Mono',monospace;font-size:13px;font-weight:700;display:block;margin-bottom:14px">(09) — FAQ</span>
+        <h2 style="font-weight:900;font-size:clamp(34px,5vw,68px);line-height:.94;letter-spacing:-.03em;text-transform:uppercase;margin:0">Avant de candidater.</h2>
+      </div>
+    </div>
+    <div data-reveal="">
+      <details class="v4-faq" open="" style="border-top:2px solid #0A0A0A">
+        <summary style="transition:background .2s ease"><div style="max-width:1320px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:24px 28px;font-weight:800;font-size:clamp(18px,2.2vw,26px);letter-spacing:-.01em">Faut-il déjà savoir modéliser en 3D ?<span class="v4-sign" style="flex:none;font-family:'Space Mono',monospace;font-size:24px;font-weight:700;transition:transform .3s ease">+</span></div></summary>
+        <div class="v4-ans" style="font-size:16px;line-height:1.7;color:#0A0A0A;font-weight:500"><div style="max-width:1320px;margin:0 auto;padding:0 28px 26px"><div style="max-width:760px">Non. Le bootcamp est ouvert à tout le monde — débutants motivés comme artistes confirmés. Les premières semaines posent des fondamentaux solides, et le rythme accélère ensuite vers la spécialisation luxe.</div></div></div>
+      </details>
+      <details class="v4-faq" style="border-top:2px solid #0A0A0A">
+        <summary style="transition:background .2s ease"><div style="max-width:1320px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:24px 28px;font-weight:800;font-size:clamp(18px,2.2vw,26px);letter-spacing:-.01em">Quels logiciels vais-je utiliser ?<span class="v4-sign" style="flex:none;font-family:'Space Mono',monospace;font-size:24px;font-weight:700;transition:transform .3s ease">+</span></div></summary>
+        <div class="v4-ans" style="font-size:16px;line-height:1.7;color:#0A0A0A;font-weight:500"><div style="max-width:1320px;margin:0 auto;padding:0 28px 26px"><div style="max-width:760px">Blender et Modo pour la modélisation, Substance pour le texturing, Cycles et Redshift pour le rendu. Une licence étudiante est fournie pendant toute la formation.</div></div></div>
+      </details>
+      <details class="v4-faq" style="border-top:2px solid #0A0A0A">
+        <summary style="transition:background .2s ease"><div style="max-width:1320px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:24px 28px;font-weight:800;font-size:clamp(18px,2.2vw,26px);letter-spacing:-.01em">Le bootcamp est-il en présentiel ?<span class="v4-sign" style="flex:none;font-family:'Space Mono',monospace;font-size:24px;font-weight:700;transition:transform .3s ease">+</span></div></summary>
+        <div class="v4-ans" style="font-size:16px;line-height:1.7;color:#0A0A0A;font-weight:500"><div style="max-width:1320px;margin:0 auto;padding:0 28px 26px"><div style="max-width:760px">Le format Temps plein et Intensif sont en présentiel à Paris. Le format Part-time soir est hybride, avec des sessions en visio et des week-ends sur place.</div></div></div>
+      </details>
+      <details class="v4-faq" style="border-top:2px solid #0A0A0A;border-bottom:2px solid #0A0A0A">
+        <summary style="transition:background .2s ease"><div style="max-width:1320px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:24px 28px;font-weight:800;font-size:clamp(18px,2.2vw,26px);letter-spacing:-.01em">Puis-je financer la formation ?<span class="v4-sign" style="flex:none;font-family:'Space Mono',monospace;font-size:24px;font-weight:700;transition:transform .3s ease">+</span></div></summary>
+        <div class="v4-ans" style="font-size:16px;line-height:1.7;color:#0A0A0A;font-weight:500"><div style="max-width:1320px;margin:0 auto;padding:0 28px 26px"><div style="max-width:760px">Oui. La formation est éligible au CPF, l'échelonnement est possible, et des bourses au mérite sont attribuées chaque promotion sur dossier.</div></div></div>
+      </details>
+    </div>
+  </section>
+
+  <!-- CANDIDATURE -->
+  <section id="candidature" style="background:#FFD200;border-bottom:2px solid #0A0A0A;padding:70px 28px">
+    <div data-reveal="" style="max-width:1320px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start">
+      <div>
+        <span style="font-family:'Space Mono',monospace;font-size:13px;font-weight:700;display:block;margin-bottom:18px">(10) — CANDIDATURE</span>
+        <h2 style="font-weight:900;font-size:clamp(38px,5.5vw,82px);line-height:.9;letter-spacing:-.035em;text-transform:uppercase;margin:0 0 24px">Rejoignez la promo.</h2>
+        <p style="font-size:17px;line-height:1.5;font-weight:600;margin:0 0 26px;max-width:420px">30 places. Sélection sur entretien. Candidatures pour septembre ouvertes.</p>
+        <div style="font-family:'Space Mono',monospace;font-size:14px;font-weight:700;display:flex;flex-direction:column;gap:8px">
+          <a class="v4-link" href="mailto:contact&#64;tendril&#46;com" style="color:#0A0A0A;border-bottom:2px solid #0A0A0A;padding-bottom:2px;width:max-content">CONTACT&#64;TENDRIL&#46;COM</a>
+          <span style="color:rgba(10,10,10,.6)">12 RUE DU FAUBOURG · 75003 PARIS</span>
+        </div>
+      </div>
+      <form onsubmit="return false" style="display:flex;flex-direction:column;gap:12px">
+        <input type="text" placeholder="Nom complet" style="background:#F4F1EA;border:2px solid #0A0A0A;color:#0A0A0A;font-family:'Archivo',sans-serif;font-size:15px;font-weight:600;padding:15px 18px;outline:none">
+        <input type="email" placeholder="Email" style="background:#F4F1EA;border:2px solid #0A0A0A;color:#0A0A0A;font-family:'Archivo',sans-serif;font-size:15px;font-weight:600;padding:15px 18px;outline:none">
+        <input type="text" placeholder="Lien portfolio (optionnel)" style="background:#F4F1EA;border:2px solid #0A0A0A;color:#0A0A0A;font-family:'Archivo',sans-serif;font-size:15px;font-weight:600;padding:15px 18px;outline:none">
+        <textarea placeholder="Pourquoi le luxe et la 3D ?" rows="3" style="background:#F4F1EA;border:2px solid #0A0A0A;color:#0A0A0A;font-family:'Archivo',sans-serif;font-size:15px;font-weight:600;padding:15px 18px;outline:none;resize:none"></textarea>
+        <button type="submit" style="background:#0A0A0A;color:#FFD200;border:2px solid #0A0A0A;cursor:pointer;font-family:'Space Mono',monospace;font-weight:700;font-size:14px;text-transform:uppercase;padding:16px;transition:box-shadow .2s ease,transform .2s ease" style-hover="transform:translate(-3px,-3px);box-shadow:6px 6px 0 #0A0A0A">→ Envoyer ma candidature</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="background:#0A0A0A;color:#F4F1EA;padding:56px 28px 36px">
+    <div style="max-width:1320px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap">
+      <div>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+          <span style="width:34px;height:34px;background:#FFD200;display:flex;align-items:center;justify-content:center"><img src="assets/81ee13a7-fab5-4063-8297-c32e129eec02.png" alt="" style="height:18px;width:auto"></span>
+          <span style="font-weight:900;letter-spacing:-.02em;font-size:17px;text-transform:uppercase">Tendril School</span>
+        </div>
+        <p style="font-family:'Space Mono',monospace;font-size:12px;color:rgba(244,241,234,.55);margin:0;max-width:300px;line-height:1.7">L'ÉCOLE DE MODÉLISATION 3D DÉDIÉE À LA BEAUTÉ ET AU LUXE. PARIS.</p>
+      </div>
+      <div style="display:flex;gap:56px;flex-wrap:wrap">
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <span style="font-family:'Space Mono',monospace;font-size:11px;color:#FFD200;margin-bottom:4px;font-weight:700">ÉCOLE</span>
+          <a class="v4-link" href="Tendril%20School%20Programmes.dc.html" style="color:rgba(244,241,234,.7);font-size:14px;font-weight:600">Programmes</a>
+          <a class="v4-link" href="Tendril%20School%20Ecole.dc.html" style="color:rgba(244,241,234,.7);font-size:14px;font-weight:600">L'École</a>
+          <a class="v4-link" href="Tendril%20School%20Contact.dc.html" style="color:rgba(244,241,234,.7);font-size:14px;font-weight:600">Contact</a>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <span style="font-family:'Space Mono',monospace;font-size:11px;color:#FFD200;margin-bottom:4px;font-weight:700">SUIVRE</span>
+          <a class="v4-link" href="#" style="color:rgba(244,241,234,.7);font-size:14px;font-weight:600">Instagram</a>
+          <a class="v4-link" href="#" style="color:rgba(244,241,234,.7);font-size:14px;font-weight:600">Behance</a>
+          <a class="v4-link" href="#" style="color:rgba(244,241,234,.7);font-size:14px;font-weight:600">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+    <div style="max-width:1320px;margin:44px auto 0;padding-top:22px;border-top:1px solid rgba(244,241,234,.16);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-family:'Space Mono',monospace;font-size:11px;color:rgba(244,241,234,.4)">
+      <span>© 2026 TENDRIL SCHOOL. TOUS DROITS RÉSERVÉS.</span>
+      <span style="display:flex;gap:18px;flex-wrap:wrap"><a class="v4-link" href="Tendril%20School%20Legal.dc.html#mentions" style="color:rgba(244,241,234,.4)">MENTIONS LÉGALES</a><a class="v4-link" href="Tendril%20School%20Legal.dc.html#cgu" style="color:rgba(244,241,234,.4)">CGU</a><a class="v4-link" href="Tendril%20School%20Legal.dc.html#confidentialite" style="color:rgba(244,241,234,.4)">CONFIDENTIALITÉ</a></span>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  rootRef = React.createRef();
+  state = { track: 'novice' };
+  NOVICE_MODULES = [
+    { num: '01', title: 'Modélisation 3D', tags: ['Hard Surface Modeling', 'Topologie propre', 'Produits premium', 'Cosmétique & Packaging', 'Optimisation des meshes'] },
+    { num: '02', title: 'Texturing & Shading', tags: ['PBR Workflow', 'UV Mapping', 'Shaders réalistes', 'Verre, métal, plastique, liquide', 'Subsurface Scattering'] },
+    { num: '03', title: 'Lighting & Rendering', tags: ['Studio Lighting', 'HDRI Lighting', 'Three-Point Lighting', 'Packshot publicitaire', 'Photoréalisme'] },
+    { num: '04', title: 'Animation Produit', tags: ['Product Animation', 'Camera Animation', 'Hero Shot', 'Turntable', 'Keyframe Animation'] },
+    { num: '05', title: 'Motion Design 3D', tags: ['Composition publicitaire', 'Loop Animation', 'Transition produit', 'Storytelling visuel'] },
+    { num: '06', title: 'Compositing', tags: ['Render Passes', 'Color Grading', 'Depth of Field', 'Bloom', 'Export réseaux sociaux'] },
+    { num: '07', title: 'Direction Artistique', tags: ['Codes visuels du luxe', 'Composition d\u2019image', 'Théorie des couleurs', 'Branding visuel'] }
+  ];
+  AVANCE_MODULES = [
+    { num: '01', title: 'Production Publicitaire', tags: ['Hero Film', 'CGI Advertising', 'Luxury Visual Storytelling', 'Campagne publicitaire complète'] },
+    { num: '02', title: 'Modélisation Avancée', tags: ['Hard Surface Expert', 'High Poly Modeling', 'Packaging complexe', 'Product Design'] },
+    { num: '03', title: 'Shading Premium', tags: ['Procedural Shading', 'Micro Details', 'Condensation', 'Liquid Shader', 'Cosmetic Materials'] },
+    { num: '04', title: 'Lighting Cinématographique', tags: ['Cinematic Lighting', 'Rim Light', 'Dramatic Lighting', 'Mood Lighting'] },
+    { num: '05', title: 'Simulations Houdini / Blender', tags: ['FLIP Fluids', 'Particles', 'Smoke Simulation', 'Splash Cosmetics', 'Morphing'] },
+    { num: '06', title: 'Compositing Professionnel', tags: ['Multi Pass Compositing', 'Cryptomatte', 'Color Pipeline', 'ACES Workflow'] },
+    { num: '07', title: 'Pipeline Agence & Portfolio', tags: ['Gestion d\u2019un brief client', 'Direction Artistique', 'Portfolio professionnel', 'Positionnement Freelance'] }
+  ];
+  componentDidMount() { this._init(); }
+  componentWillUnmount() { clearTimeout(this._t); if (window.ScrollTrigger) window.ScrollTrigger.getAll().forEach(t => t.kill()); }
+  _init() {
+    const g = window.gsap, ST = window.ScrollTrigger;
+    if (!g || !ST) { this._t = setTimeout(() => this._init(), 60); return; }
+    g.registerPlugin(ST);
+    const root = this.rootRef.current;
+    if (!root) return;
+    const q = (s) => Array.from(root.querySelectorAll(s));
+    g.from(q('[data-hero]'), { opacity: 0, y: 30, duration: 0.8, ease: 'power3.out', stagger: 0.08, delay: 0.1 });
+    q('[data-reveal]').forEach((el) => {
+      g.from(el, { opacity: 0, y: 40, duration: 0.8, ease: 'power3.out', clearProps: 'transform', scrollTrigger: { trigger: el, start: 'top 88%' } });
+    });
+    q('[data-stagger]').forEach((grp) => {
+      g.from(Array.from(grp.children), { opacity: 0, y: 28, duration: 0.6, ease: 'power3.out', stagger: 0.06, clearProps: 'transform', scrollTrigger: { trigger: grp, start: 'top 86%' } });
+    });
+    this._initFaq(g);
+  }
+  _initFaq(g) {
+    const root = this.rootRef.current;
+    if (!root) return;
+    root.querySelectorAll('details.v4-faq').forEach((d) => {
+      const summary = d.querySelector('summary');
+      const ans = d.querySelector('.v4-ans');
+      const inner = ans.firstElementChild;
+      const sign = d.querySelector('.v4-sign');
+      if (d.open) { g.set(ans, { height: 'auto', opacity: 1 }); g.set(inner, { y: 0, opacity: 1 }); sign.style.transform = 'rotate(45deg)'; }
+      summary.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (d._anim) return;
+        d._anim = true;
+        sign.style.transform = d.open ? 'rotate(0deg)' : 'rotate(45deg)';
+        if (d.open) {
+          g.to(inner, { y: -6, opacity: 0, duration: 0.25, ease: 'power2.in' });
+          g.to(ans, { height: 0, opacity: 0, duration: 0.42, ease: 'power3.inOut', onComplete: () => { d.open = false; d._anim = false; } });
+        } else {
+          d.open = true;
+          g.set(ans, { height: 'auto', opacity: 1 });
+          const h = ans.offsetHeight;
+          g.fromTo(ans, { height: 0, opacity: 0 }, { height: h, opacity: 1, duration: 0.5, ease: 'power3.out', onComplete: () => { g.set(ans, { height: 'auto' }); d._anim = false; } });
+          g.fromTo(inner, { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.55, ease: 'power3.out', delay: 0.06 });
+        }
+      });
+    });
+  }
+  renderVals() {
+    const isNovice = this.state.track === 'novice';
+    return {
+      rootRef: this.rootRef,
+      isNovice, isAvance: !isNovice,
+      noviceModules: this.NOVICE_MODULES,
+      avanceModules: this.AVANCE_MODULES,
+      noviceBg: isNovice ? '#FFD200' : '#F4F1EA',
+      avanceBg: !isNovice ? '#FFD200' : '#F4F1EA',
+      selectNovice: () => this.setState({ track: 'novice' }),
+      selectAvance: () => this.setState({ track: 'avance' })
+    };
+  }
+}
+</script>
+</body>
+</html>

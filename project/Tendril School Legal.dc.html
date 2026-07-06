@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:#F4F1EA;-webkit-font-smoothing:antialiased}
+  ::selection{background:#0A0A0A;color:#FFD200}
+  @keyframes tcTick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .v4-link{text-decoration:none;transition:color .15s ease}
+  .v4-link:hover{color:#0A0A0A !important}
+  .doc-tab{transition:background .15s ease,color .15s ease,box-shadow .15s ease,transform .15s ease}
+  .doc-tab:hover{background:rgba(255,210,0,.4)}
+  .legal-body h3{font-weight:800;font-size:clamp(20px,2.4vw,28px);letter-spacing:-.02em;margin:38px 0 12px;line-height:1.1}
+  .legal-body h3:first-child{margin-top:0}
+  .legal-body p{font-size:16px;line-height:1.7;color:rgba(10,10,10,.78);font-weight:500;margin:0 0 14px}
+  .legal-body ul{margin:0 0 16px;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:9px}
+  .legal-body li{font-size:16px;line-height:1.6;color:rgba(10,10,10,.78);font-weight:500;padding-left:24px;position:relative}
+  .legal-body li::before{content:"—";position:absolute;left:0;color:#0A0A0A;font-weight:700}
+  .legal-body strong{color:#0A0A0A;font-weight:800}
+  .legal-body a{color:#0A0A0A;font-weight:700;border-bottom:2px solid #FFD200;text-decoration:none}
+  .legal-body .mono{font-family:'Space Mono',monospace;font-size:13px;font-weight:700;color:rgba(10,10,10,.55);text-transform:uppercase;letter-spacing:.03em}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+</helmet>
+
+<div ref="{{ rootRef }}" style="background:#F4F1EA;color:#0A0A0A;font-family:'Archivo',sans-serif;min-height:100vh;overflow-x:hidden;position:relative">
+
+  <!-- TICKER -->
+  <div style="position:fixed;top:0;left:0;right:0;z-index:60;background:#0A0A0A;color:#FFD200;overflow:hidden;border-bottom:2px solid #0A0A0A">
+    <div style="display:flex;width:max-content;animation:tcTick 26s linear infinite;padding:8px 0">
+      <div style="display:flex;gap:40px;padding-right:40px;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.04em;white-space:nowrap">
+        <span>INFORMATIONS LÉGALES</span><span>★</span><span>TENDRIL SCHOOL · PARIS</span><span>★</span><span>DERNIÈRE MISE À JOUR — JANV. 2026</span><span>★</span><span>RGPD</span><span>★</span><span>INFORMATIONS LÉGALES</span><span>★</span><span>TENDRIL SCHOOL · PARIS</span><span>★</span><span>DERNIÈRE MISE À JOUR — JANV. 2026</span><span>★</span><span>RGPD</span><span>★</span>
+      </div>
+      <div style="display:flex;gap:40px;padding-right:40px;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.04em;white-space:nowrap" aria-hidden="true">
+        <span>INFORMATIONS LÉGALES</span><span>★</span><span>TENDRIL SCHOOL · PARIS</span><span>★</span><span>DERNIÈRE MISE À JOUR — JANV. 2026</span><span>★</span><span>RGPD</span><span>★</span><span>INFORMATIONS LÉGALES</span><span>★</span><span>TENDRIL SCHOOL · PARIS</span><span>★</span><span>DERNIÈRE MISE À JOUR — JANV. 2026</span><span>★</span><span>RGPD</span><span>★</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav style="position:fixed;top:35px;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:14px 28px;background:#F4F1EA;border-bottom:2px solid #0A0A0A">
+    <a href="Tendril%20School%20Landing%20Page.dc.html" style="display:flex;align-items:center;gap:10px;text-decoration:none">
+      <span style="width:34px;height:34px;background:#0A0A0A;display:flex;align-items:center;justify-content:center"><img src="assets/81ee13a7-fab5-4063-8297-c32e129eec02.png" alt="Tendril School" style="height:18px;width:auto;display:block"></span>
+      <span style="font-weight:900;letter-spacing:-.02em;font-size:18px;color:#0A0A0A;text-transform:uppercase">Tendril School</span>
+    </a>
+    <div style="display:flex;align-items:center;gap:26px">
+      <a class="v4-link" href="Tendril%20School%20Programmes.dc.html" style="color:rgba(10,10,10,.6);font-family:'Space Mono',monospace;font-size:13px;font-weight:700;text-transform:uppercase">Programmes</a>
+      <a class="v4-link" href="Tendril%20School%20Ecole.dc.html" style="color:rgba(10,10,10,.6);font-family:'Space Mono',monospace;font-size:13px;font-weight:700;text-transform:uppercase">L'École</a>
+      <a class="v4-link" href="Tendril%20School%20Contact.dc.html" style="color:rgba(10,10,10,.6);font-family:'Space Mono',monospace;font-size:13px;font-weight:700;text-transform:uppercase">Contact</a>
+      <a href="Tendril%20School%20Candidature.dc.html" style="background:#0A0A0A;color:#FFD200;border:2px solid #0A0A0A;font-family:'Space Mono',monospace;font-weight:700;font-size:12px;text-transform:uppercase;padding:9px 18px;text-decoration:none">Candidater →</a>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <header style="padding:150px 28px 0">
+    <div style="max-width:1320px;margin:0 auto;width:100%">
+      <div data-head="" style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;border-bottom:2px solid #0A0A0A;padding-bottom:18px;margin-bottom:30px;flex-wrap:wrap">
+        <span style="font-family:'Space Mono',monospace;font-size:13px;font-weight:700">— INFORMATIONS LÉGALES</span>
+        <span style="font-family:'Space Mono',monospace;font-size:13px;font-weight:700;color:rgba(10,10,10,.55)">MAJ — JANVIER 2026</span>
+      </div>
+      <h1 data-head="" style="font-weight:900;font-size:clamp(40px,7vw,92px);line-height:.88;letter-spacing:-.04em;text-transform:uppercase;margin:0 0 40px">{{ activeTitle }}</h1>
+    </div>
+  </header>
+
+  <!-- BODY : SIDEBAR + CONTENT -->
+  <main style="padding:0 28px 90px">
+    <div style="max-width:1320px;margin:0 auto;display:grid;grid-template-columns:300px 1fr;gap:0;border:2px solid #0A0A0A;align-items:stretch">
+
+      <!-- SIDEBAR -->
+      <aside style="border-right:2px solid #0A0A0A;display:flex;flex-direction:column">
+        <div style="padding:18px 22px;border-bottom:2px solid #0A0A0A;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:rgba(10,10,10,.55);text-transform:uppercase">Documents</div>
+        <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="4">
+          <button type="button" class="doc-tab" onclick="{{ t.onClick }}" style="text-align:left;cursor:pointer;border:none;border-bottom:2px solid #0A0A0A;background:{{ t.bg }};color:{{ t.color }};font-family:'Archivo',sans-serif;font-weight:800;font-size:16px;letter-spacing:-.01em;padding:20px 22px;display:flex;align-items:center;gap:12px">
+            <span style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;opacity:.55">{{ t.num }}</span>{{ t.label }}
+          </button>
+        </sc-for>
+        <div style="padding:22px;margin-top:auto">
+          <div style="font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:rgba(10,10,10,.55);text-transform:uppercase;margin-bottom:10px">Une question ?</div>
+          <a href="Tendril%20School%20Contact.dc.html" class="v4-link" style="font-weight:800;font-size:16px;color:#0A0A0A;border-bottom:2px solid #FFD200">Nous écrire →</a>
+        </div>
+      </aside>
+
+      <!-- CONTENT -->
+      <section ref="{{ contentRef }}" class="legal-body" style="padding:46px 52px;min-width:0">
+
+        <!-- MENTIONS LÉGALES -->
+        <div data-doc="mentions" style="display:{{ dMentions }}">
+          <p class="mono">Éditeur du site</p>
+          <h3>1. Éditeur</h3>
+          <p>Le présent site est édité par <strong>Tendril School SAS</strong>, société par actions simplifiée au capital de 50 000 €, immatriculée au RCS de Paris sous le numéro <strong>901 234 567</strong>.</p>
+          <ul>
+            <li><strong>Siège social :</strong> 12 rue du Faubourg, 75003 Paris, France</li>
+            <li><strong>N° TVA intracommunautaire :</strong> FR 12 901234567</li>
+            <li><strong>Téléphone :</strong> +33 1 00 00 00 00</li>
+            <li><strong>Email :</strong> contact&#64;tendril&#46;com</li>
+            <li><strong>Directeur de la publication :</strong> la Présidente de Tendril School SAS</li>
+            <li><strong>N° de déclaration d'activité (formation) :</strong> 11 75 12345 75 — enregistré auprès de la préfecture de la région Île-de-France</li>
+          </ul>
+          <h3>2. Hébergement</h3>
+          <p>Le site est hébergé par un prestataire d'hébergement professionnel assurant la disponibilité et la sécurité des données. Les coordonnées de l'hébergeur sont communiquées sur simple demande à <a href="mailto:contact&#64;tendril&#46;com">contact&#64;tendril&#46;com</a>.</p>
+          <h3>3. Propriété intellectuelle</h3>
+          <p>L'ensemble des contenus présents sur ce site — textes, identité visuelle, logo, typographies, mises en page, ainsi que les rendus et travaux d'étudiants reproduits — sont protégés par le droit de la propriété intellectuelle et demeurent la propriété exclusive de Tendril School ou de leurs auteurs respectifs.</p>
+          <p>Toute reproduction, représentation, modification ou exploitation, totale ou partielle, sans autorisation écrite préalable, est interdite et constitue une contrefaçon sanctionnée par le Code de la propriété intellectuelle.</p>
+          <h3>4. Responsabilité</h3>
+          <p>Tendril School s'efforce d'assurer l'exactitude des informations diffusées sur ce site mais ne saurait être tenue responsable des erreurs, omissions ou indisponibilités. Les informations relatives aux programmes, tarifs et sessions sont données à titre indicatif et peuvent évoluer.</p>
+        </div>
+
+        <!-- CGU -->
+        <div data-doc="cgu" style="display:{{ dCgu }}">
+          <p class="mono">Conditions générales d'utilisation</p>
+          <h3>1. Objet</h3>
+          <p>Les présentes conditions générales d'utilisation (CGU) encadrent l'accès et l'usage du site de Tendril School. En naviguant sur le site, l'utilisateur reconnaît en avoir pris connaissance et les accepter sans réserve.</p>
+          <h3>2. Accès au site</h3>
+          <p>Le site est accessible gratuitement à tout utilisateur disposant d'un accès à internet. Les frais d'équipement et de connexion restent à la charge de l'utilisateur. Tendril School se réserve le droit de suspendre ou interrompre l'accès, notamment pour maintenance, sans que sa responsabilité puisse être engagée.</p>
+          <h3>3. Candidatures &amp; formulaires</h3>
+          <p>L'utilisateur s'engage à fournir des informations exactes lors du dépôt d'une candidature ou de l'envoi d'un message. Toute candidature repose sur des éléments sincères ; une information erronée pourra entraîner le rejet du dossier.</p>
+          <ul>
+            <li>Le dépôt d'une candidature ne vaut pas admission.</li>
+            <li>L'admission est prononcée après étude du dossier et entretien.</li>
+            <li>Les pièces transmises sont utilisées uniquement dans le cadre du processus de sélection.</li>
+          </ul>
+          <h3>4. Comportement de l'utilisateur</h3>
+          <p>L'utilisateur s'interdit tout usage du site contraire à la loi, à l'ordre public ou aux présentes CGU, et notamment toute tentative de nuire au bon fonctionnement du site ou de porter atteinte aux droits de tiers.</p>
+          <h3>5. Liens externes</h3>
+          <p>Le site peut contenir des liens vers des sites tiers (réseaux sociaux, plateformes de podcast, partenaires). Tendril School n'exerce aucun contrôle sur ces ressources et décline toute responsabilité quant à leur contenu.</p>
+          <h3>6. Évolution des CGU</h3>
+          <p>Tendril School se réserve le droit de modifier les présentes CGU à tout moment. La version applicable est celle en vigueur à la date de consultation du site.</p>
+        </div>
+
+        <!-- CONFIDENTIALITÉ -->
+        <div data-doc="confidentialite" style="display:{{ dConf }}">
+          <p class="mono">Politique de confidentialité — RGPD</p>
+          <h3>1. Responsable de traitement</h3>
+          <p>Tendril School SAS est responsable du traitement des données personnelles collectées via ce site, conformément au Règlement général sur la protection des données (RGPD) et à la loi Informatique et Libertés.</p>
+          <h3>2. Données collectées</h3>
+          <p>Nous collectons les données que vous nous transmettez volontairement via nos formulaires :</p>
+          <ul>
+            <li>Identité : prénom, nom, date de naissance, nationalité, ville</li>
+            <li>Coordonnées : email, téléphone</li>
+            <li>Parcours : situation, diplôme, niveau et logiciels 3D, portfolio</li>
+            <li>Éléments de candidature : motivation, objectif, mode de financement</li>
+          </ul>
+          <h3>3. Finalités</h3>
+          <p>Ces données sont utilisées pour : traiter votre candidature et organiser les entretiens, répondre à vos demandes de contact, vous informer sur nos sessions et, avec votre accord, vous adresser nos actualités.</p>
+          <h3>4. Base légale &amp; durée de conservation</h3>
+          <p>Les traitements reposent sur votre consentement et sur l'intérêt légitime de l'école à gérer ses admissions. Les données de candidature sont conservées <strong>24 mois</strong> après le dernier contact, sauf obligation légale contraire.</p>
+          <h3>5. Vos droits</h3>
+          <p>Vous disposez d'un droit d'accès, de rectification, d'effacement, de limitation, d'opposition et de portabilité de vos données. Pour les exercer, écrivez à <a href="mailto:contact&#64;tendril&#46;com">contact&#64;tendril&#46;com</a>. Vous pouvez également introduire une réclamation auprès de la CNIL.</p>
+          <h3>6. Sécurité</h3>
+          <p>Tendril School met en œuvre des mesures techniques et organisationnelles appropriées pour protéger vos données contre tout accès, altération ou divulgation non autorisés.</p>
+        </div>
+
+        <!-- COOKIES -->
+        <div data-doc="cookies" style="display:{{ dCookies }}">
+          <p class="mono">Gestion des cookies</p>
+          <h3>1. Qu'est-ce qu'un cookie ?</h3>
+          <p>Un cookie est un petit fichier déposé sur votre terminal lors de la visite d'un site. Il permet de reconnaître votre navigateur et de conserver certaines informations le temps de votre visite ou lors de visites ultérieures.</p>
+          <h3>2. Cookies utilisés</h3>
+          <ul>
+            <li><strong>Cookies strictement nécessaires :</strong> indispensables au fonctionnement du site (navigation, sécurité). Ils ne requièrent pas votre consentement.</li>
+            <li><strong>Cookies de mesure d'audience :</strong> statistiques de fréquentation anonymisées pour améliorer le site.</li>
+            <li><strong>Cookies tiers :</strong> liés aux contenus intégrés (lecteur de podcast, réseaux sociaux), soumis aux politiques de ces services.</li>
+          </ul>
+          <h3>3. Votre consentement</h3>
+          <p>Lors de votre première visite, un bandeau vous permet d'accepter ou de refuser les cookies non essentiels. Vous pouvez modifier votre choix à tout moment depuis les réglages de votre navigateur.</p>
+          <h3>4. Paramétrage</h3>
+          <p>Vous pouvez configurer votre navigateur pour refuser tout ou partie des cookies. Le refus des cookies non essentiels n'altère pas l'accès au site, mais peut limiter certaines fonctionnalités.</p>
+        </div>
+
+      </section>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer style="background:#0A0A0A;color:#F4F1EA;padding:56px 28px 36px">
+    <div style="max-width:1320px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap">
+      <div>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+          <span style="width:34px;height:34px;background:#FFD200;display:flex;align-items:center;justify-content:center"><img src="assets/81ee13a7-fab5-4063-8297-c32e129eec02.png" alt="" style="height:18px;width:auto"></span>
+          <span style="font-weight:900;letter-spacing:-.02em;font-size:17px;text-transform:uppercase">Tendril School</span>
+        </div>
+        <p style="font-family:'Space Mono',monospace;font-size:12px;color:rgba(244,241,234,.55);margin:0;max-width:300px;line-height:1.7">L'ÉCOLE DE MODÉLISATION 3D DÉDIÉE À LA BEAUTÉ ET AU LUXE. PARIS.</p>
+      </div>
+      <div style="display:flex;gap:56px;flex-wrap:wrap">
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <span style="font-family:'Space Mono',monospace;font-size:11px;color:#FFD200;margin-bottom:4px;font-weight:700">ÉCOLE</span>
+          <a class="v4-link" href="Tendril%20School%20Programmes.dc.html" style="color:rgba(244,241,234,.7);font-size:14px;font-weight:600">Programmes</a>
+          <a class="v4-link" href="Tendril%20School%20Ecole.dc.html" style="color:rgba(244,241,234,.7);font-size:14px;font-weight:600">L'École</a>
+          <a class="v4-link" href="Tendril%20School%20Contact.dc.html" style="color:rgba(244,241,234,.7);font-size:14px;font-weight:600">Contact</a>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <span style="font-family:'Space Mono',monospace;font-size:11px;color:#FFD200;margin-bottom:4px;font-weight:700">LÉGAL</span>
+          <a class="v4-link" href="Tendril%20School%20Legal.dc.html#mentions" style="color:rgba(244,241,234,.7);font-size:14px;font-weight:600">Mentions légales</a>
+          <a class="v4-link" href="Tendril%20School%20Legal.dc.html#cgu" style="color:rgba(244,241,234,.7);font-size:14px;font-weight:600">CGU</a>
+          <a class="v4-link" href="Tendril%20School%20Legal.dc.html#confidentialite" style="color:rgba(244,241,234,.7);font-size:14px;font-weight:600">Confidentialité</a>
+          <a class="v4-link" href="Tendril%20School%20Legal.dc.html#cookies" style="color:rgba(244,241,234,.7);font-size:14px;font-weight:600">Cookies</a>
+        </div>
+      </div>
+    </div>
+    <div style="max-width:1320px;margin:44px auto 0;padding-top:22px;border-top:1px solid rgba(244,241,234,.16);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-family:'Space Mono',monospace;font-size:11px;color:rgba(244,241,234,.4)">
+      <span>© 2026 TENDRIL SCHOOL. TOUS DROITS RÉSERVÉS.</span>
+      <span>PARIS · EST. 2021</span>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  rootRef = React.createRef();
+  contentRef = React.createRef();
+  state = { active: 'mentions' };
+  DOCS = [
+    { key: 'mentions', label: 'Mentions légales', title: 'Mentions légales' },
+    { key: 'cgu', label: "Conditions d'utilisation", title: "Conditions d'utilisation" },
+    { key: 'confidentialite', label: 'Confidentialité', title: 'Politique de confidentialité' },
+    { key: 'cookies', label: 'Cookies', title: 'Gestion des cookies' }
+  ];
+
+  componentDidMount() {
+    this._fromHash();
+    this._hashHandler = () => this._fromHash();
+    window.addEventListener('hashchange', this._hashHandler);
+    this._tick();
+  }
+  componentWillUnmount() {
+    clearTimeout(this._t);
+    if (this._hashHandler) window.removeEventListener('hashchange', this._hashHandler);
+  }
+  _fromHash() {
+    const h = (window.location.hash || '').replace('#', '');
+    if (this.DOCS.some(d => d.key === h) && h !== this.state.active) this.setState({ active: h });
+  }
+  _tick() {
+    const g = window.gsap;
+    if (!g) { this._t = setTimeout(() => this._tick(), 60); return; }
+    const root = this.rootRef.current;
+    if (root) g.from(root.querySelectorAll('[data-head]'), { opacity: 0, y: 22, duration: 0.7, ease: 'power3.out', stagger: 0.08 });
+  }
+  _select(key) {
+    if (key === this.state.active) return;
+    this.setState({ active: key }, () => {
+      const g = window.gsap;
+      const el = this.contentRef.current ? this.contentRef.current.querySelector('[data-doc="' + key + '"]') : null;
+      if (g && el) g.fromTo(el, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.4, ease: 'power3.out' });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    if (window.history && window.history.replaceState) window.history.replaceState(null, '', '#' + key);
+  }
+
+  renderVals() {
+    const a = this.state.active;
+    const activeDoc = this.DOCS.find(d => d.key === a) || this.DOCS[0];
+    return {
+      rootRef: this.rootRef,
+      contentRef: this.contentRef,
+      activeTitle: activeDoc.title,
+      dMentions: a === 'mentions' ? 'block' : 'none',
+      dCgu: a === 'cgu' ? 'block' : 'none',
+      dConf: a === 'confidentialite' ? 'block' : 'none',
+      dCookies: a === 'cookies' ? 'block' : 'none',
+      tabs: this.DOCS.map((d, i) => ({
+        label: d.label,
+        num: '0' + (i + 1),
+        bg: a === d.key ? '#FFD200' : '#F4F1EA',
+        color: '#0A0A0A',
+        onClick: () => this._select(d.key)
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>
