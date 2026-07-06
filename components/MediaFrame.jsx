@@ -19,11 +19,14 @@ export default function MediaFrame({
   aspect,
   play,
   border = "ink",
+  hoverLift = false,
   className = "",
 }) {
   return (
     <div
-      className={`${styles.frame} ${border === "accent" ? styles.borderAccent : ""} ${className}`}
+      className={`${styles.frame} ${border === "accent" ? styles.borderAccent : ""} ${
+        hoverLift ? styles.hoverLift : ""
+      } ${className}`}
     >
       {caption && (
         <div
@@ -40,6 +43,7 @@ export default function MediaFrame({
         {play && (
           <div className={`${styles.overlay} ${play.dim ? styles.overlayDim : ""}`}>
             <span
+              data-media-play
               className={`${styles.play} ${play.shape === "circle" ? styles.playCircle : ""} ${
                 play.shadow ? styles.playShadow : ""
               }`}

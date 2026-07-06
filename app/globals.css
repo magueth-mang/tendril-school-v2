@@ -40,15 +40,6 @@ textarea {
   color: var(--accent);
 }
 
-@keyframes tickerScroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
 .link {
   text-decoration: none;
   transition: color 0.15s ease;

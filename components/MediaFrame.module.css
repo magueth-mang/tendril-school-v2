@@ -8,6 +8,19 @@
   border-color: var(--accent);
 }
 
+.hoverLift {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.hoverLift:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 8px 8px 0 var(--accent);
+}
+
+.hoverLift:hover .play {
+  transform: scale(1.08);
+}
+
 .caption {
   display: flex;
   justify-content: space-between;

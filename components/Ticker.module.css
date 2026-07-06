@@ -23,6 +23,15 @@
   padding: 8px 0;
 }
 
+@keyframes tickerScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 .row {
   display: flex;
   gap: 40px;

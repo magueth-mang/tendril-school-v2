@@ -106,6 +106,7 @@ export default function HomeView() {
           <div data-reveal className={styles.mainReel}>
             <MediaFrame
               border="accent"
+              hoverLift
               caption={{ left: "FIG. 02 — REEL PROMO 2025", right: "01:48 · 4K" }}
               aspect="16 / 9"
               play={{ size: 92, shape: "square", dim: true, shadow: true, iconW: 28, iconH: 32 }}
@@ -117,6 +118,7 @@ export default function HomeView() {
               <MediaFrame
                 key={c.label}
                 border="accent"
+                hoverLift
                 caption={{ left: c.label, right: c.dur }}
                 aspect="4 / 5"
                 play={{ size: 58, shape: "square", iconW: 18, iconH: 20 }}
@@ -192,6 +194,7 @@ export default function HomeView() {
               </p>
             </div>
             <MediaFrame
+              hoverLift
               caption={{ left: "FIG. 03 — JOURNÉE TYPE", right: "02:30" }}
               aspect="16 / 11"
               play={{ size: 84, shape: "square", dim: true, shadow: true, iconW: 26, iconH: 30 }}

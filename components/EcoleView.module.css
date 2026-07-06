@@ -242,6 +242,10 @@
   box-shadow: 8px 8px 0 var(--accent);
 }
 
+.featuredCard:hover [data-media-play] {
+  transform: scale(1.08);
+}
+
 .featuredMedia {
   border-right: 2px solid var(--accent);
 }
