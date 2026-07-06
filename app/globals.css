@@ -1,0 +1,63 @@
+:root {
+  --ink: #0a0a0a;
+  --cream: #f4f1ea;
+  --accent: #ffd200;
+  --font-display: var(--font-archivo), sans-serif;
+  --font-mono: var(--font-space-mono), monospace;
+  --container: 1320px;
+  --border: 2px solid var(--ink);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-display);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--accent);
+}
+
+@keyframes tickerScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.link {
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.link:hover {
+  color: var(--ink) !important;
+}
+
+.linkOnDark:hover {
+  color: var(--accent) !important;
+}

@@ -1,0 +1,35 @@
+.ticker {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 60;
+  overflow: hidden;
+  border-bottom: var(--border);
+  background: var(--ink);
+  color: var(--accent);
+}
+
+.ticker.light {
+  background: var(--accent);
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  animation: tickerScroll 24s linear infinite;
+  padding: 8px 0;
+}
+
+.row {
+  display: flex;
+  gap: 40px;
+  padding-right: 40px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}

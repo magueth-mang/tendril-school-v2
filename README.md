@@ -1,25 +1,48 @@
-# CODING AGENTS: READ THIS FIRST
+# Tendril School
 
-This is a **handoff bundle** from Claude Design (claude.ai/design).
+Site vitrine de Tendril School — bootcamp de modélisation 3D spécialisé dans le luxe, la mode et le cosmétique. Construit en Next.js (App Router), animé avec GSAP, prêt à déployer sur Vercel.
 
-A user mocked up designs in HTML/CSS/JS using an AI design tool, then exported this bundle so a coding agent can implement the designs for real.
+## Stack
 
-## What you should do — IMPORTANT
+- **Next.js 16** (App Router, React 18)
+- **GSAP** (`ScrollTrigger`) pour les animations au scroll et l'accordéon FAQ
+- **CSS Modules** — un fichier de style par page/composant, pas de framework CSS
+- **next/font** pour Archivo (titres) et Space Mono (labels)
 
-**Read the chat transcripts first.** There are 3 chat transcript(s) in `chats/`. The transcripts show the full back-and-forth between the user and the design assistant — they tell you **what the user actually wants** and **where they landed** after iterating. Don't skip them. The final HTML files are the output, but the chat is where the intent lives.
+## Structure
 
-**Read `project/Tendril School Landing Page.dc.html` in full.** The user had this file open when they triggered the handoff, so it's almost certainly the primary design they want built. Read it top to bottom — don't skim. Then **follow its imports**: open every file it pulls in (shared components, CSS, scripts) so you understand how the pieces fit together before you start implementing.
+```
+app/                      routes (App Router) — un page.jsx léger par route, qui rend un composant "*View"
+  page.jsx                /
+  programmes/page.jsx     /programmes
+  programmes/novice/      /programmes/novice
+  programmes/avance/      /programmes/avance
+  ecole/page.jsx          /ecole
+  contact/page.jsx        /contact
+  candidature/page.jsx    /candidature (dossier en 6 étapes)
+  legal/page.jsx          /legal (mentions, CGU, confidentialité, cookies)
 
-**If anything is ambiguous, ask the user to confirm before you start implementing.** It's much cheaper to clarify scope up front than to build the wrong thing.
+components/               composants React + leur CSS module associé
+  Nav, Footer, Ticker, Faq, MediaFrame   composants partagés entre pages
+  BootcampTemplate                       template commun aux pages Novice / Avancé
+  *View.jsx                              logique + markup de chaque page
 
-## About the design files
+data/                      contenu (textes, listes de modules, etc.) séparé des composants
+lib/useScrollFx.js         hook GSAP partagé (reveal au scroll, stagger, hero)
+```
 
-The design medium is **HTML/CSS/JS** — these are prototypes, not production code. Your job is to **recreate them pixel-perfectly** in whatever technology makes sense for the target codebase (React, Vue, native, whatever fits). Match the visual output; don't copy the prototype's internal structure unless it happens to fit.
+## Développement
 
-**Don't render these files in a browser or take screenshots unless the user asks you to.** Everything you need — dimensions, colors, layout rules — is spelled out in the source. Read the HTML and CSS directly; a screenshot won't tell you anything they don't.
+```bash
+npm install
+npm run dev       # http://localhost:3000
+npm run build
+npm run start
+npm run lint
+```
 
-## Bundle contents
+## Déploiement
 
-- `README.md` — this file
-- `chats/` — conversation transcripts (read these!)
-- `project/` — the `Tendril Club maquette site` project files (HTML prototypes, assets, components)
+Le projet n'a besoin d'aucune variable d'environnement. Sur Vercel : importer le repo, framework "Next.js" détecté automatiquement, aucune configuration supplémentaire.
+
+Les formulaires (contact, candidature) sont côté client uniquement — ils valident et affichent un écran de confirmation, mais n'envoient les données à aucun service. Pour un vrai envoi (email, CRM…), brancher une route API dans `app/`.

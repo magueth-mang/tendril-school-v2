@@ -1,0 +1,136 @@
+.nav {
+  position: fixed;
+  top: 35px;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 28px;
+  background: var(--cream);
+  border-bottom: var(--border);
+  transition: padding 0.3s ease;
+}
+
+.nav.dark {
+  background: var(--ink);
+  border-bottom: 2px solid var(--accent);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.badge {
+  width: 34px;
+  height: 34px;
+  background: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+}
+
+.dark .badge {
+  background: var(--accent);
+}
+
+.mark {
+  height: 18px;
+  width: auto;
+  display: block;
+}
+
+.wordmark {
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  font-size: 18px;
+  color: var(--ink);
+  text-transform: uppercase;
+}
+
+.dark .wordmark {
+  color: var(--cream);
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+
+.link {
+  color: rgba(10, 10, 10, 0.6);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.link:hover {
+  color: var(--ink);
+}
+
+.dark .link {
+  color: rgba(244, 241, 234, 0.6);
+}
+
+.dark .link:hover {
+  color: var(--accent);
+}
+
+.link.active {
+  color: var(--ink);
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 2px;
+}
+
+.dark .link.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.cta {
+  background: var(--accent);
+  color: var(--ink);
+  border: 2px solid var(--ink);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  padding: 9px 18px;
+  text-decoration: none;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.dark .cta {
+  border-color: var(--accent);
+}
+
+.cta:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+.dark .cta:hover {
+  box-shadow: 4px 4px 0 var(--cream);
+}
+
+@media (max-width: 768px) {
+  .nav {
+    flex-wrap: wrap;
+    padding: 10px 16px;
+    gap: 8px 0;
+  }
+  .links {
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+}

@@ -1,0 +1,75 @@
+.frame {
+  position: relative;
+  border: var(--border);
+  background: #000;
+}
+
+.borderAccent {
+  border-color: var(--accent);
+}
+
+.caption {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 9px 16px;
+}
+
+.captionOnBlack {
+  color: var(--accent);
+  background: var(--ink);
+  border-bottom: 1px solid rgba(255, 210, 0, 0.28);
+}
+
+.captionPlain {
+  color: var(--ink);
+  max-width: var(--container);
+  margin: 0 auto;
+  width: 100%;
+  border-bottom: 1px solid rgba(10, 10, 10, 0.15);
+  font-size: 12px;
+}
+
+.media {
+  position: relative;
+  width: 100%;
+}
+
+.fill {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: #000;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.overlayDim {
+  background: rgba(10, 10, 10, 0.18);
+}
+
+.play {
+  background: var(--accent);
+  border: 2px solid var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s ease;
+}
+
+.playCircle {
+  border-radius: 50%;
+}
+
+.playShadow {
+  box-shadow: 6px 6px 0 rgba(10, 10, 10, 0.6);
+}
