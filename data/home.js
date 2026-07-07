@@ -216,7 +216,7 @@ export const comparison = {
       { label: "FORMATEURS", value: "Artistes en activité en studio" },
       { label: "PROJETS RÉALISÉS", value: "Briefs clients réels" },
       { label: "SORTIE", value: "Portfolio orienté agence" },
-      { label: "COÛT DE LA FORMATION", value: "Dès 5 €" },
+      { label: "COÛT DE LA FORMATION", value: "Dès 5 900 €" },
     ],
   },
   autre: {
@@ -231,7 +231,7 @@ export const comparison = {
       { label: "FORMATEURS", value: "Enseignants académiques" },
       { label: "PROJETS RÉALISÉS", value: "Exercices académiques" },
       { label: "SORTIE", value: "Portfolio généraliste" },
-      { label: "COÛT DE LA FORMATION", value: "Souvent 10 000 €+" },
+      { label: "COÛT DE LA FORMATION", value: "Souvent dès 10 000 €" },
     ],
   },
 };
