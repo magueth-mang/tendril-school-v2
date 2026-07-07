@@ -279,7 +279,7 @@ export default function HomeView() {
           <PricingCard data={bootcamps.avance} variant="accent" />
         </div>
         <p data-reveal className={styles.financementNote}>
-          {"// FINANCEMENT CPF & ÉCHELONNEMENT POSSIBLES · BOURSES AU MÉRITE SUR PORTFOLIO"}
+          {"// ÉCHELONNEMENT POSSIBLE · PRISE EN CHARGE ENTREPRISE / OPCO"}
         </p>
       </section>
 

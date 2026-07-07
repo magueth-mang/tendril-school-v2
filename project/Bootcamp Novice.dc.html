@@ -1,341 +1,1601 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
-</head>
-<body>
-<x-dc>
-<helmet>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<style>
-  *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{margin:0;background:#F4F1EA;-webkit-font-smoothing:antialiased}
-  ::selection{background:#0A0A0A;color:#FFD200}
-  @keyframes tcTick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-  .v4-link{text-decoration:none;transition:color .15s ease}
-  .v4-link:hover{color:#0A0A0A !important}
-  .wk-row{transition:background .2s ease}
-  .wk-row:hover{background:#FFD200}
-  .skill-card{transition:transform .2s ease,box-shadow .2s ease}
-  .skill-card:hover{transform:translate(-3px,-3px);box-shadow:6px 6px 0 #FFD200}
-  .cmp-cta{transition:box-shadow .2s ease,transform .2s ease}
-  .cmp-cta:hover{transform:translate(-3px,-3px);box-shadow:6px 6px 0 #FFD200}
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="./support.js"></script>
+  </head>
+  <body>
+    <x-dc>
+      <helmet>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap"
+          rel="stylesheet"
+        />
+        <style>
+          * {
+            box-sizing: border-box;
+          }
+          html {
+            scroll-behavior: smooth;
+          }
+          body {
+            margin: 0;
+            background: #f4f1ea;
+            -webkit-font-smoothing: antialiased;
+          }
+          ::selection {
+            background: #0a0a0a;
+            color: #ffd200;
+          }
+          @keyframes tcTick {
+            from {
+              transform: translateX(0);
+            }
+            to {
+              transform: translateX(-50%);
+            }
+          }
+          .v4-link {
+            text-decoration: none;
+            transition: color 0.15s ease;
+          }
+          .v4-link:hover {
+            color: #0a0a0a !important;
+          }
+          .wk-row {
+            transition: background 0.2s ease;
+          }
+          .wk-row:hover {
+            background: #ffd200;
+          }
+          .skill-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+          }
+          .skill-card:hover {
+            transform: translate(-3px, -3px);
+            box-shadow: 6px 6px 0 #ffd200;
+          }
+          .cmp-cta {
+            transition: box-shadow 0.2s ease, transform 0.2s ease;
+          }
+          .cmp-cta:hover {
+            transform: translate(-3px, -3px);
+            box-shadow: 6px 6px 0 #ffd200;
+          }
 
-  /* --- responsive --- */
-  @media (max-width:1024px){
-    [style*="repeat(5,1fr)"]{grid-template-columns:repeat(3,1fr)!important}
-    [style*="repeat(4,1fr)"]{grid-template-columns:repeat(2,1fr)!important}
-  }
-  @media (max-width:768px){
-    [style*="grid-template-columns"]{grid-template-columns:1fr!important}
-    [style*="repeat(5,1fr)"],[style*="repeat(4,1fr)"],[style*="repeat(3,1fr)"]{grid-template-columns:repeat(2,1fr)!important}
-    nav{flex-wrap:wrap!important;padding:10px 16px!important;gap:8px 0!important}
-    nav>div:last-child{gap:14px!important;flex-wrap:wrap!important;justify-content:flex-start!important}
-    [style*="padding:140px 28px 0"]{padding-top:150px!important}
-    [style*="padding:128px 28px 0"]{padding-top:150px!important}
-    [style*="padding:56px 48px"]{padding:40px 22px!important}
-    [style*="padding:64px 48px"]{padding:44px 22px!important}
-  }
-  @media (max-width:520px){
-    [style*="repeat(5,1fr)"],[style*="repeat(4,1fr)"],[style*="repeat(3,1fr)"]{grid-template-columns:1fr!important}
-    [style*="padding:140px 28px 0"]{padding-top:160px!important}
-    [style*="padding:128px 28px 0"]{padding-top:160px!important}
-  }
-</style>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="image-slot.js"></script>
-</helmet>
+          /* --- responsive --- */
+          @media (max-width: 1024px) {
+            [style*="repeat(5,1fr)"] {
+              grid-template-columns: repeat(3, 1fr) !important;
+            }
+            [style*="repeat(4,1fr)"] {
+              grid-template-columns: repeat(2, 1fr) !important;
+            }
+          }
+          @media (max-width: 768px) {
+            [style*="grid-template-columns"] {
+              grid-template-columns: 1fr !important;
+            }
+            [style*="repeat(5,1fr)"],
+            [style*="repeat(4,1fr)"],
+            [style*="repeat(3,1fr)"] {
+              grid-template-columns: repeat(2, 1fr) !important;
+            }
+            nav {
+              flex-wrap: wrap !important;
+              padding: 10px 16px !important;
+              gap: 8px 0 !important;
+            }
+            nav > div:last-child {
+              gap: 14px !important;
+              flex-wrap: wrap !important;
+              justify-content: flex-start !important;
+            }
+            [style*="padding:140px 28px 0"] {
+              padding-top: 150px !important;
+            }
+            [style*="padding:128px 28px 0"] {
+              padding-top: 150px !important;
+            }
+            [style*="padding:56px 48px"] {
+              padding: 40px 22px !important;
+            }
+            [style*="padding:64px 48px"] {
+              padding: 44px 22px !important;
+            }
+          }
+          @media (max-width: 520px) {
+            [style*="repeat(5,1fr)"],
+            [style*="repeat(4,1fr)"],
+            [style*="repeat(3,1fr)"] {
+              grid-template-columns: 1fr !important;
+            }
+            [style*="padding:140px 28px 0"] {
+              padding-top: 160px !important;
+            }
+            [style*="padding:128px 28px 0"] {
+              padding-top: 160px !important;
+            }
+          }
+        </style>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+        <script src="image-slot.js"></script>
+      </helmet>
 
-<div ref="{{ rootRef }}" style="background:#F4F1EA;color:#0A0A0A;font-family:'Archivo',sans-serif;overflow-x:hidden;position:relative">
-
-  <!-- TICKER -->
-  <div style="position:fixed;top:0;left:0;right:0;z-index:60;background:#0A0A0A;color:#FFD200;overflow:hidden;border-bottom:2px solid #0A0A0A">
-    <div style="display:flex;width:max-content;animation:tcTick 24s linear infinite;padding:8px 0">
-      <div style="display:flex;gap:40px;padding-right:40px;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.04em;white-space:nowrap">
-        <span>BOOTCAMP NOVICE</span><span>★</span><span>AUCUN PRÉREQUIS</span><span>★</span><span>12 SEMAINES · PARIS</span><span>★</span><span>SESSION SEPTEMBRE 2026</span><span>★</span><span>BOOTCAMP NOVICE</span><span>★</span><span>AUCUN PRÉREQUIS</span><span>★</span><span>12 SEMAINES · PARIS</span><span>★</span><span>SESSION SEPTEMBRE 2026</span><span>★</span>
-      </div>
-      <div style="display:flex;gap:40px;padding-right:40px;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.04em;white-space:nowrap" aria-hidden="true">
-        <span>BOOTCAMP NOVICE</span><span>★</span><span>AUCUN PRÉREQUIS</span><span>★</span><span>12 SEMAINES · PARIS</span><span>★</span><span>SESSION SEPTEMBRE 2026</span><span>★</span><span>BOOTCAMP NOVICE</span><span>★</span><span>AUCUN PRÉREQUIS</span><span>★</span><span>12 SEMAINES · PARIS</span><span>★</span><span>SESSION SEPTEMBRE 2026</span><span>★</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- NAV -->
-  <nav style="position:fixed;top:35px;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:14px 28px;background:#F4F1EA;border-bottom:2px solid #0A0A0A">
-    <a href="Tendril%20School%20Landing%20Page.dc.html" style="display:flex;align-items:center;gap:10px;text-decoration:none">
-      <span style="width:34px;height:34px;background:#0A0A0A;display:flex;align-items:center;justify-content:center"><img src="assets/81ee13a7-fab5-4063-8297-c32e129eec02.png" alt="Tendril School" style="height:18px;width:auto;display:block"></span>
-      <span style="font-weight:900;letter-spacing:-.02em;font-size:18px;color:#0A0A0A;text-transform:uppercase">Tendril School</span>
-    </a>
-    <div style="display:flex;align-items:center;gap:26px">
-      <a class="v4-link" href="Tendril%20School%20Programmes.dc.html" style="color:#0A0A0A;font-family:'Space Mono',monospace;font-size:13px;font-weight:700;text-transform:uppercase;border-bottom:2px solid #0A0A0A;padding-bottom:2px">Programmes</a>
-      <a class="v4-link" href="Tendril%20School%20Ecole.dc.html" style="color:rgba(10,10,10,.6);font-family:'Space Mono',monospace;font-size:13px;font-weight:700;text-transform:uppercase">L'École</a>
-      <a class="v4-link" href="Tendril%20School%20Contact.dc.html" style="color:rgba(10,10,10,.6);font-family:'Space Mono',monospace;font-size:13px;font-weight:700;text-transform:uppercase">Contact</a>
-      <a href="Tendril%20School%20Candidature.dc.html" style="background:#FFD200;color:#0A0A0A;border:2px solid #0A0A0A;font-family:'Space Mono',monospace;font-weight:700;font-size:12px;text-transform:uppercase;padding:9px 18px;text-decoration:none;transition:box-shadow .2s ease,transform .2s ease" style-hover="transform:translate(-2px,-2px);box-shadow:4px 4px 0 #0A0A0A">Candidater →</a>
-    </div>
-  </nav>
-
-  <!-- HERO -->
-  <header style="position:relative;padding:128px 28px 0">
-    <div style="max-width:1320px;margin:0 auto;width:100%">
-      <div data-hero="" style="display:flex;align-items:center;gap:10px;font-family:'Space Mono',monospace;font-size:13px;font-weight:700;margin-bottom:26px">
-        <a class="v4-link" href="Tendril%20School%20Programmes.dc.html" style="color:rgba(10,10,10,.55)">PROGRAMMES</a>
-        <span style="color:rgba(10,10,10,.4)">/</span>
-        <span>BOOTCAMP NOVICE</span>
-      </div>
-      <div data-hero="" style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;border-bottom:2px solid #0A0A0A;padding-bottom:18px;margin-bottom:28px;flex-wrap:wrap">
-        <span style="font-family:'Space Mono',monospace;font-size:13px;font-weight:700">NIVEAU 01 — DÉBUTANT</span>
-        <span style="font-family:'Space Mono',monospace;font-size:13px;font-weight:700;color:rgba(10,10,10,.55)">AUCUN PRÉREQUIS</span>
-      </div>
-      <h1 data-hero="" style="font-weight:900;font-size:clamp(48px,9.5vw,150px);line-height:.86;letter-spacing:-.045em;text-transform:uppercase;margin:0 0 30px">Partir de<br><span style="background:#FFD200;padding:0 .08em">zéro.</span></h1>
-      <div data-hero="" style="display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:end;border-top:2px solid #0A0A0A;padding-top:24px;margin-bottom:40px">
-        <p style="font-size:19px;line-height:1.5;font-weight:500;margin:0;max-width:640px"><strong>Apprendre les fondamentaux de la publicité 3D haut de gamme.</strong> 12 semaines pour passer de débutant complet à un premier portfolio crédible dans la beauté et le luxe. On apprend le geste, la matière et la lumière — pas seulement à cliquer dans un logiciel.</p>
-        <div style="display:flex;flex-direction:column;gap:12px;align-items:flex-start">
-          <a href="Tendril%20School%20Candidature.dc.html" style="background:#0A0A0A;color:#FFD200;font-family:'Space Mono',monospace;font-weight:700;font-size:15px;text-transform:uppercase;padding:16px 28px;text-decoration:none;width:100%;text-align:center;transition:box-shadow .2s ease,transform .2s ease" style-hover="transform:translate(-3px,-3px);box-shadow:6px 6px 0 #FFD200">→ Candidater pour septembre</a>
-          <a class="v4-link" href="Bootcamp%20Avance.dc.html" style="font-family:'Space Mono',monospace;font-weight:700;font-size:13px;text-transform:uppercase;color:rgba(10,10,10,.6);border-bottom:2px solid #0A0A0A;padding-bottom:2px">Déjà confirmé ? Voir le bootcamp avancé →</a>
-        </div>
-      </div>
-    </div>
-    <div data-hero="" style="position:relative;border-top:2px solid #0A0A0A;border-bottom:2px solid #0A0A0A">
-      <div style="display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;max-width:1320px;margin:0 auto;padding:8px 28px;border-bottom:1px solid rgba(10,10,10,.15)">
-        <span>FIG. 01 — TRAVAIL PROMO NOVICE, SEMAINE 12</span><span>1920×1080</span>
-      </div>
-      <div style="width:100%;height:480px;display:block;background:#000"></div>
-    </div>
-  </header>
-
-  <!-- FACTS -->
-  <section style="border-bottom:2px solid #0A0A0A">
-    <div data-stagger="" style="max-width:1320px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr)">
-      <div style="padding:28px;border-right:2px solid #0A0A0A"><div style="font-family:'Space Mono',monospace;font-size:11px;color:rgba(10,10,10,.55);margin-bottom:8px;font-weight:700">DURÉE</div><div style="font-weight:900;font-size:26px;letter-spacing:-.02em">12 sem.</div></div>
-      <div style="padding:28px;border-right:2px solid #0A0A0A"><div style="font-family:'Space Mono',monospace;font-size:11px;color:rgba(10,10,10,.55);margin-bottom:8px;font-weight:700">RYTHME</div><div style="font-weight:900;font-size:26px;letter-spacing:-.02em">Plein temps</div></div>
-      <div style="padding:28px;border-right:2px solid #0A0A0A"><div style="font-family:'Space Mono',monospace;font-size:11px;color:rgba(10,10,10,.55);margin-bottom:8px;font-weight:700">PRÉREQUIS</div><div style="font-weight:900;font-size:26px;letter-spacing:-.02em">Aucun</div></div>
-      <div style="padding:28px;border-right:2px solid #0A0A0A"><div style="font-family:'Space Mono',monospace;font-size:11px;color:rgba(10,10,10,.55);margin-bottom:8px;font-weight:700">RENTRÉE</div><div style="font-weight:900;font-size:26px;letter-spacing:-.02em">Sept. 2026</div></div>
-      <div style="padding:28px;background:#FFD200"><div style="font-family:'Space Mono',monospace;font-size:11px;color:rgba(10,10,10,.6);margin-bottom:8px;font-weight:700">TARIF</div><div style="font-weight:900;font-size:26px;letter-spacing:-.02em">7 900 €</div></div>
-    </div>
-  </section>
-
-  <!-- POUR QUI -->
-  <section style="border-bottom:2px solid #0A0A0A;padding:64px 28px">
-    <div data-reveal="" style="max-width:1320px;margin:0 auto;display:grid;grid-template-columns:1fr 1.1fr;gap:48px;align-items:start">
-      <div>
-        <span style="font-family:'Space Mono',monospace;font-size:13px;font-weight:700;display:block;margin-bottom:14px">(01) — POUR QUI ?</span>
-        <h2 style="font-weight:900;font-size:clamp(30px,4.2vw,56px);line-height:.96;letter-spacing:-.03em;text-transform:uppercase;margin:0;max-width:480px">Fait pour les vrais débutants.</h2>
-      </div>
-      <div>
-        <p style="font-size:18px;line-height:1.6;font-weight:500;margin:0 0 24px">Le bootcamp Novice ne suppose aucune connaissance préalable en 3D. Si vous savez allumer un ordinateur et que vous avez de l'œil, on s'occupe du reste.</p>
-        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;border-top:2px solid #0A0A0A">
-          <li style="font-size:16px;font-weight:600;padding:16px 0;border-bottom:1px solid rgba(10,10,10,.14);display:flex;gap:14px"><span style="font-family:'Space Mono',monospace;color:rgba(10,10,10,.4)">01</span>Reconversions professionnelles vers les métiers de l'image</li>
-          <li style="font-size:16px;font-weight:600;padding:16px 0;border-bottom:1px solid rgba(10,10,10,.14);display:flex;gap:14px"><span style="font-family:'Space Mono',monospace;color:rgba(10,10,10,.4)">02</span>Étudiants en art, design ou graphisme</li>
-          <li style="font-size:16px;font-weight:600;padding:16px 0;border-bottom:1px solid rgba(10,10,10,.14);display:flex;gap:14px"><span style="font-family:'Space Mono',monospace;color:rgba(10,10,10,.4)">03</span>Autodidactes qui veulent une base technique solide</li>
-          <li style="font-size:16px;font-weight:600;padding:16px 0;display:flex;gap:14px"><span style="font-family:'Space Mono',monospace;color:rgba(10,10,10,.4)">04</span>Passionnés de beauté &amp; luxe qui veulent en faire un métier</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- COMPETENCES -->
-  <section style="border-bottom:2px solid #0A0A0A;padding:60px 28px">
-    <div style="max-width:1320px;margin:0 auto">
-      <div data-reveal="" style="margin-bottom:36px">
-        <span style="font-family:'Space Mono',monospace;font-size:13px;font-weight:700;display:block;margin-bottom:14px">(02) — LES MODULES</span>
-        <h2 style="font-weight:900;font-size:clamp(34px,5vw,68px);line-height:.94;letter-spacing:-.03em;text-transform:uppercase;margin:0">Les fondamentaux.</h2>
-      </div>
-      <div data-stagger="" style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px">
-        <sc-for list="{{ skills }}" as="s" hint-placeholder-count="10">
-          <div class="skill-card" style="border:2px solid #0A0A0A;padding:26px;background:#F4F1EA">
-            <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:16px">
-              <span style="font-family:'Space Mono',monospace;font-weight:700;font-size:14px;color:rgba(10,10,10,.45)">{{ s.num }}</span>
-              <h3 style="font-weight:800;font-size:21px;letter-spacing:-.02em;margin:0;line-height:1.15">{{ s.title }}</h3>
+      <div
+        ref="{{ rootRef }}"
+        style="
+          background: #f4f1ea;
+          color: #0a0a0a;
+          font-family: 'Archivo', sans-serif;
+          overflow-x: hidden;
+          position: relative;
+        "
+      >
+        <!-- TICKER -->
+        <div
+          style="
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 60;
+            background: #0a0a0a;
+            color: #ffd200;
+            overflow: hidden;
+            border-bottom: 2px solid #0a0a0a;
+          "
+        >
+          <div
+            style="
+              display: flex;
+              width: max-content;
+              animation: tcTick 24s linear infinite;
+              padding: 8px 0;
+            "
+          >
+            <div
+              style="
+                display: flex;
+                gap: 40px;
+                padding-right: 40px;
+                font-family: 'Space Mono', monospace;
+                font-size: 12px;
+                font-weight: 700;
+                letter-spacing: 0.04em;
+                white-space: nowrap;
+              "
+            >
+              <span>BOOTCAMP NOVICE</span><span>★</span
+              ><span>AUCUN PRÉREQUIS</span><span>★</span
+              ><span>12 SEMAINES · PARIS</span><span>★</span
+              ><span>SESSION SEPTEMBRE 2026</span><span>★</span
+              ><span>BOOTCAMP NOVICE</span><span>★</span
+              ><span>AUCUN PRÉREQUIS</span><span>★</span
+              ><span>12 SEMAINES · PARIS</span><span>★</span
+              ><span>SESSION SEPTEMBRE 2026</span><span>★</span>
             </div>
-            <div style="display:flex;flex-wrap:wrap;gap:8px">
-              <sc-for list="{{ s.tags }}" as="tag" hint-placeholder-count="5">
-                <span style="font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:rgba(10,10,10,.7);border:1px solid rgba(10,10,10,.25);padding:6px 10px;letter-spacing:.01em">{{ tag }}</span>
+            <div
+              style="
+                display: flex;
+                gap: 40px;
+                padding-right: 40px;
+                font-family: 'Space Mono', monospace;
+                font-size: 12px;
+                font-weight: 700;
+                letter-spacing: 0.04em;
+                white-space: nowrap;
+              "
+              aria-hidden="true"
+            >
+              <span>BOOTCAMP NOVICE</span><span>★</span
+              ><span>AUCUN PRÉREQUIS</span><span>★</span
+              ><span>12 SEMAINES · PARIS</span><span>★</span
+              ><span>SESSION SEPTEMBRE 2026</span><span>★</span
+              ><span>BOOTCAMP NOVICE</span><span>★</span
+              ><span>AUCUN PRÉREQUIS</span><span>★</span
+              ><span>12 SEMAINES · PARIS</span><span>★</span
+              ><span>SESSION SEPTEMBRE 2026</span><span>★</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- NAV -->
+        <nav
+          style="
+            position: fixed;
+            top: 35px;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 28px;
+            background: #f4f1ea;
+            border-bottom: 2px solid #0a0a0a;
+          "
+        >
+          <a
+            href="Tendril%20School%20Landing%20Page.dc.html"
+            style="
+              display: flex;
+              align-items: center;
+              gap: 10px;
+              text-decoration: none;
+            "
+          >
+            <span
+              style="
+                width: 34px;
+                height: 34px;
+                background: #0a0a0a;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+              ><img
+                src="assets/81ee13a7-fab5-4063-8297-c32e129eec02.png"
+                alt="Tendril School"
+                style="height: 18px; width: auto; display: block"
+            /></span>
+            <span
+              style="
+                font-weight: 900;
+                letter-spacing: -0.02em;
+                font-size: 18px;
+                color: #0a0a0a;
+                text-transform: uppercase;
+              "
+              >Tendril School</span
+            >
+          </a>
+          <div style="display: flex; align-items: center; gap: 26px">
+            <a
+              class="v4-link"
+              href="Tendril%20School%20Programmes.dc.html"
+              style="
+                color: #0a0a0a;
+                font-family: 'Space Mono', monospace;
+                font-size: 13px;
+                font-weight: 700;
+                text-transform: uppercase;
+                border-bottom: 2px solid #0a0a0a;
+                padding-bottom: 2px;
+              "
+              >Programmes</a
+            >
+            <a
+              class="v4-link"
+              href="Tendril%20School%20Ecole.dc.html"
+              style="
+                color: rgba(10, 10, 10, 0.6);
+                font-family: 'Space Mono', monospace;
+                font-size: 13px;
+                font-weight: 700;
+                text-transform: uppercase;
+              "
+              >L'École</a
+            >
+            <a
+              class="v4-link"
+              href="Tendril%20School%20Contact.dc.html"
+              style="
+                color: rgba(10, 10, 10, 0.6);
+                font-family: 'Space Mono', monospace;
+                font-size: 13px;
+                font-weight: 700;
+                text-transform: uppercase;
+              "
+              >Contact</a
+            >
+            <a
+              href="Tendril%20School%20Candidature.dc.html"
+              style="
+                background: #ffd200;
+                color: #0a0a0a;
+                border: 2px solid #0a0a0a;
+                font-family: 'Space Mono', monospace;
+                font-weight: 700;
+                font-size: 12px;
+                text-transform: uppercase;
+                padding: 9px 18px;
+                text-decoration: none;
+                transition: box-shadow 0.2s ease, transform 0.2s ease;
+              "
+              style-hover="transform:translate(-2px,-2px);box-shadow:4px 4px 0 #0A0A0A"
+              >Candidater →</a
+            >
+          </div>
+        </nav>
+
+        <!-- HERO -->
+        <header style="position: relative; padding: 128px 28px 0">
+          <div style="max-width: 1320px; margin: 0 auto; width: 100%">
+            <div
+              data-hero=""
+              style="
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                font-family: 'Space Mono', monospace;
+                font-size: 13px;
+                font-weight: 700;
+                margin-bottom: 26px;
+              "
+            >
+              <a
+                class="v4-link"
+                href="Tendril%20School%20Programmes.dc.html"
+                style="color: rgba(10, 10, 10, 0.55)"
+                >PROGRAMMES</a
+              >
+              <span style="color: rgba(10, 10, 10, 0.4)">/</span>
+              <span>BOOTCAMP NOVICE</span>
+            </div>
+            <div
+              data-hero=""
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-end;
+                gap: 24px;
+                border-bottom: 2px solid #0a0a0a;
+                padding-bottom: 18px;
+                margin-bottom: 28px;
+                flex-wrap: wrap;
+              "
+            >
+              <span
+                style="
+                  font-family: 'Space Mono', monospace;
+                  font-size: 13px;
+                  font-weight: 700;
+                "
+                >NIVEAU 01 — DÉBUTANT</span
+              >
+              <span
+                style="
+                  font-family: 'Space Mono', monospace;
+                  font-size: 13px;
+                  font-weight: 700;
+                  color: rgba(10, 10, 10, 0.55);
+                "
+                >AUCUN PRÉREQUIS</span
+              >
+            </div>
+            <h1
+              data-hero=""
+              style="
+                font-weight: 900;
+                font-size: clamp(48px, 9.5vw, 150px);
+                line-height: 0.86;
+                letter-spacing: -0.045em;
+                text-transform: uppercase;
+                margin: 0 0 30px;
+              "
+            >
+              Partir de<br /><span
+                style="background: #ffd200; padding: 0 0.08em"
+                >zéro.</span
+              >
+            </h1>
+            <div
+              data-hero=""
+              style="
+                display: grid;
+                grid-template-columns: 1.3fr 1fr;
+                gap: 40px;
+                align-items: end;
+                border-top: 2px solid #0a0a0a;
+                padding-top: 24px;
+                margin-bottom: 40px;
+              "
+            >
+              <p
+                style="
+                  font-size: 19px;
+                  line-height: 1.5;
+                  font-weight: 500;
+                  margin: 0;
+                  max-width: 640px;
+                "
+              >
+                <strong
+                  >Apprendre les fondamentaux de la publicité 3D haut de
+                  gamme.</strong
+                >
+                12 semaines pour passer de débutant complet à un premier
+                portfolio crédible dans la beauté et le luxe. On apprend le
+                geste, la matière et la lumière — pas seulement à cliquer dans
+                un logiciel.
+              </p>
+              <div
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  gap: 12px;
+                  align-items: flex-start;
+                "
+              >
+                <a
+                  href="Tendril%20School%20Candidature.dc.html"
+                  style="
+                    background: #0a0a0a;
+                    color: #ffd200;
+                    font-family: 'Space Mono', monospace;
+                    font-weight: 700;
+                    font-size: 15px;
+                    text-transform: uppercase;
+                    padding: 16px 28px;
+                    text-decoration: none;
+                    width: 100%;
+                    text-align: center;
+                    transition: box-shadow 0.2s ease, transform 0.2s ease;
+                  "
+                  style-hover="transform:translate(-3px,-3px);box-shadow:6px 6px 0 #FFD200"
+                  >→ Candidater pour septembre</a
+                >
+                <a
+                  class="v4-link"
+                  href="Bootcamp%20Avance.dc.html"
+                  style="
+                    font-family: 'Space Mono', monospace;
+                    font-weight: 700;
+                    font-size: 13px;
+                    text-transform: uppercase;
+                    color: rgba(10, 10, 10, 0.6);
+                    border-bottom: 2px solid #0a0a0a;
+                    padding-bottom: 2px;
+                  "
+                  >Déjà confirmé ? Voir le bootcamp avancé →</a
+                >
+              </div>
+            </div>
+          </div>
+          <div
+            data-hero=""
+            style="
+              position: relative;
+              border-top: 2px solid #0a0a0a;
+              border-bottom: 2px solid #0a0a0a;
+            "
+          >
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                font-family: 'Space Mono', monospace;
+                font-size: 12px;
+                font-weight: 700;
+                max-width: 1320px;
+                margin: 0 auto;
+                padding: 8px 28px;
+                border-bottom: 1px solid rgba(10, 10, 10, 0.15);
+              "
+            >
+              <span>FIG. 01 — TRAVAIL PROMO NOVICE, SEMAINE 12</span
+              ><span>1920×1080</span>
+            </div>
+            <div
+              style="
+                width: 100%;
+                height: 480px;
+                display: block;
+                background: #000;
+              "
+            ></div>
+          </div>
+        </header>
+
+        <!-- FACTS -->
+        <section style="border-bottom: 2px solid #0a0a0a">
+          <div
+            data-stagger=""
+            style="
+              max-width: 1320px;
+              margin: 0 auto;
+              display: grid;
+              grid-template-columns: repeat(5, 1fr);
+            "
+          >
+            <div style="padding: 28px; border-right: 2px solid #0a0a0a">
+              <div
+                style="
+                  font-family: 'Space Mono', monospace;
+                  font-size: 11px;
+                  color: rgba(10, 10, 10, 0.55);
+                  margin-bottom: 8px;
+                  font-weight: 700;
+                "
+              >
+                DURÉE
+              </div>
+              <div
+                style="
+                  font-weight: 900;
+                  font-size: 26px;
+                  letter-spacing: -0.02em;
+                "
+              >
+                12 sem.
+              </div>
+            </div>
+            <div style="padding: 28px; border-right: 2px solid #0a0a0a">
+              <div
+                style="
+                  font-family: 'Space Mono', monospace;
+                  font-size: 11px;
+                  color: rgba(10, 10, 10, 0.55);
+                  margin-bottom: 8px;
+                  font-weight: 700;
+                "
+              >
+                RYTHME
+              </div>
+              <div
+                style="
+                  font-weight: 900;
+                  font-size: 26px;
+                  letter-spacing: -0.02em;
+                "
+              >
+                Plein temps
+              </div>
+            </div>
+            <div style="padding: 28px; border-right: 2px solid #0a0a0a">
+              <div
+                style="
+                  font-family: 'Space Mono', monospace;
+                  font-size: 11px;
+                  color: rgba(10, 10, 10, 0.55);
+                  margin-bottom: 8px;
+                  font-weight: 700;
+                "
+              >
+                PRÉREQUIS
+              </div>
+              <div
+                style="
+                  font-weight: 900;
+                  font-size: 26px;
+                  letter-spacing: -0.02em;
+                "
+              >
+                Aucun
+              </div>
+            </div>
+            <div style="padding: 28px; border-right: 2px solid #0a0a0a">
+              <div
+                style="
+                  font-family: 'Space Mono', monospace;
+                  font-size: 11px;
+                  color: rgba(10, 10, 10, 0.55);
+                  margin-bottom: 8px;
+                  font-weight: 700;
+                "
+              >
+                RENTRÉE
+              </div>
+              <div
+                style="
+                  font-weight: 900;
+                  font-size: 26px;
+                  letter-spacing: -0.02em;
+                "
+              >
+                Sept. 2026
+              </div>
+            </div>
+            <div style="padding: 28px; background: #ffd200">
+              <div
+                style="
+                  font-family: 'Space Mono', monospace;
+                  font-size: 11px;
+                  color: rgba(10, 10, 10, 0.6);
+                  margin-bottom: 8px;
+                  font-weight: 700;
+                "
+              >
+                TARIF
+              </div>
+              <div
+                style="
+                  font-weight: 900;
+                  font-size: 26px;
+                  letter-spacing: -0.02em;
+                "
+              >
+                5 900 €
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- POUR QUI -->
+        <section style="border-bottom: 2px solid #0a0a0a; padding: 64px 28px">
+          <div
+            data-reveal=""
+            style="
+              max-width: 1320px;
+              margin: 0 auto;
+              display: grid;
+              grid-template-columns: 1fr 1.1fr;
+              gap: 48px;
+              align-items: start;
+            "
+          >
+            <div>
+              <span
+                style="
+                  font-family: 'Space Mono', monospace;
+                  font-size: 13px;
+                  font-weight: 700;
+                  display: block;
+                  margin-bottom: 14px;
+                "
+                >(01) — POUR QUI ?</span
+              >
+              <h2
+                style="
+                  font-weight: 900;
+                  font-size: clamp(30px, 4.2vw, 56px);
+                  line-height: 0.96;
+                  letter-spacing: -0.03em;
+                  text-transform: uppercase;
+                  margin: 0;
+                  max-width: 480px;
+                "
+              >
+                Fait pour les vrais débutants.
+              </h2>
+            </div>
+            <div>
+              <p
+                style="
+                  font-size: 18px;
+                  line-height: 1.6;
+                  font-weight: 500;
+                  margin: 0 0 24px;
+                "
+              >
+                Le bootcamp Novice ne suppose aucune connaissance préalable en
+                3D. Si vous savez allumer un ordinateur et que vous avez de
+                l'œil, on s'occupe du reste.
+              </p>
+              <ul
+                style="
+                  list-style: none;
+                  padding: 0;
+                  margin: 0;
+                  display: flex;
+                  flex-direction: column;
+                  border-top: 2px solid #0a0a0a;
+                "
+              >
+                <li
+                  style="
+                    font-size: 16px;
+                    font-weight: 600;
+                    padding: 16px 0;
+                    border-bottom: 1px solid rgba(10, 10, 10, 0.14);
+                    display: flex;
+                    gap: 14px;
+                  "
+                >
+                  <span
+                    style="
+                      font-family: 'Space Mono', monospace;
+                      color: rgba(10, 10, 10, 0.4);
+                    "
+                    >01</span
+                  >Reconversions professionnelles vers les métiers de l'image
+                </li>
+                <li
+                  style="
+                    font-size: 16px;
+                    font-weight: 600;
+                    padding: 16px 0;
+                    border-bottom: 1px solid rgba(10, 10, 10, 0.14);
+                    display: flex;
+                    gap: 14px;
+                  "
+                >
+                  <span
+                    style="
+                      font-family: 'Space Mono', monospace;
+                      color: rgba(10, 10, 10, 0.4);
+                    "
+                    >02</span
+                  >Étudiants en art, design ou graphisme
+                </li>
+                <li
+                  style="
+                    font-size: 16px;
+                    font-weight: 600;
+                    padding: 16px 0;
+                    border-bottom: 1px solid rgba(10, 10, 10, 0.14);
+                    display: flex;
+                    gap: 14px;
+                  "
+                >
+                  <span
+                    style="
+                      font-family: 'Space Mono', monospace;
+                      color: rgba(10, 10, 10, 0.4);
+                    "
+                    >03</span
+                  >Autodidactes qui veulent une base technique solide
+                </li>
+                <li
+                  style="
+                    font-size: 16px;
+                    font-weight: 600;
+                    padding: 16px 0;
+                    display: flex;
+                    gap: 14px;
+                  "
+                >
+                  <span
+                    style="
+                      font-family: 'Space Mono', monospace;
+                      color: rgba(10, 10, 10, 0.4);
+                    "
+                    >04</span
+                  >Passionnés de beauté &amp; luxe qui veulent en faire un
+                  métier
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- COMPETENCES -->
+        <section style="border-bottom: 2px solid #0a0a0a; padding: 60px 28px">
+          <div style="max-width: 1320px; margin: 0 auto">
+            <div data-reveal="" style="margin-bottom: 36px">
+              <span
+                style="
+                  font-family: 'Space Mono', monospace;
+                  font-size: 13px;
+                  font-weight: 700;
+                  display: block;
+                  margin-bottom: 14px;
+                "
+                >(02) — LES MODULES</span
+              >
+              <h2
+                style="
+                  font-weight: 900;
+                  font-size: clamp(34px, 5vw, 68px);
+                  line-height: 0.94;
+                  letter-spacing: -0.03em;
+                  text-transform: uppercase;
+                  margin: 0;
+                "
+              >
+                Les fondamentaux.
+              </h2>
+            </div>
+            <div
+              data-stagger=""
+              style="
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+              "
+            >
+              <sc-for list="{{ skills }}" as="s" hint-placeholder-count="10">
+                <div
+                  class="skill-card"
+                  style="
+                    border: 2px solid #0a0a0a;
+                    padding: 26px;
+                    background: #f4f1ea;
+                  "
+                >
+                  <div
+                    style="
+                      display: flex;
+                      align-items: baseline;
+                      gap: 14px;
+                      margin-bottom: 16px;
+                    "
+                  >
+                    <span
+                      style="
+                        font-family: 'Space Mono', monospace;
+                        font-weight: 700;
+                        font-size: 14px;
+                        color: rgba(10, 10, 10, 0.45);
+                      "
+                      >{{ s.num }}</span
+                    >
+                    <h3
+                      style="
+                        font-weight: 800;
+                        font-size: 21px;
+                        letter-spacing: -0.02em;
+                        margin: 0;
+                        line-height: 1.15;
+                      "
+                    >
+                      {{ s.title }}
+                    </h3>
+                  </div>
+                  <div style="display: flex; flex-wrap: wrap; gap: 8px">
+                    <sc-for
+                      list="{{ s.tags }}"
+                      as="tag"
+                      hint-placeholder-count="5"
+                    >
+                      <span
+                        style="
+                          font-family: 'Space Mono', monospace;
+                          font-size: 11px;
+                          font-weight: 700;
+                          color: rgba(10, 10, 10, 0.7);
+                          border: 1px solid rgba(10, 10, 10, 0.25);
+                          padding: 6px 10px;
+                          letter-spacing: 0.01em;
+                        "
+                        >{{ tag }}</span
+                      >
+                    </sc-for>
+                  </div>
+                </div>
               </sc-for>
             </div>
           </div>
-        </sc-for>
-      </div>
-    </div>
-  </section>
+        </section>
 
-  <!-- PROGRAMME SEMAINE -->
-  <section style="border-bottom:2px solid #0A0A0A">
-    <div style="max-width:1320px;margin:0 auto;padding:60px 28px 0">
-      <div data-reveal="" style="margin-bottom:40px">
-        <span style="font-family:'Space Mono',monospace;font-size:13px;font-weight:700;display:block;margin-bottom:14px">(03) — LE PROGRAMME</span>
-        <h2 style="font-weight:900;font-size:clamp(34px,5vw,68px);line-height:.94;letter-spacing:-.03em;text-transform:uppercase;margin:0">Semaine par semaine.</h2>
-      </div>
-    </div>
-    <div data-stagger="">
-      <sc-for list="{{ weeks }}" as="m" hint-placeholder-count="6">
-        <div class="wk-row" style="border-top:2px solid #0A0A0A">
-          <div style="max-width:1320px;margin:0 auto;padding:26px 28px;display:grid;grid-template-columns:130px 1.1fr 1.6fr;gap:30px;align-items:baseline">
-            <span style="font-family:'Space Mono',monospace;font-weight:700;font-size:14px;color:rgba(10,10,10,.6)">{{ m.weeks }}</span>
-            <h3 style="font-weight:800;font-size:clamp(20px,2.4vw,30px);letter-spacing:-.02em;margin:0">{{ m.title }}</h3>
-            <p style="font-size:15px;line-height:1.5;color:rgba(10,10,10,.7);margin:0;font-weight:500">{{ m.desc }}</p>
+        <!-- PROGRAMME SEMAINE -->
+        <section style="border-bottom: 2px solid #0a0a0a">
+          <div style="max-width: 1320px; margin: 0 auto; padding: 60px 28px 0">
+            <div data-reveal="" style="margin-bottom: 40px">
+              <span
+                style="
+                  font-family: 'Space Mono', monospace;
+                  font-size: 13px;
+                  font-weight: 700;
+                  display: block;
+                  margin-bottom: 14px;
+                "
+                >(03) — LE PROGRAMME</span
+              >
+              <h2
+                style="
+                  font-weight: 900;
+                  font-size: clamp(34px, 5vw, 68px);
+                  line-height: 0.94;
+                  letter-spacing: -0.03em;
+                  text-transform: uppercase;
+                  margin: 0;
+                "
+              >
+                Semaine par semaine.
+              </h2>
+            </div>
           </div>
-        </div>
-      </sc-for>
-      <div style="border-top:2px solid #0A0A0A;border-bottom:2px solid #0A0A0A;height:0"></div>
-    </div>
-  </section>
-
-  <!-- OUTILS -->
-  <section style="background:#0A0A0A;color:#F4F1EA;border-bottom:2px solid #0A0A0A;padding:60px 28px">
-    <div style="max-width:1320px;margin:0 auto">
-      <div data-reveal="" style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:34px;flex-wrap:wrap">
-        <div>
-          <span style="font-family:'Space Mono',monospace;font-size:13px;font-weight:700;color:#FFD200;display:block;margin-bottom:14px">(04) — OUTILS</span>
-          <h2 style="font-weight:900;font-size:clamp(30px,4.4vw,58px);line-height:.96;letter-spacing:-.03em;text-transform:uppercase;margin:0">Les logiciels du métier.</h2>
-        </div>
-        <p style="font-size:14px;line-height:1.6;font-weight:500;color:rgba(244,241,234,.6);margin:0;max-width:340px">Licences étudiantes fournies pendant toute la formation. On apprend les outils standards des studios, pas des solutions maison.</p>
-      </div>
-      <div data-stagger="" style="display:grid;grid-template-columns:repeat(4,1fr);border-top:2px solid #FFD200;border-left:2px solid #FFD200">
-        <sc-for list="{{ tools }}" as="t" hint-placeholder-count="4">
-          <div style="border-right:2px solid #FFD200;border-bottom:2px solid #FFD200;padding:28px 24px">
-            <div style="font-weight:900;font-size:24px;letter-spacing:-.02em;color:#FFD200;margin-bottom:8px">{{ t.name }}</div>
-            <div style="font-family:'Space Mono',monospace;font-size:12px;color:rgba(244,241,234,.6);font-weight:700">{{ t.use }}</div>
+          <div data-stagger="">
+            <sc-for list="{{ weeks }}" as="m" hint-placeholder-count="6">
+              <div class="wk-row" style="border-top: 2px solid #0a0a0a">
+                <div
+                  style="
+                    max-width: 1320px;
+                    margin: 0 auto;
+                    padding: 26px 28px;
+                    display: grid;
+                    grid-template-columns: 130px 1.1fr 1.6fr;
+                    gap: 30px;
+                    align-items: baseline;
+                  "
+                >
+                  <span
+                    style="
+                      font-family: 'Space Mono', monospace;
+                      font-weight: 700;
+                      font-size: 14px;
+                      color: rgba(10, 10, 10, 0.6);
+                    "
+                    >{{ m.weeks }}</span
+                  >
+                  <h3
+                    style="
+                      font-weight: 800;
+                      font-size: clamp(20px, 2.4vw, 30px);
+                      letter-spacing: -0.02em;
+                      margin: 0;
+                    "
+                  >
+                    {{ m.title }}
+                  </h3>
+                  <p
+                    style="
+                      font-size: 15px;
+                      line-height: 1.5;
+                      color: rgba(10, 10, 10, 0.7);
+                      margin: 0;
+                      font-weight: 500;
+                    "
+                  >
+                    {{ m.desc }}
+                  </p>
+                </div>
+              </div>
+            </sc-for>
+            <div
+              style="
+                border-top: 2px solid #0a0a0a;
+                border-bottom: 2px solid #0a0a0a;
+                height: 0;
+              "
+            ></div>
           </div>
-        </sc-for>
-      </div>
-    </div>
-  </section>
+        </section>
 
-  <!-- RESULTAT -->
-  <section style="border-bottom:2px solid #0A0A0A;padding:64px 28px">
-    <div data-reveal="" style="max-width:1320px;margin:0 auto;display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center">
-      <div style="border:2px solid #0A0A0A">
-        <div style="display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:#FFD200;background:#0A0A0A;padding:9px 16px"><span>FIG. 02 — PROJET FINAL</span><span>BRIEF ENCADRÉ</span></div>
-        <div style="width:100%;height:380px;display:block;background:#000"></div>
-      </div>
-      <div>
-        <span style="font-family:'Space Mono',monospace;font-size:13px;font-weight:700;display:block;margin-bottom:14px">(05) — À LA FIN DU BOOTCAMP</span>
-        <h2 style="font-weight:900;font-size:clamp(30px,4.4vw,58px);line-height:.96;letter-spacing:-.03em;text-transform:uppercase;margin:0 0 22px">Prêt à produire.</h2>
-        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0;border-top:2px solid #0A0A0A">
-          <li style="font-size:16px;font-weight:600;padding:14px 0;border-bottom:1px solid rgba(10,10,10,.14);display:flex;gap:14px"><span style="font-weight:800">✔</span>Réaliser un packshot 3D professionnel</li>
-          <li style="font-size:16px;font-weight:600;padding:14px 0;border-bottom:1px solid rgba(10,10,10,.14);display:flex;gap:14px"><span style="font-weight:800">✔</span>Produire une animation publicitaire</li>
-          <li style="font-size:16px;font-weight:600;padding:14px 0;border-bottom:1px solid rgba(10,10,10,.14);display:flex;gap:14px"><span style="font-weight:800">✔</span>Créer un rendu photoréaliste</li>
-          <li style="font-size:16px;font-weight:600;padding:14px 0;display:flex;gap:14px"><span style="font-weight:800">✔</span>Construire un premier portfolio professionnel</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+        <!-- OUTILS -->
+        <section
+          style="
+            background: #0a0a0a;
+            color: #f4f1ea;
+            border-bottom: 2px solid #0a0a0a;
+            padding: 60px 28px;
+          "
+        >
+          <div style="max-width: 1320px; margin: 0 auto">
+            <div
+              data-reveal=""
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-end;
+                gap: 24px;
+                margin-bottom: 34px;
+                flex-wrap: wrap;
+              "
+            >
+              <div>
+                <span
+                  style="
+                    font-family: 'Space Mono', monospace;
+                    font-size: 13px;
+                    font-weight: 700;
+                    color: #ffd200;
+                    display: block;
+                    margin-bottom: 14px;
+                  "
+                  >(04) — OUTILS</span
+                >
+                <h2
+                  style="
+                    font-weight: 900;
+                    font-size: clamp(30px, 4.4vw, 58px);
+                    line-height: 0.96;
+                    letter-spacing: -0.03em;
+                    text-transform: uppercase;
+                    margin: 0;
+                  "
+                >
+                  Les logiciels du métier.
+                </h2>
+              </div>
+              <p
+                style="
+                  font-size: 14px;
+                  line-height: 1.6;
+                  font-weight: 500;
+                  color: rgba(244, 241, 234, 0.6);
+                  margin: 0;
+                  max-width: 340px;
+                "
+              >
+                Licences étudiantes fournies pendant toute la formation. On
+                apprend les outils standards des studios, pas des solutions
+                maison.
+              </p>
+            </div>
+            <div
+              data-stagger=""
+              style="
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                border-top: 2px solid #ffd200;
+                border-left: 2px solid #ffd200;
+              "
+            >
+              <sc-for list="{{ tools }}" as="t" hint-placeholder-count="4">
+                <div
+                  style="
+                    border-right: 2px solid #ffd200;
+                    border-bottom: 2px solid #ffd200;
+                    padding: 28px 24px;
+                  "
+                >
+                  <div
+                    style="
+                      font-weight: 900;
+                      font-size: 24px;
+                      letter-spacing: -0.02em;
+                      color: #ffd200;
+                      margin-bottom: 8px;
+                    "
+                  >
+                    {{ t.name }}
+                  </div>
+                  <div
+                    style="
+                      font-family: 'Space Mono', monospace;
+                      font-size: 12px;
+                      color: rgba(244, 241, 234, 0.6);
+                      font-weight: 700;
+                    "
+                  >
+                    {{ t.use }}
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </section>
 
-  <!-- TARIF & FINANCEMENT -->
-  <section style="border-bottom:2px solid #0A0A0A;padding:60px 28px">
-    <div data-reveal="" style="max-width:1320px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:2px solid #0A0A0A;border-left:2px solid #0A0A0A">
-      <div style="border-right:2px solid #0A0A0A;border-bottom:2px solid #0A0A0A;padding:36px 32px;background:#FFD200">
-        <span style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:rgba(10,10,10,.6)">TARIF DU BOOTCAMP NOVICE</span>
-        <div style="font-weight:900;font-size:64px;letter-spacing:-.035em;margin:10px 0 4px">7 900&nbsp;€</div>
-        <p style="font-size:14px;line-height:1.5;font-weight:600;margin:0">Tout compris : licences logicielles, accès studio, briefs clients et accompagnement portfolio.</p>
-      </div>
-      <div style="border-right:2px solid #0A0A0A;border-bottom:2px solid #0A0A0A;padding:36px 32px">
-        <span style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:rgba(10,10,10,.55)">FINANCEMENT</span>
-        <ul style="list-style:none;padding:0;margin:18px 0 0;display:flex;flex-direction:column;gap:12px">
-          <li style="font-size:16px;font-weight:600;border-top:1px solid rgba(10,10,10,.14);padding-top:12px">Éligible CPF</li>
-          <li style="font-size:16px;font-weight:600;border-top:1px solid rgba(10,10,10,.14);padding-top:12px">Paiement échelonné possible</li>
-          <li style="font-size:16px;font-weight:600;border-top:1px solid rgba(10,10,10,.14);padding-top:12px">Bourses au mérite sur dossier</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+        <!-- RESULTAT -->
+        <section style="border-bottom: 2px solid #0a0a0a; padding: 64px 28px">
+          <div
+            data-reveal=""
+            style="
+              max-width: 1320px;
+              margin: 0 auto;
+              display: grid;
+              grid-template-columns: 1.05fr 1fr;
+              gap: 48px;
+              align-items: center;
+            "
+          >
+            <div style="border: 2px solid #0a0a0a">
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  font-family: 'Space Mono', monospace;
+                  font-size: 12px;
+                  font-weight: 700;
+                  color: #ffd200;
+                  background: #0a0a0a;
+                  padding: 9px 16px;
+                "
+              >
+                <span>FIG. 02 — PROJET FINAL</span><span>BRIEF ENCADRÉ</span>
+              </div>
+              <div
+                style="
+                  width: 100%;
+                  height: 380px;
+                  display: block;
+                  background: #000;
+                "
+              ></div>
+            </div>
+            <div>
+              <span
+                style="
+                  font-family: 'Space Mono', monospace;
+                  font-size: 13px;
+                  font-weight: 700;
+                  display: block;
+                  margin-bottom: 14px;
+                "
+                >(05) — À LA FIN DU BOOTCAMP</span
+              >
+              <h2
+                style="
+                  font-weight: 900;
+                  font-size: clamp(30px, 4.4vw, 58px);
+                  line-height: 0.96;
+                  letter-spacing: -0.03em;
+                  text-transform: uppercase;
+                  margin: 0 0 22px;
+                "
+              >
+                Prêt à produire.
+              </h2>
+              <ul
+                style="
+                  list-style: none;
+                  padding: 0;
+                  margin: 0;
+                  display: flex;
+                  flex-direction: column;
+                  gap: 0;
+                  border-top: 2px solid #0a0a0a;
+                "
+              >
+                <li
+                  style="
+                    font-size: 16px;
+                    font-weight: 600;
+                    padding: 14px 0;
+                    border-bottom: 1px solid rgba(10, 10, 10, 0.14);
+                    display: flex;
+                    gap: 14px;
+                  "
+                >
+                  <span style="font-weight: 800">✔</span>Réaliser un packshot 3D
+                  professionnel
+                </li>
+                <li
+                  style="
+                    font-size: 16px;
+                    font-weight: 600;
+                    padding: 14px 0;
+                    border-bottom: 1px solid rgba(10, 10, 10, 0.14);
+                    display: flex;
+                    gap: 14px;
+                  "
+                >
+                  <span style="font-weight: 800">✔</span>Produire une animation
+                  publicitaire
+                </li>
+                <li
+                  style="
+                    font-size: 16px;
+                    font-weight: 600;
+                    padding: 14px 0;
+                    border-bottom: 1px solid rgba(10, 10, 10, 0.14);
+                    display: flex;
+                    gap: 14px;
+                  "
+                >
+                  <span style="font-weight: 800">✔</span>Créer un rendu
+                  photoréaliste
+                </li>
+                <li
+                  style="
+                    font-size: 16px;
+                    font-weight: 600;
+                    padding: 14px 0;
+                    display: flex;
+                    gap: 14px;
+                  "
+                >
+                  <span style="font-weight: 800">✔</span>Construire un premier
+                  portfolio professionnel
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
 
-  <!-- CTA -->
-  <section style="background:#0A0A0A;color:#F4F1EA;border-bottom:2px solid #0A0A0A;padding:74px 28px">
-    <div data-reveal="" style="max-width:1320px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:40px;flex-wrap:wrap">
-      <div>
-        <span style="font-family:'Space Mono',monospace;font-size:13px;font-weight:700;color:#FFD200;display:block;margin-bottom:16px">(06) — CANDIDATURE</span>
-        <h2 style="font-weight:900;font-size:clamp(34px,5vw,72px);line-height:.9;letter-spacing:-.035em;text-transform:uppercase;margin:0;max-width:720px">Prêt à partir de zéro ?</h2>
-      </div>
-      <a href="Tendril%20School%20Candidature.dc.html" class="cmp-cta" style="background:#FFD200;color:#0A0A0A;font-family:'Space Mono',monospace;font-weight:700;font-size:15px;text-transform:uppercase;padding:18px 30px;text-decoration:none;white-space:nowrap">→ Candidater pour septembre</a>
-    </div>
-  </section>
+        <!-- TARIF & FINANCEMENT -->
+        <section style="border-bottom: 2px solid #0a0a0a; padding: 60px 28px">
+          <div
+            data-reveal=""
+            style="
+              max-width: 1320px;
+              margin: 0 auto;
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              gap: 0;
+              border-top: 2px solid #0a0a0a;
+              border-left: 2px solid #0a0a0a;
+            "
+          >
+            <div
+              style="
+                border-right: 2px solid #0a0a0a;
+                border-bottom: 2px solid #0a0a0a;
+                padding: 36px 32px;
+                background: #ffd200;
+              "
+            >
+              <span
+                style="
+                  font-family: 'Space Mono', monospace;
+                  font-size: 12px;
+                  font-weight: 700;
+                  color: rgba(10, 10, 10, 0.6);
+                "
+                >TARIF DU BOOTCAMP NOVICE</span
+              >
+              <div
+                style="
+                  font-weight: 900;
+                  font-size: 64px;
+                  letter-spacing: -0.035em;
+                  margin: 10px 0 4px;
+                "
+              >
+                5 900&nbsp;€
+              </div>
+              <p
+                style="
+                  font-size: 14px;
+                  line-height: 1.5;
+                  font-weight: 600;
+                  margin: 0;
+                "
+              >
+                Tout compris : licences logicielles, accès studio, briefs
+                clients et accompagnement portfolio.
+              </p>
+            </div>
+            <div
+              style="
+                border-right: 2px solid #0a0a0a;
+                border-bottom: 2px solid #0a0a0a;
+                padding: 36px 32px;
+              "
+            >
+              <span
+                style="
+                  font-family: 'Space Mono', monospace;
+                  font-size: 12px;
+                  font-weight: 700;
+                  color: rgba(10, 10, 10, 0.55);
+                "
+                >FINANCEMENT</span
+              >
+              <ul
+                style="
+                  list-style: none;
+                  padding: 0;
+                  margin: 18px 0 0;
+                  display: flex;
+                  flex-direction: column;
+                  gap: 12px;
+                "
+              >
+                <li
+                  style="
+                    font-size: 16px;
+                    font-weight: 600;
+                    border-top: 1px solid rgba(10, 10, 10, 0.14);
+                    padding-top: 12px;
+                  "
+                >
+                  Éligible CPF
+                </li>
+                <li
+                  style="
+                    font-size: 16px;
+                    font-weight: 600;
+                    border-top: 1px solid rgba(10, 10, 10, 0.14);
+                    padding-top: 12px;
+                  "
+                >
+                  Paiement échelonné possible
+                </li>
+                <li
+                  style="
+                    font-size: 16px;
+                    font-weight: 600;
+                    border-top: 1px solid rgba(10, 10, 10, 0.14);
+                    padding-top: 12px;
+                  "
+                >
+                  Bourses au mérite sur dossier
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
 
-  <!-- FOOTER -->
-  <footer style="background:#0A0A0A;color:#F4F1EA;padding:56px 28px 36px;border-top:2px solid #FFD200">
-    <div style="max-width:1320px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap">
-      <div>
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
-          <span style="width:34px;height:34px;background:#FFD200;display:flex;align-items:center;justify-content:center"><img src="assets/81ee13a7-fab5-4063-8297-c32e129eec02.png" alt="" style="height:18px;width:auto"></span>
-          <span style="font-weight:900;letter-spacing:-.02em;font-size:17px;text-transform:uppercase">Tendril School</span>
-        </div>
-        <p style="font-family:'Space Mono',monospace;font-size:12px;color:rgba(244,241,234,.55);margin:0;max-width:300px;line-height:1.7">L'ÉCOLE DE MODÉLISATION 3D DÉDIÉE À LA BEAUTÉ ET AU LUXE. PARIS.</p>
-      </div>
-      <div style="display:flex;gap:56px;flex-wrap:wrap">
-        <div style="display:flex;flex-direction:column;gap:10px">
-          <span style="font-family:'Space Mono',monospace;font-size:11px;color:#FFD200;margin-bottom:4px;font-weight:700">ÉCOLE</span>
-          <a class="v4-link" href="Tendril%20School%20Programmes.dc.html" style="color:rgba(244,241,234,.7);font-size:14px;font-weight:600">Programmes</a>
-          <a class="v4-link" href="Bootcamp%20Avance.dc.html" style="color:rgba(244,241,234,.7);font-size:14px;font-weight:600">Bootcamp Avancé</a>
-          <a class="v4-link" href="Tendril%20School%20Ecole.dc.html" style="color:rgba(244,241,234,.7);font-size:14px;font-weight:600">L'École</a>
-          <a class="v4-link" href="Tendril%20School%20Contact.dc.html" style="color:rgba(244,241,234,.7);font-size:14px;font-weight:600">Contact</a>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:10px">
-          <span style="font-family:'Space Mono',monospace;font-size:11px;color:#FFD200;margin-bottom:4px;font-weight:700">SUIVRE</span>
-          <a class="v4-link" href="#" style="color:rgba(244,241,234,.7);font-size:14px;font-weight:600">Instagram</a>
-          <a class="v4-link" href="#" style="color:rgba(244,241,234,.7);font-size:14px;font-weight:600">Behance</a>
-          <a class="v4-link" href="#" style="color:rgba(244,241,234,.7);font-size:14px;font-weight:600">LinkedIn</a>
-        </div>
-      </div>
-    </div>
-    <div style="max-width:1320px;margin:44px auto 0;padding-top:22px;border-top:1px solid rgba(244,241,234,.16);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-family:'Space Mono',monospace;font-size:11px;color:rgba(244,241,234,.4)">
-      <span>© 2026 TENDRIL SCHOOL. TOUS DROITS RÉSERVÉS.</span>
-      <span style="display:flex;gap:18px;flex-wrap:wrap"><a class="v4-link" href="Tendril%20School%20Legal.dc.html#mentions" style="color:rgba(244,241,234,.4)">MENTIONS LÉGALES</a><a class="v4-link" href="Tendril%20School%20Legal.dc.html#cgu" style="color:rgba(244,241,234,.4)">CGU</a><a class="v4-link" href="Tendril%20School%20Legal.dc.html#confidentialite" style="color:rgba(244,241,234,.4)">CONFIDENTIALITÉ</a></span>
-    </div>
-  </footer>
+        <!-- CTA -->
+        <section
+          style="
+            background: #0a0a0a;
+            color: #f4f1ea;
+            border-bottom: 2px solid #0a0a0a;
+            padding: 74px 28px;
+          "
+        >
+          <div
+            data-reveal=""
+            style="
+              max-width: 1320px;
+              margin: 0 auto;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              gap: 40px;
+              flex-wrap: wrap;
+            "
+          >
+            <div>
+              <span
+                style="
+                  font-family: 'Space Mono', monospace;
+                  font-size: 13px;
+                  font-weight: 700;
+                  color: #ffd200;
+                  display: block;
+                  margin-bottom: 16px;
+                "
+                >(06) — CANDIDATURE</span
+              >
+              <h2
+                style="
+                  font-weight: 900;
+                  font-size: clamp(34px, 5vw, 72px);
+                  line-height: 0.9;
+                  letter-spacing: -0.035em;
+                  text-transform: uppercase;
+                  margin: 0;
+                  max-width: 720px;
+                "
+              >
+                Prêt à partir de zéro ?
+              </h2>
+            </div>
+            <a
+              href="Tendril%20School%20Candidature.dc.html"
+              class="cmp-cta"
+              style="
+                background: #ffd200;
+                color: #0a0a0a;
+                font-family: 'Space Mono', monospace;
+                font-weight: 700;
+                font-size: 15px;
+                text-transform: uppercase;
+                padding: 18px 30px;
+                text-decoration: none;
+                white-space: nowrap;
+              "
+              >→ Candidater pour septembre</a
+            >
+          </div>
+        </section>
 
-</div>
-</x-dc>
-<script type="text/x-dc" data-dc-script>
-class Component extends DCLogic {
-  rootRef = React.createRef();
-  componentDidMount() { this._init(); }
-  componentWillUnmount() { clearTimeout(this._t); if (window.ScrollTrigger) window.ScrollTrigger.getAll().forEach(t => t.kill()); }
-  _init() {
-    const g = window.gsap, ST = window.ScrollTrigger;
-    if (!g || !ST) { this._t = setTimeout(() => this._init(), 60); return; }
-    g.registerPlugin(ST);
-    const root = this.rootRef.current;
-    if (!root) return;
-    const q = (s) => Array.from(root.querySelectorAll(s));
-    g.from(q('[data-hero]'), { opacity: 0, y: 30, duration: 0.8, ease: 'power3.out', stagger: 0.08, delay: 0.1 });
-    q('[data-reveal]').forEach((el) => { g.from(el, { opacity: 0, y: 40, duration: 0.8, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 88%' } }); });
-    q('[data-stagger]').forEach((grp) => { g.from(Array.from(grp.children), { opacity: 0, y: 28, duration: 0.6, ease: 'power3.out', stagger: 0.05, clearProps: 'transform', scrollTrigger: { trigger: grp, start: 'top 86%' } }); });
-  }
-  renderVals() {
-    return {
-      rootRef: this.rootRef,
-      skills: [
-        { num: '01', title: 'Modélisation 3D', tags: ['Hard Surface Modeling', 'Topologie propre (Clean Topology)', 'Modélisation de produits premium', 'Cosmétique & Packaging', 'Optimisation des meshes', 'Workflow non destructif'] },
-        { num: '02', title: 'Texturing & Shading', tags: ['PBR Workflow', 'UV Mapping', 'Shaders réalistes', 'Verre, métal, plastique, liquide', 'Subsurface Scattering', 'Matériaux premium'] },
-        { num: '03', title: 'Lighting & Rendering', tags: ['Studio Lighting', 'HDRI Lighting', 'Three-Point Lighting', 'Packshot publicitaire', 'Photoréalisme', 'Optimisation des rendus GPU'] },
-        { num: '04', title: 'Animation Produit', tags: ['Product Animation', 'Camera Animation', 'Hero Shot', 'Turntable', 'Keyframe Animation', 'Timing & Spacing'] },
-        { num: '05', title: 'Motion Design 3D', tags: ['Composition publicitaire', 'Loop Animation', 'Transition produit', 'Mise en scène', 'Storytelling visuel'] },
-        { num: '06', title: 'Compositing', tags: ['Render Passes', 'Color Grading', 'Depth of Field', 'Bloom', 'Glare', 'Export publicité & réseaux sociaux'] },
-        { num: '07', title: 'Direction Artistique', tags: ['Codes visuels du luxe', 'Composition d\u2019image', 'Théorie des couleurs', 'Branding visuel', 'Analyse de campagnes publicitaires'] }
-      ],
-      weeks: [
-        { weeks: 'SEM. 01 — 02', title: 'Prise en main & topologie', desc: 'Interface Blender & Modo, navigation 3D, premières formes, topologie propre. On installe les bons réflexes.' },
-        { weeks: 'SEM. 03 — 04', title: 'Modélisation produit', desc: 'Modéliser un flacon et un packaging complets, des proportions justes au détail du bouchon.' },
-        { weeks: 'SEM. 05 — 06', title: 'Matériaux & shading', desc: 'Verre, métal, plastique laqué, liquides cosmétiques. Comprendre comment la matière réagit à la lumière.' },
-        { weeks: 'SEM. 07 — 08', title: 'Éclairage studio', desc: 'Setups de lumière de packshot, gestion des reflets et des ombres, ambiance haut de gamme.' },
-        { weeks: 'SEM. 09 — 10', title: 'Rendu & composition', desc: 'Réglages de rendu, cadrage, post-production légère. Sortir une image propre et finie.' },
-        { weeks: 'SEM. 11 — 12', title: 'Brief client & portfolio', desc: 'Un brief réel encadré, critique collective, sélection et mise en forme du premier book.' }
-      ],
-      tools: [
-        { name: 'Blender', use: 'MODÉLISATION & RENDU' },
-        { name: 'Modo', use: 'HARD-SURFACE' },
-        { name: 'Cycles', use: 'MOTEUR DE RENDU' },
-        { name: 'Photoshop', use: 'POST-PRODUCTION' }
-      ]
-    };
-  }
-}
-</script>
-</body>
+        <!-- FOOTER -->
+        <footer
+          style="
+            background: #0a0a0a;
+            color: #f4f1ea;
+            padding: 56px 28px 36px;
+            border-top: 2px solid #ffd200;
+          "
+        >
+          <div
+            style="
+              max-width: 1320px;
+              margin: 0 auto;
+              display: flex;
+              justify-content: space-between;
+              align-items: flex-start;
+              gap: 40px;
+              flex-wrap: wrap;
+            "
+          >
+            <div>
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 10px;
+                  margin-bottom: 14px;
+                "
+              >
+                <span
+                  style="
+                    width: 34px;
+                    height: 34px;
+                    background: #ffd200;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  "
+                  ><img
+                    src="assets/81ee13a7-fab5-4063-8297-c32e129eec02.png"
+                    alt=""
+                    style="height: 18px; width: auto"
+                /></span>
+                <span
+                  style="
+                    font-weight: 900;
+                    letter-spacing: -0.02em;
+                    font-size: 17px;
+                    text-transform: uppercase;
+                  "
+                  >Tendril School</span
+                >
+              </div>
+              <p
+                style="
+                  font-family: 'Space Mono', monospace;
+                  font-size: 12px;
+                  color: rgba(244, 241, 234, 0.55);
+                  margin: 0;
+                  max-width: 300px;
+                  line-height: 1.7;
+                "
+              >
+                L'ÉCOLE DE MODÉLISATION 3D DÉDIÉE À LA BEAUTÉ ET AU LUXE. PARIS.
+              </p>
+            </div>
+            <div style="display: flex; gap: 56px; flex-wrap: wrap">
+              <div style="display: flex; flex-direction: column; gap: 10px">
+                <span
+                  style="
+                    font-family: 'Space Mono', monospace;
+                    font-size: 11px;
+                    color: #ffd200;
+                    margin-bottom: 4px;
+                    font-weight: 700;
+                  "
+                  >ÉCOLE</span
+                >
+                <a
+                  class="v4-link"
+                  href="Tendril%20School%20Programmes.dc.html"
+                  style="
+                    color: rgba(244, 241, 234, 0.7);
+                    font-size: 14px;
+                    font-weight: 600;
+                  "
+                  >Programmes</a
+                >
+                <a
+                  class="v4-link"
+                  href="Bootcamp%20Avance.dc.html"
+                  style="
+                    color: rgba(244, 241, 234, 0.7);
+                    font-size: 14px;
+                    font-weight: 600;
+                  "
+                  >Bootcamp Avancé</a
+                >
+                <a
+                  class="v4-link"
+                  href="Tendril%20School%20Ecole.dc.html"
+                  style="
+                    color: rgba(244, 241, 234, 0.7);
+                    font-size: 14px;
+                    font-weight: 600;
+                  "
+                  >L'École</a
+                >
+                <a
+                  class="v4-link"
+                  href="Tendril%20School%20Contact.dc.html"
+                  style="
+                    color: rgba(244, 241, 234, 0.7);
+                    font-size: 14px;
+                    font-weight: 600;
+                  "
+                  >Contact</a
+                >
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 10px">
+                <span
+                  style="
+                    font-family: 'Space Mono', monospace;
+                    font-size: 11px;
+                    color: #ffd200;
+                    margin-bottom: 4px;
+                    font-weight: 700;
+                  "
+                  >SUIVRE</span
+                >
+                <a
+                  class="v4-link"
+                  href="#"
+                  style="
+                    color: rgba(244, 241, 234, 0.7);
+                    font-size: 14px;
+                    font-weight: 600;
+                  "
+                  >Instagram</a
+                >
+                <a
+                  class="v4-link"
+                  href="#"
+                  style="
+                    color: rgba(244, 241, 234, 0.7);
+                    font-size: 14px;
+                    font-weight: 600;
+                  "
+                  >Behance</a
+                >
+                <a
+                  class="v4-link"
+                  href="#"
+                  style="
+                    color: rgba(244, 241, 234, 0.7);
+                    font-size: 14px;
+                    font-weight: 600;
+                  "
+                  >LinkedIn</a
+                >
+              </div>
+            </div>
+          </div>
+          <div
+            style="
+              max-width: 1320px;
+              margin: 44px auto 0;
+              padding-top: 22px;
+              border-top: 1px solid rgba(244, 241, 234, 0.16);
+              display: flex;
+              justify-content: space-between;
+              flex-wrap: wrap;
+              gap: 12px;
+              font-family: 'Space Mono', monospace;
+              font-size: 11px;
+              color: rgba(244, 241, 234, 0.4);
+            "
+          >
+            <span>© 2026 TENDRIL SCHOOL. TOUS DROITS RÉSERVÉS.</span>
+            <span style="display: flex; gap: 18px; flex-wrap: wrap"
+              ><a
+                class="v4-link"
+                href="Tendril%20School%20Legal.dc.html#mentions"
+                style="color: rgba(244, 241, 234, 0.4)"
+                >MENTIONS LÉGALES</a
+              ><a
+                class="v4-link"
+                href="Tendril%20School%20Legal.dc.html#cgu"
+                style="color: rgba(244, 241, 234, 0.4)"
+                >CGU</a
+              ><a
+                class="v4-link"
+                href="Tendril%20School%20Legal.dc.html#confidentialite"
+                style="color: rgba(244, 241, 234, 0.4)"
+                >CONFIDENTIALITÉ</a
+              ></span
+            >
+          </div>
+        </footer>
+      </div>
+    </x-dc>
+    <script type="text/x-dc" data-dc-script>
+      class Component extends DCLogic {
+        rootRef = React.createRef();
+        componentDidMount() { this._init(); }
+        componentWillUnmount() { clearTimeout(this._t); if (window.ScrollTrigger) window.ScrollTrigger.getAll().forEach(t => t.kill()); }
+        _init() {
+          const g = window.gsap, ST = window.ScrollTrigger;
+          if (!g || !ST) { this._t = setTimeout(() => this._init(), 60); return; }
+          g.registerPlugin(ST);
+          const root = this.rootRef.current;
+          if (!root) return;
+          const q = (s) => Array.from(root.querySelectorAll(s));
+          g.from(q('[data-hero]'), { opacity: 0, y: 30, duration: 0.8, ease: 'power3.out', stagger: 0.08, delay: 0.1 });
+          q('[data-reveal]').forEach((el) => { g.from(el, { opacity: 0, y: 40, duration: 0.8, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 88%' } }); });
+          q('[data-stagger]').forEach((grp) => { g.from(Array.from(grp.children), { opacity: 0, y: 28, duration: 0.6, ease: 'power3.out', stagger: 0.05, clearProps: 'transform', scrollTrigger: { trigger: grp, start: 'top 86%' } }); });
+        }
+        renderVals() {
+          return {
+            rootRef: this.rootRef,
+            skills: [
+              { num: '01', title: 'Modélisation 3D', tags: ['Hard Surface Modeling', 'Topologie propre (Clean Topology)', 'Modélisation de produits premium', 'Cosmétique & Packaging', 'Optimisation des meshes', 'Workflow non destructif'] },
+              { num: '02', title: 'Texturing & Shading', tags: ['PBR Workflow', 'UV Mapping', 'Shaders réalistes', 'Verre, métal, plastique, liquide', 'Subsurface Scattering', 'Matériaux premium'] },
+              { num: '03', title: 'Lighting & Rendering', tags: ['Studio Lighting', 'HDRI Lighting', 'Three-Point Lighting', 'Packshot publicitaire', 'Photoréalisme', 'Optimisation des rendus GPU'] },
+              { num: '04', title: 'Animation Produit', tags: ['Product Animation', 'Camera Animation', 'Hero Shot', 'Turntable', 'Keyframe Animation', 'Timing & Spacing'] },
+              { num: '05', title: 'Motion Design 3D', tags: ['Composition publicitaire', 'Loop Animation', 'Transition produit', 'Mise en scène', 'Storytelling visuel'] },
+              { num: '06', title: 'Compositing', tags: ['Render Passes', 'Color Grading', 'Depth of Field', 'Bloom', 'Glare', 'Export publicité & réseaux sociaux'] },
+              { num: '07', title: 'Direction Artistique', tags: ['Codes visuels du luxe', 'Composition d\u2019image', 'Théorie des couleurs', 'Branding visuel', 'Analyse de campagnes publicitaires'] }
+            ],
+            weeks: [
+              { weeks: 'SEM. 01 — 02', title: 'Prise en main & topologie', desc: 'Interface Blender & Modo, navigation 3D, premières formes, topologie propre. On installe les bons réflexes.' },
+              { weeks: 'SEM. 03 — 04', title: 'Modélisation produit', desc: 'Modéliser un flacon et un packaging complets, des proportions justes au détail du bouchon.' },
+              { weeks: 'SEM. 05 — 06', title: 'Matériaux & shading', desc: 'Verre, métal, plastique laqué, liquides cosmétiques. Comprendre comment la matière réagit à la lumière.' },
+              { weeks: 'SEM. 07 — 08', title: 'Éclairage studio', desc: 'Setups de lumière de packshot, gestion des reflets et des ombres, ambiance haut de gamme.' },
+              { weeks: 'SEM. 09 — 10', title: 'Rendu & composition', desc: 'Réglages de rendu, cadrage, post-production légère. Sortir une image propre et finie.' },
+              { weeks: 'SEM. 11 — 12', title: 'Brief client & portfolio', desc: 'Un brief réel encadré, critique collective, sélection et mise en forme du premier book.' }
+            ],
+            tools: [
+              { name: 'Blender', use: 'MODÉLISATION & RENDU' },
+              { name: 'Modo', use: 'HARD-SURFACE' },
+              { name: 'Cycles', use: 'MOTEUR DE RENDU' },
+              { name: 'Photoshop', use: 'POST-PRODUCTION' }
+            ]
+          };
+        }
+      }
+    </script>
+  </body>
 </html>

@@ -12,30 +12,163 @@ export const clips = [
 ];
 
 export const stats = [
-  { value: "94%", label: "EN POSTE À 6 MOIS" },
+  { value: "95%", label: "EN POSTE OU FREELANCE À 6 MOIS" },
   { value: "30", label: "PLACES / PROMO" },
   { value: "12", label: "SEMAINES D'IMMERSION" },
   { value: "04", label: "STUDIOS PARTENAIRES" },
 ];
 
 export const noviceModules = [
-  { num: "01", title: "Modélisation 3D", tags: ["Hard Surface Modeling", "Topologie propre", "Produits premium", "Cosmétique & Packaging", "Optimisation des meshes"] },
-  { num: "02", title: "Texturing & Shading", tags: ["PBR Workflow", "UV Mapping", "Shaders réalistes", "Verre, métal, plastique, liquide", "Subsurface Scattering"] },
-  { num: "03", title: "Lighting & Rendering", tags: ["Studio Lighting", "HDRI Lighting", "Three-Point Lighting", "Packshot publicitaire", "Photoréalisme"] },
-  { num: "04", title: "Animation Produit", tags: ["Product Animation", "Camera Animation", "Hero Shot", "Turntable", "Keyframe Animation"] },
-  { num: "05", title: "Motion Design 3D", tags: ["Composition publicitaire", "Loop Animation", "Transition produit", "Storytelling visuel"] },
-  { num: "06", title: "Compositing", tags: ["Render Passes", "Color Grading", "Depth of Field", "Bloom", "Export réseaux sociaux"] },
-  { num: "07", title: "Direction Artistique", tags: ["Codes visuels du luxe", "Composition d'image", "Théorie des couleurs", "Branding visuel"] },
+  {
+    num: "01",
+    title: "Modélisation 3D",
+    tags: [
+      "Hard Surface Modeling",
+      "Topologie propre",
+      "Produits premium",
+      "Cosmétique & Packaging",
+      "Optimisation des meshes",
+    ],
+  },
+  {
+    num: "02",
+    title: "Texturing & Shading",
+    tags: [
+      "PBR Workflow",
+      "UV Mapping",
+      "Shaders réalistes",
+      "Verre, métal, plastique, liquide",
+      "Subsurface Scattering",
+    ],
+  },
+  {
+    num: "03",
+    title: "Lighting & Rendering",
+    tags: [
+      "Studio Lighting",
+      "HDRI Lighting",
+      "Three-Point Lighting",
+      "Packshot publicitaire",
+      "Photoréalisme",
+    ],
+  },
+  {
+    num: "04",
+    title: "Animation Produit",
+    tags: [
+      "Product Animation",
+      "Camera Animation",
+      "Hero Shot",
+      "Turntable",
+      "Keyframe Animation",
+    ],
+  },
+  {
+    num: "05",
+    title: "Motion Design 3D",
+    tags: [
+      "Composition publicitaire",
+      "Loop Animation",
+      "Transition produit",
+      "Storytelling visuel",
+    ],
+  },
+  {
+    num: "06",
+    title: "Compositing",
+    tags: [
+      "Render Passes",
+      "Color Grading",
+      "Depth of Field",
+      "Bloom",
+      "Export réseaux sociaux",
+    ],
+  },
+  {
+    num: "07",
+    title: "Direction Artistique",
+    tags: [
+      "Codes visuels du luxe",
+      "Composition d'image",
+      "Théorie des couleurs",
+      "Branding visuel",
+    ],
+  },
 ];
 
 export const avanceModules = [
-  { num: "01", title: "Production Publicitaire", tags: ["Hero Film", "CGI Advertising", "Luxury Visual Storytelling", "Campagne publicitaire complète"] },
-  { num: "02", title: "Modélisation Avancée", tags: ["Hard Surface Expert", "High Poly Modeling", "Packaging complexe", "Product Design"] },
-  { num: "03", title: "Shading Premium", tags: ["Procedural Shading", "Micro Details", "Condensation", "Liquid Shader", "Cosmetic Materials"] },
-  { num: "04", title: "Lighting Cinématographique", tags: ["Cinematic Lighting", "Rim Light", "Dramatic Lighting", "Mood Lighting"] },
-  { num: "05", title: "Simulations Houdini / Blender", tags: ["FLIP Fluids", "Particles", "Smoke Simulation", "Splash Cosmetics", "Morphing"] },
-  { num: "06", title: "Compositing Professionnel", tags: ["Multi Pass Compositing", "Cryptomatte", "Color Pipeline", "ACES Workflow"] },
-  { num: "07", title: "Pipeline Agence & Portfolio", tags: ["Gestion d'un brief client", "Direction Artistique", "Portfolio professionnel", "Positionnement Freelance"] },
+  {
+    num: "01",
+    title: "Production Publicitaire",
+    tags: [
+      "Hero Film",
+      "CGI Advertising",
+      "Luxury Visual Storytelling",
+      "Campagne publicitaire complète",
+    ],
+  },
+  {
+    num: "02",
+    title: "Modélisation Avancée",
+    tags: [
+      "Hard Surface Expert",
+      "High Poly Modeling",
+      "Packaging complexe",
+      "Product Design",
+    ],
+  },
+  {
+    num: "03",
+    title: "Shading Premium",
+    tags: [
+      "Procedural Shading",
+      "Micro Details",
+      "Condensation",
+      "Liquid Shader",
+      "Cosmetic Materials",
+    ],
+  },
+  {
+    num: "04",
+    title: "Lighting Cinématographique",
+    tags: [
+      "Cinematic Lighting",
+      "Rim Light",
+      "Dramatic Lighting",
+      "Mood Lighting",
+    ],
+  },
+  {
+    num: "05",
+    title: "Simulations Houdini / Blender",
+    tags: [
+      "FLIP Fluids",
+      "Particles",
+      "Smoke Simulation",
+      "Splash Cosmetics",
+      "Morphing",
+    ],
+  },
+  {
+    num: "06",
+    title: "Compositing Professionnel",
+    tags: [
+      "Multi Pass Compositing",
+      "Cryptomatte",
+      "Color Pipeline",
+      "ACES Workflow",
+    ],
+  },
+  {
+    num: "07",
+    title: "Pipeline Agence & Portfolio",
+    tags: [
+      "Gestion d'un brief client",
+      "Direction Artistique",
+      "Portfolio professionnel",
+      "Positionnement Freelance",
+    ],
+  },
 ];
 
 export const bootcamps = {
@@ -43,18 +176,32 @@ export const bootcamps = {
     kicker: "NIVEAU 01 · DÉBUTANT",
     title: "Bootcamp Novice",
     meta: "12 SEM · AUCUN PRÉREQUIS · SEPT. 2026",
-    price: "7 900 €",
+    price: "5 900 €",
     subtitle: "DÉBUTANTS ET RECONVERSIONS",
-    items: ["Fondamentaux de la 3D", "Modélisation", "Animation - Simulation 3D", "Lighting", "Publicité produit", "Premier portfolio"],
+    items: [
+      "Fondamentaux de la 3D",
+      "Modélisation",
+      "Animation - Simulation 3D",
+      "Lighting",
+      "Publicité produit",
+      "Premier portfolio",
+    ],
     href: "/programmes/novice",
   },
   avance: {
     kicker: "NIVEAU 02 · CONFIRMÉ",
     title: "Bootcamp Avancé",
     meta: "10 SEM · SUR PORTFOLIO · SEPT. 2026",
-    price: "9 900 €",
+    price: "7 900 €",
     subtitle: "PRODUCTION FILM 3D",
-    items: ["Modélisation 3D avancée", "Texturing & Lighting avancée", "Animation & Simulation 3D (fluides, morphing, particules…)", "Compositing, rendering", "Direction artistique avancée", "Portfolio niveau agence"],
+    items: [
+      "Modélisation 3D avancée",
+      "Texturing & Lighting avancée",
+      "Animation & Simulation 3D (fluides, morphing, particules…)",
+      "Compositing, rendering",
+      "Direction artistique avancée",
+      "Portfolio niveau agence",
+    ],
     href: "/programmes/avance",
   },
 };
@@ -69,7 +216,7 @@ export const comparison = {
       { label: "FORMATEURS", value: "Artistes en activité en studio" },
       { label: "PROJETS RÉALISÉS", value: "Briefs clients réels" },
       { label: "SORTIE", value: "Portfolio orienté agence" },
-      { label: "COÛT DE LA FORMATION", value: "Dès 7 900 €" },
+      { label: "COÛT DE LA FORMATION", value: "Dès 5 €" },
     ],
   },
   autre: {
@@ -77,11 +224,14 @@ export const comparison = {
     name: "École 3D classique",
     rows: [
       { label: "DURÉE DU CURSUS", value: "2 à 3 ans" },
-      { label: "SPÉCIALISATION", value: "Généraliste (jeu vidéo, VFX, luxe…)" },
+      {
+        label: "SPÉCIALISATION",
+        value: "Généraliste (jeu vidéo, architecture..)",
+      },
       { label: "FORMATEURS", value: "Enseignants académiques" },
       { label: "PROJETS RÉALISÉS", value: "Exercices académiques" },
       { label: "SORTIE", value: "Portfolio généraliste" },
-      { label: "COÛT DE LA FORMATION", value: "Souvent 15 000 €+" },
+      { label: "COÛT DE LA FORMATION", value: "Souvent 10 000 €+" },
     ],
   },
 };
@@ -100,7 +250,7 @@ export const faqs = [
     a: "Le format Temps plein et Intensif sont en présentiel à Paris. Le format Part-time soir est hybride, avec des sessions en visio et des week-ends sur place.",
   },
   {
-    q: "Puis-je financer la formation ?",
-    a: "Oui. La formation est éligible au CPF, l'échelonnement est possible, et des bourses au mérite sont attribuées chaque promotion sur dossier.",
+    q: "Combien de places par promotion ?",
+    a: "30 places maximum par promotion, pour garantir un suivi individuel et une critique collective de qualité. Les candidatures sont étudiées au fil de l'eau, mieux vaut postuler tôt.",
   },
 ];

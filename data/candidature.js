@@ -6,7 +6,7 @@ export const SITUATION_OPTIONS = ["Étudiant·e", "En poste", "En reconversion",
 
 export const DIPLOME_OPTIONS = ["Sans diplôme", "Baccalauréat", "Bac +2 / BTS / DUT", "Licence / Bachelor", "Master / École", "Autre"];
 
-export const FINANCEMENT_OPTIONS = ["Fonds personnels", "CPF", "France Travail", "Entreprise / OPCO", "Bourse au mérite", "À définir"];
+export const FINANCEMENT_OPTIONS = ["Fonds personnels", "France Travail", "Entreprise / OPCO", "À définir"];
 
 export const SOURCE_OPTIONS = ["Instagram", "Behance", "LinkedIn", "Le podcast", "Bouche-à-oreille", "Recherche web", "Autre"];
 

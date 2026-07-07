@@ -25,14 +25,27 @@ const TICKER = [
   "RÉPONSE SOUS 7 JOURS",
 ];
 
-function Field({ label, name, required, type = "text", placeholder, className }) {
+function Field({
+  label,
+  name,
+  required,
+  type = "text",
+  placeholder,
+  className,
+}) {
   return (
     <div className={className}>
       <label className={styles.label}>
         {label}
         {required ? " *" : ""}
       </label>
-      <input className={styles.field} name={name} type={type} required={required} placeholder={placeholder} />
+      <input
+        className={styles.field}
+        name={name}
+        type={type}
+        required={required}
+        placeholder={placeholder}
+      />
     </div>
   );
 }
@@ -44,7 +57,13 @@ function SelectField({ label, name, required, options, className, onChange }) {
         {label}
         {required ? " *" : ""}
       </label>
-      <select className={styles.field} name={name} required={required} defaultValue="" onChange={onChange}>
+      <select
+        className={styles.field}
+        name={name}
+        required={required}
+        defaultValue=""
+        onChange={onChange}
+      >
         <option value="">Sélectionnez…</option>
         {options.map((o) => (
           <option key={o}>{o}</option>
@@ -56,8 +75,18 @@ function SelectField({ label, name, required, options, className, onChange }) {
 
 function RadioCard({ name, value, required, kicker, title, meta, big }) {
   return (
-    <label className={`${styles.optCard} ${big ? styles.optCardBig : styles.optCardRow}`}>
-      <input type="radio" name={name} value={value} required={required} className={styles.hiddenInput} />
+    <label
+      className={`${styles.optCard} ${
+        big ? styles.optCardBig : styles.optCardRow
+      }`}
+    >
+      <input
+        type="radio"
+        name={name}
+        value={value}
+        required={required}
+        className={styles.hiddenInput}
+      />
       {big ? (
         <>
           <div className={styles.optCardHead}>
@@ -80,7 +109,12 @@ function RadioCard({ name, value, required, kicker, title, meta, big }) {
 function Chip({ name, value }) {
   return (
     <label className={styles.chip}>
-      <input type="checkbox" name={name} value={value} className={styles.hiddenInput} />
+      <input
+        type="checkbox"
+        name={name}
+        value={value}
+        className={styles.hiddenInput}
+      />
       {value}
     </label>
   );
@@ -110,7 +144,11 @@ export default function CandidatureView() {
   useEffect(() => {
     const el = currentStepEl();
     if (el) {
-      gsap.fromTo(el, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" });
+      gsap.fromTo(
+        el,
+        { opacity: 0, y: 14 },
+        { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }
+      );
     }
     window.scrollTo({ top: 0, behavior: "smooth" });
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -163,7 +201,12 @@ export default function CandidatureView() {
       ["Financement", d.financement],
       ["Disponible", d.dispo],
     ];
-    setSummary(rows.map(([label, value]) => ({ label, value: value && String(value).trim() ? value : dash })));
+    setSummary(
+      rows.map(([label, value]) => ({
+        label,
+        value: value && String(value).trim() ? value : dash,
+      }))
+    );
   }
 
   function handleNext() {
@@ -222,18 +265,31 @@ export default function CandidatureView() {
               {Array.from({ length: TOTAL }, (_, i) => (
                 <div
                   key={i}
-                  className={`${styles.segment} ${i + 1 <= step ? styles.segmentActive : ""}`}
+                  className={`${styles.segment} ${
+                    i + 1 <= step ? styles.segmentActive : ""
+                  }`}
                 />
               ))}
             </div>
 
-            <form ref={formRef} onSubmit={handleSubmit} onChange={handleSelectChange} className={styles.form}>
+            <form
+              ref={formRef}
+              onSubmit={handleSubmit}
+              onChange={handleSelectChange}
+              className={styles.form}
+            >
               {/* STEP 1 */}
-              <div data-step="1" className={`${styles.step} ${step === 1 ? "" : styles.stepHidden}`}>
+              <div
+                data-step="1"
+                className={`${styles.step} ${
+                  step === 1 ? "" : styles.stepHidden
+                }`}
+              >
                 <h2 className={styles.stepTitle}>Quel bootcamp visez-vous ?</h2>
                 <p className={styles.stepSub}>
-                  Choisissez le niveau qui correspond à votre profil. En cas de doute, sélectionnez
-                  Novice — l&apos;entretien affinera l&apos;orientation.
+                  Choisissez le niveau qui correspond à votre profil. En cas de
+                  doute, sélectionnez Novice — l&apos;entretien affinera
+                  l&apos;orientation.
                 </p>
                 <div className={styles.radioGrid2}>
                   <RadioCard
@@ -243,7 +299,7 @@ export default function CandidatureView() {
                     big
                     kicker="NIVEAU 01 · DÉBUTANT"
                     title="Bootcamp Novice"
-                    meta="12 SEMAINES · AUCUN PRÉREQUIS · 7 900 €"
+                    meta="12 SEMAINES · AUCUN PRÉREQUIS · 5 900 €"
                   />
                   <RadioCard
                     name="programme"
@@ -252,22 +308,36 @@ export default function CandidatureView() {
                     big
                     kicker="NIVEAU 02 · CONFIRMÉ"
                     title="Bootcamp Avancé"
-                    meta="10 SEMAINES · SUR PORTFOLIO · 9 900 €"
+                    meta="10 SEMAINES · SUR PORTFOLIO · 7 900 €"
                   />
                 </div>
                 <div className={styles.row2}>
-                  <SelectField label="Session souhaitée" name="session" required options={SESSION_OPTIONS} />
+                  <SelectField
+                    label="Session souhaitée"
+                    name="session"
+                    required
+                    options={SESSION_OPTIONS}
+                  />
                   <div>
                     <label className={styles.label}>Format</label>
-                    <div className={styles.staticField}>Présentiel — Paris 3ᵉ</div>
+                    <div className={styles.staticField}>
+                      Présentiel — Paris 3ᵉ
+                    </div>
                   </div>
                 </div>
               </div>
 
               {/* STEP 2 */}
-              <div data-step="2" className={`${styles.step} ${step === 2 ? "" : styles.stepHidden}`}>
+              <div
+                data-step="2"
+                className={`${styles.step} ${
+                  step === 2 ? "" : styles.stepHidden
+                }`}
+              >
                 <h2 className={styles.stepTitle}>Votre identité</h2>
-                <p className={styles.stepSub}>Pour vous recontacter et préparer votre entretien.</p>
+                <p className={styles.stepSub}>
+                  Pour vous recontacter et préparer votre entretien.
+                </p>
                 <div className={styles.stack}>
                   <div className={styles.row2}>
                     <Field label="Prénom" name="prenom" required />
@@ -275,10 +345,20 @@ export default function CandidatureView() {
                   </div>
                   <div className={styles.row2}>
                     <Field label="Email" name="email" required type="email" />
-                    <Field label="Téléphone" name="telephone" required type="tel" />
+                    <Field
+                      label="Téléphone"
+                      name="telephone"
+                      required
+                      type="tel"
+                    />
                   </div>
                   <div className={styles.row3}>
-                    <Field label="Date de naissance" name="naissance" required type="date" />
+                    <Field
+                      label="Date de naissance"
+                      name="naissance"
+                      required
+                      type="date"
+                    />
                     <Field label="Nationalité" name="nationalite" />
                     <Field label="Ville de résidence" name="ville" required />
                   </div>
@@ -286,13 +366,29 @@ export default function CandidatureView() {
               </div>
 
               {/* STEP 3 */}
-              <div data-step="3" className={`${styles.step} ${step === 3 ? "" : styles.stepHidden}`}>
+              <div
+                data-step="3"
+                className={`${styles.step} ${
+                  step === 3 ? "" : styles.stepHidden
+                }`}
+              >
                 <h2 className={styles.stepTitle}>Votre parcours</h2>
-                <p className={styles.stepSub}>D&apos;où vous venez et où vous en êtes avec la 3D.</p>
+                <p className={styles.stepSub}>
+                  D&apos;où vous venez et où vous en êtes avec la 3D.
+                </p>
                 <div className={styles.stack}>
                   <div className={styles.row2}>
-                    <SelectField label="Situation actuelle" name="situation" required options={SITUATION_OPTIONS} />
-                    <SelectField label="Dernier diplôme" name="diplome" options={DIPLOME_OPTIONS} />
+                    <SelectField
+                      label="Situation actuelle"
+                      name="situation"
+                      required
+                      options={SITUATION_OPTIONS}
+                    />
+                    <SelectField
+                      label="Dernier diplôme"
+                      name="diplome"
+                      options={DIPLOME_OPTIONS}
+                    />
                   </div>
                   <Field
                     label="Domaine d'études ou métier actuel"
@@ -302,13 +398,24 @@ export default function CandidatureView() {
                   <div>
                     <label className={styles.label}>Votre niveau en 3D *</label>
                     <div className={styles.radioGrid3}>
-                      <RadioCard name="niveau" value="Débutant" required title="Débutant" />
-                      <RadioCard name="niveau" value="Intermédiaire" title="Intermédiaire" />
+                      <RadioCard
+                        name="niveau"
+                        value="Débutant"
+                        required
+                        title="Débutant"
+                      />
+                      <RadioCard
+                        name="niveau"
+                        value="Intermédiaire"
+                        title="Intermédiaire"
+                      />
                       <RadioCard name="niveau" value="Avancé" title="Avancé" />
                     </div>
                   </div>
                   <div>
-                    <label className={styles.label}>Logiciels déjà pratiqués</label>
+                    <label className={styles.label}>
+                      Logiciels déjà pratiqués
+                    </label>
                     <div className={styles.chipRow}>
                       {SOFTWARE_CHIPS.map((s) => (
                         <Chip key={s} name="logiciels" value={s} />
@@ -319,19 +426,36 @@ export default function CandidatureView() {
               </div>
 
               {/* STEP 4 */}
-              <div data-step="4" className={`${styles.step} ${step === 4 ? "" : styles.stepHidden}`}>
+              <div
+                data-step="4"
+                className={`${styles.step} ${
+                  step === 4 ? "" : styles.stepHidden
+                }`}
+              >
                 <h2 className={styles.stepTitle}>Portfolio &amp; motivation</h2>
                 <p className={styles.stepSub}>
-                  Le portfolio est requis pour le niveau Avancé, optionnel mais bienvenu pour le
-                  niveau Novice.
+                  Le portfolio est requis pour le niveau Avancé, optionnel mais
+                  bienvenu pour le niveau Novice.
                 </p>
                 <div className={styles.stack}>
                   <div className={styles.row2}>
-                    <Field label="Lien portfolio" name="portfolio" type="url" placeholder="https://" />
-                    <Field label="LinkedIn / site perso" name="lien2" type="url" placeholder="https://" />
+                    <Field
+                      label="Lien portfolio"
+                      name="portfolio"
+                      type="url"
+                      placeholder="https://"
+                    />
+                    <Field
+                      label="LinkedIn / site perso"
+                      name="lien2"
+                      type="url"
+                      placeholder="https://"
+                    />
                   </div>
                   <div>
-                    <label className={styles.label}>Pourquoi le luxe et la 3D ? *</label>
+                    <label className={styles.label}>
+                      Pourquoi le luxe et la 3D ? *
+                    </label>
                     <textarea
                       className={styles.field}
                       name="motivation"
@@ -341,7 +465,9 @@ export default function CandidatureView() {
                     />
                   </div>
                   <div>
-                    <label className={styles.label}>Votre objectif professionnel</label>
+                    <label className={styles.label}>
+                      Votre objectif professionnel
+                    </label>
                     <textarea
                       className={styles.field}
                       name="objectif"
@@ -353,9 +479,18 @@ export default function CandidatureView() {
               </div>
 
               {/* STEP 5 */}
-              <div data-step="5" className={`${styles.step} ${step === 5 ? "" : styles.stepHidden}`}>
-                <h2 className={styles.stepTitle}>Financement &amp; infos pratiques</h2>
-                <p className={styles.stepSub}>Dernière étape avant le récapitulatif.</p>
+              <div
+                data-step="5"
+                className={`${styles.step} ${
+                  step === 5 ? "" : styles.stepHidden
+                }`}
+              >
+                <h2 className={styles.stepTitle}>
+                  Financement &amp; infos pratiques
+                </h2>
+                <p className={styles.stepSub}>
+                  Dernière étape avant le récapitulatif.
+                </p>
                 <div className={styles.stack}>
                   <div className={styles.row2}>
                     <SelectField
@@ -364,33 +499,57 @@ export default function CandidatureView() {
                       required
                       options={FINANCEMENT_OPTIONS}
                     />
-                    <SelectField label="Comment nous avez-vous connus ?" name="source" options={SOURCE_OPTIONS} />
+                    <SelectField
+                      label="Comment nous avez-vous connus ?"
+                      name="source"
+                      options={SOURCE_OPTIONS}
+                    />
                   </div>
                   <div>
                     <label className={styles.label}>
-                      Êtes-vous disponible à plein temps à la date de rentrée ? *
+                      Êtes-vous disponible à plein temps à la date de rentrée ?
+                      *
                     </label>
                     <div className={styles.dispoRow}>
-                      <RadioCard name="dispo" value="Oui" required title="Oui" />
-                      <RadioCard name="dispo" value="Non / à confirmer" title="Non / à confirmer" />
+                      <RadioCard
+                        name="dispo"
+                        value="Oui"
+                        required
+                        title="Oui"
+                      />
+                      <RadioCard
+                        name="dispo"
+                        value="Non / à confirmer"
+                        title="Non / à confirmer"
+                      />
                     </div>
                   </div>
                   <label className={styles.rgpd}>
-                    <input type="checkbox" name="rgpd" required className={styles.rgpdCheckbox} />
+                    <input
+                      type="checkbox"
+                      name="rgpd"
+                      required
+                      className={styles.rgpdCheckbox}
+                    />
                     <span>
-                      J&apos;accepte que Tendril School traite mes données dans le cadre de ma
-                      candidature et me recontacte. *
+                      J&apos;accepte que Tendril School traite mes données dans
+                      le cadre de ma candidature et me recontacte. *
                     </span>
                   </label>
                 </div>
               </div>
 
               {/* STEP 6 */}
-              <div data-step="6" className={`${styles.step} ${step === 6 ? "" : styles.stepHidden}`}>
+              <div
+                data-step="6"
+                className={`${styles.step} ${
+                  step === 6 ? "" : styles.stepHidden
+                }`}
+              >
                 <h2 className={styles.stepTitle}>Récapitulatif</h2>
                 <p className={styles.stepSub}>
-                  Vérifiez vos informations avant d&apos;envoyer. Vous pouvez revenir en arrière
-                  pour corriger.
+                  Vérifiez vos informations avant d&apos;envoyer. Vous pouvez
+                  revenir en arrière pour corriger.
                 </p>
                 <div className={styles.summaryBox}>
                   {summary.map((row) => (
@@ -413,14 +572,23 @@ export default function CandidatureView() {
                   ← Précédent
                 </button>
                 <div className={styles.stepHint}>
-                  {step === TOTAL ? "Prêt à envoyer" : `Étape ${step} sur ${TOTAL}`}
+                  {step === TOTAL
+                    ? "Prêt à envoyer"
+                    : `Étape ${step} sur ${TOTAL}`}
                 </div>
                 {step === TOTAL ? (
-                  <button type="submit" className={`${styles.navBtn} ${styles.navBtnDark}`}>
+                  <button
+                    type="submit"
+                    className={`${styles.navBtn} ${styles.navBtnDark}`}
+                  >
                     ✓ Envoyer ma candidature
                   </button>
                 ) : (
-                  <button type="button" onClick={handleNext} className={`${styles.navBtn} ${styles.navBtnDark}`}>
+                  <button
+                    type="button"
+                    onClick={handleNext}
+                    className={`${styles.navBtn} ${styles.navBtnDark}`}
+                  >
                     Continuer →
                   </button>
                 )}
@@ -432,13 +600,19 @@ export default function CandidatureView() {
         {submitted && (
           <div className={styles.success}>
             <div className={styles.successKicker}>CANDIDATURE ENVOYÉE</div>
-            <h2 className={styles.successTitle}>Merci, {firstName || "à vous"}.</h2>
+            <h2 className={styles.successTitle}>
+              Merci, {firstName || "à vous"}.
+            </h2>
             <p className={styles.successText}>
-              Nous avons bien reçu votre dossier pour le <strong>{chosenProgramme}</strong>. Notre
-              équipe revient vers vous sous 7 jours pour la suite — généralement un entretien.
+              Nous avons bien reçu votre dossier pour le{" "}
+              <strong>{chosenProgramme}</strong>. Notre équipe revient vers vous
+              sous 7 jours pour la suite — généralement un entretien.
             </p>
             <div className={styles.successActions}>
-              <Link href="/programmes" className={`${styles.navBtn} ${styles.navBtnDark}`}>
+              <Link
+                href="/programmes"
+                className={`${styles.navBtn} ${styles.navBtnDark}`}
+              >
                 Revoir les programmes
               </Link>
               <Link href="/" className={styles.navBtn}>

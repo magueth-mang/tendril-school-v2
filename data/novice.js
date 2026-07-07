@@ -29,7 +29,7 @@ export const novice = {
     { label: "RYTHME", value: "Plein temps" },
     { label: "PRÉREQUIS", value: "Aucun" },
     { label: "RENTRÉE", value: "Sept. 2026" },
-    { label: "TARIF", value: "7 900 €", highlight: true },
+    { label: "TARIF", value: "5 900 €", highlight: true },
   ],
   pourQui: {
     title: "Fait pour les vrais débutants.",
@@ -178,12 +178,12 @@ export const novice = {
   ],
   tarif: {
     label: "TARIF DU BOOTCAMP NOVICE",
-    price: "7 900 €",
+    price: "5 900 €",
     desc: "Tout compris : licences logicielles, accès studio, briefs clients et accompagnement portfolio.",
     financement: [
-      "Éligible CPF",
+      "Prise en charge entreprise / OPCO possible",
       "Paiement échelonné possible",
-      "Bourses au mérite sur dossier",
+      "Acompte de 30 % à l'inscription",
     ],
   },
   cta: {

@@ -117,25 +117,43 @@ export default function EcoleView() {
               <span className={styles.kickerSm}>(02) — TOUS LES ÉPISODES</span>
               <h2 className={styles.h2}>La série.</h2>
             </div>
-            <span className={styles.seasonLabel}>SAISON 01 · 12 ÉPISODES</span>
+            <span className={styles.seasonLabel}>SAISON 01 · 08 ÉPISODES</span>
           </div>
         </div>
         <div data-stagger>
           {episodes.map((ep) => (
-            <div key={ep.num} className={styles.episodeRow}>
-              <div className={styles.episodeInner}>
-                <span className={styles.episodeNum}>{ep.num}</span>
-                <span className={styles.episodePlay}>
-                  <svg width="15" height="17" viewBox="0 0 15 17" fill="none">
-                    <path d="M2 2 L13 8.5 L2 15 Z" fill="#FFD200" />
-                  </svg>
-                </span>
-                <div>
-                  <h3 className={styles.episodeTitle}>{ep.title}</h3>
-                  <p className={styles.episodeDesc}>{ep.desc}</p>
+            <div key={ep.num} className={styles.epBand}>
+              <div className={styles.epBandInner}>
+                <div className={styles.epMedia}>
+                  <div className={styles.epTint} />
+                  <span className={styles.epBadge}>ÉP. {ep.num}</span>
+                  <span className={styles.epDuration}>{ep.dur}</span>
+                  <div className={styles.epCoverPlay}>
+                    <span className={styles.epPlayCircle}>
+                      <svg width="22" height="26" viewBox="0 0 22 26" fill="none">
+                        <path d="M3 3 L19 13 L3 23 Z" fill="#0A0A0A" />
+                      </svg>
+                    </span>
+                  </div>
+                  <div className={styles.epBars}>
+                    {[0, 0.18, 0.36, 0.12, 0.42].map((delay, i) => (
+                      <span key={i} className={styles.epBar} style={{ animationDelay: `${delay}s` }} />
+                    ))}
+                  </div>
                 </div>
-                <span className={styles.episodeGuest}>{ep.guest}</span>
-                <span className={styles.episodeDur}>{ep.dur}</span>
+                <div className={styles.epText}>
+                  <span className={styles.epTag}>{ep.tag}</span>
+                  <div className={styles.epNumRow}>
+                    <span className={styles.epBigNum}>{ep.num}</span>
+                  </div>
+                  <h3 className={styles.epTitle}>{ep.title}</h3>
+                  <p className={styles.epDesc}>{ep.desc}</p>
+                  <div className={styles.epFooter}>
+                    <span className={styles.epListen}>→ Écouter</span>
+                    <span className={styles.epGuest}>AVEC {ep.guest}</span>
+                    <span className={styles.epDate}>{ep.date}</span>
+                  </div>
+                </div>
               </div>
             </div>
           ))}

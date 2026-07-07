@@ -29,7 +29,7 @@ export const avance = {
     { label: "RYTHME", value: "Plein temps" },
     { label: "PRÉREQUIS", value: "Portfolio" },
     { label: "RENTRÉE", value: "Sept. 2026" },
-    { label: "TARIF", value: "9 900 €", highlight: true },
+    { label: "TARIF", value: "7 900 €", highlight: true },
   ],
   pourQui: {
     title: "Sélection sur portfolio.",
@@ -210,12 +210,12 @@ export const avance = {
   ],
   tarif: {
     label: "TARIF DU BOOTCAMP AVANCÉ",
-    price: "9 900 €",
+    price: "7 900 €",
     desc: "Tout compris : pipeline studio, 2 briefs clients réels, mentorat individuel et mise en relation.",
     financement: [
-      "Éligible CPF",
+      "Prise en charge entreprise / OPCO possible",
       "Paiement échelonné possible",
-      "Bourses au mérite sur portfolio",
+      "Acompte de 30 % à l'inscription",
     ],
   },
   cta: {

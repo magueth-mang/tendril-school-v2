@@ -339,77 +339,6 @@
   color: rgba(10, 10, 10, 0.55);
 }
 
-.episodeRow {
-  border-top: var(--border);
-  transition: background 0.2s ease;
-}
-
-.episodeRow:hover {
-  background: var(--accent);
-}
-
-.episodeRow:hover .episodePlay {
-  transform: scale(1.08);
-}
-
-.episodeInner {
-  max-width: var(--container);
-  margin: 0 auto;
-  padding: 22px 28px;
-  display: grid;
-  grid-template-columns: 64px 70px 1.7fr 1fr 90px;
-  gap: 26px;
-  align-items: center;
-}
-
-.episodeNum {
-  font-family: var(--font-mono);
-  font-weight: 700;
-  font-size: 18px;
-}
-
-.episodePlay {
-  width: 50px;
-  height: 50px;
-  background: var(--ink);
-  border: 2px solid var(--ink);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.25s ease;
-}
-
-.episodeTitle {
-  font-weight: 800;
-  font-size: clamp(18px, 2.1vw, 26px);
-  letter-spacing: -0.02em;
-  margin: 0 0 4px;
-  line-height: 1.1;
-}
-
-.episodeDesc {
-  font-size: 14px;
-  line-height: 1.4;
-  color: rgba(10, 10, 10, 0.6);
-  margin: 0;
-  font-weight: 500;
-}
-
-.episodeGuest {
-  font-family: var(--font-mono);
-  font-size: 13px;
-  font-weight: 700;
-}
-
-.episodeDur {
-  font-family: var(--font-mono);
-  font-size: 13px;
-  font-weight: 700;
-  text-align: right;
-  color: rgba(10, 10, 10, 0.6);
-}
-
 .episodesClose {
   border-top: var(--border);
   border-bottom: var(--border);
@@ -425,6 +354,217 @@
   font-size: 13px;
   font-weight: 700;
   color: rgba(10, 10, 10, 0.55);
+}
+
+/* EPISODE BANDS */
+@keyframes epBarAnim {
+  0%, 100% { transform: scaleY(0.35); }
+  50% { transform: scaleY(1); }
+}
+
+.epBand {
+  border-top: var(--border);
+  transition: background 0.25s ease;
+}
+
+.epBand:hover {
+  background: var(--accent);
+}
+
+.epBandInner {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 38px 28px;
+  display: grid;
+  grid-template-columns: 1.08fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.epBand:nth-child(even) .epMedia {
+  order: 2;
+}
+
+.epBand:nth-child(even) .epText {
+  order: 1;
+}
+
+
+.epBand:hover .epCoverPlay {
+  transform: scale(1.1);
+}
+
+.epBand:hover .epTint {
+  opacity: 0.22;
+}
+
+.epBand:hover .epListen {
+  gap: 16px;
+}
+
+/* Media */
+.epMedia {
+  position: relative;
+  border: var(--border);
+  background: #000;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.epTint {
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  opacity: 0;
+  mix-blend-mode: multiply;
+  transition: opacity 0.3s ease;
+}
+
+.epBadge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--ink);
+  background: var(--accent);
+  border: var(--border);
+  padding: 4px 10px;
+  letter-spacing: 0.02em;
+}
+
+.epDuration {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.epCoverPlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  transition: transform 0.3s ease;
+}
+
+.epPlayCircle {
+  width: 78px;
+  height: 78px;
+  background: var(--accent);
+  border: var(--border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 5px 5px 0 rgba(10, 10, 10, 0.55);
+}
+
+.epBars {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  height: 22px;
+  pointer-events: none;
+}
+
+.epBar {
+  width: 4px;
+  background: var(--accent);
+  height: 100%;
+  transform-origin: bottom;
+  animation: epBarAnim 1.1s ease-in-out infinite;
+}
+
+/* Text */
+.epText {
+  position: relative;
+}
+
+.epTag {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--ink);
+  border: var(--border);
+  padding: 5px 11px;
+  letter-spacing: 0.04em;
+}
+
+.epNumRow {
+  margin-bottom: 14px;
+}
+
+.epBigNum {
+  font-weight: 900;
+  font-size: clamp(44px, 5.2vw, 78px);
+  line-height: 0.78;
+  letter-spacing: -0.05em;
+  color: var(--ink);
+}
+
+.epTitle {
+  font-weight: 800;
+  font-size: clamp(24px, 2.9vw, 38px);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  margin: 0 0 14px;
+}
+
+.epDesc {
+  font-size: 15px;
+  line-height: 1.55;
+  color: rgba(10, 10, 10, 0.7);
+  margin: 0 0 22px;
+  font-weight: 500;
+  max-width: 440px;
+}
+
+.epFooter {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  border-top: var(--border);
+  padding-top: 18px;
+}
+
+.epListen {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: gap 0.25s ease;
+}
+
+.epGuest {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(10, 10, 10, 0.55);
+}
+
+.epDate {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(10, 10, 10, 0.55);
+  margin-left: auto;
 }
 
 /* DERRIERE LE MICRO */
@@ -502,9 +642,13 @@
     border-right: none;
     border-bottom: 2px solid var(--accent);
   }
-  .episodeInner {
+  .epBandInner {
     grid-template-columns: 1fr;
-    gap: 8px;
+    gap: 24px;
+  }
+  .epBand:nth-child(even) .epMedia,
+  .epBand:nth-child(even) .epText {
+    order: unset;
   }
   .hero {
     padding-top: 190px;

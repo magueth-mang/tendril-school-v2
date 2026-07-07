@@ -2,7 +2,7 @@ export const ticker = [
   "DEUX BOOTCAMPS · UN MÉTIER",
   "NOVICE & AVANCÉ",
   "SESSION SEPTEMBRE 2026",
-  "30 PLACES / PROMO",
+  "30 PLACES PAR PROMO",
 ];
 
 export const compareStrip = [
@@ -21,7 +21,7 @@ export const cards = {
     facts: [
       { label: "DURÉE", value: "12 sem." },
       { label: "PRÉREQUIS", value: "Aucun" },
-      { label: "TARIF", value: "7 900 €" },
+      { label: "TARIF", value: "5 900 €" },
     ],
     href: "/programmes/novice",
   },
@@ -33,7 +33,7 @@ export const cards = {
     facts: [
       { label: "DURÉE", value: "10 sem." },
       { label: "PRÉREQUIS", value: "Portfolio" },
-      { label: "TARIF", value: "9 900 €" },
+      { label: "TARIF", value: "7 900 €" },
     ],
     href: "/programmes/avance",
   },
