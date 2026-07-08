@@ -19,7 +19,7 @@ import styles from "./CandidatureView.module.css";
 const TOTAL = 6;
 
 const TICKER = [
-  "CANDIDATURE — SESSION SEPTEMBRE 2026",
+  "CANDIDATURE — SESSION JANVIER 2027",
   "30 PLACES",
   "SÉLECTION SUR ENTRETIEN",
   "RÉPONSE SOUS 7 JOURS",
@@ -308,7 +308,7 @@ export default function CandidatureView() {
                     big
                     kicker="NIVEAU 02 · CONFIRMÉ"
                     title="Bootcamp Avancé"
-                    meta="10 SEMAINES · SUR PORTFOLIO · 7 900 €"
+                    meta="12 SEMAINES · SUR PORTFOLIO · 7 900 €"
                   />
                 </div>
                 <div className={styles.row2}>
@@ -434,8 +434,8 @@ export default function CandidatureView() {
               >
                 <h2 className={styles.stepTitle}>Portfolio &amp; motivation</h2>
                 <p className={styles.stepSub}>
-                  Le portfolio est requis pour le niveau Avancé, optionnel mais
-                  bienvenu pour le niveau Novice.
+                  Le portfolio est requis pour les deux formations. Un travail
+                  en cours ou des projets personnels suffisent.
                 </p>
                 <div className={styles.stack}>
                   <div className={styles.row2}>
@@ -444,6 +444,7 @@ export default function CandidatureView() {
                       name="portfolio"
                       type="url"
                       placeholder="https://"
+                      required
                     />
                     <Field
                       label="LinkedIn / site perso"

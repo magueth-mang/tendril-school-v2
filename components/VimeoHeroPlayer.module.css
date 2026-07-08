@@ -1,0 +1,192 @@
+.frame {
+  position: relative;
+  background: #000;
+}
+
+.hoverLift {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.hoverLift:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 8px 8px 0 var(--accent);
+}
+
+/* DECORATIVE HEADER BAR */
+.caption {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 9px 16px;
+  color: var(--accent);
+  background: var(--ink);
+  border-bottom: 1px solid rgba(255, 210, 0, 0.28);
+}
+
+.wrap {
+  position: relative;
+  width: 100%;
+  background: #000;
+  overflow: hidden;
+}
+
+.iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+/* Cover mode: scale the 16:9 embed to fill the box (crop) instead of
+   letterboxing when the container aspect isn't 16:9. */
+.coverWrap .iframe {
+  inset: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+  height: auto;
+  min-width: 100%;
+  min-height: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+/* DECORATION OVERLAY (badges, bars…) — non-interactive, above the tint filter
+   so labels stay legible; only shown before playback starts. */
+.decor {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* PLAY OVERLAY + BLACK FILTER */
+.playOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10, 10, 10, 0.55);
+  cursor: pointer;
+  /* Promote to its own compositing layer so the semi-transparent tint
+     blends over the iframe's video layer (Chrome iframe stacking quirk). */
+  transform: translateZ(0);
+}
+
+.playOverlay:hover .playBtn {
+  transform: scale(1.08);
+}
+
+.playBtn {
+  width: 92px;
+  height: 92px;
+  background: var(--accent);
+  border: 2px solid var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 6px 6px 0 rgba(10, 10, 10, 0.6);
+  transition: transform 0.25s ease;
+}
+
+.playBtnSm {
+  width: 58px;
+  height: 58px;
+  box-shadow: 4px 4px 0 rgba(10, 10, 10, 0.6);
+}
+
+.playBtnCircle {
+  border-radius: 50%;
+}
+
+/* CONTROLS BAR */
+.controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 20px;
+  background: var(--ink);
+  border-top: 2px solid rgba(255, 210, 0, 0.3);
+}
+
+.controlsCompact {
+  gap: 10px;
+  padding: 9px 12px;
+}
+
+/* Bare controls — no bar background / accent divider, just the elements */
+.controlsBare {
+  background: transparent;
+  border-top: none;
+}
+
+.ctrlBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  flex-shrink: 0;
+  transition: opacity 0.15s ease;
+}
+
+.ctrlBtn:hover {
+  opacity: 0.7;
+}
+
+.time {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+  min-width: 40px;
+}
+
+/* PROGRESS BAR */
+.progressWrap {
+  flex: 1;
+  position: relative;
+  height: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.progressTrack {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: rgba(255, 210, 0, 0.2);
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--accent);
+  transition: width 0.1s linear;
+}
+
+.progressInput {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  margin: 0;
+}

@@ -2,23 +2,23 @@ export const novice = {
   theme: "light",
   ticker: [
     "BOOTCAMP NOVICE",
-    "AUCUN PRÉREQUIS",
+    "SUR PORTFOLIO",
     "12 SEMAINES · PARIS",
-    "SESSION SEPTEMBRE 2026",
+    "SESSION JANVIER 2027",
   ],
   breadcrumbLabel: "BOOTCAMP NOVICE",
   kicker: "NIVEAU 01 — NOVICE",
-  kickerRight: "AUCUN PRÉREQUIS",
+  kickerRight: "SUR PORTFOLIO",
   titleLine1: "Partir de",
   titlePrefix: "",
   titleHighlight: "zéro.",
   introStrong: "Apprendre les fondamentaux de la publicité 3D haut de gamme.",
   introRest:
     " 12 semaines pour passer de débutant complet à un premier portfolio crédible dans la beauté et le luxe. On apprend le geste, la matière et la lumière — pas seulement à cliquer dans un logiciel.",
-  ctaPrimary: { label: "→ Candidater pour septembre", href: "/candidature" },
+  ctaPrimary: { label: "→ Candidater pour janvier", href: "/candidature" },
   ctaSecondary: {
     label: "Déjà confirmé ? Voir le bootcamp avancé →",
-    href: "/programmes/avance",
+    href: "/programmes/bootcamp-avance",
   },
   heroCaption: {
     left: "FIG. 01 — TRAVAIL PROMO NOVICE, SEMAINE 12",
@@ -27,8 +27,8 @@ export const novice = {
   facts: [
     { label: "DURÉE", value: "12 sem." },
     { label: "RYTHME", value: "Plein temps" },
-    { label: "PRÉREQUIS", value: "Aucun" },
-    { label: "RENTRÉE", value: "Sept. 2026" },
+    { label: "PRÉREQUIS", value: "Portfolio" },
+    { label: "RENTRÉE", value: "Janv. 2027" },
     { label: "TARIF", value: "5 900 €", highlight: true },
   ],
   pourQui: {
@@ -188,8 +188,8 @@ export const novice = {
   },
   cta: {
     title: "Prêt à partir de zéro ?",
-    label: "→ Candidater pour septembre",
+    label: "→ Candidater pour janvier",
   },
-  footerExtraLink: { label: "Bootcamp Avancé", href: "/programmes/avance" },
+  footerExtraLink: { label: "Bootcamp Avancé", href: "/programmes/bootcamp-avance" },
   footerTopAccent: true,
 };

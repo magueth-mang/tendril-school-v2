@@ -49,6 +49,11 @@
   margin: 0 0 30px;
 }
 
+.highlight {
+  background: var(--accent);
+  padding: 0 0.08em;
+}
+
 .intro {
   font-size: 19px;
   line-height: 1.5;
@@ -133,7 +138,7 @@
   letter-spacing: -0.03em;
   text-transform: uppercase;
   margin: 0 0 36px;
-  max-width: 820px;
+  max-width: 960px;
 }
 
 .cardsGrid {

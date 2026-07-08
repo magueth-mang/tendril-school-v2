@@ -5,10 +5,12 @@ import Link from "next/link";
 import Ticker from "./Ticker";
 import Nav from "./Nav";
 import Footer from "./Footer";
-import MediaFrame from "./MediaFrame";
+import VimeoHeroPlayer from "./VimeoHeroPlayer";
 import { useScrollFx } from "@/lib/useScrollFx";
 import { ticker, stats, featured, episodes } from "@/data/ecole";
 import styles from "./EcoleView.module.css";
+
+const PLACEHOLDER_VIDEO = { videoId: "1181961439", hash: "fd5a3feded" };
 
 export default function EcoleView() {
   const rootRef = useRef(null);
@@ -86,10 +88,13 @@ export default function EcoleView() {
           </span>
           <div data-reveal className={styles.featuredCard}>
             <div className={styles.featuredMedia}>
-              <MediaFrame
-                border="accent"
+              <VimeoHeroPlayer
+                videoId={PLACEHOLDER_VIDEO.videoId}
+                hash={PLACEHOLDER_VIDEO.hash}
                 aspect="1 / 1"
-                play={{ size: 84, shape: "circle", dim: true, shadow: true, iconW: 26, iconH: 30 }}
+                playShape="circle"
+                bareControls
+                cover
               />
             </div>
             <div className={styles.featuredBody}>
@@ -124,23 +129,21 @@ export default function EcoleView() {
           {episodes.map((ep) => (
             <div key={ep.num} className={styles.epBand}>
               <div className={styles.epBandInner}>
-                <div className={styles.epMedia}>
-                  <div className={styles.epTint} />
-                  <span className={styles.epBadge}>ÉP. {ep.num}</span>
-                  <span className={styles.epDuration}>{ep.dur}</span>
-                  <div className={styles.epCoverPlay}>
-                    <span className={styles.epPlayCircle}>
-                      <svg width="22" height="26" viewBox="0 0 22 26" fill="none">
-                        <path d="M3 3 L19 13 L3 23 Z" fill="#0A0A0A" />
-                      </svg>
-                    </span>
-                  </div>
-                  <div className={styles.epBars}>
-                    {[0, 0.18, 0.36, 0.12, 0.42].map((delay, i) => (
-                      <span key={i} className={styles.epBar} style={{ animationDelay: `${delay}s` }} />
-                    ))}
-                  </div>
-                </div>
+                <VimeoHeroPlayer
+                  videoId={PLACEHOLDER_VIDEO.videoId}
+                  hash={PLACEHOLDER_VIDEO.hash}
+                  aspect="16 / 9"
+                  playShape="circle"
+                  compact
+                  bareControls
+                  className={styles.epMediaFrame}
+                  overlay={
+                    <>
+                      <span className={styles.epBadge}>ÉP. {ep.num}</span>
+                      <span className={styles.epDuration}>{ep.dur}</span>
+                    </>
+                  }
+                />
                 <div className={styles.epText}>
                   <span className={styles.epTag}>{ep.tag}</span>
                   <div className={styles.epNumRow}>
@@ -178,7 +181,14 @@ export default function EcoleView() {
             </p>
           </div>
           <div data-reveal>
-            <MediaFrame caption={{ left: "STUDIO — 12 RUE DU FAUBOURG", right: "ON AIR" }} aspect="16 / 10" />
+            <VimeoHeroPlayer
+              videoId={PLACEHOLDER_VIDEO.videoId}
+              hash={PLACEHOLDER_VIDEO.hash}
+              aspect="16 / 10"
+              playShape="circle"
+              caption={{ left: "STUDIO — 12 RUE DU FAUBOURG", right: "ON AIR" }}
+              className={styles.micFrame}
+            />
           </div>
         </div>
       </section>

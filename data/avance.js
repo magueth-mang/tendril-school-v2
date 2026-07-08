@@ -3,8 +3,8 @@ export const avance = {
   ticker: [
     "BOOTCAMP AVANCÉ",
     "ADMISSION SUR PORTFOLIO",
-    "10 SEMAINES · PARIS",
-    "SESSION SEPTEMBRE 2026",
+    "12 SEMAINES · PARIS",
+    "SESSION JANVIER 2027",
   ],
   breadcrumbLabel: "BOOTCAMP AVANCÉ",
   kicker: "NIVEAU 02 — AVANCÉ",
@@ -14,21 +14,21 @@ export const avance = {
   titleHighlight: "excellence.",
   introStrong: "Devenir un Artiste 3D spécialisé dans la publicité de luxe.",
   introRest:
-    " En 10 semaines, on pousse votre travail au niveau attendu par les maisons : production publicitaire, shading premium, lighting cinématographique et briefs clients réels qui décrochent un studio.",
+    " En 12 semaines, on pousse votre travail au niveau attendu par les maisons : production publicitaire, shading premium, lighting avancé et briefs clients réels qui décrochent un studio.",
   ctaPrimary: { label: "→ Soumettre mon portfolio", href: "/candidature" },
   ctaSecondary: {
     label: "Débutant ? Voir le bootcamp novice →",
-    href: "/programmes/novice",
+    href: "/programmes/bootcamp-novice",
   },
   heroCaption: {
     left: "FIG. 01 — TRAVAIL PROMO AVANCÉ, BRIEF CLIENT",
     right: "1920×1080",
   },
   facts: [
-    { label: "DURÉE", value: "10 sem." },
+    { label: "DURÉE", value: "12 sem." },
     { label: "RYTHME", value: "Plein temps" },
     { label: "PRÉREQUIS", value: "Portfolio" },
-    { label: "RENTRÉE", value: "Sept. 2026" },
+    { label: "RENTRÉE", value: "Janv. 2027" },
     { label: "TARIF", value: "7 900 €", highlight: true },
   ],
   pourQui: {
@@ -80,9 +80,9 @@ export const avance = {
     },
     {
       num: "04",
-      title: "Lighting Cinématographique",
+      title: "Éclairage avancé",
       tags: [
-        "Cinematic Lighting",
+        "Advanced Lighting",
         "Luxury Lighting",
         "Rim Light",
         "Dramatic Lighting",
@@ -186,6 +186,11 @@ export const avance = {
     },
     {
       weeks: "SEM. 09 — 10",
+      title: "Simulations & effets",
+      desc: "Fluides, particules et morphing sous Houdini et Blender : condensation, éclaboussures et textures cosmétiques en mouvement.",
+    },
+    {
+      weeks: "SEM. 11 — 12",
       title: "Brief final & reel",
       desc: "Deuxième brief client réel, montage du reel, finalisation du book et mise en relation studios.",
     },
@@ -222,6 +227,6 @@ export const avance = {
     title: "Montrez-nous votre travail.",
     label: "→ Soumettre mon portfolio",
   },
-  footerExtraLink: { label: "Bootcamp Novice", href: "/programmes/novice" },
+  footerExtraLink: { label: "Bootcamp Novice", href: "/programmes/bootcamp-novice" },
   footerTopAccent: false,
 };

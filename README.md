@@ -14,9 +14,9 @@ Site vitrine de Tendril School — bootcamp de modélisation 3D spécialisé dan
 ```
 app/                      routes (App Router) — un page.jsx léger par route, qui rend un composant "*View"
   page.jsx                /
-  programmes/page.jsx     /programmes
-  programmes/novice/      /programmes/novice
-  programmes/avance/      /programmes/avance
+  programmes/page.jsx              /programmes
+  programmes/bootcamp-novice/      /programmes/bootcamp-novice
+  programmes/bootcamp-avance/      /programmes/bootcamp-avance
   ecole/page.jsx          /ecole
   contact/page.jsx        /contact
   candidature/page.jsx    /candidature (dossier en 6 étapes)

@@ -27,11 +27,12 @@ export default function ProgrammesView() {
           <h1 data-hero className={styles.title}>
             DEUX FORMATIONS.
             <br />
-            UNE MÊME AMBITION.
+            UNE MÊME <mark className={styles.highlight}>AMBITION.</mark>
           </h1>
           <p data-hero className={styles.intro}>
-            Découvrez le Bootcamp qui correspond à votre niveau et développez les compétences
-            recherchées par les plus grandes agences, studios et marques de luxe.
+            Découvrez le Bootcamp qui correspond à votre niveau et développez
+            les compétences recherchées par les plus grandes agences, studios et
+            marques de luxe.
           </p>
         </div>
       </header>
@@ -57,7 +58,10 @@ export default function ProgrammesView() {
             <h2 className={styles.h2}>Choisissez votre niveau.</h2>
           </div>
           <div data-stagger className={styles.cardsGrid}>
-            <Link href={cards.novice.href} className={`${styles.card} ${styles.cardLight}`}>
+            <Link
+              href={cards.novice.href}
+              className={`${styles.card} ${styles.cardLight}`}
+            >
               <div className={styles.cardMedia}>
                 <div className={styles.cardMediaBar}>
                   <span>{cards.novice.kickerLeft}</span>
@@ -80,13 +84,20 @@ export default function ProgrammesView() {
                     </div>
                   ))}
                 </div>
-                <span className={styles.cardCta}>Voir le programme complet →</span>
+                <span className={styles.cardCta}>
+                  Voir le programme complet →
+                </span>
               </div>
             </Link>
 
-            <Link href={cards.avance.href} className={`${styles.card} ${styles.cardDark}`}>
+            <Link
+              href={cards.avance.href}
+              className={`${styles.card} ${styles.cardDark}`}
+            >
               <div className={styles.cardMedia}>
-                <div className={`${styles.cardMediaBar} ${styles.cardMediaBarAccent}`}>
+                <div
+                  className={`${styles.cardMediaBar} ${styles.cardMediaBarAccent}`}
+                >
                   <span>{cards.avance.kickerLeft}</span>
                   <span className={styles.popularBadge}>★ POPULAIRE</span>
                   <span>{cards.avance.kickerRight}</span>
@@ -99,12 +110,18 @@ export default function ProgrammesView() {
                   <br />
                   {cards.avance.title[1]}
                 </h3>
-                <p className={`${styles.cardDesc} ${styles.cardDescDark}`}>{cards.avance.desc}</p>
-                <div className={`${styles.cardFacts} ${styles.cardFactsAccent}`}>
+                <p className={`${styles.cardDesc} ${styles.cardDescDark}`}>
+                  {cards.avance.desc}
+                </p>
+                <div
+                  className={`${styles.cardFacts} ${styles.cardFactsAccent}`}
+                >
                   {cards.avance.facts.map((f) => (
                     <div key={f.label} className={styles.cardFact}>
                       <div className={styles.cardFactLabelDark}>{f.label}</div>
-                      <div className={styles.cardFactValueAccent}>{f.value}</div>
+                      <div className={styles.cardFactValueAccent}>
+                        {f.value}
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -120,18 +137,28 @@ export default function ProgrammesView() {
       <section className={styles.orientationSection}>
         <div data-reveal className={styles.container}>
           <span className={styles.kickerSm}>(02) — LEQUEL CHOISIR ?</span>
-          <h2 className={styles.h2Narrow}>Pas sûr de votre niveau ? On vous oriente.</h2>
+          <h2 className={styles.h2Narrow}>
+            Pas sûr de votre niveau&nbsp;?
+            <br />
+            On vous oriente.
+          </h2>
           <div className={styles.orientationGrid}>
             <div className={styles.orientationCell}>
-              <span className={styles.orientationLabel}>CHOISISSEZ NOVICE SI…</span>
+              <span className={styles.orientationLabel}>
+                CHOISISSEZ NOVICE SI…
+              </span>
               <ul className={styles.orientationList}>
                 {orientation.novice.map((item) => (
                   <li key={item}>{item}</li>
                 ))}
               </ul>
             </div>
-            <div className={`${styles.orientationCell} ${styles.orientationCellAccent}`}>
-              <span className={styles.orientationLabel}>CHOISISSEZ AVANCÉ SI…</span>
+            <div
+              className={`${styles.orientationCell} ${styles.orientationCellAccent}`}
+            >
+              <span className={styles.orientationLabel}>
+                CHOISISSEZ AVANCÉ SI…
+              </span>
               <ul className={styles.orientationList}>
                 {orientation.avance.map((item) => (
                   <li key={item}>{item}</li>
@@ -146,10 +173,12 @@ export default function ProgrammesView() {
         <div data-reveal className={styles.ctaInner}>
           <div>
             <span className={styles.kickerSm}>(03) — CANDIDATURE</span>
-            <h2 className={styles.ctaTitle}>Une seule candidature pour les deux.</h2>
+            <h2 className={styles.ctaTitle}>
+              Une seule candidature pour les deux.
+            </h2>
           </div>
           <Link href="/candidature" className={styles.ctaButton}>
-            → Candidater pour septembre
+            → Candidater pour janvier
           </Link>
         </div>
       </section>

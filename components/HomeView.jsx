@@ -6,7 +6,7 @@ import Ticker from "./Ticker";
 import Nav from "./Nav";
 import Footer from "./Footer";
 import Faq from "./Faq";
-import MediaFrame from "./MediaFrame";
+import VimeoHeroPlayer from "./VimeoHeroPlayer";
 import { useScrollFx } from "@/lib/useScrollFx";
 import {
   ticker,
@@ -39,17 +39,19 @@ export default function HomeView() {
             <span className={styles.kickerRight}>PARIS · EST. 2021</span>
           </div>
           <h1 data-hero className={styles.title}>
-            La 1<sup className={styles.sup}>ère</sup> école 3D spécialisée pour le{" "}
-            <mark className={styles.highlight}>luxe,</mark> Mode &amp; Hardware.
+            La 1<sup className={styles.sup}>ère</sup> école 3D spécialisée pour
+            le <mark className={styles.highlight}>luxe,</mark> Mode &amp;
+            Hardware.
           </h1>
           <div data-hero className={styles.introRow}>
             <p className={styles.intro}>
-              Des formations intensives de 4 mois, pensées par des professionnels du secteur pour
-              répondre aux besoins réels des marques de luxe, cosmétique et mode.
+              Des formations intensives de 4 mois, pensées par des
+              professionnels du secteur pour répondre aux besoins réels des
+              marques de luxe, cosmétique et mode.
             </p>
             <div className={styles.ctaCol}>
               <Link href="/candidature" className={styles.ctaPrimary}>
-                → Candidater pour septembre
+                → Candidater pour janvier
               </Link>
               <a href="#programme" className={styles.ctaSecondary}>
                 Lire le programme
@@ -62,7 +64,7 @@ export default function HomeView() {
             <span>FIG. 01 — RENDER ÉTUDIANT, PROMO 2025</span>
             <span>1920×1080</span>
           </div>
-          <div className={styles.heroFillLg} />
+          <VimeoHeroPlayer videoId="1181961439" hash="fd5a3feded" />
         </div>
       </header>
 
@@ -71,10 +73,12 @@ export default function HomeView() {
         <div data-reveal className={styles.container}>
           <span className={styles.kickerSm}>(02) — MANIFESTE</span>
           <p className={styles.manifestoText}>
-            Aujourd&apos;hui, <mark className={styles.manifestoHighlight}>plus de 85%</mark> des
+            Aujourd&apos;hui,{" "}
+            <mark className={styles.manifestoHighlight}>plus de 85%</mark> des
             contenus visuels produits par les marques utilisent la 3D :{" "}
             <span className={styles.manifestoMuted}>
-              campagnes, produits, social media, e-commerce et expériences immersives.
+              campagnes, produits, social media, e-commerce et expériences
+              immersives.
             </span>
           </p>
         </div>
@@ -96,32 +100,36 @@ export default function HomeView() {
       <section id="showreel" className={styles.showreel}>
         <div className={styles.container}>
           <div data-reveal className={styles.showreelHead}>
-            <span className={styles.kickerAccent}>(03) — VOTRE FUTUR PORTFOLIO</span>
+            <span className={styles.kickerAccent}>
+              (03) — VOTRE FUTUR PORTFOLIO
+            </span>
             <h2 className={styles.showreelTitle}>
-              VOUS RÉALISEREZ PLUSIEURS PROJETS PUBLICITAIRES COMPLETS, DES VISUELS PACKSHOT LUXE
-              ET UNE PUBLICITÉ PRODUIT DE NIVEAU AGENCE.
+              VOUS RÉALISEREZ PLUSIEURS PROJETS PUBLICITAIRES COMPLETS, DES
+              VISUELS PACKSHOT LUXE ET UNE PUBLICITÉ PRODUIT DE NIVEAU AGENCE.
             </h2>
           </div>
 
           <div data-reveal className={styles.mainReel}>
-            <MediaFrame
-              border="accent"
+            <VimeoHeroPlayer
+              videoId="1181961439"
+              hash="fd5a3feded"
               hoverLift
               caption={{ left: "FIG. 02 — REEL PROMO 2025", right: "01:48 · 4K" }}
-              aspect="16 / 9"
-              play={{ size: 92, shape: "square", dim: true, shadow: true, iconW: 28, iconH: 32 }}
+              className={styles.playerAccentBorder}
             />
           </div>
 
           <div data-stagger className={styles.clipsGrid}>
             {clips.map((c) => (
-              <MediaFrame
+              <VimeoHeroPlayer
                 key={c.label}
-                border="accent"
+                videoId="1181964838"
+                hash="e8a6ed7b41"
+                aspect="9 / 16"
+                compact
                 hoverLift
                 caption={{ left: c.label, right: c.dur }}
-                aspect="4 / 5"
-                play={{ size: 58, shape: "square", iconW: 18, iconH: 20 }}
+                className={styles.playerAccentBorder}
               />
             ))}
           </div>
@@ -144,14 +152,18 @@ export default function HomeView() {
             <button
               type="button"
               onClick={() => setTrack("novice")}
-              className={`${styles.tab} ${track === "novice" ? styles.tabActive : ""}`}
+              className={`${styles.tab} ${
+                track === "novice" ? styles.tabActive : ""
+              }`}
             >
               Bootcamp Novice
             </button>
             <button
               type="button"
               onClick={() => setTrack("avance")}
-              className={`${styles.tab} ${track === "avance" ? styles.tabActive : ""}`}
+              className={`${styles.tab} ${
+                track === "avance" ? styles.tabActive : ""
+              }`}
             >
               Bootcamp Avancé
             </button>
@@ -188,16 +200,22 @@ export default function HomeView() {
           <div data-reveal className={styles.methodeGrid}>
             <div className={styles.methodeQuoteWrap}>
               <p className={styles.methodeQuote}>
-                « Lorsque qu&apos;une agence, un studio ou une marque recrute un artiste 3D, la
-                première chose qu&apos;elle regarde n&apos;est pas votre école.{" "}
-                <mark className={styles.highlight}>C&apos;est votre portfolio.</mark> »
+                « Lorsque qu&apos;une agence, un studio ou une marque recrute un
+                artiste 3D, la première chose qu&apos;elle regarde n&apos;est
+                pas votre école.{" "}
+                <mark className={styles.highlight}>
+                  C&apos;est votre portfolio.
+                </mark>{" "}
+                »
               </p>
             </div>
-            <MediaFrame
+            <VimeoHeroPlayer
+              videoId="1181961439"
+              hash="fd5a3feded"
+              aspect="16 / 9"
               hoverLift
               caption={{ left: "FIG. 03 — JOURNÉE TYPE", right: "02:30" }}
-              aspect="16 / 11"
-              play={{ size: 84, shape: "square", dim: true, shadow: true, iconW: 26, iconH: 30 }}
+              className={styles.playerInkBorder}
             />
           </div>
         </div>
@@ -208,13 +226,19 @@ export default function HomeView() {
         <div className={styles.container}>
           <div data-reveal className={styles.pourquoiHead}>
             <span className={styles.kickerSm}>(06) — POURQUOI TENDRIL</span>
-            <h2 className={styles.h2Narrow}>Une autre approche que l&apos;école classique.</h2>
+            <h2 className={styles.h2Narrow}>
+              Une autre approche que l&apos;école classique.
+            </h2>
           </div>
           <div data-stagger className={styles.compareGrid}>
             <div className={styles.compareTendril}>
               <div className={styles.compareHead}>
-                <span className={styles.compareBadge}>{comparison.tendril.label}</span>
-                <div className={styles.compareName}>{comparison.tendril.name}</div>
+                <span className={styles.compareBadge}>
+                  {comparison.tendril.label}
+                </span>
+                <div className={styles.compareName}>
+                  {comparison.tendril.name}
+                </div>
               </div>
               <ul className={styles.compareList}>
                 {comparison.tendril.rows.map((row) => (
@@ -227,8 +251,12 @@ export default function HomeView() {
             </div>
             <div className={styles.compareAutre}>
               <div className={styles.compareHeadLight}>
-                <span className={styles.compareBadgeMuted}>{comparison.autre.label}</span>
-                <div className={styles.compareNameMuted}>{comparison.autre.name}</div>
+                <span className={styles.compareBadgeMuted}>
+                  {comparison.autre.label}
+                </span>
+                <div className={styles.compareNameMuted}>
+                  {comparison.autre.name}
+                </div>
               </div>
               <ul className={styles.compareList}>
                 {comparison.autre.rows.map((row) => (
@@ -248,8 +276,9 @@ export default function HomeView() {
         <div data-reveal className={styles.container}>
           <span className={styles.kickerAccent}>(07) — TÉMOIGNAGE</span>
           <p className={styles.temoignageQuote}>
-            « Notre objectif est de proposer une formation intensive, spécialisée et directement
-            inspirée des méthodes utilisées dans les studios qui produisent aujourd&apos;hui{" "}
+            « Notre objectif est de proposer une formation intensive,
+            spécialisée et directement inspirée des méthodes utilisées dans les
+            studios qui produisent aujourd&apos;hui{" "}
             <span className={styles.temoignageAccent}>
               les campagnes des plus grandes marques de luxe.
             </span>{" "}
@@ -279,7 +308,9 @@ export default function HomeView() {
           <PricingCard data={bootcamps.avance} variant="accent" />
         </div>
         <p data-reveal className={styles.financementNote}>
-          {"// ÉCHELONNEMENT POSSIBLE · PRISE EN CHARGE ENTREPRISE / OPCO"}
+          {
+            "// ÉCHELONNEMENT POSSIBLE · CONTACTEZ NOUS POUR PLUS D'INFORMATIONS"
+          }
         </p>
       </section>
 
@@ -303,19 +334,33 @@ export default function HomeView() {
             <span className={styles.kickerSm}>(10) — CANDIDATURE</span>
             <h2 className={styles.candidatureTitle}>Rejoignez la promo.</h2>
             <p className={styles.candidatureText}>
-              30 places. Sélection sur entretien. Candidatures pour septembre ouvertes.
+              30 places. Sélection sur entretien. Candidatures pour jannvier
+              ouvertes.
             </p>
             <div className={styles.candidatureContact}>
-              <a href="mailto:contact@tendril.com" className={styles.candidatureEmail}>
+              <a
+                href="mailto:contact@tendril.com"
+                className={styles.candidatureEmail}
+              >
                 CONTACT@TENDRIL.COM
               </a>
-              <span className={styles.candidatureAddress}>12 RUE DU FAUBOURG · 75003 PARIS</span>
+              <span className={styles.candidatureAddress}>
+                12 RUE DU FAUBOURG · 75003 PARIS
+              </span>
             </div>
           </div>
           <form onSubmit={(e) => e.preventDefault()} className={styles.form}>
-            <input type="text" placeholder="Nom complet" className={styles.field} />
+            <input
+              type="text"
+              placeholder="Nom complet"
+              className={styles.field}
+            />
             <input type="email" placeholder="Email" className={styles.field} />
-            <input type="text" placeholder="Lien portfolio (optionnel)" className={styles.field} />
+            <input
+              type="text"
+              placeholder="Lien portfolio (optionnel)"
+              className={styles.field}
+            />
             <textarea
               placeholder="Pourquoi le luxe et la 3D ?"
               rows={3}
@@ -336,7 +381,11 @@ export default function HomeView() {
 function PricingCard({ data, variant }) {
   const accent = variant === "accent";
   return (
-    <div className={`${styles.pricingCard} ${accent ? styles.pricingCardAccent : ""}`}>
+    <div
+      className={`${styles.pricingCard} ${
+        accent ? styles.pricingCardAccent : ""
+      }`}
+    >
       {accent && <span className={styles.popular}>★ POPULAIRE</span>}
       <span className={styles.pricingKicker}>{data.kicker}</span>
       <h3 className={styles.pricingTitle}>{data.title}</h3>

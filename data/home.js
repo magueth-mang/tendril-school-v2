@@ -1,7 +1,7 @@
 export const ticker = [
   "CANDIDATURES OUVERTES",
-  "SESSION — SEPTEMBRE 2026",
-  "30 PLACES",
+  "SESSION — JANVIER 2027",
+  "30 PLACES PAR PROMO",
   "BOOTCAMP 3D · BEAUTÉ & LUXE",
 ];
 
@@ -13,7 +13,7 @@ export const clips = [
 
 export const stats = [
   { value: "95%", label: "EN POSTE OU FREELANCE À 6 MOIS" },
-  { value: "30", label: "PLACES / PROMO" },
+  { value: "30", label: "PLACES PAR PROMO" },
   { value: "12", label: "SEMAINES D'IMMERSION" },
   { value: "04", label: "STUDIOS PARTENAIRES" },
 ];
@@ -130,7 +130,7 @@ export const avanceModules = [
   },
   {
     num: "04",
-    title: "Lighting Cinématographique",
+    title: "Éclairage avancé",
     tags: [
       "Cinematic Lighting",
       "Rim Light",
@@ -175,7 +175,7 @@ export const bootcamps = {
   novice: {
     kicker: "NIVEAU 01 · DÉBUTANT",
     title: "Bootcamp Novice",
-    meta: "12 SEM · AUCUN PRÉREQUIS · SEPT. 2026",
+    meta: "12 SEM · SUR PORTFOLIO · JANV. 2027",
     price: "5 900 €",
     subtitle: "DÉBUTANTS ET RECONVERSIONS",
     items: [
@@ -186,12 +186,12 @@ export const bootcamps = {
       "Publicité produit",
       "Premier portfolio",
     ],
-    href: "/programmes/novice",
+    href: "/programmes/bootcamp-novice",
   },
   avance: {
     kicker: "NIVEAU 02 · CONFIRMÉ",
     title: "Bootcamp Avancé",
-    meta: "10 SEM · SUR PORTFOLIO · SEPT. 2026",
+    meta: "12 SEM · SUR PORTFOLIO · JANV. 2027",
     price: "7 900 €",
     subtitle: "PRODUCTION FILM 3D",
     items: [
@@ -202,7 +202,7 @@ export const bootcamps = {
       "Direction artistique avancée",
       "Portfolio niveau agence",
     ],
-    href: "/programmes/avance",
+    href: "/programmes/bootcamp-avance",
   },
 };
 
