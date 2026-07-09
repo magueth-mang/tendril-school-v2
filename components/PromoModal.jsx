@@ -65,25 +65,45 @@ export default function PromoModal() {
           onClick={close}
           aria-label="Fermer"
         >
-          ×
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path
+              d="M1 1 L13 13 M13 1 L1 13"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+            />
+          </svg>
         </button>
 
-        <span className={styles.kicker}>★ PROCHAINE PROMOTION</span>
-        <h2 id="promo-title" className={styles.title}>
-          Rentrée <mark className={styles.highlight}>Janvier 2027</mark>
-        </h2>
-        <p className={styles.text}>
-          La prochaine promotion démarre en janvier 2027. Les candidatures sont
-          ouvertes — 30 places seulement. Réservez la vôtre dès maintenant.
-        </p>
+        {/* Slot image 9:16 — remplacez le fond par votre visuel */}
+        <div className={styles.media} aria-hidden="true">
+          <span className={styles.mediaTag}>SESSION · JANVIER 2027</span>
+        </div>
 
-        <div className={styles.actions}>
-          <Link href="/candidature" className={styles.cta} onClick={close}>
-            → Candidater maintenant
-          </Link>
-          <button type="button" className={styles.dismiss} onClick={close}>
-            Plus tard
-          </button>
+        <div className={styles.body}>
+          <span className={styles.kicker}>★ INSCRIPTIONS OUVERTES · 30 PLACES</span>
+          <h2 id="promo-title" className={styles.title}>
+            Ne ratez pas la promo{" "}
+            <mark className={styles.highlight}>Janvier 2027</mark>.
+          </h2>
+          <p className={styles.text}>
+            La prochaine promotion se remplit — et il n&apos;y a que 30 places.
+            Formez-vous en 12 semaines auprès d&apos;artistes qui produisent pour
+            les plus grandes maisons, et repartez avec un portfolio de niveau
+            agence.
+          </p>
+          <p className={styles.urgency}>
+            🔥 Sélection en cours · Réservez votre place aujourd&apos;hui
+          </p>
+
+          <div className={styles.actions}>
+            <Link href="/candidature" className={styles.cta} onClick={close}>
+              → Je candidate maintenant
+            </Link>
+            <button type="button" className={styles.dismiss} onClick={close}>
+              Plus tard
+            </button>
+          </div>
         </div>
       </div>
     </div>
