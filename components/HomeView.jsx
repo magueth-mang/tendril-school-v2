@@ -75,7 +75,7 @@ export default function HomeView() {
         </div>
         <div data-hero className={styles.heroMedia}>
           <div className={styles.heroCaption}>
-            <span>RENDER. 01 — YSL PURSE, PROMO 2026</span>
+            <span>RENDER. 01 — YSL PURSE, MANG PRODUCTION 2026</span>
             <span>1920×1080</span>
           </div>
           <VimeoHeroPlayer videoId="1181961439" hash="fd5a3feded" background />
