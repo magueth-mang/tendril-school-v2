@@ -320,9 +320,7 @@ export default function CandidatureView() {
                   />
                   <div>
                     <label className={styles.label}>Format</label>
-                    <div className={styles.staticField}>
-                      Présentiel — Paris 3ᵉ
-                    </div>
+                    <div className={styles.staticField}>Distanciel</div>
                   </div>
                 </div>
               </div>

@@ -65,6 +65,7 @@ export default function VimeoHeroPlayer({
   overlay,
   bareControls = false,
   cover = false,
+  background = false,
   className = "",
 }) {
   const iframeRef = useRef(null);
@@ -90,7 +91,8 @@ export default function VimeoHeroPlayer({
   // handshake succeeds even on client-side navigation, where the iframe can
   // resolve from cache before an effect would run.
   function handleIframeLoad() {
-    if (playerRef.current || !iframeRef.current) return;
+    // Background mode is a silent autoplay loop — no SDK / controls needed.
+    if (background || playerRef.current || !iframeRef.current) return;
     const player = new Player(iframeRef.current);
     playerRef.current = player;
 
@@ -170,16 +172,20 @@ export default function VimeoHeroPlayer({
       >
         <iframe
           ref={iframeRef}
-          src={`https://player.vimeo.com/video/${videoId}?h=${hash}&title=0&byline=0&portrait=0&badge=0&autopause=0&controls=0&dnt=1&player_id=0&app_id=58479`}
+          src={
+            background
+              ? `https://player.vimeo.com/video/${videoId}?h=${hash}&background=1&autoplay=1&loop=1&muted=1&dnt=1`
+              : `https://player.vimeo.com/video/${videoId}?h=${hash}&title=0&byline=0&portrait=0&badge=0&autopause=0&controls=0&dnt=1&player_id=0&app_id=58479`
+          }
           className={styles.iframe}
           onLoad={handleIframeLoad}
           allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
           allowFullScreen
         />
 
-        {overlay && <div className={styles.decor}>{overlay}</div>}
+        {!background && overlay && <div className={styles.decor}>{overlay}</div>}
 
-        {!playing && (
+        {!background && !playing && (
           <div className={styles.playOverlay} onClick={handleCenter}>
             <span
               className={`${styles.playBtn} ${compact ? styles.playBtnSm : ""} ${
@@ -210,7 +216,7 @@ export default function VimeoHeroPlayer({
           </div>
         )}
 
-        {started && (
+        {!background && started && (
           <div
             className={`${styles.controls} ${compact ? styles.controlsCompact : ""} ${
               bareControls ? styles.controlsBare : ""

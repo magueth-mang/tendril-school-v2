@@ -61,10 +61,10 @@ export default function HomeView() {
         </div>
         <div data-hero className={styles.heroMedia}>
           <div className={styles.heroCaption}>
-            <span>FIG. 01 — RENDER ÉTUDIANT, PROMO 2025</span>
+            <span>RENDER. 01 — YSL PURSE, PROMO 2026</span>
             <span>1920×1080</span>
           </div>
-          <VimeoHeroPlayer videoId="1181961439" hash="fd5a3feded" />
+          <VimeoHeroPlayer videoId="1181961439" hash="fd5a3feded" background />
         </div>
       </header>
 
@@ -114,7 +114,10 @@ export default function HomeView() {
               videoId="1181961439"
               hash="fd5a3feded"
               hoverLift
-              caption={{ left: "FIG. 02 — REEL PROMO 2025", right: "01:48 · 4K" }}
+              caption={{
+                left: "FIG. 02 — REEL PROMO 2025",
+                right: "01:48 · 4K",
+              }}
               className={styles.playerAccentBorder}
             />
           </div>

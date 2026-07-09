@@ -64,4 +64,5 @@
 
 .answerText {
   max-width: 760px;
+  white-space: pre-line;
 }

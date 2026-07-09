@@ -6,8 +6,8 @@ export const ticker = [
 ];
 
 export const compareStrip = [
-  { label: "DURÉE", value: "12 / 10", suffix: "sem." },
-  { label: "FORMAT", value: "Présentiel", suffix: "· Paris" },
+  { label: "DURÉE", value: "12 / 12", suffix: "sem." },
+  { label: "FORMAT", value: "Distanciel", suffix: "· Paris" },
   { label: "RENTRÉE", value: "Janv.", suffix: "2027" },
   { label: "PLACES", value: "30", suffix: "par promo" },
 ];
