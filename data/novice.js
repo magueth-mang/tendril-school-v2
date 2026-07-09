@@ -8,7 +8,7 @@ export const novice = {
   ],
   breadcrumbLabel: "BOOTCAMP NOVICE",
   kicker: "NIVEAU 01 — NOVICE",
-  kickerRight: "SUR PORTFOLIO",
+  kickerRight: "AUCUN PRÉREQUIS",
   titleLine1: "Partir de",
   titlePrefix: "",
   titleHighlight: "zéro.",
@@ -27,7 +27,7 @@ export const novice = {
   facts: [
     { label: "DURÉE", value: "12 sem." },
     { label: "RYTHME", value: "Plein temps" },
-    { label: "PRÉREQUIS", value: "Portfolio" },
+    { label: "PRÉREQUIS", value: "Aucun" },
     { label: "RENTRÉE", value: "Janv. 2027" },
     { label: "TARIF", value: "5 900 €", highlight: true },
   ],
@@ -181,7 +181,7 @@ export const novice = {
     price: "5 900 €",
     desc: "Tout compris : licences logicielles, accès studio, briefs clients et accompagnement portfolio.",
     financement: [
-      "Prise en charge entreprise / OPCO possible",
+      "Prise en charge entreprise / OPCO si possible",
       "Paiement échelonné possible",
       "Acompte de 30 % à l'inscription",
     ],
@@ -190,6 +190,9 @@ export const novice = {
     title: "Prêt à partir de zéro ?",
     label: "→ Candidater pour janvier",
   },
-  footerExtraLink: { label: "Bootcamp Avancé", href: "/programmes/bootcamp-avance" },
+  footerExtraLink: {
+    label: "Bootcamp Avancé",
+    href: "/programmes/bootcamp-avance",
+  },
   footerTopAccent: true,
 };

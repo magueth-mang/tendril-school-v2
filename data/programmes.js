@@ -15,12 +15,12 @@ export const compareStrip = [
 export const cards = {
   novice: {
     kickerLeft: "NIVEAU 01 · DÉBUTANT",
-    kickerRight: "SUR PORTFOLIO",
+    kickerRight: "OUVERT À TOUS",
     title: ["Bootcamp", "Novice"],
     desc: "Construisez des bases solides en 3D et découvrez les techniques utilisées dans la publicité, la beauté et le luxe. En seulement 4 mois, réalisez vos premières créations professionnelles et développez un portfolio qui vous ressemble.",
     facts: [
       { label: "DURÉE", value: "12 sem." },
-      { label: "PRÉREQUIS", value: "Portfolio" },
+      { label: "PRÉREQUIS", value: "Aucun" },
       { label: "TARIF", value: "5 900 €" },
     ],
     href: "/programmes/bootcamp-novice",

@@ -218,7 +218,7 @@ export const avance = {
     price: "7 900 €",
     desc: "Tout compris : pipeline studio, 2 briefs clients réels, mentorat individuel et mise en relation.",
     financement: [
-      "Prise en charge entreprise / OPCO possible",
+      "Prise en charge entreprise / OPCO si possible",
       "Paiement échelonné possible",
       "Acompte de 30 % à l'inscription",
     ],
@@ -227,6 +227,9 @@ export const avance = {
     title: "Montrez-nous votre travail.",
     label: "→ Soumettre mon portfolio",
   },
-  footerExtraLink: { label: "Bootcamp Novice", href: "/programmes/bootcamp-novice" },
+  footerExtraLink: {
+    label: "Bootcamp Novice",
+    href: "/programmes/bootcamp-novice",
+  },
   footerTopAccent: false,
 };
