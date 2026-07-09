@@ -76,30 +76,30 @@ export default function VimeoHeroPlayer({
   const [duration, setDuration] = useState(0);
   const [ended, setEnded] = useState(false);
 
-  // Destroy the player when the component unmounts.
-  useEffect(() => {
-    return () => {
-      if (playerRef.current) {
-        playerRef.current.destroy().catch(() => {});
-        playerRef.current = null;
-      }
-    };
-  }, []);
+  const wantPlayRef = useRef(false);
 
-  // Attach the SDK once the iframe embed has finished loading. Doing it on
-  // `load` (rather than in a mount effect) guarantees the postMessage
-  // handshake succeeds even on client-side navigation, where the iframe can
-  // resolve from cache before an effect would run.
-  function handleIframeLoad() {
+  // Create the player on mount so `playerRef` is available immediately. The
+  // SDK queues method calls (play/pause/seek) until the embed is ready, so no
+  // click is ever lost — and `ready()` handles the handshake regardless of the
+  // iframe's load state (fresh load or client-side navigation from cache).
+  useEffect(() => {
     // Background mode is a silent autoplay loop — no SDK / controls needed.
-    if (background || playerRef.current || !iframeRef.current) return;
-    const player = new Player(iframeRef.current);
+    if (background) return undefined;
+    const iframe = iframeRef.current;
+    if (!iframe) return undefined;
+
+    const player = new Player(iframe);
     playerRef.current = player;
 
     player
       .ready()
-      .then(() => player.getDuration())
-      .then((d) => setDuration(d))
+      .then(() => {
+        player.getDuration().then((d) => setDuration(d)).catch(() => {});
+        if (wantPlayRef.current) {
+          wantPlayRef.current = false;
+          player.play().catch(() => {});
+        }
+      })
       .catch(() => {});
 
     player.on("timeupdate", ({ seconds, duration: d }) => {
@@ -116,11 +116,18 @@ export default function VimeoHeroPlayer({
       setPlaying(false);
       setEnded(true);
     });
-  }
+
+    return () => {
+      playerRef.current = null;
+      player.destroy().catch(() => {});
+    };
+  }, [background]);
 
   function play() {
     setEnded(false);
-    playerRef.current?.play().catch(() => {});
+    const p = playerRef.current;
+    if (p) p.play().catch(() => {});
+    else wantPlayRef.current = true;
   }
 
   function togglePlay() {
@@ -178,7 +185,6 @@ export default function VimeoHeroPlayer({
               : `https://player.vimeo.com/video/${videoId}?h=${hash}&title=0&byline=0&portrait=0&badge=0&autopause=0&controls=0&dnt=1&player_id=0&app_id=58479`
           }
           className={styles.iframe}
-          onLoad={handleIframeLoad}
           allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
           allowFullScreen
         />
