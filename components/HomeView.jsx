@@ -7,6 +7,7 @@ import Nav from "./Nav";
 import Footer from "./Footer";
 import Faq from "./Faq";
 import VimeoHeroPlayer from "./VimeoHeroPlayer";
+import PromoModal from "./PromoModal";
 import { useScrollFx } from "@/lib/useScrollFx";
 import {
   ticker,
@@ -24,10 +25,23 @@ export default function HomeView() {
   const rootRef = useRef(null);
   useScrollFx(rootRef);
   const [track, setTrack] = useState("novice");
+  const [emailCopied, setEmailCopied] = useState(false);
   const modules = track === "novice" ? noviceModules : avanceModules;
+
+  function handleCopyEmail(e) {
+    e.preventDefault();
+    navigator.clipboard
+      ?.writeText("contact@tendril.com")
+      .then(() => {
+        setEmailCopied(true);
+        setTimeout(() => setEmailCopied(false), 1800);
+      })
+      .catch(() => {});
+  }
 
   return (
     <div ref={rootRef} className={styles.page}>
+      <PromoModal />
       <Ticker items={ticker} theme="dark" />
       <Nav theme="light" />
 
@@ -341,12 +355,18 @@ export default function HomeView() {
               ouvertes.
             </p>
             <div className={styles.candidatureContact}>
-              <a
-                href="mailto:contact@tendril.com"
-                className={styles.candidatureEmail}
-              >
-                CONTACT@TENDRIL.COM
-              </a>
+              <div className={styles.candidatureEmailRow}>
+                <a
+                  href="mailto:contact@tendril.com"
+                  onClick={handleCopyEmail}
+                  className={styles.candidatureEmail}
+                >
+                  CONTACT@TENDRIL.COM
+                </a>
+                {emailCopied && (
+                  <span className={styles.copiedMsg}>Copié ✓</span>
+                )}
+              </div>
               <span className={styles.candidatureAddress}>
                 12 RUE DU FAUBOURG · 75003 PARIS
               </span>

@@ -765,12 +765,29 @@
   gap: 8px;
 }
 
+.candidatureEmailRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
 .candidatureEmail {
   color: var(--ink);
   border-bottom: var(--border);
   padding-bottom: 2px;
   width: max-content;
   text-decoration: none;
+  cursor: pointer;
+}
+
+.copiedMsg {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent);
+  background: var(--ink);
+  padding: 3px 9px;
 }
 
 .candidatureAddress {
