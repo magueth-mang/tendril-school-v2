@@ -75,8 +75,10 @@ export default function PromoModal() {
           </svg>
         </button>
 
-        {/* Slot image 9:16 — remplacez le fond par votre visuel */}
+        {/* Slot image 9:16 — GIF Lancôme (portrait), recadré en cover */}
         <div className={styles.media} aria-hidden="true">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/lancome_gif.gif" alt="" className={styles.mediaImg} />
           <span className={styles.mediaTag}>SESSION · JANVIER 2027</span>
         </div>
 
