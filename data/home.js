@@ -19,10 +19,10 @@ export const clips = [
     hash: "e8a6ed7b41",
   },
   {
-    label: "04. BOOTCAMP NOVICE - CAMPAGNE VICHY",
-    dur: "00:08",
-    videoId: "1153912318",
-    hash: "d60346a18a",
+    label: "04. BOOTCAMP NOVICE - CAMPAGNE MICHELE WATCHES",
+    dur: "00:14",
+    videoId: "1118646824",
+    hash: "49b17c1c0f",
   },
 ];
 

@@ -1,12 +1,12 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import Link from "next/link";
 import Ticker from "./Ticker";
 import Nav from "./Nav";
 import Footer from "./Footer";
 import VimeoHeroPlayer from "./VimeoHeroPlayer";
-import PodcastBar from "./PodcastBar";
+import { usePodcast } from "./PodcastProvider";
 import { useScrollFx } from "@/lib/useScrollFx";
 import { ticker, stats, featured, episodes } from "@/data/ecole";
 import styles from "./EcoleView.module.css";
@@ -16,14 +16,10 @@ const PLACEHOLDER_VIDEO = { videoId: "1181961439", hash: "fd5a3feded" };
 export default function EcoleView() {
   const rootRef = useRef(null);
   useScrollFx(rootRef);
-  const [playingIndex, setPlayingIndex] = useState(null);
+  const { play, index: playingIndex } = usePodcast();
 
   return (
-    <div
-      ref={rootRef}
-      className={styles.page}
-      style={playingIndex != null ? { paddingBottom: 96 } : undefined}
-    >
+    <div ref={rootRef} className={styles.page}>
       <Ticker items={ticker} theme="dark" />
       <Nav theme="light" active="ecole" />
 
@@ -117,7 +113,7 @@ export default function EcoleView() {
                 <button
                   type="button"
                   className={styles.playBtn}
-                  onClick={() => setPlayingIndex(episodes.length - 1)}
+                  onClick={() => play(episodes.length - 1)}
                 >
                   ▶ Écouter maintenant
                 </button>
@@ -165,7 +161,7 @@ export default function EcoleView() {
                       className={`${styles.epCardListen} ${
                         playingIndex === i ? styles.epCardListenActive : ""
                       }`}
-                      onClick={() => setPlayingIndex(i)}
+                      onClick={() => play(i)}
                     >
                       {playingIndex === i ? "▶ En lecture" : "→ Écouter"}
                     </button>
@@ -238,13 +234,6 @@ export default function EcoleView() {
       </section>
 
       <Footer />
-
-      <PodcastBar
-        episodes={episodes}
-        index={playingIndex}
-        onIndexChange={setPlayingIndex}
-        onClose={() => setPlayingIndex(null)}
-      />
     </div>
   );
 }

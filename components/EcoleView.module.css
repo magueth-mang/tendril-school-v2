@@ -166,6 +166,12 @@
   align-items: start;
 }
 
+/* Let both columns shrink below their content's intrinsic width so nothing
+   (long text, the stats row) forces horizontal overflow on small screens. */
+.intro2Grid > * {
+  min-width: 0;
+}
+
 .paragraphLead {
   font-size: 18px;
   line-height: 1.6;
@@ -611,6 +617,15 @@
   .epGrid {
     grid-template-columns: 1fr;
     max-width: 380px;
+  }
+  /* Stack the stat cells vertically instead of wrapping them awkwardly. */
+  .statsRow {
+    flex-direction: column;
+    width: 100%;
+  }
+  .statsRow .statCell:not(:last-child) {
+    border-right: none;
+    border-bottom: var(--border);
   }
 }
 

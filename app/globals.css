@@ -23,6 +23,17 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Room for the fixed podcast bar so it never hides the footer. */
+body.podcast-active {
+  padding-bottom: 86px;
+}
+
+@media (max-width: 760px) {
+  body.podcast-active {
+    padding-bottom: 132px;
+  }
+}
+
 a {
   color: inherit;
 }

@@ -25,17 +25,21 @@
   }
 }
 
-/* Off-screen Vimeo iframe — audio kept, video clipped out of view. */
-.hidden {
-  position: absolute;
+/* Off-screen Vimeo iframe — audio kept, video clipped out of view. Fixed &
+   z-index:-1 so it stays out of layout wherever it's rendered. */
+.media {
+  position: fixed;
+  bottom: 0;
+  left: 0;
   width: 1px;
   height: 1px;
   overflow: hidden;
   opacity: 0;
   pointer-events: none;
+  z-index: -1;
 }
 
-.hidden iframe {
+.media iframe {
   width: 320px;
   height: 180px;
   border: 0;
@@ -184,10 +188,57 @@
 }
 
 .volume {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 10px;
   color: rgba(244, 241, 234, 0.7);
+}
+
+/* Volume slider popover (Spotify/SoundCloud style) — used on tap where the
+   inline slider is hidden. */
+.volPopover {
+  position: absolute;
+  bottom: calc(100% + 14px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 14px 16px;
+  background: var(--ink);
+  border: 2px solid var(--accent);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.5);
+  z-index: 6;
+}
+
+.volPopover::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 7px solid transparent;
+  border-top-color: var(--accent);
+}
+
+.volPopRange {
+  width: 150px;
+  display: block;
+}
+
+.volBtn {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+
+.volBtn:hover {
+  color: var(--accent);
+  transform: scale(1.1);
 }
 
 .volRange {
@@ -281,7 +332,10 @@
   .right {
     gap: 14px;
   }
-  .volume {
+  /* Keep the mute/unmute button (essential to restore sound after mobile's
+     forced muted-autoplay) but drop the slider — iOS controls volume via
+     hardware and the space is tight. */
+  .volRange {
     display: none;
   }
 }

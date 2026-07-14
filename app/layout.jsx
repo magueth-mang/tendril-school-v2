@@ -1,5 +1,6 @@
 import { Archivo, Space_Mono } from "next/font/google";
 import "./globals.css";
+import PodcastProvider from "@/components/PodcastProvider";
 
 const archivo = Archivo({
   subsets: ["latin"],
@@ -24,7 +25,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="fr" className={`${archivo.variable} ${spaceMono.variable}`}>
-      <body>{children}</body>
+      <body>
+        <PodcastProvider>{children}</PodcastProvider>
+      </body>
     </html>
   );
 }
