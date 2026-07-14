@@ -304,7 +304,7 @@ export default function PodcastBar({
                     step="0.01"
                     value={volLevel}
                     onChange={handleVolume}
-                    className={`${styles.range} ${styles.volPopRange}`}
+                    className={styles.volPopRange}
                     style={{ "--pct": `${volPct}%` }}
                     aria-label="Volume"
                   />

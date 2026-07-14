@@ -197,12 +197,15 @@
 
 /* Volume slider popover (Spotify/SoundCloud style) — used on tap where the
    inline slider is hidden. */
+/* Vertical volume popover: a horizontal slider rotated -90° (reliable & fully
+   draggable on touch, unlike writing-mode:vertical which renders inconsistently). */
 .volPopover {
   position: absolute;
   bottom: calc(100% + 14px);
   left: 50%;
   transform: translateX(-50%);
-  padding: 14px 16px;
+  width: 46px;
+  height: 98px;
   background: var(--ink);
   border: 2px solid var(--accent);
   box-shadow: 0 8px 22px rgba(0, 0, 0, 0.5);
@@ -220,8 +223,45 @@
 }
 
 .volPopRange {
-  width: 150px;
-  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 70px;
+  height: 6px;
+  margin: 0;
+  transform: translate(-50%, -50%) rotate(-90deg);
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 3px;
+  background: linear-gradient(
+    to right,
+    var(--accent) 0%,
+    var(--accent) var(--pct, 0%),
+    rgba(244, 241, 234, 0.22) var(--pct, 0%),
+    rgba(244, 241, 234, 0.22) 100%
+  );
+  cursor: pointer;
+  outline: none;
+  touch-action: none;
+}
+
+.volPopRange::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--cream);
+  border: none;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+.volPopRange::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--cream);
+  border: none;
 }
 
 .volBtn {
