@@ -28,9 +28,8 @@ export default function EcoleView() {
             <span className={styles.kickerRight}>PARIS · EST. 2021</span>
           </div>
           <h1 data-hero className={styles.title}>
-            Former
-            <br />
-            l&apos;œil du <mark className={styles.highlight}>luxe.</mark>
+            Les futurs 3D designers{" "}
+            <mark className={styles.highlight}>du luxe</mark> commencent ici.
           </h1>
           <div data-hero className={styles.introRow}>
             <p className={styles.intro}>

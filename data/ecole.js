@@ -16,10 +16,10 @@ export const featured = {
   duration: "SAISON 01",
   title: "Le bon choix : Tendril School",
   desc: "On est là pour transmettre des compétences, des méthodes et la vision dont ils auront besoin pour évoluer dans ce métier-là, grâce à notre expérience avec les plus grandes marques.",
-  guest: "AVEC NICOLAS ANGUELOV — FONDATEUR",
+  guest: "AVEC NICOLAS ANGUELOV — CEO ET FONDATEUR DE MANG PRODUCTION",
 };
 
-const HOST = "Nicolas Anguelov";
+const HOST = "Nicolas Anguelov, CEO et fondateur de Mang Production";
 
 export const episodes = [
   {
