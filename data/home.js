@@ -6,9 +6,9 @@ export const ticker = [
 ];
 
 export const clips = [
-  { label: "FLACON · TURNTABLE", dur: "00:12" },
-  { label: "TEXTURE LIQUIDE", dur: "00:08" },
-  { label: "CAMPAGNE · SÉRUM", dur: "00:15" },
+  { label: "02. BOOTCAMP NOVICE - CAMPAGNE LANCOME", dur: "00:12" },
+  { label: "03. BOOTCAMP AVANCE - SIMULATION MORPHING 3D", dur: "00:08" },
+  { label: "04. BOOTCAMP NOVICE - CAMPAGNE VICHY", dur: "00:15" },
 ];
 
 export const stats = [

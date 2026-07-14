@@ -34,9 +34,10 @@ export default function EcoleView() {
           </h1>
           <div data-hero className={styles.introRow}>
             <p className={styles.intro}>
-              Tendril School est l&apos;école de modélisation 3D dédiée à la beauté et au luxe. On
-              y forme des artistes capables de fabriquer l&apos;image des plus grandes maisons — du
-              flacon de parfum au packshot de campagne.
+              Tendril School est l&apos;école de modélisation 3D dédiée à la
+              beauté et au luxe. On y forme des artistes capables de fabriquer
+              l&apos;image des plus grandes maisons — du flacon de parfum au
+              packshot de campagne.
             </p>
             <div className={styles.ctaCol}>
               <Link href="/programmes" className={styles.ctaPrimary}>
@@ -54,19 +55,23 @@ export default function EcoleView() {
         <div className={styles.intro2Grid}>
           <div data-reveal>
             <span className={styles.kickerSm}>(01) — QUI SOMMES-NOUS</span>
-            <h2 className={styles.h2Small}>Une école née dans l&apos;atelier.</h2>
+            <h2 className={styles.h2Small}>
+              Une école née dans l&apos;atelier.
+            </h2>
           </div>
           <div data-reveal>
             <p className={styles.paragraphLead}>
-              Fondée à Paris en 2021 par des artistes en exercice, Tendril School est née
-              d&apos;un constat simple&nbsp;: le CGI de luxe ne s&apos;apprend pas dans un manuel,
-              mais en regardant la lumière tomber sur un flacon, encore et encore, jusqu&apos;à ce
-              que ce soit juste.
+              Fondée à Paris en 2021 par des artistes en exercice, Tendril
+              School est née d&apos;un constat simple&nbsp;: le CGI de luxe ne
+              s&apos;apprend pas dans un manuel, mais en regardant la lumière
+              tomber sur un flacon, encore et encore, jusqu&apos;à ce que ce
+              soit juste.
             </p>
             <p className={styles.paragraph}>
-              Nos bootcamps sont courts, intenses et exigeants. On y travaille comme en studio :
-              un brief, les mains dans la matière, une critique collective chaque soir. Pas de
-              cours magistral — du métier, transmis par celles et ceux qui le pratiquent pour les
+              Nos bootcamps sont courts, intenses et exigeants. On y travaille
+              comme en studio : un brief, les mains dans la matière, une
+              critique collective chaque soir. Pas de cours magistral — du
+              métier, transmis par celles et ceux qui le pratiquent pour les
               plus grandes maisons.
             </p>
             <div className={styles.statsRow}>
@@ -89,12 +94,11 @@ export default function EcoleView() {
           <div data-reveal className={styles.featuredCard}>
             <div className={styles.featuredMedia}>
               <VimeoHeroPlayer
-                videoId={PLACEHOLDER_VIDEO.videoId}
-                hash={PLACEHOLDER_VIDEO.hash}
-                aspect="1 / 1"
+                videoId="1209820898"
+                hash="105c111140"
+                aspect="9 / 16"
                 playShape="circle"
                 bareControls
-                cover
               />
             </div>
             <div className={styles.featuredBody}>
@@ -119,50 +123,45 @@ export default function EcoleView() {
         <div className={styles.container}>
           <div data-reveal className={styles.episodesHead}>
             <div>
-              <span className={styles.kickerSm}>(02) — TOUS LES ÉPISODES</span>
+              <span className={styles.kickerSm}>(02) — LE PODCAST</span>
               <h2 className={styles.h2}>La série.</h2>
             </div>
-            <span className={styles.seasonLabel}>SAISON 01 · 08 ÉPISODES</span>
+            <span className={styles.seasonLabel}>SAISON 01 · 12 ÉPISODES</span>
           </div>
-        </div>
-        <div data-stagger>
-          {episodes.map((ep) => (
-            <div key={ep.num} className={styles.epBand}>
-              <div className={styles.epBandInner}>
-                <VimeoHeroPlayer
-                  videoId={PLACEHOLDER_VIDEO.videoId}
-                  hash={PLACEHOLDER_VIDEO.hash}
-                  aspect="16 / 9"
-                  playShape="circle"
-                  compact
-                  bareControls
-                  className={styles.epMediaFrame}
-                  overlay={
-                    <>
+
+          <div data-stagger className={styles.epGrid}>
+            {episodes.map((ep) => (
+              <article key={ep.num} className={styles.epCard}>
+                <div className={styles.epCardMedia}>
+                  <VimeoHeroPlayer
+                    videoId={ep.videoId}
+                    hash={ep.hash}
+                    aspect="9 / 16"
+                    playShape="circle"
+                    compact
+                    bareControls
+                    overlay={
                       <span className={styles.epBadge}>ÉP. {ep.num}</span>
-                      <span className={styles.epDuration}>{ep.dur}</span>
-                    </>
-                  }
-                />
-                <div className={styles.epText}>
-                  <span className={styles.epTag}>{ep.tag}</span>
-                  <div className={styles.epNumRow}>
-                    <span className={styles.epBigNum}>{ep.num}</span>
-                  </div>
-                  <h3 className={styles.epTitle}>{ep.title}</h3>
-                  <p className={styles.epDesc}>{ep.desc}</p>
-                  <div className={styles.epFooter}>
-                    <span className={styles.epListen}>→ Écouter</span>
-                    <span className={styles.epGuest}>AVEC {ep.guest}</span>
-                    <span className={styles.epDate}>{ep.date}</span>
+                    }
+                  />
+                </div>
+                <div className={styles.epCardBody}>
+                  <h3 className={styles.epCardTitle}>
+                    <span className={styles.epCardTitleMark}>{ep.title}</span>
+                  </h3>
+                  <p className={styles.epCardQuote}>« {ep.quote} »</p>
+                  <div className={styles.epCardFoot}>
+                    <span className={styles.epCardListen}>→ Écouter</span>
+                    <span className={styles.epCardGuest}>Avec {ep.guest}</span>
                   </div>
                 </div>
-              </div>
-            </div>
-          ))}
-          <div className={styles.episodesClose}>
-            <span>{"// SAISON 02 EN PRÉPARATION — RESTEZ À L'ÉCOUTE"}</span>
+              </article>
+            ))}
           </div>
+        </div>
+
+        <div className={styles.episodesClose}>
+          <span>{"// SAISON 02 EN PRÉPARATION — RESTEZ À L'ÉCOUTE"}</span>
         </div>
       </section>
 
@@ -170,14 +169,18 @@ export default function EcoleView() {
         <div className={styles.micGrid}>
           <div data-reveal>
             <span className={styles.kickerSm}>(03) — DERRIÈRE LE MICRO</span>
-            <h2 className={styles.h2Small}>Animé par l&apos;équipe pédagogique.</h2>
+            <h2 className={styles.h2Small}>
+              Animé par l&apos;équipe pédagogique.
+            </h2>
             <p className={styles.paragraphLead}>
-              Pas d&apos;interview promo : des conversations de praticiens. Les mentors de Tendril
-              reçoivent celles et ceux qui font réellement l&apos;image du luxe aujourd&apos;hui.
+              Pas d&apos;interview promo : des conversations de praticiens. Les
+              mentors de Tendril reçoivent celles et ceux qui font réellement
+              l&apos;image du luxe aujourd&apos;hui.
             </p>
             <p className={styles.paragraph}>
-              Un format pensé pour les étudiants comme pour les curieux : on y parle technique,
-              direction artistique, parcours et réalité du marché.
+              Un format pensé pour les étudiants comme pour les curieux : on y
+              parle technique, direction artistique, parcours et réalité du
+              marché.
             </p>
           </div>
           <div data-reveal>
@@ -186,6 +189,7 @@ export default function EcoleView() {
               hash={PLACEHOLDER_VIDEO.hash}
               aspect="16 / 10"
               playShape="circle"
+              cover
               caption={{ left: "STUDIO — 12 RUE DU FAUBOURG", right: "ON AIR" }}
               className={styles.micFrame}
             />
@@ -200,11 +204,14 @@ export default function EcoleView() {
             <h2 className={styles.h2Wide}>Ne ratez aucun épisode.</h2>
           </div>
           <div className={styles.platformCol}>
-            <a href="#" className={`${styles.platformBtn} ${styles.platformBtnDark}`}>
+            <a
+              href="#"
+              className={`${styles.platformBtn} ${styles.platformBtnDark}`}
+            >
               ▶ Spotify
             </a>
             <a href="#" className={styles.platformBtn}>
-              ▶ Apple Podcasts
+              ▶ Instagram
             </a>
             <a href="#" className={styles.platformBtn}>
               ▶ YouTube

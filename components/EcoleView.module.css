@@ -230,7 +230,7 @@
 
 .featuredCard {
   display: grid;
-  grid-template-columns: 380px 1fr;
+  grid-template-columns: 260px 1fr;
   gap: 0;
   border: 2px solid var(--accent);
   background: #000;
@@ -319,16 +319,17 @@
 
 /* EPISODES LIST */
 .episodesSection {
-  border-bottom: var(--border);
+  padding: 0 28px;
 }
 
 .episodesHead {
-  padding: 60px 28px 0;
+  max-width: var(--container);
+  margin: 0 auto 40px;
+  padding: 60px 0 0;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   gap: 24px;
-  margin-bottom: 40px;
   flex-wrap: wrap;
 }
 
@@ -340,6 +341,7 @@
 }
 
 .episodesClose {
+  margin: 0 -28px;
   border-top: var(--border);
   border-bottom: var(--border);
 }
@@ -356,48 +358,38 @@
   color: rgba(10, 10, 10, 0.55);
 }
 
-/* EPISODE BANDS */
-.epBand {
-  border-top: var(--border);
-  transition: background 0.25s ease;
-}
-
-.epBand:hover {
-  background: var(--accent);
-}
-
-.epBandInner {
+/* EPISODE GRID — LE PODCAST (portrait 9:16, 3 per row) */
+.epGrid {
   max-width: var(--container);
   margin: 0 auto;
-  padding: 38px 28px;
+  padding: 0 0 66px;
   display: grid;
-  grid-template-columns: 1.08fr 1fr;
-  gap: 48px;
-  align-items: center;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
 }
 
-.epBand:nth-child(even) .epMediaFrame {
-  order: 2;
-}
-
-.epBand:nth-child(even) .epText {
-  order: 1;
-}
-
-.epBand:hover .epListen {
-  gap: 16px;
-}
-
-/* Media */
-.epMediaFrame {
+.epCard {
+  display: flex;
+  flex-direction: column;
   border: var(--border);
+  background: var(--cream);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.epCard:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 8px 8px 0 var(--accent);
+}
+
+.epCardMedia {
+  border-bottom: var(--border);
   overflow: hidden;
 }
 
 .epBadge {
   position: absolute;
-  top: 14px;
-  left: 14px;
+  top: 12px;
+  left: 12px;
   font-family: var(--font-mono);
   font-size: 11px;
   font-weight: 700;
@@ -406,102 +398,77 @@
   border: var(--border);
   padding: 4px 10px;
   letter-spacing: 0.02em;
+  z-index: 4;
 }
 
-.epDuration {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--accent);
-}
-
-.micFrame {
-  border: var(--border);
-}
-
-/* Text */
-.epText {
-  position: relative;
-}
-
-.epTag {
-  position: absolute;
-  top: 0;
-  right: 0;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--ink);
-  border: var(--border);
-  padding: 5px 11px;
-  letter-spacing: 0.04em;
-}
-
-.epNumRow {
-  margin-bottom: 14px;
-}
-
-.epBigNum {
-  font-weight: 900;
-  font-size: clamp(44px, 5.2vw, 78px);
-  line-height: 0.78;
-  letter-spacing: -0.05em;
-  color: var(--ink);
-}
-
-.epTitle {
-  font-weight: 800;
-  font-size: clamp(24px, 2.9vw, 38px);
-  line-height: 1.02;
-  letter-spacing: -0.025em;
-  margin: 0 0 14px;
-}
-
-.epDesc {
-  font-size: 15px;
-  line-height: 1.55;
-  color: rgba(10, 10, 10, 0.7);
-  margin: 0 0 22px;
-  font-weight: 500;
-  max-width: 440px;
-}
-
-.epFooter {
+.epCardBody {
+  flex: 1;
   display: flex;
-  align-items: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  border-top: var(--border);
-  padding-top: 18px;
+  flex-direction: column;
+  padding: 18px 18px 16px;
 }
 
-.epListen {
+.epCardTitle {
+  font-weight: 800;
+  font-size: clamp(15px, 1.4vw, 19px);
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  margin: 0 0 12px;
+}
+
+.epCardTitleMark {
+  background: var(--accent);
+  color: var(--ink);
+  padding: 0.05em 0.12em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.epCardQuote {
+  font-size: 13px;
+  line-height: 1.5;
+  font-weight: 500;
+  font-style: italic;
+  color: rgba(10, 10, 10, 0.6);
+  margin: 0 0 22px;
+}
+
+.epCardFoot {
+  margin-top: auto;
+  border-top: var(--border);
+  padding-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.epCardListen {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   font-family: var(--font-mono);
   font-size: 13px;
   font-weight: 700;
   text-transform: uppercase;
-  transition: gap 0.25s ease;
+  transition: gap 0.22s ease;
 }
 
-.epGuest {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  font-weight: 700;
-  color: rgba(10, 10, 10, 0.55);
+.epCard:hover .epCardListen {
+  gap: 14px;
 }
 
-.epDate {
+.epCardGuest {
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
-  color: rgba(10, 10, 10, 0.55);
-  margin-left: auto;
+  color: rgba(10, 10, 10, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.micFrame {
+  border: var(--border);
 }
 
 /* DERRIERE LE MICRO */
@@ -567,28 +534,59 @@
   box-shadow: 4px 4px 0 var(--ink);
 }
 
+@media (max-width: 1024px) {
+  .epGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 @media (max-width: 768px) {
   .intro2Grid,
   .micGrid {
     grid-template-columns: 1fr !important;
   }
+  .subscribeGrid {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .platformCol {
+    min-width: 0;
+    width: 100%;
+  }
   .featuredCard {
     grid-template-columns: 1fr;
   }
   .featuredMedia {
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
     border-right: none;
     border-bottom: 2px solid var(--accent);
   }
-  .epBandInner {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-  .epBand:nth-child(even) .epMediaFrame,
-  .epBand:nth-child(even) .epText {
-    order: unset;
+  .epGrid {
+    grid-template-columns: repeat(2, 1fr);
   }
   .hero {
     padding-top: 190px;
+  }
+  .introRow {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .ctaCol {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .ctaPrimary {
+    width: auto;
+  }
+}
+
+@media (max-width: 560px) {
+  .epGrid {
+    grid-template-columns: 1fr;
+    max-width: 380px;
   }
 }
 

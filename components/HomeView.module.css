@@ -57,7 +57,7 @@
 .highlight {
   background: var(--accent);
   padding: 0 0.08em;
-  color: inherit;
+  color: var(--ink);
 }
 
 .introRow {

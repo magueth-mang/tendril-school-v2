@@ -119,7 +119,10 @@ export default function HomeView() {
             </span>
             <h2 className={styles.showreelTitle}>
               VOUS RÉALISEREZ PLUSIEURS PROJETS PUBLICITAIRES COMPLETS, DES
-              VISUELS PACKSHOT LUXE ET UNE PUBLICITÉ PRODUIT DE NIVEAU AGENCE.
+              VISUELS PACKSHOT LUXE ET UNE{" "}
+              <mark className={styles.highlight}>
+                PUBLICITÉ PRODUIT DE NIVEAU AGENCE.
+              </mark>
             </h2>
           </div>
 
@@ -129,7 +132,7 @@ export default function HomeView() {
               hash="fd5a3feded"
               hoverLift
               caption={{
-                left: "FIG. 02 — REEL PROMO 2025",
+                left: "01. BOOTCAMP NOVICE — CAMPAGNE KERASTASE",
                 right: "01:48 · 4K",
               }}
               className={styles.playerAccentBorder}
