@@ -303,6 +303,7 @@
   text-transform: uppercase;
   padding: 13px 24px;
   text-decoration: none;
+  cursor: pointer;
   transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
@@ -444,18 +445,41 @@
 }
 
 .epCardListen {
+  align-self: flex-start;
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  padding: 0;
+  border: none;
+  background: none;
+  color: inherit;
+  cursor: pointer;
   font-family: var(--font-mono);
   font-size: 13px;
   font-weight: 700;
   text-transform: uppercase;
-  transition: gap 0.22s ease;
+  transition: gap 0.22s ease, color 0.15s ease;
 }
 
 .epCard:hover .epCardListen {
   gap: 14px;
+}
+
+.epCardListen:hover {
+  color: var(--ink);
+}
+
+.epCardListenActive {
+  color: var(--ink);
+}
+
+.epCardListenActive::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 1.5px solid var(--ink);
 }
 
 .epCardGuest {

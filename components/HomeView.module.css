@@ -402,13 +402,20 @@
 
 .methodeGrid {
   display: grid;
-  grid-template-columns: 1fr 1.05fr;
+  grid-template-columns: 1fr auto;
   gap: 48px;
   align-items: start;
 }
 
-.methodeQuoteWrap {
-  height: 100%;
+.methodeLeft {
+  display: flex;
+  flex-direction: column;
+}
+
+.methodePortrait {
+  width: 340px;
+  max-width: 100%;
+  margin: 0 auto;
 }
 
 .methodeQuote {

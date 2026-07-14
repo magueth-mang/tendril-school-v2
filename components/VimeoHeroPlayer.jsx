@@ -54,6 +54,25 @@ function IconFullscreen() {
   );
 }
 
+function IconVolume() {
+  return (
+    <svg width="17" height="15" viewBox="0 0 18 16" fill="none">
+      <path d="M1 5.5H4L8 2V14L4 10.5H1Z" fill="currentColor" />
+      <path d="M11 5.2Q12.8 8 11 10.8" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+      <path d="M13.4 3.2Q16.6 8 13.4 12.8" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function IconMute() {
+  return (
+    <svg width="17" height="15" viewBox="0 0 18 16" fill="none">
+      <path d="M1 5.5H4L8 2V14L4 10.5H1Z" fill="currentColor" />
+      <path d="M11.5 5.5L16.5 10.5M16.5 5.5L11.5 10.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  );
+}
+
 export default function VimeoHeroPlayer({
   videoId,
   hash,
@@ -75,8 +94,12 @@ export default function VimeoHeroPlayer({
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [ended, setEnded] = useState(false);
+  const [volume, setVolume] = useState(1);
+  const [muted, setMuted] = useState(false);
 
   const wantPlayRef = useRef(false);
+  const volumeRef = useRef(1);
+  const mutedRef = useRef(false);
 
   // Create the player on mount so `playerRef` is available immediately. The
   // SDK queues method calls (play/pause/seek) until the embed is ready, so no
@@ -95,6 +118,8 @@ export default function VimeoHeroPlayer({
       .ready()
       .then(() => {
         player.getDuration().then((d) => setDuration(d)).catch(() => {});
+        player.setVolume(volumeRef.current).catch(() => {});
+        player.setMuted(mutedRef.current).catch(() => {});
         if (wantPlayRef.current) {
           wantPlayRef.current = false;
           player.play().catch(() => {});
@@ -161,7 +186,37 @@ export default function VimeoHeroPlayer({
     else el.requestFullscreen?.();
   }
 
+  function handleVolume(e) {
+    const v = parseFloat(e.target.value);
+    const m = v === 0;
+    setVolume(v);
+    setMuted(m);
+    volumeRef.current = v;
+    mutedRef.current = m;
+    const p = playerRef.current;
+    if (p) {
+      p.setVolume(v).catch(() => {});
+      p.setMuted(m).catch(() => {});
+    }
+  }
+
+  function toggleMute() {
+    const nextMuted = !muted;
+    let nextVolume = volume;
+    if (!nextMuted && volume === 0) nextVolume = 1;
+    setMuted(nextMuted);
+    setVolume(nextVolume);
+    mutedRef.current = nextMuted;
+    volumeRef.current = nextVolume;
+    const p = playerRef.current;
+    if (p) {
+      p.setMuted(nextMuted).catch(() => {});
+      if (nextVolume !== volume) p.setVolume(nextVolume).catch(() => {});
+    }
+  }
+
   const progress = duration ? (currentTime / duration) * 100 : 0;
+  const volLevel = muted ? 0 : volume;
 
   return (
     <div
@@ -256,6 +311,28 @@ export default function VimeoHeroPlayer({
             </div>
 
             {!compact && <span className={styles.time}>{formatTime(duration)}</span>}
+
+            <div className={styles.volGroup}>
+              <button
+                type="button"
+                className={styles.ctrlBtn}
+                onClick={toggleMute}
+                aria-label={volLevel === 0 ? "Activer le son" : "Couper le son"}
+              >
+                {volLevel === 0 ? <IconMute /> : <IconVolume />}
+              </button>
+              <input
+                type="range"
+                min="0"
+                max="1"
+                step="0.01"
+                value={volLevel}
+                onChange={handleVolume}
+                className={styles.volInput}
+                style={{ "--vpct": `${volLevel * 100}%` }}
+                aria-label="Volume"
+              />
+            </div>
 
             <button
               type="button"

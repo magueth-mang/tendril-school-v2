@@ -6,9 +6,24 @@ export const ticker = [
 ];
 
 export const clips = [
-  { label: "02. BOOTCAMP NOVICE - CAMPAGNE LANCOME", dur: "00:12" },
-  { label: "03. BOOTCAMP AVANCE - SIMULATION MORPHING 3D", dur: "00:08" },
-  { label: "04. BOOTCAMP NOVICE - CAMPAGNE VICHY", dur: "00:15" },
+  {
+    label: "02. BOOTCAMP NOVICE - CAMPAGNE LANCOME",
+    dur: "00:12",
+    videoId: "1181955312",
+    hash: "d1a31d5174",
+  },
+  {
+    label: "03. BOOTCAMP AVANCE - SIMULATION MORPHING 3D",
+    dur: "00:17",
+    videoId: "1181964838",
+    hash: "e8a6ed7b41",
+  },
+  {
+    label: "04. BOOTCAMP NOVICE - CAMPAGNE VICHY",
+    dur: "00:08",
+    videoId: "1153912318",
+    hash: "d60346a18a",
+  },
 ];
 
 export const stats = [

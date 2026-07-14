@@ -128,12 +128,12 @@ export default function HomeView() {
 
           <div data-reveal className={styles.mainReel}>
             <VimeoHeroPlayer
-              videoId="1181961439"
-              hash="fd5a3feded"
+              videoId="1181962252"
+              hash="e7a6192c91"
               hoverLift
               caption={{
                 left: "01. BOOTCAMP NOVICE — CAMPAGNE KERASTASE",
-                right: "01:48 · 4K",
+                right: "00:18 · 4K",
               }}
               className={styles.playerAccentBorder}
             />
@@ -143,8 +143,8 @@ export default function HomeView() {
             {clips.map((c) => (
               <VimeoHeroPlayer
                 key={c.label}
-                videoId="1181964838"
-                hash="e8a6ed7b41"
+                videoId={c.videoId}
+                hash={c.hash}
                 aspect="9 / 16"
                 compact
                 hoverLift
@@ -213,12 +213,14 @@ export default function HomeView() {
       {/* LA METHODE */}
       <section id="methode" className={styles.methode}>
         <div className={styles.container}>
-          <div data-reveal className={styles.methodeHead}>
-            <span className={styles.kickerSm}>(05) — LA MÉTHODE</span>
-            <h2 className={styles.h2Wide}>Notre vision en quelques mots...</h2>
-          </div>
           <div data-reveal className={styles.methodeGrid}>
-            <div className={styles.methodeQuoteWrap}>
+            <div className={styles.methodeLeft}>
+              <div className={styles.methodeHead}>
+                <span className={styles.kickerSm}>(05) — LA MÉTHODE</span>
+                <h2 className={styles.h2Wide}>
+                  Notre vision en quelques mots...
+                </h2>
+              </div>
               <p className={styles.methodeQuote}>
                 « Lorsque qu&apos;une agence, un studio ou une marque recrute un
                 artiste 3D, la première chose qu&apos;elle regarde n&apos;est
@@ -230,12 +232,12 @@ export default function HomeView() {
               </p>
             </div>
             <VimeoHeroPlayer
-              videoId="1181961439"
-              hash="fd5a3feded"
-              aspect="16 / 9"
+              videoId="1209820866"
+              hash="31da0e36ef"
+              aspect="9 / 16"
               hoverLift
-              caption={{ left: "FIG. 03 — JOURNÉE TYPE", right: "02:30" }}
-              className={styles.playerInkBorder}
+              caption={{ left: "PODCAST — ÉP. 07", right: "LE PORTFOLIO" }}
+              className={`${styles.playerInkBorder} ${styles.methodePortrait}`}
             />
           </div>
         </div>
