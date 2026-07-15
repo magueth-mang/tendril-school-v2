@@ -57,16 +57,16 @@ export default function EcoleView() {
           <div data-reveal>
             <span className={styles.kickerSm}>(01) — QUI SOMMES-NOUS</span>
             <h2 className={styles.h2Small}>
-              Une école née dans l&apos;atelier.
+              Une école née chez Mang Production.
             </h2>
           </div>
           <div data-reveal>
             <p className={styles.paragraphLead}>
-              Fondée à Paris en 2021 par des artistes en exercice, Tendril
-              School est née d&apos;un constat simple&nbsp;: le CGI de luxe ne
-              s&apos;apprend pas dans un manuel, mais en regardant la lumière
-              tomber sur un flacon, encore et encore, jusqu&apos;à ce que ce
-              soit juste.
+              Fondée en 2026 par Nicolas Anguelov, Fondateur de Mang Production,
+              Tendril School est née d&apos;un constat simple&nbsp;: le CGI de
+              luxe ne s&apos;apprend pas dans un manuel, mais en regardant la
+              lumière tomber sur un flacon, encore et encore, jusqu&apos;à ce
+              que ce soit juste.
             </p>
             <p className={styles.paragraph}>
               Nos bootcamps sont courts, intenses et exigeants. On y travaille

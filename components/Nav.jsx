@@ -16,7 +16,7 @@ export default function Nav({ theme = "light", active = null }) {
         <span className={styles.badge}>
           <Image src="/tendril-mark.png" alt="Tendril School" width={230} height={216} className={styles.mark} />
         </span>
-        <span className={styles.wordmark}>Tendril School</span>
+        <span className={styles.wordmark}>Tendril School 3D</span>
       </Link>
       <div className={styles.links}>
         {LINKS.map((link) => (
