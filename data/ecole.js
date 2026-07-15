@@ -37,7 +37,7 @@ export const episodes = [
     hash: "8bb6af694f",
     title: "Le programme",
     quote:
-      "Les marques n'achètent pas seulement de la technique. Elles achètent une vision créative — et c'est exactement ce que nous allons leur apprendre.",
+      "Les marques n'achètent pas seulement de la technique. Elles achètent une vision créative, et c'est exactement ce que nous allons leur apprendre.",
     guest: HOST,
   },
   {
@@ -64,7 +64,7 @@ export const episodes = [
     hash: "379ca6859b",
     title: "Les écoles 3D ne préparent pas au marché",
     quote:
-      "Il y a quelques années, 80 % du marché de la 3D était le gaming. Aujourd'hui ce sont les marques de luxe — et les écoles n'ont jamais changé leur programme.",
+      "Il y a quelques années, 80 % du marché de la 3D était le gaming. Aujourd'hui ce sont les marques de luxe, et les écoles n'ont jamais changé leur programme.",
     guest: HOST,
   },
   {

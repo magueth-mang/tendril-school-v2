@@ -89,7 +89,7 @@ export default function PromoModal() {
             <mark className={styles.highlight}>Janvier 2027</mark>.
           </h2>
           <p className={styles.text}>
-            La prochaine promotion se remplit — et il n&apos;y a que 30 places.
+            La prochaine promotion se remplit, et il n&apos;y a que 30 places.
             Formez-vous en 12 semaines auprès d&apos;artistes qui produisent pour
             les plus grandes maisons, et repartez avec un portfolio de niveau
             agence.

@@ -41,7 +41,7 @@ export const faqs = [
   },
   {
     q: "Puis-je visiter le campus avant de candidater ?",
-    a: "Oui. Des portes ouvertes sont organisées avant chaque rentrée — la prochaine a lieu le 12 juillet 2026. Écrivez-nous pour réserver votre créneau.",
+    a: "Oui. Des portes ouvertes sont organisées avant chaque rentrée. La prochaine a lieu le 12 juillet 2026. Écrivez-nous pour réserver votre créneau.",
   },
   {
     q: "Comment se déroule l'entretien d'admission ?",

@@ -36,9 +36,9 @@ export default function EcoleView() {
           <div data-hero className={styles.introRow}>
             <p className={styles.intro}>
               Tendril School est l&apos;école de modélisation 3D dédiée à la
-              beauté et au luxe. On y forme des artistes capables de fabriquer
-              l&apos;image des plus grandes maisons — du flacon de parfum au
-              packshot de campagne.
+              beauté et au luxe. Formez-vous en 12 semaines auprès des artistes
+              3D de Mang Production et devenez capable de créer les images des
+              plus grandes maisons, du flacon de parfum au packshot de campagne.
             </p>
             <div className={styles.ctaCol}>
               <Link href="/programmes" className={styles.ctaPrimary}>
@@ -71,7 +71,7 @@ export default function EcoleView() {
             <p className={styles.paragraph}>
               Nos bootcamps sont courts, intenses et exigeants. On y travaille
               comme en studio : un brief, les mains dans la matière, une
-              critique collective chaque soir. Pas de cours magistral — du
+              critique collective chaque soir. Pas de cours magistral : du
               métier, transmis par celles et ceux qui le pratiquent pour les
               plus grandes maisons.
             </p>

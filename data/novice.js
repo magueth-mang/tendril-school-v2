@@ -14,7 +14,7 @@ export const novice = {
   titleHighlight: "zéro.",
   introStrong: "Apprendre les fondamentaux de la publicité 3D haut de gamme.",
   introRest:
-    " 12 semaines pour passer de débutant complet à un premier portfolio crédible dans la beauté et le luxe. On apprend le geste, la matière et la lumière — pas seulement à cliquer dans un logiciel.",
+    " 12 semaines pour passer de débutant complet à un premier portfolio crédible dans la beauté et le luxe. On apprend le geste, la matière et la lumière, pas seulement à cliquer dans un logiciel.",
   ctaPrimary: { label: "→ Candidater pour janvier", href: "/candidature" },
   ctaSecondary: {
     label: "Déjà confirmé ? Voir le bootcamp avancé →",

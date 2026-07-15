@@ -288,7 +288,7 @@ export default function CandidatureView() {
                 <h2 className={styles.stepTitle}>Quel bootcamp visez-vous ?</h2>
                 <p className={styles.stepSub}>
                   Choisissez le niveau qui correspond à votre profil. En cas de
-                  doute, sélectionnez Novice — l&apos;entretien affinera
+                  doute, sélectionnez Novice, l&apos;entretien affinera
                   l&apos;orientation.
                 </p>
                 <div className={styles.radioGrid2}>
@@ -605,7 +605,7 @@ export default function CandidatureView() {
             <p className={styles.successText}>
               Nous avons bien reçu votre dossier pour le{" "}
               <strong>{chosenProgramme}</strong>. Notre équipe revient vers vous
-              sous 7 jours pour la suite — généralement un entretien.
+              sous 7 jours pour la suite, généralement un entretien.
             </p>
             <div className={styles.successActions}>
               <Link

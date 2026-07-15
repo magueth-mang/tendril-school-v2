@@ -19,10 +19,10 @@ export const clips = [
     hash: "e8a6ed7b41",
   },
   {
-    label: "04. BOOTCAMP NOVICE - CAMPAGNE MICHELE WATCHES",
-    dur: "00:14",
-    videoId: "1118646824",
-    hash: "49b17c1c0f",
+    label: "04. BOOTCAMP AVANCE - LANCOME X AYA NAKAMURA",
+    dur: "00:20",
+    videoId: "1122894539",
+    hash: "44a9c4b883",
   },
 ];
 

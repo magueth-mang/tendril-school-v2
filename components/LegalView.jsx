@@ -131,7 +131,7 @@ export default function LegalView() {
                   SAS
                 </li>
                 <li>
-                  <strong>N° de déclaration d&apos;activité (formation) :</strong> 11 75 12345 75 —
+                  <strong>N° de déclaration d&apos;activité (formation) :</strong> 11 75 12345 75,
                   enregistré auprès de la préfecture de la région Île-de-France
                 </li>
               </ul>
@@ -144,9 +144,9 @@ export default function LegalView() {
               </p>
               <h3>3. Propriété intellectuelle</h3>
               <p>
-                L&apos;ensemble des contenus présents sur ce site — textes, identité visuelle,
+                L&apos;ensemble des contenus présents sur ce site (textes, identité visuelle,
                 logo, typographies, mises en page, ainsi que les rendus et travaux d&apos;étudiants
-                reproduits — sont protégés par le droit de la propriété intellectuelle et demeurent
+                reproduits) sont protégés par le droit de la propriété intellectuelle et demeurent
                 la propriété exclusive de Tendril School ou de leurs auteurs respectifs.
               </p>
               <p>
