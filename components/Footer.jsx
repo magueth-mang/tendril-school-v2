@@ -2,19 +2,30 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "./Footer.module.css";
 
-export default function Footer({ extraLink = null, topAccent = false, legalColumn = false }) {
+export default function Footer({
+  extraLink = null,
+  topAccent = false,
+  legalColumn = false,
+}) {
   return (
     <footer className={`${styles.footer} ${topAccent ? styles.topAccent : ""}`}>
       <div className={styles.top}>
         <div>
           <div className={styles.brand}>
             <span className={styles.badge}>
-              <Image src="/tendril-mark.png" alt="" width={230} height={216} className={styles.mark} />
+              <Image
+                src="/tendril-mark.png"
+                alt=""
+                width={230}
+                height={216}
+                className={styles.mark}
+              />
             </span>
-            <span className={styles.wordmark}>Tendril School</span>
+            <span className={styles.wordmark}>Tendril School 3D</span>
           </div>
           <p className={styles.tagline}>
-            L&rsquo;école de modélisation 3D dédiée à la beauté et au luxe. Paris.
+            L&rsquo;école de modélisation 3D dédiée à la beauté et au luxe.
+            Paris.
           </p>
         </div>
         <div className={styles.columns}>
@@ -68,7 +79,7 @@ export default function Footer({ extraLink = null, topAccent = false, legalColum
         </div>
       </div>
       <div className={styles.bottom}>
-        <span>© 2026 Tendril School. Tous droits réservés.</span>
+        <span>© 2026 Tendril School 3D. Tous droits réservés.</span>
         {legalColumn ? (
           <span>Paris · Est. 2021</span>
         ) : (
