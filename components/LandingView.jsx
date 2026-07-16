@@ -7,14 +7,19 @@ import Nav from "./Nav";
 import Footer from "./Footer";
 import VimeoHeroPlayer from "./VimeoHeroPlayer";
 import PromoModal from "./PromoModal";
-import PodcastPlaylist from "./PodcastPlaylist";
 import { useScrollFx } from "@/lib/useScrollFx";
-import { ticker, clips, stats, bootcamps } from "@/data/home";
+import { ticker, clips, stats, bootcamps, comparison } from "@/data/home";
+import { episodes } from "@/data/ecole";
 import styles from "./LandingView.module.css";
 
 export default function LandingView() {
   const rootRef = useRef(null);
   useScrollFx(rootRef);
+
+  // Épisodes mis en avant : création, pourquoi 4 mois, différence écoles.
+  const podcastEpisodes = ["01", "06", "03"].map((n) =>
+    episodes.find((e) => e.num === n)
+  );
 
   return (
     <div ref={rootRef} className={styles.page}>
@@ -109,6 +114,101 @@ export default function LandingView() {
         </div>
       </section>
 
+      {/* COMPARATIF */}
+      <section className={styles.comparatif}>
+        <div className={styles.container}>
+          <div data-reveal className={styles.comparatifHead}>
+            <span className={styles.kickerSm}>★ POURQUOI TENDRIL</span>
+            <h2 className={styles.h2Narrow}>
+              Une autre approche que l&apos;école classique.
+            </h2>
+          </div>
+          <div data-stagger className={styles.compareGrid}>
+            <div className={styles.compareTendril}>
+              <div className={styles.compareHead}>
+                <span className={styles.compareBadge}>
+                  {comparison.tendril.label}
+                </span>
+                <div className={styles.compareName}>
+                  {comparison.tendril.name}
+                </div>
+              </div>
+              <ul className={styles.compareList}>
+                {comparison.tendril.rows.map((row) => (
+                  <li key={row.label}>
+                    <div className={styles.compareLabel}>{row.label}</div>
+                    <div className={styles.compareValueAccent}>{row.value}</div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className={styles.compareAutre}>
+              <div className={styles.compareHeadLight}>
+                <span className={styles.compareBadgeMuted}>
+                  {comparison.autre.label}
+                </span>
+                <div className={styles.compareNameMuted}>
+                  {comparison.autre.name}
+                </div>
+              </div>
+              <ul className={styles.compareList}>
+                {comparison.autre.rows.map((row) => (
+                  <li key={row.label}>
+                    <div className={styles.compareLabelMuted}>{row.label}</div>
+                    <div className={styles.compareValueMuted}>{row.value}</div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* PODCAST — 3 épisodes */}
+      <section id="podcast" className={styles.podcast}>
+        <div className={styles.container}>
+          <div data-reveal className={styles.podcastHead}>
+            <div>
+              <span className={styles.kickerAccent}>★ LE PODCAST</span>
+              <h2 className={styles.podcastTitle}>Le bon choix.</h2>
+              <p className={styles.podcastSub}>
+                Le métier, la méthode et le marché de la 3D de luxe, avec
+                Nicolas Anguelov, fondateur de Mang Production &amp; Tendril
+                School.
+              </p>
+            </div>
+            <Link href="/ecole#episodes" className={styles.linkOutLight}>
+              Voir tous les épisodes →
+            </Link>
+          </div>
+
+          <div data-stagger className={styles.epGrid}>
+            {podcastEpisodes.map((ep) => (
+              <article key={ep.num} className={styles.epCard}>
+                <div className={styles.epMedia}>
+                  <VimeoHeroPlayer
+                    videoId={ep.videoId}
+                    hash={ep.hash}
+                    aspect="9 / 16"
+                    playShape="circle"
+                    compact
+                    bareControls
+                    overlay={
+                      <span className={styles.epBadge}>ÉP. {ep.num}</span>
+                    }
+                  />
+                </div>
+                <div className={styles.epBody}>
+                  <h3 className={styles.epTitle}>{ep.title}</h3>
+                  <p className={styles.epQuote}>« {ep.quote} »</p>
+                  <span className={styles.epGuest}>Avec {ep.guest}</span>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* BOOTCAMPS */}
       <section className={styles.bootcamps}>
         <div className={styles.container}>
@@ -127,9 +227,6 @@ export default function LandingView() {
           <PricingCard data={bootcamps.avance} variant="accent" />
         </div>
       </section>
-
-      {/* PODCAST (audio only) */}
-      <PodcastPlaylist />
 
       {/* FINAL CTA */}
       <section className={styles.finalCta}>
