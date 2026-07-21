@@ -409,6 +409,21 @@ select.field[data-filled]:focus {
   box-shadow: 6px 6px 0 var(--ink);
 }
 
+.navBtn:disabled {
+  cursor: wait;
+  opacity: 0.6;
+  transform: none;
+  box-shadow: none;
+}
+
+.errorMsg {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  color: #c0392b;
+  margin: 16px 0 0;
+}
+
 .navBtnDark {
   background: var(--ink);
   color: var(--accent);

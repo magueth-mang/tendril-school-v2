@@ -14,6 +14,38 @@ export default function ContactView() {
   const rootRef = useRef(null);
   useScrollFx(rootRef);
   const [subject, setSubject] = useState("Admissions");
+  const [form, setForm] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    message: "",
+  });
+  const [sending, setSending] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [sendError, setSendError] = useState(false);
+
+  function handleField(key) {
+    return (e) => setForm((f) => ({ ...f, [key]: e.target.value }));
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    setSending(true);
+    setSendError(false);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...form, subject }),
+      });
+      if (!res.ok) throw new Error("Failed");
+      setSubmitted(true);
+    } catch {
+      setSendError(true);
+    } finally {
+      setSending(false);
+    }
+  }
 
   return (
     <div ref={rootRef} className={styles.page}>
@@ -42,32 +74,71 @@ export default function ContactView() {
         <div className={styles.formGrid}>
           <div data-reveal className={styles.formCol}>
             <span className={styles.kickerSm}>(01) — FORMULAIRE</span>
-            <form onSubmit={(e) => e.preventDefault()} className={styles.form}>
-              <div className={styles.formRow2}>
-                <input type="text" placeholder="Prénom" className={styles.field} />
-                <input type="text" placeholder="Nom" className={styles.field} />
-              </div>
-              <input type="email" placeholder="Email" className={styles.field} />
-              <div className={styles.subjectBlock}>
-                <span className={styles.subjectLabel}>SUJET</span>
-                <div className={styles.subjectRow}>
-                  {subjects.map((s) => (
-                    <button
-                      key={s}
-                      type="button"
-                      onClick={() => setSubject(s)}
-                      className={`${styles.subjectBtn} ${subject === s ? styles.subjectActive : ""}`}
-                    >
-                      {s}
-                    </button>
-                  ))}
+            {submitted ? (
+              <p className={styles.successMsg}>
+                Message envoyé. On vous répond sous 48h.
+              </p>
+            ) : (
+              <form onSubmit={handleSubmit} className={styles.form}>
+                <div className={styles.formRow2}>
+                  <input
+                    type="text"
+                    placeholder="Prénom"
+                    required
+                    value={form.firstName}
+                    onChange={handleField("firstName")}
+                    className={styles.field}
+                  />
+                  <input
+                    type="text"
+                    placeholder="Nom"
+                    required
+                    value={form.lastName}
+                    onChange={handleField("lastName")}
+                    className={styles.field}
+                  />
                 </div>
-              </div>
-              <textarea placeholder="Votre message" rows={5} className={styles.field} />
-              <button type="submit" className={styles.submit}>
-                → Envoyer le message
-              </button>
-            </form>
+                <input
+                  type="email"
+                  placeholder="Email"
+                  required
+                  value={form.email}
+                  onChange={handleField("email")}
+                  className={styles.field}
+                />
+                <div className={styles.subjectBlock}>
+                  <span className={styles.subjectLabel}>SUJET</span>
+                  <div className={styles.subjectRow}>
+                    {subjects.map((s) => (
+                      <button
+                        key={s}
+                        type="button"
+                        onClick={() => setSubject(s)}
+                        className={`${styles.subjectBtn} ${subject === s ? styles.subjectActive : ""}`}
+                      >
+                        {s}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                <textarea
+                  placeholder="Votre message"
+                  rows={5}
+                  required
+                  value={form.message}
+                  onChange={handleField("message")}
+                  className={styles.field}
+                />
+                {sendError && (
+                  <p className={styles.errorMsg}>
+                    Une erreur est survenue. Merci de réessayer.
+                  </p>
+                )}
+                <button type="submit" disabled={sending} className={styles.submit}>
+                  {sending ? "Envoi..." : "→ Envoyer le message"}
+                </button>
+              </form>
+            )}
           </div>
 
           <div data-reveal className={styles.infoCol}>

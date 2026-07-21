@@ -128,6 +128,9 @@ export default function CandidatureView() {
   const [summary, setSummary] = useState([]);
   const [firstName, setFirstName] = useState("");
   const [chosenProgramme, setChosenProgramme] = useState("bootcamp");
+  const [sending, setSending] = useState(false);
+  const [sendError, setSendError] = useState(false);
+  const [nationaliteAutre, setNationaliteAutre] = useState(false);
 
   useEffect(() => {
     const root = rootRef.current;
@@ -193,6 +196,10 @@ export default function CandidatureView() {
       ["Email", d.email],
       ["Téléphone", d.telephone],
       ["Date de naissance", d.naissance],
+      [
+        "Nationalité",
+        d.nationalite === "Autre" ? d.nationalitePrecision : d.nationalite,
+      ],
       ["Ville", d.ville],
       ["Situation", d.situation],
       ["Niveau 3D", d.niveau],
@@ -220,14 +227,28 @@ export default function CandidatureView() {
     setStep(Math.max(step - 1, 1));
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     if (!validStep()) return;
     const data = collect();
-    setFirstName(data.prenom || "");
-    setChosenProgramme(data.programme || "bootcamp");
-    setSubmitted(true);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    setSending(true);
+    setSendError(false);
+    try {
+      const res = await fetch("/api/candidature", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) throw new Error("Failed");
+      setFirstName(data.prenom || "");
+      setChosenProgramme(data.programme || "bootcamp");
+      setSubmitted(true);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } catch {
+      setSendError(true);
+    } finally {
+      setSending(false);
+    }
   }
 
   function handleSelectChange(e) {
@@ -357,9 +378,24 @@ export default function CandidatureView() {
                       required
                       type="date"
                     />
-                    <Field label="Nationalité" name="nationalite" />
+                    <SelectField
+                      label="Nationalité"
+                      name="nationalite"
+                      options={["Française", "Autre"]}
+                      onChange={(e) =>
+                        setNationaliteAutre(e.target.value === "Autre")
+                      }
+                    />
                     <Field label="Ville de résidence" name="ville" required />
                   </div>
+                  {nationaliteAutre && (
+                    <Field
+                      label="Précisez votre nationalité"
+                      name="nationalitePrecision"
+                      required
+                      placeholder="Ex : Belge, Suisse, Marocaine…"
+                    />
+                  )}
                 </div>
               </div>
 
@@ -558,6 +594,12 @@ export default function CandidatureView() {
                     </div>
                   ))}
                 </div>
+                {sendError && (
+                  <p className={styles.errorMsg}>
+                    Une erreur est survenue lors de l&apos;envoi. Merci de
+                    réessayer.
+                  </p>
+                )}
               </div>
 
               {/* FOOTER NAV */}
@@ -578,9 +620,10 @@ export default function CandidatureView() {
                 {step === TOTAL ? (
                   <button
                     type="submit"
+                    disabled={sending}
                     className={`${styles.navBtn} ${styles.navBtnDark}`}
                   >
-                    ✓ Envoyer ma candidature
+                    {sending ? "Envoi..." : "✓ Envoyer ma candidature"}
                   </button>
                 ) : (
                   <button
