@@ -83,13 +83,13 @@ export default function PromoModal() {
         </div>
 
         <div className={styles.body}>
-          <span className={styles.kicker}>★ INSCRIPTIONS OUVERTES · 30 PLACES</span>
+          <span className={styles.kicker}>★ INSCRIPTIONS OUVERTES · PLACES LIMITÉES</span>
           <h2 id="promo-title" className={styles.title}>
             Ne ratez pas la promo{" "}
             <mark className={styles.highlight}>Janvier 2027</mark>.
           </h2>
           <p className={styles.text}>
-            La prochaine promotion se remplit, et il n&apos;y a que 30 places.
+            La prochaine promotion se remplit vite, les places sont limitées.
             Formez-vous en 12 semaines auprès d&apos;artistes qui produisent pour
             les plus grandes maisons, et repartez avec un portfolio de niveau
             agence.

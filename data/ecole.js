@@ -2,7 +2,7 @@ export const ticker = [
   "L'ÉCOLE DU CGI LUXE",
   "PARIS · EST. 2021",
   "BOOTCAMP 3D · BEAUTÉ & LUXE",
-  "30 PLACES PAR PROMO",
+  "PLACES LIMITÉES PAR PROMO",
 ];
 
 export const stats = [

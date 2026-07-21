@@ -1,13 +1,13 @@
 export const ticker = [
   "CANDIDATURES OUVERTES",
   "SESSION — JANVIER 2027",
-  "30 PLACES PAR PROMO",
+  "PLACES LIMITÉES PAR PROMO",
   "BOOTCAMP 3D · BEAUTÉ & LUXE",
 ];
 
 export const clips = [
   {
-    label: "02. BOOTCAMP NOVICE - CAMPAGNE LANCOME",
+    label: "02. BOOTCAMP NOVICE - CAMPAGNE LANCÔME",
     dur: "00:12",
     videoId: "1181955312",
     hash: "d1a31d5174",
@@ -19,7 +19,7 @@ export const clips = [
     hash: "e8a6ed7b41",
   },
   {
-    label: "04. BOOTCAMP AVANCE - LANCOME X AYA NAKAMURA",
+    label: "04. BOOTCAMP AVANCE - LANCÔME X AYA NAKAMURA",
     dur: "00:20",
     videoId: "1122894539",
     hash: "44a9c4b883",
@@ -27,7 +27,7 @@ export const clips = [
 ];
 
 export const stats = [
-  { value: "95%", label: "EN POSTE OU FREELANCE À 6 MOIS" },
+  { value: "99%", label: "DES ÉLÈVES SONT APPROCHÉS PAR DES AGENCES OU ANNONCEURS" },
   { value: "30", label: "PLACES PAR PROMO" },
   { value: "12", label: "SEMAINES D'IMMERSION" },
   { value: "04", label: "STUDIOS PARTENAIRES" },

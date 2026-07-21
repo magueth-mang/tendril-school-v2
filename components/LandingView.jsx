@@ -35,8 +35,9 @@ export default function LandingView() {
             <span className={styles.kickerRight}>SESSION · JANVIER 2027</span>
           </div>
           <h1 data-hero className={styles.title}>
-            Formez-vous à la 3D <mark className={styles.highlight}>du luxe</mark>{" "}
-            en 12 semaines.
+            La 1<sup className={styles.sup}>ère</sup> école 3D spécialisée pour
+            le <mark className={styles.highlight}>luxe</mark> et la
+            cosmétique.
           </h1>
           <div data-hero className={styles.introRow}>
             <p className={styles.intro}>
@@ -83,7 +84,7 @@ export default function LandingView() {
               ★ CE QUE VOUS ALLEZ PRODUIRE
             </span>
             <h2 className={styles.showreelTitle}>
-              Des campagnes 3D de niveau agence, dès votre portfolio de sortie.
+              Dès la sortie du bootcamp, un portfolio de niveau agence.
             </h2>
           </div>
 
@@ -201,7 +202,10 @@ export default function LandingView() {
                 <div className={styles.epBody}>
                   <h3 className={styles.epTitle}>{ep.title}</h3>
                   <p className={styles.epQuote}>« {ep.quote} »</p>
-                  <span className={styles.epGuest}>Avec {ep.guest}</span>
+                  <span className={styles.epGuest}>
+                    Avec Nicolas Anguelov, CEO et fondateur de Mang Production
+                    &amp; Tendril School
+                  </span>
                 </div>
               </article>
             ))}
@@ -235,8 +239,8 @@ export default function LandingView() {
             <span className={styles.kickerSm}>★ DERNIÈRE ÉTAPE</span>
             <h2 className={styles.finalTitle}>Prêt à rejoindre la promo ?</h2>
             <p className={styles.finalText}>
-              30 places. Sélection sur entretien. Les candidatures pour janvier
-              2027 sont ouvertes.
+              Places limitées. Sélection sur entretien. Les candidatures pour
+              janvier 2027 sont ouvertes.
             </p>
           </div>
           <div className={styles.finalActions}>

@@ -54,8 +54,8 @@ export default function HomeView() {
           </div>
           <h1 data-hero className={styles.title}>
             La 1<sup className={styles.sup}>ère</sup> école 3D spécialisée pour
-            le <mark className={styles.highlight}>luxe,</mark> Mode &amp;
-            Hardware.
+            le <mark className={styles.highlight}>luxe</mark> et la
+            cosmétique.
           </h1>
           <div data-hero className={styles.introRow}>
             <p className={styles.intro}>
@@ -356,8 +356,8 @@ export default function HomeView() {
             <span className={styles.kickerSm}>(10) — CANDIDATURE</span>
             <h2 className={styles.candidatureTitle}>Rejoignez la promo.</h2>
             <p className={styles.candidatureText}>
-              30 places. Sélection sur entretien. Candidatures pour jannvier
-              ouvertes.
+              Places limitées. Sélection sur entretien. Candidatures pour
+              janvier ouvertes.
             </p>
             <div className={styles.candidatureContact}>
               <div className={styles.candidatureEmailRow}>

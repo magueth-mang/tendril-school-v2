@@ -2,7 +2,7 @@ export const ticker = [
   "DEUX BOOTCAMPS · UN MÉTIER",
   "NOVICE & AVANCÉ",
   "SESSION JANVIER 2027",
-  "30 PLACES PAR PROMO",
+  "PLACES LIMITÉES PAR PROMO",
 ];
 
 export const compareStrip = [
