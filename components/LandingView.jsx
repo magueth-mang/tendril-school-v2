@@ -16,8 +16,8 @@ export default function LandingView() {
   const rootRef = useRef(null);
   useScrollFx(rootRef);
 
-  // Épisodes mis en avant : création, pourquoi 4 mois, différence écoles.
-  const podcastEpisodes = ["01", "06", "03"].map((n) =>
+  // Épisodes mis en avant : création, débouchés, différence écoles.
+  const podcastEpisodes = ["01", "04", "03"].map((n) =>
     episodes.find((e) => e.num === n)
   );
 
