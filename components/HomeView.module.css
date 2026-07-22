@@ -711,15 +711,6 @@
   box-shadow: 4px 4px 0 var(--ink);
 }
 
-.financementNote {
-  max-width: var(--container);
-  margin: 0 auto;
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: rgba(10, 10, 10, 0.6);
-  padding: 20px 28px 40px;
-}
-
 /* FAQ */
 .faqSection {
   border-bottom: var(--border);

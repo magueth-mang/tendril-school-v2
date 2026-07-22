@@ -217,11 +217,7 @@ export const avance = {
     label: "TARIF DU BOOTCAMP AVANCÉ",
     price: "7 900 €",
     desc: "Tout compris : pipeline studio, 2 briefs clients réels, mentorat individuel et mise en relation.",
-    financement: [
-      "Prise en charge entreprise possible",
-      "Paiement échelonné possible",
-      "Acompte de 50 % à l'inscription",
-    ],
+    financement: ["Acompte de 50 % à l'inscription"],
   },
   cta: {
     title: "Montrez-nous votre travail.",

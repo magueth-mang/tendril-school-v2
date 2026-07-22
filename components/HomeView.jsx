@@ -328,11 +328,6 @@ export default function HomeView() {
           <PricingCard data={bootcamps.novice} variant="light" />
           <PricingCard data={bootcamps.avance} variant="accent" />
         </div>
-        <p data-reveal className={styles.financementNote}>
-          {
-            "// ÉCHELONNEMENT POSSIBLE · CONTACTEZ NOUS POUR PLUS D'INFORMATIONS"
-          }
-        </p>
       </section>
 
       {/* FAQ */}

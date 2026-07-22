@@ -29,11 +29,7 @@ export const DIPLOME_OPTIONS = [
   "Autre",
 ];
 
-export const FINANCEMENT_OPTIONS = [
-  "Fonds personnels",
-  "France Travail",
-  "À définir",
-];
+export const FINANCEMENT_OPTIONS = ["Fonds personnels", "Autre / à déterminer"];
 
 export const SOURCE_OPTIONS = [
   "Instagram",

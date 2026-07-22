@@ -195,7 +195,7 @@ export default function BootcampTemplate({ data }) {
             <p className={styles.tarifDesc}>{data.tarif.desc}</p>
           </div>
           <div className={styles.financementCell}>
-            <span className={styles.mutedLabel}>FINANCEMENT</span>
+            <span className={styles.mutedLabel}>MODALITÉS DE PAIEMENT</span>
             <ul className={styles.financementList}>
               {data.tarif.financement.map((item) => (
                 <li key={item}>{item}</li>

@@ -180,11 +180,7 @@ export const novice = {
     label: "TARIF DU BOOTCAMP NOVICE",
     price: "5 900 €",
     desc: "Tout compris : licences logicielles, accès studio, briefs clients et accompagnement portfolio.",
-    financement: [
-      "Prise en charge entreprise possible",
-      "Paiement échelonné possible",
-      "Acompte de 50 % à l'inscription",
-    ],
+    financement: ["Acompte de 50 % à l'inscription"],
   },
   cta: {
     title: "Soyez le créatif que tout le monde souhaite avoir",
