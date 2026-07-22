@@ -1,12 +1,12 @@
 export const ticker = [
   "L'ÉCOLE DU CGI LUXE",
-  "PARIS · EST. 2021",
+  "PARIS · EST. 2026",
   "BOOTCAMP 3D · BEAUTÉ & LUXE",
   "PLACES LIMITÉES PAR PROMO",
 ];
 
 export const stats = [
-  { label: "DEPUIS", value: "2021" },
+  { label: "DEPUIS", value: "2026" },
   { label: "EN POSTE À 6 MOIS", value: "94 %" },
   { label: "STUDIOS PARTENAIRES", value: "04" },
 ];
@@ -16,7 +16,8 @@ export const featured = {
   duration: "SAISON 01",
   title: "Le bon choix : Tendril School",
   desc: "On est là pour transmettre des compétences, des méthodes et la vision dont ils auront besoin pour évoluer dans ce métier-là, grâce à notre expérience avec les plus grandes marques.",
-  guest: "AVEC NICOLAS ANGUELOV — CEO ET FONDATEUR DE MANG PRODUCTION & TENDRIL SCHOOL",
+  guest:
+    "AVEC NICOLAS ANGUELOV — CEO ET FONDATEUR DE MANG PRODUCTION & TENDRIL SCHOOL",
 };
 
 const HOST = "Nicolas Anguelov";

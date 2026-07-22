@@ -181,13 +181,13 @@ export const novice = {
     price: "5 900 €",
     desc: "Tout compris : licences logicielles, accès studio, briefs clients et accompagnement portfolio.",
     financement: [
-      "Prise en charge entreprise / OPCO si possible",
+      "Prise en charge entreprise possible",
       "Paiement échelonné possible",
-      "Acompte de 30 % à l'inscription",
+      "Acompte de 50 % à l'inscription",
     ],
   },
   cta: {
-    title: "Prêt à partir de zéro ?",
+    title: "Soyez le créatif que tout le monde souhaite avoir",
     label: "→ Candidater pour janvier",
   },
   footerExtraLink: {

@@ -27,7 +27,7 @@ export default function EcoleView() {
         <div className={styles.container}>
           <div data-hero className={styles.kickerRow}>
             <span className={styles.kicker}>(00) — L&apos;ÉCOLE</span>
-            <span className={styles.kickerRight}>PARIS · EST. 2021</span>
+            <span className={styles.kickerRight}>PARIS · EST. 2026</span>
           </div>
           <h1 data-hero className={styles.title}>
             Les futurs 3D designers{" "}

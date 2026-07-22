@@ -2,8 +2,7 @@ import EcoleView from "@/components/EcoleView";
 
 export const metadata = {
   title: "L'École — Tendril School",
-  description:
-    "Tendril School, l'école de modélisation 3D dédiée à la beauté et au luxe. Fondée à Paris en 2021.",
+  description: "La seule école 3D spécialisée dans le luxe et la cosmétique.",
 };
 
 export default function EcolePage() {

@@ -24,8 +24,7 @@ export default function Footer({
             <span className={styles.wordmark}>Tendril School 3D</span>
           </div>
           <p className={styles.tagline}>
-            L&rsquo;école de modélisation 3D dédiée à la beauté et au luxe.
-            Paris.
+            La seule école 3D spécialisée dans le luxe et la cosmétique
           </p>
         </div>
         <div className={styles.columns}>
@@ -81,7 +80,7 @@ export default function Footer({
       <div className={styles.bottom}>
         <span>© 2026 Tendril School 3D. Tous droits réservés.</span>
         {legalColumn ? (
-          <span>Paris · Est. 2021</span>
+          <span>Paris · Est. 2026</span>
         ) : (
           <span className={styles.bottomLinks}>
             <Link href="/legal#mentions" className={styles.bottomLink}>

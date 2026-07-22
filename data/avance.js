@@ -218,9 +218,9 @@ export const avance = {
     price: "7 900 €",
     desc: "Tout compris : pipeline studio, 2 briefs clients réels, mentorat individuel et mise en relation.",
     financement: [
-      "Prise en charge entreprise / OPCO si possible",
+      "Prise en charge entreprise possible",
       "Paiement échelonné possible",
-      "Acompte de 30 % à l'inscription",
+      "Acompte de 50 % à l'inscription",
     ],
   },
   cta: {

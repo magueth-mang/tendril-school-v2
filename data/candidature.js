@@ -32,7 +32,6 @@ export const DIPLOME_OPTIONS = [
 export const FINANCEMENT_OPTIONS = [
   "Fonds personnels",
   "France Travail",
-  "Entreprise / OPCO",
   "À définir",
 ];
 

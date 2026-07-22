@@ -36,8 +36,7 @@ export default function LandingView() {
           </div>
           <h1 data-hero className={styles.title}>
             La 1<sup className={styles.sup}>ère</sup> école 3D spécialisée pour
-            le <mark className={styles.highlight}>luxe</mark> et la
-            cosmétique.
+            le <mark className={styles.highlight}>luxe</mark> et la cosmétique.
           </h1>
           <div data-hero className={styles.introRow}>
             <p className={styles.intro}>
@@ -93,7 +92,7 @@ export default function LandingView() {
               videoId="1181962252"
               hash="e7a6192c91"
               hoverLift
-              caption={{ left: "01. CAMPAGNE KERASTASE", right: "00:18 · 4K" }}
+              caption={{ left: "01. CAMPAGNE KÉRASTASE", right: "00:18 · 4K" }}
               className={styles.playerAccentBorder}
             />
           </div>
@@ -248,7 +247,10 @@ export default function LandingView() {
               → Déposer ma candidature
             </Link>
             <div className={styles.finalContact}>
-              <a href="mailto:contact@tendril.com" className={styles.finalEmail}>
+              <a
+                href="mailto:contact@tendril.com"
+                className={styles.finalEmail}
+              >
                 CONTACT@TENDRIL.COM
               </a>
               <span className={styles.finalAddress}>

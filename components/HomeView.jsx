@@ -50,12 +50,11 @@ export default function HomeView() {
         <div className={styles.container}>
           <div data-hero className={styles.kickerRow}>
             <span className={styles.kicker}>(01) — L&apos;ÉCOLE</span>
-            <span className={styles.kickerRight}>PARIS · EST. 2021</span>
+            <span className={styles.kickerRight}>PARIS · EST. 2026</span>
           </div>
           <h1 data-hero className={styles.title}>
             La 1<sup className={styles.sup}>ère</sup> école 3D spécialisée pour
-            le <mark className={styles.highlight}>luxe</mark> et la
-            cosmétique.
+            le <mark className={styles.highlight}>luxe</mark> et la cosmétique.
           </h1>
           <div data-hero className={styles.introRow}>
             <p className={styles.intro}>
@@ -75,7 +74,7 @@ export default function HomeView() {
         </div>
         <div data-hero className={styles.heroMedia}>
           <div className={styles.heroCaption}>
-            <span>RENDER. 01 — YSL PURSE, MANG PRODUCTION 2026</span>
+            <span>CE QUE VOUS SEREZ CAPABLE DE PRODUIRE AVEC TENDRIL SCHOOL X MANG PRODUCTION</span>
             <span>1920×1080</span>
           </div>
           <VimeoHeroPlayer videoId="1181961439" hash="fd5a3feded" background />
@@ -132,7 +131,7 @@ export default function HomeView() {
               hash="e7a6192c91"
               hoverLift
               caption={{
-                left: "01. BOOTCAMP NOVICE — CAMPAGNE KERASTASE",
+                left: "01. BOOTCAMP NOVICE — CAMPAGNE KÉRASTASE",
                 right: "00:18 · 4K",
               }}
               className={styles.playerAccentBorder}

@@ -27,7 +27,10 @@ export const clips = [
 ];
 
 export const stats = [
-  { value: "99%", label: "DES ÉLÈVES SONT APPROCHÉS PAR DES AGENCES OU ANNONCEURS" },
+  {
+    value: "99%",
+    label: "DES ÉLÈVES SONT APPROCHÉS PAR DES AGENCES OU ANNONCEURS",
+  },
   { value: "30", label: "PLACES PAR PROMO" },
   { value: "12", label: "SEMAINES D'IMMERSION" },
   { value: "04", label: "STUDIOS PARTENAIRES" },
@@ -230,7 +233,7 @@ export const comparison = {
       { label: "SPÉCIALISATION", value: "Publicité & luxe uniquement" },
       { label: "FORMATEURS", value: "Artistes en activité en studio" },
       { label: "PROJETS RÉALISÉS", value: "Briefs clients réels" },
-      { label: "SORTIE", value: "Portfolio orienté agence" },
+      { label: "SORTIE", value: "Portfolio orienté secteur Luxe / Beauté" },
       { label: "COÛT DE LA FORMATION", value: "Dès 5 900 €" },
     ],
   },
