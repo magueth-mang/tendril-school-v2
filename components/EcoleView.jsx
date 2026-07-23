@@ -203,7 +203,7 @@ export default function EcoleView() {
               aspect="16 / 10"
               playShape="circle"
               cover
-              caption={{ left: "STUDIO — 12 RUE DU FAUBOURG", right: "ON AIR" }}
+              caption={{ left: "STUDIO — 25 RUE DE PONTHIEU", right: "ON AIR" }}
               className={styles.micFrame}
             />
           </div>

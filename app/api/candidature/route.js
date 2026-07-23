@@ -4,6 +4,7 @@ import nodemailer from "nodemailer";
 import { emailShell, emailSection, emailQuote } from "@/lib/email";
 import { buildCandidaturePdf } from "@/lib/candidaturePdf";
 import { appendCandidatureRow } from "@/lib/googleSheets";
+import { addCandidatureContact } from "@/lib/brevo";
 
 export async function POST(req) {
   const data = await req.json();
@@ -171,15 +172,26 @@ export async function POST(req) {
     data.rgpd ? "Oui" : "Non",
   ];
 
-  // Email is the critical path — a Sheets hiccup shouldn't block the
-  // candidate's confirmation, so it's logged but never fails the request.
-  const [emailResult, sheetResult] = await Promise.allSettled([
+  // Email is the critical path — a Sheets or Brevo hiccup shouldn't block
+  // the candidate's confirmation, so they're logged but never fail the
+  // request.
+  const [emailResult, sheetResult, brevoResult] = await Promise.allSettled([
     transporter.sendMail(mailOptions),
     appendCandidatureRow(sheetRow),
+    addCandidatureContact({
+      email,
+      firstName: prenom,
+      lastName: nom,
+      phone: data.telephone,
+    }),
   ]);
 
   if (sheetResult.status === "rejected") {
     console.error("Google Sheets sync error:", sheetResult.reason);
+  }
+
+  if (brevoResult.status === "rejected") {
+    console.error("Brevo sync error:", brevoResult.reason);
   }
 
   if (emailResult.status === "rejected") {

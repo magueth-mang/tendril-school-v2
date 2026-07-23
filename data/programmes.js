@@ -46,7 +46,7 @@ export const orientation = {
     "Vous voulez des bases techniques solides",
   ],
   avance: [
-    "Vous maîtrisez déjà un logiciel 3D",
+    "Vous maîtrisez parfaitement un logiciel 3D",
     "Vous avez un portfolio à faire évoluer",
     "Vous visez directement un poste en studio",
   ],

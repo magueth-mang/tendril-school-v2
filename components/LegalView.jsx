@@ -109,30 +109,35 @@ export default function LegalView() {
               <p className={styles.mono}>Éditeur du site</p>
               <h3>1. Éditeur</h3>
               <p>
-                Le présent site est édité par <strong>Tendril School SAS</strong>, société par
-                actions simplifiée au capital de 50 000 €, immatriculée au RCS de Paris sous le
-                numéro <strong>901 234 567</strong>.
+                Le présent site est édité par <strong>TENDRIL CLUB</strong>, société à
+                responsabilité limitée au capital de 100 €, immatriculée au Registre du Commerce
+                et des Sociétés de Paris sous le numéro <strong>928 002 526</strong> (SIREN).
               </p>
               <ul>
                 <li>
-                  <strong>Siège social :</strong> 12 rue du Faubourg, 75003 Paris, France
+                  <strong>Siège social :</strong> 25 rue de Ponthieu, 75008 Paris, France
                 </li>
                 <li>
-                  <strong>N° TVA intracommunautaire :</strong> FR 12 901234567
+                  <strong>SIRET (siège) :</strong> 928 002 526 00012
                 </li>
                 <li>
-                  <strong>Téléphone :</strong> +33 1 00 00 00 00
+                  <strong>N° TVA intracommunautaire :</strong> FR17 928 002 526
                 </li>
                 <li>
-                  <strong>Email :</strong> contact@tendril.com
+                  <strong>Code NAF/APE :</strong> 66.30Z — Gestion de fonds
                 </li>
                 <li>
-                  <strong>Directeur de la publication :</strong> la Présidente de Tendril School
-                  SAS
+                  <strong>Date de création :</strong> 15 avril 2024
                 </li>
                 <li>
-                  <strong>N° de déclaration d&apos;activité (formation) :</strong> 11 75 12345 75,
-                  enregistré auprès de la préfecture de la région Île-de-France
+                  <strong>Email :</strong> contact@tendril-school.com
+                </li>
+                <li>
+                  <strong>Téléphone :</strong> +33 6 64 54 66 16
+                </li>
+                <li>
+                  <strong>Directeur de la publication :</strong> Nicolas Anguelov, gérant de
+                  TENDRIL CLUB
                 </li>
               </ul>
               <h3>2. Hébergement</h3>
@@ -140,7 +145,7 @@ export default function LegalView() {
                 Le site est hébergé par un prestataire d&apos;hébergement professionnel assurant la
                 disponibilité et la sécurité des données. Les coordonnées de l&apos;hébergeur sont
                 communiquées sur simple demande à{" "}
-                <a href="mailto:contact@tendril.com">contact@tendril.com</a>.
+                <a href="mailto:contact@tendril-school.com">contact@tendril-school.com</a>.
               </p>
               <h3>3. Propriété intellectuelle</h3>
               <p>
@@ -221,7 +226,8 @@ export default function LegalView() {
               <p className={styles.mono}>Politique de confidentialité — RGPD</p>
               <h3>1. Responsable de traitement</h3>
               <p>
-                Tendril School SAS est responsable du traitement des données personnelles
+                TENDRIL CLUB (opérant sous la marque Tendril School) est responsable du
+                traitement des données personnelles
                 collectées via ce site, conformément au Règlement général sur la protection des
                 données (RGPD) et à la loi Informatique et Libertés.
               </p>
@@ -249,7 +255,9 @@ export default function LegalView() {
               <p>
                 Vous disposez d&apos;un droit d&apos;accès, de rectification, d&apos;effacement, de
                 limitation, d&apos;opposition et de portabilité de vos données. Pour les exercer,
-                écrivez à <a href="mailto:contact@tendril.com">contact@tendril.com</a>. Vous pouvez
+                écrivez à{" "}
+                <a href="mailto:contact@tendril-school.com">contact@tendril-school.com</a>. Vous
+                pouvez
                 également introduire une réclamation auprès de la CNIL.
               </p>
               <h3>6. Sécurité</h3>

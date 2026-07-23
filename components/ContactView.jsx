@@ -145,20 +145,20 @@ export default function ContactView() {
             <div className={styles.infoInner}>
               <span className={styles.kickerSm}>(02) — COORDONNÉES</span>
               <div className={styles.coords}>
-                <a href="mailto:contact@tendril.com" className={styles.coordRow}>
+                <a href="mailto:contact@tendril-school.com" className={styles.coordRow}>
                   <span className={styles.coordLabel}>EMAIL</span>
-                  <span className={styles.coordValue}>contact@tendril.com</span>
+                  <span className={styles.coordValue}>contact@tendril-school.com</span>
                 </a>
-                <a href="tel:+33100000000" className={styles.coordRow}>
+                <a href="tel:+33664546616" className={styles.coordRow}>
                   <span className={styles.coordLabel}>TÉLÉPHONE</span>
-                  <span className={styles.coordValue}>+33 1 00 00 00 00</span>
+                  <span className={styles.coordValue}>+33 6 64 54 66 16</span>
                 </a>
                 <div className={styles.coordRowStatic}>
                   <span className={styles.coordLabel}>ADRESSE</span>
                   <span className={styles.coordValueRight}>
-                    12 rue du Faubourg
+                    25 rue de Ponthieu
                     <br />
-                    75003 Paris
+                    75008 Paris
                   </span>
                 </div>
               </div>

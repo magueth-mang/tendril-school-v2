@@ -248,13 +248,13 @@ export default function LandingView() {
             </Link>
             <div className={styles.finalContact}>
               <a
-                href="mailto:contact@tendril.com"
+                href="mailto:contact@tendril-school.com"
                 className={styles.finalEmail}
               >
-                CONTACT@TENDRIL.COM
+                CONTACT@TENDRIL-SCHOOL.COM
               </a>
               <span className={styles.finalAddress}>
-                12 RUE DU FAUBOURG · 75003 PARIS
+                25 RUE DE PONTHIEU · 75008 PARIS
               </span>
             </div>
           </div>

@@ -32,6 +32,9 @@ function Field({
   type = "text",
   placeholder,
   className,
+  pattern,
+  title,
+  inputMode,
 }) {
   return (
     <div className={className}>
@@ -45,6 +48,9 @@ function Field({
         type={type}
         required={required}
         placeholder={placeholder}
+        pattern={pattern}
+        title={title}
+        inputMode={inputMode}
       />
     </div>
   );
@@ -369,6 +375,10 @@ export default function CandidatureView() {
                       name="telephone"
                       required
                       type="tel"
+                      inputMode="tel"
+                      placeholder="06 12 34 56 78"
+                      pattern={String.raw`(\+\d{6,15})|((\+33|0033|0)[ .]?[1-9]([ .]?\d{2}){4})`}
+                      title="Entrez un numéro valide, ex : 06 12 34 56 78 ou +33 6 12 34 56 78"
                     />
                   </div>
                   <div className={styles.row3}>

@@ -2,7 +2,7 @@ export const ticker = [
   "PARLONS DE VOTRE PROJET",
   "RÉPONSE SOUS 48H",
   "PORTES OUVERTES — 12 JUIL. 2026",
-  "CONTACT@TENDRIL.COM",
+  "CONTACT@TENDRIL-SCHOOL.COM",
 ];
 
 export const subjects = ["Admissions", "Financement", "Partenariat", "Autre"];
@@ -13,7 +13,7 @@ export const directLines = [
     title: "Candidater à un bootcamp",
     desc: "Dossier, entretien, portfolio pour le niveau Avancé.",
     href: "/candidature",
-    linkLabel: "contact@tendril.com →",
+    linkLabel: "contact@tendril-school.com →",
     isRoute: true,
   },
   {
@@ -21,7 +21,7 @@ export const directLines = [
     title: "Studios & maisons",
     desc: "Recruter nos diplômés, proposer un brief, intervenir.",
     href: "#",
-    linkLabel: "contact@tendril.com →",
+    linkLabel: "contact@tendril-school.com →",
     isRoute: false,
   },
   {
@@ -29,7 +29,7 @@ export const directLines = [
     title: "Médias & podcast",
     desc: "Interviews, intervention au micro, demandes presse.",
     href: "#",
-    linkLabel: "contact@tendril.com →",
+    linkLabel: "contact@tendril-school.com →",
     isRoute: false,
   },
 ];

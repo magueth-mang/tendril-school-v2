@@ -273,7 +273,7 @@ export const faqs = [
   },
   {
     q: "Vais-je travailler sur des projets professionnels ?",
-    a: "Oui. Vous réaliserez des projets inspirés de campagnes dans les secteurs du luxe, de la cosmétique, de la mode, du hardware et de la publicité.\nChaque projet est pensé pour construire un portfolio proche des attentes du marché.",
+    a: "Oui. Vous réaliserez des projets inspirés de campagnes dans les secteurs du luxe, de la cosmétique, de la mode et de la publicité.\nChaque projet est pensé pour construire un portfolio proche des attentes du marché.",
   },
   {
     q: "Vais-je créer un portfolio professionnel ?",

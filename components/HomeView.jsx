@@ -31,7 +31,7 @@ export default function HomeView() {
   function handleCopyEmail(e) {
     e.preventDefault();
     navigator.clipboard
-      ?.writeText("contact@tendril.com")
+      ?.writeText("contact@tendril-school.com")
       .then(() => {
         setEmailCopied(true);
         setTimeout(() => setEmailCopied(false), 1800);
@@ -356,18 +356,18 @@ export default function HomeView() {
             <div className={styles.candidatureContact}>
               <div className={styles.candidatureEmailRow}>
                 <a
-                  href="mailto:contact@tendril.com"
+                  href="mailto:contact@tendril-school.com"
                   onClick={handleCopyEmail}
                   className={styles.candidatureEmail}
                 >
-                  CONTACT@TENDRIL.COM
+                  CONTACT@TENDRIL-SCHOOL.COM
                 </a>
                 {emailCopied && (
                   <span className={styles.copiedMsg}>Copié ✓</span>
                 )}
               </div>
               <span className={styles.candidatureAddress}>
-                12 RUE DU FAUBOURG · 75003 PARIS
+                25 RUE DE PONTHIEU · 75008 PARIS
               </span>
             </div>
           </div>
