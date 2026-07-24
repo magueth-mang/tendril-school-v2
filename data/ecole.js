@@ -15,7 +15,7 @@ export const featured = {
   epLabel: "ÉP. 12",
   duration: "SAISON 01",
   title: "Le bon choix : Tendril School",
-  desc: "On est là pour transmettre des compétences, des méthodes et la vision dont ils auront besoin pour évoluer dans ce métier-là, grâce à notre expérience avec les plus grandes marques.",
+  desc: "« On est là pour transmettre des compétences, des méthodes et la vision dont ils auront besoin pour évoluer dans ce métier-là, grâce à notre expérience avec les plus grandes marques. »",
   guest:
     "AVEC NICOLAS ANGUELOV — CEO ET FONDATEUR DE MANG PRODUCTION & TENDRIL SCHOOL",
 };

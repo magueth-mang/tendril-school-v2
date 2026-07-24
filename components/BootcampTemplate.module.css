@@ -220,10 +220,12 @@
 }
 
 .heroFill {
+  position: relative;
   width: 100%;
   height: 480px;
   display: block;
   background: #000;
+  overflow: hidden;
 }
 
 /* FACTS */

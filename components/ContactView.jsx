@@ -56,7 +56,7 @@ export default function ContactView() {
         <div className={styles.container}>
           <div data-hero className={styles.kickerRow}>
             <span className={styles.kicker}>(00) — CONTACT</span>
-            <span className={styles.kickerRight}>PARIS · RÉPONSE SOUS 48H</span>
+            <span className={styles.kickerRight}>PARIS · RÉPONSE SOUS 24H</span>
           </div>
           <h1 data-hero className={styles.title}>
             Écrivez-
@@ -64,8 +64,8 @@ export default function ContactView() {
             nous.
           </h1>
           <p data-hero className={styles.intro}>
-            Une question sur les bootcamps, le financement, une candidature ou un partenariat
-            studio ? On lit tout, on répond vite.
+            Une question sur les bootcamps, le financement, une candidature ou
+            un partenariat studio ? On lit tout, on répond vite.
           </p>
         </div>
       </header>
@@ -76,7 +76,7 @@ export default function ContactView() {
             <span className={styles.kickerSm}>(01) — FORMULAIRE</span>
             {submitted ? (
               <p className={styles.successMsg}>
-                Message envoyé. On vous répond sous 48h.
+                Message envoyé. On vous répond sous 24h.
               </p>
             ) : (
               <form onSubmit={handleSubmit} className={styles.form}>
@@ -114,7 +114,9 @@ export default function ContactView() {
                         key={s}
                         type="button"
                         onClick={() => setSubject(s)}
-                        className={`${styles.subjectBtn} ${subject === s ? styles.subjectActive : ""}`}
+                        className={`${styles.subjectBtn} ${
+                          subject === s ? styles.subjectActive : ""
+                        }`}
                       >
                         {s}
                       </button>
@@ -134,7 +136,11 @@ export default function ContactView() {
                     Une erreur est survenue. Merci de réessayer.
                   </p>
                 )}
-                <button type="submit" disabled={sending} className={styles.submit}>
+                <button
+                  type="submit"
+                  disabled={sending}
+                  className={styles.submit}
+                >
                   {sending ? "Envoi..." : "→ Envoyer le message"}
                 </button>
               </form>
@@ -145,9 +151,14 @@ export default function ContactView() {
             <div className={styles.infoInner}>
               <span className={styles.kickerSm}>(02) — COORDONNÉES</span>
               <div className={styles.coords}>
-                <a href="mailto:contact@tendril-school.com" className={styles.coordRow}>
+                <a
+                  href="mailto:contact@tendril-school.com"
+                  className={styles.coordRow}
+                >
                   <span className={styles.coordLabel}>EMAIL</span>
-                  <span className={styles.coordValue}>contact@tendril-school.com</span>
+                  <span className={styles.coordValue}>
+                    contact@tendril-school.com
+                  </span>
                 </a>
                 <a href="tel:+33664546616" className={styles.coordRow}>
                   <span className={styles.coordLabel}>TÉLÉPHONE</span>

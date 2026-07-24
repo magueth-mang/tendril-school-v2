@@ -6,6 +6,7 @@ import Ticker from "./Ticker";
 import Nav from "./Nav";
 import Footer from "./Footer";
 import MediaFrame from "./MediaFrame";
+import VimeoHeroPlayer from "./VimeoHeroPlayer";
 import { useScrollFx } from "@/lib/useScrollFx";
 import styles from "./BootcampTemplate.module.css";
 
@@ -58,7 +59,15 @@ export default function BootcampTemplate({ data }) {
             <span>{data.heroCaption.left}</span>
             <span>{data.heroCaption.right}</span>
           </div>
-          <div className={styles.heroFill} />
+          <div className={styles.heroFill}>
+            <VimeoHeroPlayer
+              videoId={data.teaserVideoId}
+              hash={data.teaserHash}
+              background
+              cover
+              fill
+            />
+          </div>
         </div>
       </header>
 

@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 import { emailShell, emailSection, emailQuote } from "@/lib/email";
 import { buildCandidaturePdf } from "@/lib/candidaturePdf";
+import { buildCandidateConfirmationEmail } from "@/lib/candidatureConfirmationEmail";
 import { appendCandidatureRow } from "@/lib/googleSheets";
 import { addCandidatureContact } from "@/lib/brevo";
 
@@ -145,6 +146,30 @@ export async function POST(req) {
     attachments,
   };
 
+  // Confirmation sent to the candidate. Reuses the same PDF + inline logo; the
+  // logo cid must be present on this message too (attachments aren't shared
+  // between separate sendMail calls).
+  const confirmationHtml = buildCandidateConfirmationEmail({
+    prenom,
+    programme: data.programme,
+    session: data.session,
+    dateStr: new Date().toLocaleDateString("fr-FR", {
+      day: "2-digit",
+      month: "long",
+      year: "numeric",
+    }),
+  });
+
+  const candidateMailOptions = {
+    from: `"Tendril School" <${process.env.GMAIL_USER}>`,
+    to: email,
+    replyTo: process.env.GMAIL_USER,
+    subject: "Votre candidature à Tendril School est bien reçue",
+    encoding: "utf-8",
+    html: confirmationHtml,
+    attachments,
+  };
+
   const sheetRow = [
     new Date().toLocaleString("fr-FR"),
     clean(data.programme),
@@ -172,19 +197,25 @@ export async function POST(req) {
     data.rgpd ? "Oui" : "Non",
   ];
 
-  // Email is the critical path — a Sheets or Brevo hiccup shouldn't block
-  // the candidate's confirmation, so they're logged but never fail the
-  // request.
-  const [emailResult, sheetResult, brevoResult] = await Promise.allSettled([
-    transporter.sendMail(mailOptions),
-    appendCandidatureRow(sheetRow),
-    addCandidatureContact({
-      email,
-      firstName: prenom,
-      lastName: nom,
-      phone: data.telephone,
-    }),
-  ]);
+  // The internal notification is the critical path (the school must never miss
+  // a candidature). The candidate confirmation, Sheets and Brevo are best
+  // effort — a hiccup on any of them is logged but never fails the request.
+  const [emailResult, confirmResult, sheetResult, brevoResult] =
+    await Promise.allSettled([
+      transporter.sendMail(mailOptions),
+      transporter.sendMail(candidateMailOptions),
+      appendCandidatureRow(sheetRow),
+      addCandidatureContact({
+        email,
+        firstName: prenom,
+        lastName: nom,
+        phone: data.telephone,
+      }),
+    ]);
+
+  if (confirmResult.status === "rejected") {
+    console.error("Candidate confirmation email error:", confirmResult.reason);
+  }
 
   if (sheetResult.status === "rejected") {
     console.error("Google Sheets sync error:", sheetResult.reason);

@@ -172,6 +172,15 @@
   min-width: 0;
 }
 
+.paragraphPunch {
+  font-size: clamp(24px, 2.8vw, 32px);
+  line-height: 1.2;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin: 0 0 24px;
+}
+
 .paragraphLead {
   font-size: 18px;
   line-height: 1.6;
@@ -185,6 +194,11 @@
   font-weight: 500;
   color: rgba(10, 10, 10, 0.7);
   margin: 0 0 26px;
+}
+
+.paragraphStrong {
+  font-weight: 800;
+  color: var(--ink);
 }
 
 .statsRow {

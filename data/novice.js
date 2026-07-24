@@ -21,9 +21,11 @@ export const novice = {
     href: "/programmes/bootcamp-avance",
   },
   heroCaption: {
-    left: "FIG. 01 — TRAVAIL PROMO NOVICE, SEMAINE 12",
+    left: "TEASER · BOOTCAMP NOVICE",
     right: "1920×1080",
   },
+  teaserVideoId: "1212582218",
+  teaserHash: "bf4bbae446",
   facts: [
     { label: "DURÉE", value: "12 sem." },
     { label: "RYTHME", value: "Plein temps" },

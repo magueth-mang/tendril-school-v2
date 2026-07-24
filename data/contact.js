@@ -1,7 +1,7 @@
 export const ticker = [
   "PARLONS DE VOTRE PROJET",
-  "RÉPONSE SOUS 48H",
-  "PORTES OUVERTES — 12 JUIL. 2026",
+  "RÉPONSE SOUS 24H",
+  "RENTRÉE 2027",
   "CONTACT@TENDRIL-SCHOOL.COM",
 ];
 
@@ -18,10 +18,10 @@ export const directLines = [
   },
   {
     label: "PARTENARIATS",
-    title: "Studios & maisons",
-    desc: "Recruter nos diplômés, proposer un brief, intervenir.",
-    href: "#",
-    linkLabel: "contact@tendril-school.com →",
+    title: "Mang Production",
+    desc: "Toute question concernant notre studio fondateur.",
+    href: "mailto:contact@mangproduction.com",
+    linkLabel: "contact@mangproduction.com →",
     isRoute: false,
   },
   {
@@ -37,7 +37,7 @@ export const directLines = [
 export const faqs = [
   {
     q: "Sous combien de temps obtient-on une réponse ?",
-    a: "On répond à tous les messages sous 48h ouvrées. Pour une candidature, comptez environ une semaine entre le dépôt du dossier et la proposition d'entretien.",
+    a: "On répond à tous les messages sous 24h ouvrées. Pour une candidature, comptez environ une semaine entre le dépôt du dossier et la proposition d'entretien.",
   },
   {
     q: "Puis-je visiter le campus avant de candidater ?",

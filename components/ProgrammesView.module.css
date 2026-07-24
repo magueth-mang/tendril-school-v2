@@ -211,10 +211,12 @@
 }
 
 .cardFill {
+  position: relative;
   width: 100%;
   height: 260px;
   display: block;
   background: #000;
+  overflow: hidden;
 }
 
 .cardBody {

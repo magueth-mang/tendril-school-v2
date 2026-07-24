@@ -32,6 +32,19 @@
   overflow: hidden;
 }
 
+/* Fill mode: for containers with a fixed pixel height (not aspect-ratio
+   driven) — frame and wrap both stretch to the parent's box instead. */
+.fillFrame {
+  position: absolute;
+  inset: 0;
+}
+
+.fillWrap {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+}
+
 .iframe {
   position: absolute;
   inset: 0;

@@ -74,7 +74,10 @@ export default function HomeView() {
         </div>
         <div data-hero className={styles.heroMedia}>
           <div className={styles.heroCaption}>
-            <span>CE QUE VOUS SEREZ CAPABLE DE PRODUIRE AVEC TENDRIL SCHOOL X MANG PRODUCTION</span>
+            <span>
+              CE QUE VOUS SEREZ CAPABLE DE PRODUIRE AVEC TENDRIL SCHOOL X MANG
+              PRODUCTION
+            </span>
             <span>1920×1080</span>
           </div>
           <VimeoHeroPlayer videoId="1181961439" hash="fd5a3feded" background />
@@ -88,10 +91,9 @@ export default function HomeView() {
           <p className={styles.manifestoText}>
             Aujourd&apos;hui,{" "}
             <mark className={styles.manifestoHighlight}>plus de 85%</mark> des
-            contenus visuels produits par les marques utilisent la 3D :{" "}
+            contenus 3D sont produits par les marques de{" "}
             <span className={styles.manifestoMuted}>
-              campagnes, produits, social media, e-commerce et expériences
-              immersives.
+              luxe, cosmétique, mode &amp; hardware.
             </span>
           </p>
         </div>
@@ -118,9 +120,9 @@ export default function HomeView() {
             </span>
             <h2 className={styles.showreelTitle}>
               VOUS RÉALISEREZ PLUSIEURS PROJETS PUBLICITAIRES COMPLETS, DES
-              VISUELS PACKSHOT LUXE ET UNE{" "}
+              VISUELS PACKSHOT LUXE ET UN{" "}
               <mark className={styles.highlight}>
-                PUBLICITÉ PRODUIT DE NIVEAU AGENCE.
+                PORTFOLIO DE NIVEAU AGENCE.
               </mark>
             </h2>
           </div>
@@ -167,25 +169,32 @@ export default function HomeView() {
               Voir les programmes détaillés →
             </Link>
           </div>
-          <div data-reveal className={styles.tabs}>
-            <button
-              type="button"
-              onClick={() => setTrack("novice")}
-              className={`${styles.tab} ${
-                track === "novice" ? styles.tabActive : ""
-              }`}
-            >
-              Bootcamp Novice
-            </button>
-            <button
-              type="button"
-              onClick={() => setTrack("avance")}
-              className={`${styles.tab} ${
-                track === "avance" ? styles.tabActive : ""
-              }`}
-            >
-              Bootcamp Avancé
-            </button>
+          <div data-reveal className={styles.tabsRow}>
+            <div className={styles.tabs}>
+              <button
+                type="button"
+                onClick={() => setTrack("novice")}
+                className={`${styles.tab} ${
+                  track === "novice" ? styles.tabActive : ""
+                }`}
+              >
+                Bootcamp Novice
+              </button>
+              <button
+                type="button"
+                onClick={() => setTrack("avance")}
+                className={`${styles.tab} ${
+                  track === "avance" ? styles.tabActive : ""
+                }`}
+              >
+                Bootcamp Avancé
+              </button>
+            </div>
+            {track === "avance" && (
+              <span className={styles.tabsNote}>
+                * INCLUT ÉGALEMENT TOUS LES MODULES DU BOOTCAMP NOVICE
+              </span>
+            )}
           </div>
         </div>
 

@@ -85,6 +85,7 @@ export default function VimeoHeroPlayer({
   bareControls = false,
   cover = false,
   background = false,
+  fill = false,
   className = "",
 }) {
   const iframeRef = useRef(null);
@@ -220,7 +221,9 @@ export default function VimeoHeroPlayer({
 
   return (
     <div
-      className={`${styles.frame} ${hoverLift ? styles.hoverLift : ""} ${className}`}
+      className={`${styles.frame} ${hoverLift ? styles.hoverLift : ""} ${
+        fill ? styles.fillFrame : ""
+      } ${className}`}
     >
       {caption && (
         <div className={styles.caption}>
@@ -229,8 +232,10 @@ export default function VimeoHeroPlayer({
         </div>
       )}
       <div
-        className={`${styles.wrap} ${cover ? styles.coverWrap : ""}`}
-        style={{ aspectRatio: aspect }}
+        className={`${styles.wrap} ${cover ? styles.coverWrap : ""} ${
+          fill ? styles.fillWrap : ""
+        }`}
+        style={fill ? undefined : { aspectRatio: aspect }}
       >
         <iframe
           ref={iframeRef}

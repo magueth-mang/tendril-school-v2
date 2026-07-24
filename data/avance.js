@@ -21,9 +21,11 @@ export const avance = {
     href: "/programmes/bootcamp-novice",
   },
   heroCaption: {
-    left: "FIG. 01 — TRAVAIL PROMO AVANCÉ, BRIEF CLIENT",
+    left: "TEASER · BOOTCAMP AVANCÉ",
     right: "1920×1080",
   },
+  teaserVideoId: "1212582201",
+  teaserHash: "484b477b23",
   facts: [
     { label: "DURÉE", value: "12 sem." },
     { label: "RYTHME", value: "Plein temps" },
@@ -80,7 +82,7 @@ export const avance = {
     },
     {
       num: "04",
-      title: "Éclairage avancé",
+      title: "Lighting avancé",
       tags: [
         "Advanced Lighting",
         "Luxury Lighting",

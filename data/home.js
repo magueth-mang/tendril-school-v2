@@ -148,7 +148,7 @@ export const avanceModules = [
   },
   {
     num: "04",
-    title: "Éclairage avancé",
+    title: "Lighting avancé",
     tags: [
       "Cinematic Lighting",
       "Rim Light",
@@ -280,7 +280,7 @@ export const faqs = [
     a: "Oui. À la fin du Bootcamp, vous disposerez d'images et de films que vous pourrez présenter à des studios, agences créatives ou futurs clients.",
   },
   {
-    q: "Pourquoi les simulations FX sont-elles autant mises en avant ?",
+    q: "Pourquoi les simulations 3D sont-elles autant mises en avant ?",
     a: "Parce qu'elles sont devenues une compétence clé dans les productions publicitaires actuelles.\nVous apprendrez à créer des effets avancés comme les liquides, fumées, particules, tissus, verre ou destructions, afin de produire des visuels plus spectaculaires.",
   },
   {

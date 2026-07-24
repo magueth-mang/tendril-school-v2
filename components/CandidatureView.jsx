@@ -270,15 +270,19 @@ export default function CandidatureView() {
       <Ticker items={TICKER} theme="dark" />
       <Nav theme="light" />
 
-      <main className={styles.main}>
-        <div data-head className={styles.head}>
-          <span className={styles.kickerSm}>DOSSIER DE CANDIDATURE</span>
-          <h1 className={styles.title}>
-            Rejoignez
-            <br />
-            la promo.
-          </h1>
-        </div>
+      <main
+        className={`${styles.main} ${submitted ? styles.mainCentered : ""}`}
+      >
+        {!submitted && (
+          <div data-head className={styles.head}>
+            <span className={styles.kickerSm}>DOSSIER DE CANDIDATURE</span>
+            <h1 className={styles.title}>
+              Rejoignez
+              <br />
+              la promo.
+            </h1>
+          </div>
+        )}
 
         {!submitted && (
           <div className={styles.formShell}>

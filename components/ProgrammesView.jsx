@@ -5,6 +5,7 @@ import Link from "next/link";
 import Ticker from "./Ticker";
 import Nav from "./Nav";
 import Footer from "./Footer";
+import VimeoHeroPlayer from "./VimeoHeroPlayer";
 import { useScrollFx } from "@/lib/useScrollFx";
 import { ticker, compareStrip, cards, orientation } from "@/data/programmes";
 import styles from "./ProgrammesView.module.css";
@@ -67,7 +68,15 @@ export default function ProgrammesView() {
                   <span>{cards.novice.kickerLeft}</span>
                   <span>{cards.novice.kickerRight}</span>
                 </div>
-                <div className={styles.cardFill} />
+                <div className={styles.cardFill}>
+                  <VimeoHeroPlayer
+                    videoId="1212582218"
+                    hash="bf4bbae446"
+                    background
+                    cover
+                    fill
+                  />
+                </div>
               </div>
               <div className={styles.cardBody}>
                 <h3 className={styles.cardTitle}>
@@ -102,7 +111,15 @@ export default function ProgrammesView() {
                   <span className={styles.popularBadge}>★ POPULAIRE</span>
                   <span>{cards.avance.kickerRight}</span>
                 </div>
-                <div className={styles.cardFill} />
+                <div className={styles.cardFill}>
+                  <VimeoHeroPlayer
+                    videoId="1212582201"
+                    hash="484b477b23"
+                    background
+                    cover
+                    fill
+                  />
+                </div>
               </div>
               <div className={styles.cardBody}>
                 <h3 className={`${styles.cardTitle} ${styles.cardTitleAccent}`}>

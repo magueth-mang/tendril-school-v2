@@ -179,7 +179,7 @@
 }
 
 .manifestoMuted {
-  color: rgba(10, 10, 10, 0.5);
+  color: var(--ink);
 }
 
 /* STATS */
@@ -300,10 +300,24 @@
   color: var(--ink);
 }
 
+.tabsRow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 0 28px 6px;
+}
+
 .tabs {
   display: inline-flex;
   border: var(--border);
-  margin: 0 28px 6px;
+}
+
+.tabsNote {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(10, 10, 10, 0.5);
 }
 
 .tab {

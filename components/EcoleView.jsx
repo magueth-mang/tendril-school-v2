@@ -61,19 +61,27 @@ export default function EcoleView() {
             </h2>
           </div>
           <div data-reveal>
+            <p className={styles.paragraphPunch}>
+              Le marché de la 3D a évolué.
+              <br />
+              Les écoles, beaucoup moins.
+            </p>
             <p className={styles.paragraphLead}>
               Fondée en 2026 par Nicolas Anguelov, Fondateur de Mang Production,
-              Tendril School est née d&apos;un constat simple&nbsp;: le CGI de
-              luxe ne s&apos;apprend pas dans un manuel, mais en regardant la
-              lumière tomber sur un flacon, encore et encore, jusqu&apos;à ce
-              que ce soit juste.
+              Tendril School est née d&apos;un constat simple.
+            </p>
+            <p className={styles.paragraphLead}>
+              Avec Mang Production, nous avons créé un programme entièrement
+              dédié aux secteurs qui utilisent réellement la 3D au
+              quotidien&nbsp;: le luxe, la cosmétique, la beauté, la mode et
+              le hardware.
             </p>
             <p className={styles.paragraph}>
-              Nos bootcamps sont courts, intenses et exigeants. On y travaille
-              comme en studio : un brief, les mains dans la matière, une
-              critique collective chaque soir. Pas de cours magistral : du
-              métier, transmis par celles et ceux qui le pratiquent pour les
-              plus grandes maisons.
+              <strong className={styles.paragraphStrong}>
+                Notre objectif est simple&nbsp;:
+              </strong>{" "}
+              former des artistes 3D prêts à intégrer les agences créatives
+              et les plus grandes marques dès la fin de leur formation.
             </p>
             <div className={styles.statsRow}>
               {stats.map((s) => (
@@ -165,7 +173,9 @@ export default function EcoleView() {
                     >
                       {playingIndex === i ? "▶ En lecture" : "→ Écouter"}
                     </button>
-                    <span className={styles.epCardGuest}>Avec {ep.guest}</span>
+                    <span className={styles.epCardGuest}>
+                      {ep.guest}, Fondateur de Tendril School
+                    </span>
                   </div>
                 </div>
               </article>
